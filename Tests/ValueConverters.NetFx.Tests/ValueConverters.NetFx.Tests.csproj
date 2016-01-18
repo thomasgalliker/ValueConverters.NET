@@ -47,6 +47,8 @@
     </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -80,9 +82,16 @@
     <Compile Include="BoolNegationConverterTests.cs" />
     <Compile Include="BoolToValueConverterTests.cs" />
     <Compile Include="DateTimeConverterTests.cs" />
+    <Compile Include="EnumWrapperConverterTests.cs" />
     <Compile Include="EnumToObjectConverterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestData\TestEnumeration.cs" />
+    <Compile Include="TestData\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TestData\TestClass.cs" />
+    <Compile Include="TestData\TestEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -92,6 +101,12 @@
       <Project>{efc0655a-c5b8-4b71-b130-3ba06f43287d}</Project>
       <Name>ValueConverters.NetFx</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestData\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

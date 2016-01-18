@@ -21,6 +21,7 @@
       - Added BoolToThicknessConverter
       - Added BoolToVisibilityConverter
       - Added EnumToObjectConverter
+      - Added EnumWrapperConverter
 
       1.0.0
       - Added BoolToBrushConverter
