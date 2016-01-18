@@ -84,6 +84,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\ValueConverters.NetFx\BoolNegationConverter.cs">
+      <Link>BoolNegationConverter.cs</Link>
+    </Compile>
     <Compile Include="..\ValueConverters.NetFx\BoolToBrushConverter.cs">
       <Link>BoolToBrushConverter.cs</Link>
     </Compile>
@@ -99,14 +102,23 @@
     <Compile Include="..\ValueConverters.NetFx\BoolToStyleConverter.cs">
       <Link>BoolToStyleConverter.cs</Link>
     </Compile>
+    <Compile Include="..\ValueConverters.NetFx\BoolToThicknessConverter.cs">
+      <Link>BoolToThicknessConverter.cs</Link>
+    </Compile>
     <Compile Include="..\ValueConverters.NetFx\BoolToValueConverter.cs">
       <Link>BoolToValueConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\ValueConverters.NetFx\BoolToVisibilityConverter.cs">
+      <Link>BoolToVisibilityConverter.cs</Link>
     </Compile>
     <Compile Include="..\ValueConverters.NetFx\ConverterBase.cs">
       <Link>ConverterBase.cs</Link>
     </Compile>
     <Compile Include="..\ValueConverters.NetFx\DateTimeConverter.cs">
       <Link>DateTimeConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\ValueConverters.NetFx\EnumToObjectConverter.cs">
+      <Link>EnumToObjectConverter.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

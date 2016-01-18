@@ -148,10 +148,7 @@ namespace ValueConverters
             {
                 return info.Select(i =>
                 {
-                    var attribute =
-                        (DisplayAttribute)
-                            Attribute.GetCustomAttribute(
-                                i, typeof (DisplayAttribute));
+                    var attribute = (DisplayAttribute)Attribute.GetCustomAttribute(i, typeof (DisplayAttribute));
 
                     if (attribute != null)
                     {
