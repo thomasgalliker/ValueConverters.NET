@@ -22,6 +22,8 @@
       - Added BoolToVisibilityConverter
       - Added EnumToObjectConverter
       - Added EnumWrapperConverter
+      - Added EnumToBoolConverter
+      - Added DebugConverter
 
       1.0.0
       - Added BoolToBrushConverter

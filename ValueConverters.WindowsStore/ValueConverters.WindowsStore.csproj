@@ -135,6 +135,12 @@
     <Compile Include="..\ValueConverters.NetFx\DateTimeConverter.cs">
       <Link>DateTimeConverter.cs</Link>
     </Compile>
+    <Compile Include="..\ValueConverters.NetFx\DebugConverter.cs">
+      <Link>DebugConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\ValueConverters.NetFx\EnumToBoolConverter.cs">
+      <Link>EnumToBoolConverter.cs</Link>
+    </Compile>
     <Compile Include="..\ValueConverters.NetFx\EnumToObjectConverter.cs">
       <Link>EnumToObjectConverter.cs</Link>
     </Compile>

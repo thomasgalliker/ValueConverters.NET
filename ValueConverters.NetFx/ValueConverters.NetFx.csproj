@@ -61,6 +61,8 @@
     <Compile Include="BoolToValueConverter.cs" />
     <Compile Include="ConverterBase.cs" />
     <Compile Include="DateTimeConverter.cs" />
+    <Compile Include="DebugConverter.cs" />
+    <Compile Include="EnumToBoolConverter.cs" />
     <Compile Include="EnumToObjectConverter.cs" />
     <Compile Include="EnumWrapper.cs" />
     <Compile Include="EnumWrapperConverter.cs" />
