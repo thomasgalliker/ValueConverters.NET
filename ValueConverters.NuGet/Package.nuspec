@@ -16,9 +16,19 @@
       windows phone winphone wp8 wpa81 win81 windowsphone android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
+      Next release
+      - Added BoolNegationConverter
+      - Added BoolToThicknessConverter
+      - Added BoolToVisibilityConverter
+      - Added EnumToObjectConverter
+
       1.0.0
-      - Bool to generic value converters
-      - DateTime to string converter
+      - Added BoolToBrushConverter
+      - Added BoolToDoubleConverter
+      - Added BoolToFontWeightConverter
+      - Added BoolToStringConverter
+      - Added BoolToValueConverter
+      - Added DateTimeConverter
     </releaseNotes>
     <copyright>Copyright 2016</copyright>
     <language>en-US</language>
