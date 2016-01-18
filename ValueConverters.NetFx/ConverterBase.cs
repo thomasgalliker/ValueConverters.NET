@@ -24,50 +24,22 @@ namespace ValueConverters
 #if NETFX || WINDOWS_PHONE
         object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            try
-            {
-                return this.Convert(value, targetType, parameter, culture);
-            }
-            catch
-            {
-                return DependencyProperty.UnsetValue;
-            }
+            return this.Convert(value, targetType, parameter, culture);
         }
 
         object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            try
-            {
-                return this.ConvertBack(value, targetType, parameter, culture);
-            }
-            catch
-            {
-                return DependencyProperty.UnsetValue;
-            }
+            return this.ConvertBack(value, targetType, parameter, culture);
         }
 #elif (WINDOWS_APP || WINDOWS_PHONE_APP)
         object IValueConverter.Convert(object value, Type targetType, object parameter, string culture)
         {
-            try
-            {
-                return this.Convert(value, targetType, parameter, new CultureInfo(culture));
-            }
-            catch
-            {
-                return DependencyProperty.UnsetValue;
-            }
+            return this.Convert(value, targetType, parameter, new CultureInfo(culture));
         }
 
         object IValueConverter.ConvertBack(object value, Type targetType, object parameter, string culture)
         {
-            try
-            {
-                return this.ConvertBack(value, targetType, parameter, new CultureInfo(culture));
-            }
-            catch
-            {
-                return DependencyProperty.UnsetValue;
-            }
+            return this.ConvertBack(value, targetType, parameter, new CultureInfo(culture));
         }
 #endif
     }
