@@ -23,7 +23,7 @@ namespace ValueConverters.NetFx.Tests
             var convertedOutput = dateTimeConverter.Convert(input, typeof(string), null, CultureInfo.CurrentUICulture);
 
             // Assert
-            Assert.Equal(convertedOutput, expectedValue);
+            Assert.Equal(expectedValue, convertedOutput);
         }
 
         [Fact]

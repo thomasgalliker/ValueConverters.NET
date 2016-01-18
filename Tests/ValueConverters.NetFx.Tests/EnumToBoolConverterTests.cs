@@ -21,7 +21,7 @@ namespace ValueConverters.NetFx.Tests
             var convertedOutput = converter.Convert(Input, null, inputParameter, null);
 
             // Assert
-            Assert.Equal(convertedOutput, ExpectedValue);
+            Assert.Equal(ExpectedValue, convertedOutput);
         }
 
         [Fact]
@@ -37,7 +37,7 @@ namespace ValueConverters.NetFx.Tests
             var convertedOutput = converter.Convert(Input, null, inputParameter, null);
 
             // Assert
-            Assert.Equal(convertedOutput, ExpectedValue);
+            Assert.Equal(ExpectedValue, convertedOutput);
         }
 
         [Fact]
