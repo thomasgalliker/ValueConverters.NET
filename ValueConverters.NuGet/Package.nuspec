@@ -37,45 +37,43 @@
     <language>en-US</language>
     <dependencies>
     </dependencies>
+    <frameworkAssemblies>
+      <!--.Net 4.5-->
+      <frameworkAssembly assemblyName="PresentationCore" targetFramework="net45" />
+      <frameworkAssembly assemblyName="PresentationFramework" targetFramework="net45" />
+      <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework="net45" />
+      <frameworkAssembly assemblyName="System.Xaml" targetFramework="net45" />
+      <frameworkAssembly assemblyName="WindowsBase" targetFramework="net45" />
+
+      <!--Windows Phone 8-->
+  
+      <!--Windows Phone 8.1-->
+  
+      <!--Windows Store-->
+     
+    </frameworkAssemblies>
   </metadata>
   <files>
-    <!--PCL-->
-    <file src="..\ValueConverters\bin\Release\ValueConverters.dll" target="lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\ValueConverters.dll" />
-    <file src="..\ValueConverters\bin\Release\ValueConverters.pdb" target="lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\ValueConverters.pdb" />
-    <file src="..\ValueConverters\bin\Release\ValueConverters.xml" target="lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\ValueConverters.xml" />
-
     <!--.Net 4.5-->
-    <file src="..\ValueConverters.Netfx\bin\Release\ValueConverters.Platform.dll" target="lib\net45\ValueConverters.Platform.dll" />
-    <file src="..\ValueConverters.Netfx\bin\Release\ValueConverters.Platform.pdb" target="lib\net45\ValueConverters.Platform.pdb" />
-    <file src="..\ValueConverters.Netfx\bin\Release\ValueConverters.Platform.xml" target="lib\net45\ValueConverters.Platform.xml" />
-    <file src="..\ValueConverters\bin\Release\ValueConverters.dll" target="lib\net45\ValueConverters.dll" />
-    <file src="..\ValueConverters\bin\Release\ValueConverters.pdb" target="lib\net45\ValueConverters.pdb" />
-    <file src="..\ValueConverters\bin\Release\ValueConverters.xml" target="lib\net45\ValueConverters.xml" />
+    <file src="..\ValueConverters.Netfx\bin\Release\ValueConverters.dll" target="lib\net45\ValueConverters.dll" />
+    <file src="..\ValueConverters.Netfx\bin\Release\ValueConverters.pdb" target="lib\net45\ValueConverters.pdb" />
+    <file src="..\ValueConverters.Netfx\bin\Release\ValueConverters.xml" target="lib\net45\ValueConverters.xml" />
 
     <!--Windows Phone 8-->
-    <file src="..\ValueConverters.WindowsPhone8\Bin\Release\ValueConverters.Platform.dll" target="lib\wp8\ValueConverters.Platform.dll" />
-    <file src="..\ValueConverters.WindowsPhone8\Bin\Release\ValueConverters.Platform.pdb" target="lib\wp8\ValueConverters.Platform.pdb" />
-    <file src="..\ValueConverters.WindowsPhone8\Bin\Release\ValueConverters.Platform.xml" target="lib\wp8\ValueConverters.Platform.xml" />
-    <file src="..\ValueConverters\bin\Release\ValueConverters.dll" target="lib\wp8\ValueConverters.dll" />
-    <file src="..\ValueConverters\bin\Release\ValueConverters.pdb" target="lib\wp8\ValueConverters.pdb" />
-    <file src="..\ValueConverters\bin\Release\ValueConverters.xml" target="lib\wp8\ValueConverters.xml" />
-    
+    <file src="..\ValueConverters.WindowsPhone8\Bin\Release\ValueConverters.dll" target="lib\wp8\ValueConverters.dll" />
+    <file src="..\ValueConverters.WindowsPhone8\Bin\Release\ValueConverters.pdb" target="lib\wp8\ValueConverters.pdb" />
+    <file src="..\ValueConverters.WindowsPhone8\Bin\Release\ValueConverters.xml" target="lib\wp8\ValueConverters.xml" />
+
     <!--Windows Phone 8.1-->
-    <file src="..\ValueConverters.WindowsPhone81\Bin\Release\ValueConverters.Platform.dll" target="lib\wpa81\ValueConverters.Platform.dll" />
-    <file src="..\ValueConverters.WindowsPhone81\Bin\Release\ValueConverters.Platform.pdb" target="lib\wpa81\ValueConverters.Platform.pdb" />
-    <file src="..\ValueConverters.WindowsPhone81\Bin\Release\ValueConverters.Platform.xml" target="lib\wpa81\ValueConverters.Platform.xml" />
-    <file src="..\ValueConverters\bin\Release\ValueConverters.dll" target="lib\wpa81\ValueConverters.dll" />
-    <file src="..\ValueConverters\bin\Release\ValueConverters.pdb" target="lib\wpa81\ValueConverters.pdb" />
-    <file src="..\ValueConverters\bin\Release\ValueConverters.xml" target="lib\wpa81\ValueConverters.xml" />
-    
+    <file src="..\ValueConverters.WindowsPhone81\Bin\Release\ValueConverters.dll" target="lib\wpa81\ValueConverters.dll" />
+    <file src="..\ValueConverters.WindowsPhone81\Bin\Release\ValueConverters.pdb" target="lib\wpa81\ValueConverters.pdb" />
+    <file src="..\ValueConverters.WindowsPhone81\Bin\Release\ValueConverters.xml" target="lib\wpa81\ValueConverters.xml" />
+
     <!--Windows Store-->
-    <file src="..\ValueConverters.WindowsStore\Bin\Release\ValueConverters.Platform.dll" target="lib\win81\ValueConverters.Platform.dll" />
-    <file src="..\ValueConverters.WindowsStore\Bin\Release\ValueConverters.Platform.pdb" target="lib\win81\ValueConverters.Platform.pdb" />
-    <file src="..\ValueConverters.WindowsStore\Bin\Release\ValueConverters.Platform.xml" target="lib\win81\ValueConverters.Platform.xml" />
-    <file src="..\ValueConverters\bin\Release\ValueConverters.dll" target="lib\win81\ValueConverters.dll" />
-    <file src="..\ValueConverters\bin\Release\ValueConverters.pdb" target="lib\win81\ValueConverters.pdb" />
-    <file src="..\ValueConverters\bin\Release\ValueConverters.xml" target="lib\win81\ValueConverters.xml" />
-    
+    <file src="..\ValueConverters.WindowsStore\Bin\Release\ValueConverters.dll" target="lib\win81\ValueConverters.dll" />
+    <file src="..\ValueConverters.WindowsStore\Bin\Release\ValueConverters.pdb" target="lib\win81\ValueConverters.pdb" />
+    <file src="..\ValueConverters.WindowsStore\Bin\Release\ValueConverters.xml" target="lib\win81\ValueConverters.xml" />
+
     <file src="tools\init.ps1" target="tools\init.ps1" />
     <file src="tools\install.ps1" target="tools\install.ps1" />
     <file src="tools\uninstall.ps1" target="tools\uninstall.ps1" />
