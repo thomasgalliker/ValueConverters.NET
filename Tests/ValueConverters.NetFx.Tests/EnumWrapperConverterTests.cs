@@ -35,9 +35,10 @@ namespace ValueConverters.NetFx.Tests
 
             // Act
             var convertedOutput = converter.Convert(InutValue, null, null, null);
+            Action action = () => convertedOutput.ToString();
 
             // Assert
-            convertedOutput.ToString().Should().Be(TestEnum.Ipsum.ToString());
+            action.ShouldThrow<InvalidOperationException>();
         }
 
         [Fact]
@@ -66,7 +67,7 @@ namespace ValueConverters.NetFx.Tests
             Action action = () => converter.ConvertBack(InutValue, null, null, null);
 
             // Assert
-            Assert.Throws<ArgumentNullException>(action);
+            action.ShouldThrow<ArgumentNullException>();
         }
     }
 }
