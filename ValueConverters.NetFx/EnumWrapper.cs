@@ -7,9 +7,6 @@ using System.Reflection;
 
 namespace ValueConverters
 {
-    /// <summary>
-    ///     Factory class.
-    /// </summary>
     public static class EnumWrapper
     {
         /// <summary>
@@ -48,12 +45,6 @@ namespace ValueConverters
         }
     }
 
-    /// <summary>
-    ///     Wrapper for binding directly.
-    /// </summary>
-    /// <typeparam name="TEnumType">
-    ///     Type of the enumeration.
-    /// </typeparam>
     public class EnumWrapper<TEnumType> : IEquatable<EnumWrapper<TEnumType>>
         where TEnumType : IConvertible
     {
@@ -65,9 +56,7 @@ namespace ValueConverters
             this.value = value;
             this.nameStyle = nameStyle;
         }
-        /// <summary>
-        ///     The Value.
-        /// </summary>
+
         public TEnumType Value
         {
             get { return this.value; }
@@ -139,7 +128,7 @@ namespace ValueConverters
         /// <returns>Value converted to a string.</returns>
         public override string ToString()
         {
-            Type enumType = typeof (TEnumType);
+            Type enumType = typeof(TEnumType);
             FieldInfo[] infos = enumType.GetFields(BindingFlags.Public | BindingFlags.Static);
 
             IEnumerable<FieldInfo> info = infos.Where(x => x.GetValue(null).Equals(this.value));
@@ -148,12 +137,12 @@ namespace ValueConverters
             {
                 return info.Select(i =>
                 {
-                    var attribute = (DisplayAttribute)Attribute.GetCustomAttribute(i, typeof (DisplayAttribute));
+                    var attribute = (DisplayAttribute)Attribute.GetCustomAttribute(i, typeof(DisplayAttribute));
 
                     if (attribute != null)
                     {
-                        return (this.nameStyle == EnumWrapperConverterNameStyle.LongName) ? 
-                            attribute.GetName() : 
+                        return (this.nameStyle == EnumWrapperConverterNameStyle.LongName) ?
+                            attribute.GetName() :
                             attribute.GetShortName();
                     }
                     return this.Value.ToString(CultureInfo.InvariantCulture);
@@ -178,11 +167,14 @@ namespace ValueConverters
             {
                 return true;
             }
-            if (obj.GetType() != typeof (EnumWrapper<TEnumType>))
+
+            var enumWrapper = obj as EnumWrapper<TEnumType>;
+            if (enumWrapper == null)
             {
                 return false;
             }
-            return this.Equals((EnumWrapper<TEnumType>) obj);
+
+            return this.Equals(enumWrapper);
         }
 
         /// <summary>
