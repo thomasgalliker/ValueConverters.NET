@@ -8,8 +8,8 @@
     <ProjectGuid>{2CF5E868-1098-4C6D-9001-27D8DC0D87BE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CrossPlatformLibrary.Geolocation.NuGet</RootNamespace>
-    <AssemblyName>CrossPlatformLibrary.Geolocation.NuGet</AssemblyName>
+    <RootNamespace>NuGet</RootNamespace>
+    <AssemblyName>NuGet</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
