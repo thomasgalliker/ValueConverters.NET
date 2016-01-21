@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ValueConverters</RootNamespace>
-    <AssemblyName>ValueConverters.Platform</AssemblyName>
+    <AssemblyName>ValueConverters</AssemblyName>
     <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
@@ -39,7 +39,7 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>Bin\Release\ValueConverters.Platform.xml</DocumentationFile>
+    <DocumentationFile>Bin\Release\ValueConverters.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -117,6 +117,9 @@
     <Compile Include="..\ValueConverters.NetFx\DateTimeConverter.cs">
       <Link>DateTimeConverter.cs</Link>
     </Compile>
+    <Compile Include="..\ValueConverters.NetFx\DateTimeConverterBase.cs">
+      <Link>DateTimeConverterBase.cs</Link>
+    </Compile>
     <Compile Include="..\ValueConverters.NetFx\DebugConverter.cs">
       <Link>DebugConverter.cs</Link>
     </Compile>
@@ -127,12 +130,6 @@
       <Link>EnumToObjectConverter.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ValueConverters\ValueConverters.csproj">
-      <Project>{a6fcef44-d2ba-42c7-b3cb-13667bcd7b54}</Project>
-      <Name>ValueConverters</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

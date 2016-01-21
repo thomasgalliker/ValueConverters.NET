@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ValueConverters</RootNamespace>
-    <AssemblyName>ValueConverters.Platform</AssemblyName>
+    <AssemblyName>ValueConverters</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
@@ -33,7 +33,7 @@
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\ValueConverters.Platform.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\ValueConverters.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -113,6 +113,9 @@
     <Compile Include="..\ValueConverters.NetFx\DateTimeConverter.cs">
       <Link>DateTimeConverter.cs</Link>
     </Compile>
+    <Compile Include="..\ValueConverters.NetFx\DateTimeConverterBase.cs">
+      <Link>DateTimeConverterBase.cs</Link>
+    </Compile>
     <Compile Include="..\ValueConverters.NetFx\DebugConverter.cs">
       <Link>DebugConverter.cs</Link>
     </Compile>
@@ -123,12 +126,6 @@
       <Link>EnumToObjectConverter.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ValueConverters\ValueConverters.csproj">
-      <Project>{a6fcef44-d2ba-42c7-b3cb-13667bcd7b54}</Project>
-      <Name>ValueConverters</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
