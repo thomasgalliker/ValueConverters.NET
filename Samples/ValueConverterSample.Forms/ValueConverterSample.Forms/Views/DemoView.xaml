@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:valueConverters="clr-namespace:ValueConverters;assembly=ValueConverters.Forms"
+             x:Class="ValueConverterSample.Forms.Views.DemoView"
+             Title="ValueConverters.NET for Xamarin.Forms Demo">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <valueConverters:BoolNegationConverter x:Key="BoolNegationConverter" />
+      <valueConverters:BoolToDoubleConverter x:Key="BoolToDoubleConverter" />
+      <valueConverters:BoolToStringConverter x:Key="BoolToStringConverter" />
+      <valueConverters:BoolToStyleConverter x:Key="BoolToStyleConverter" />
+      <valueConverters:BoolToThicknessConverter x:Key="BoolToThicknessConverter" />
+      <valueConverters:DebugConverter x:Key="DebugConverter" />
+      <valueConverters:DateTimeConverter x:Key="DateTimeConverter" />
+      <valueConverters:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+      <valueConverters:EnumToObjectConverter x:Key="EnumToObjectConverter" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <Grid>
+    <Label Text="Test" Style="{Binding ., Converter={StaticResource BoolToStyleConverter}}"/>
+  </Grid>
+</ContentPage>
