@@ -3,14 +3,6 @@ using System.Globalization;
 
 using Xamarin.Forms;
 
-#if NETFX || WINDOWS_PHONE
-using System.Windows;
-using System.Windows.Data;
-#elif (WINDOWS_APP || WINDOWS_PHONE_APP)
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Data;
-#endif
-
 namespace ValueConverters
 {
     public class DateTimeConverter : DateTimeConverterBase
