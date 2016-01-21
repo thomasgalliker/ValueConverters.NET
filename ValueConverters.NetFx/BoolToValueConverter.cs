@@ -70,7 +70,21 @@ namespace ValueConverters
 
         protected override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value != null && value.Equals(this.TrueValue);
+            bool returnValue = false;
+
+            if (value != null)
+            {
+                if (this.IsInverted)
+                {
+                    returnValue = value.Equals(this.FalseValue);
+                }
+                else
+                {
+                    returnValue = value.Equals(this.TrueValue);
+                }
+            }
+
+            return returnValue;
         }
     }
 }
