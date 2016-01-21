@@ -25,7 +25,7 @@ This library contains a collection of most commonly used IValueConverters. Follo
     <td>yes</td> 
     <td>yes</td> 
     <td>planned</td> 
-    <td>planned</td> 
+    <td>yes</td> 
   </tr> 
   <tr> 
     <td>BoolToBrushConverter</td> 
@@ -33,7 +33,7 @@ This library contains a collection of most commonly used IValueConverters. Follo
     <td>yes</td> 
     <td>yes</td> 
     <td>planned</td> 
-    <td>planned</td> 
+    <td>no</td> 
   </tr> 
   <tr> 
     <td>BoolToDoubleConverter</td> 
@@ -41,7 +41,7 @@ This library contains a collection of most commonly used IValueConverters. Follo
     <td>yes</td> 
     <td>yes</td> 
     <td>planned</td> 
-    <td>planned</td> 
+    <td>yes</td> 
   </tr> 
   <tr> 
     <td>BoolToFontWeightConverter</td> 
@@ -49,7 +49,7 @@ This library contains a collection of most commonly used IValueConverters. Follo
     <td>yes</td> 
     <td>yes</td> 
     <td>planned</td> 
-    <td>planned</td> 
+    <td>no</td> 
   </tr> 
   <tr> 
     <td>BoolToStringConverter</td> 
@@ -57,7 +57,7 @@ This library contains a collection of most commonly used IValueConverters. Follo
     <td>yes</td> 
     <td>yes</td> 
     <td>planned</td> 
-    <td>planned</td> 
+    <td>yes</td> 
   </tr> 
   <tr> 
     <td>BoolToStyleConverter</td> 
@@ -65,7 +65,7 @@ This library contains a collection of most commonly used IValueConverters. Follo
     <td>yes</td> 
     <td>yes</td> 
     <td>planned</td> 
-    <td>planned</td> 
+    <td>yes</td> 
   </tr> 
   <tr> 
     <td>BoolToThicknessConverter</td> 
@@ -73,7 +73,7 @@ This library contains a collection of most commonly used IValueConverters. Follo
     <td>yes</td> 
     <td>yes</td> 
     <td>planned</td> 
-    <td>planned</td> 
+    <td>yes</td> 
   </tr> 
   <tr> 
     <td>BoolToValueConverter</td> 
@@ -81,7 +81,7 @@ This library contains a collection of most commonly used IValueConverters. Follo
     <td>yes</td> 
     <td>yes</td> 
     <td>planned</td> 
-    <td>planned</td> 
+    <td>yes</td> 
   </tr> 
   <tr> 
     <td>BoolToVisibilityConverter</td> 
@@ -89,7 +89,7 @@ This library contains a collection of most commonly used IValueConverters. Follo
     <td>yes</td> 
     <td>yes</td> 
     <td>planned</td> 
-    <td>planned</td> 
+    <td>no</td> 
   </tr> 
   <tr> 
     <td>DateTimeConverter</td> 
@@ -97,7 +97,7 @@ This library contains a collection of most commonly used IValueConverters. Follo
     <td>yes</td> 
     <td>yes</td> 
     <td>planned</td> 
-    <td>planned</td> 
+    <td>yes</td> 
   </tr> 
   <tr> 
     <td>DebugConverter</td> 
@@ -105,7 +105,7 @@ This library contains a collection of most commonly used IValueConverters. Follo
     <td>yes</td> 
     <td>yes</td> 
     <td>planned</td> 
-    <td>planned</td> 
+    <td>yes</td> 
   </tr> 
   <tr> 
     <td>EnumToBoolConverter</td> 
@@ -113,7 +113,7 @@ This library contains a collection of most commonly used IValueConverters. Follo
     <td>yes</td> 
     <td>yes</td> 
     <td>planned</td> 
-    <td>planned</td> 
+    <td>yes</td> 
   </tr> 
   <tr> 
     <td>EnumToObjectConverter</td> 
@@ -121,7 +121,7 @@ This library contains a collection of most commonly used IValueConverters. Follo
     <td>yes</td> 
     <td>yes</td> 
     <td>planned</td> 
-    <td>planned</td> 
+    <td>yes</td> 
   </tr> 
   <tr> 
     <td>EnumWrapperConverter</td> 
@@ -158,7 +158,7 @@ The usage of converters is on all platforms more or less the same:
 
 Define a converter in the Resources section of a UserControl. Specify options if required. 
 
-```xaml 
+```xml 
 
  <UserControl.Resources> 
 
@@ -174,7 +174,7 @@ Define a converter in the Resources section of a UserControl. Specify options if
 
 Apply the converter as a StaticResource: 
 
-```xaml 
+```xml 
 
 <TextBox Text="{Binding EmployeeDetailViewModel.Birthdate, Converter={StaticResource DateTimeConverter}}"/> 
 
