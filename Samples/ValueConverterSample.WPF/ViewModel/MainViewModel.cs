@@ -1,29 +1,42 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 using GalaSoft.MvvmLight.Command;
 
-using ValueConverterSample.WPF.Annotations;
+using ValueConverters;
 
-namespace ValueConverterSample.WPF
+using ValueConverterSample.WPF.Annotations;
+using ValueConverterSample.WPF.Model;
+
+namespace ValueConverterSample.WPF.ViewModel
 {
     public class MainViewModel : INotifyPropertyChanged
     {
         private bool isEditing;
         private bool isEnabled;
-
         private DateTime changeDate;
+        private RadioFrequency radioFrequency;
 
         public MainViewModel()
         {
-            this.ToggleIsEditingCommand = new RelayCommand(
+            this.EditCommand = new RelayCommand(
                 () =>
                     {
-                        this.IsEditing = !this.IsEditing;
+                        this.IsEditing = true;
                         this.ChangeDate = DateTime.Now;
                     });
+
+            this.CancelCommand = new RelayCommand(
+                () =>
+                {
+                    this.IsEditing = false;
+                    this.ChangeDate = DateTime.Now;
+                });
         }
 
         public bool IsEditing
@@ -65,7 +78,27 @@ namespace ValueConverterSample.WPF
             }
         }
 
-        public ICommand ToggleIsEditingCommand { get; private set; }
+        public IEnumerable<EnumWrapper<RadioFrequency>> RadioFrequencies
+        {
+            get { return EnumWrapper.CreateWrappers<RadioFrequency>().Where(r => r != RadioFrequency.Undefined); }
+        }
+
+        public RadioFrequency SelectedRadioFrequency
+        {
+            get
+            {
+                return this.radioFrequency;
+            }
+            set
+            {
+                this.radioFrequency = value;
+                this.OnPropertyChanged();
+            }
+        }
+
+        public ICommand EditCommand { get; private set; }
+
+        public ICommand CancelCommand { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
