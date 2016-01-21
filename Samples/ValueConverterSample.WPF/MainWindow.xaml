@@ -80,7 +80,7 @@
                      SelectedItem="{Binding SelectedRadioFrequency, Converter={StaticResource EnumWrapperConverter}}"
                      Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}">
                 <ListBox.ItemTemplate>
-                    <DataTemplate >
+                    <DataTemplate>
                         <RadioButton Content="{Binding}" GroupName="Properties">
                             <RadioButton.IsChecked>
                                 <Binding Path="IsSelected"
@@ -102,7 +102,13 @@
                     </Style>
                 </ListBox.ItemContainerStyle>
             </ListBox>
-
+            <ComboBox Grid.Row="2" Grid.Column="2"
+                      ItemsSource="{Binding RadioFrequencies}" 
+                      SelectedItem="{Binding SelectedRadioFrequency, Converter={StaticResource EnumWrapperConverter}}"
+                      Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}"
+                      Height="22"
+                      VerticalAlignment="Top"/>
+            
             <Button Grid.Row="3" Grid.Column="1" Width="100" HorizontalAlignment="Right"
                 Content="Edit" Command="{Binding EditCommand}"
                 Style="{Binding IsEditing, Converter={StaticResource BoolToStyleConverter}}"
