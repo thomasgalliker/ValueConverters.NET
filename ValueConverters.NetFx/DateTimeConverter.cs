@@ -11,11 +11,8 @@ using Windows.UI.Xaml.Data;
 
 namespace ValueConverters
 {
-    public class DateTimeConverter : ConverterBase
+    public class DateTimeConverter : DateTimeConverterBase
     {
-        private const string DefaultFormat = "g";
-        private const string DefaultMinValueString = "";
-
         /// <summary>
         ///     The datetime format property.
         ///     Check MSDN for information about predefined datetime formats:
@@ -33,7 +30,7 @@ namespace ValueConverters
             typeof(DateTimeConverter),
             new PropertyMetadata(DefaultMinValueString));
 
-        public string Format
+        public override string Format
         {
             get
             {
@@ -45,7 +42,7 @@ namespace ValueConverters
             }
         }
 
-        public string MinValueString
+        public override string MinValueString
         {
             get
             {
@@ -55,21 +52,6 @@ namespace ValueConverters
             {
                 this.SetValue(MinValueStringProperty, value);
             }
-        }
-
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            if (value == null || (DateTime)value == DateTime.MinValue)
-            {
-                return this.MinValueString;
-            }
-
-            if (targetType == typeof(string))
-            {
-                return ((DateTime)value).ToLocalTime().ToString(this.Format, culture);
-            }
-
-            return DependencyProperty.UnsetValue;
         }
     }
 }

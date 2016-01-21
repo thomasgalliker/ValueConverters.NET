@@ -54,6 +54,7 @@
     <Compile Include="BoolToStyleConverter.cs" />
     <Compile Include="BoolToValueConverter.cs" />
     <Compile Include="ConverterBase.cs" />
+    <Compile Include="DateTimeConverterBase.cs" />
     <Compile Include="DateTimeConverter.cs" />
     <Compile Include="DebugConverter.cs" />
     <Compile Include="EnumToBoolConverter.cs" />

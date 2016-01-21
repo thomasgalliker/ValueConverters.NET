@@ -20,12 +20,12 @@ namespace ValueConverters
             var parameterString = parameter as string;
             if (parameterString == null)
             {
-                return DependencyProperty.UnsetValue;
+                return UnsetValue;
             }
 
             if (Enum.IsDefined(value.GetType(), value) == false)
             {
-                return DependencyProperty.UnsetValue;
+                return UnsetValue;
             }
 
             var parameterValue = Enum.Parse(value.GetType(), parameterString);
@@ -38,7 +38,7 @@ namespace ValueConverters
             var parameterString = parameter as string;
             if (parameterString == null)
             {
-                return DependencyProperty.UnsetValue;
+                return UnsetValue;
             }
 
             return Enum.Parse(targetType, parameterString);

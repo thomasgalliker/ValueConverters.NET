@@ -7,6 +7,8 @@ using System.Windows.Markup;
 #elif (WINDOWS_APP || WINDOWS_PHONE_APP)
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Markup;
+#elif (XAMARIN)
+using Xamarin.Forms;
 #endif
 
 namespace ValueConverters
@@ -27,7 +29,7 @@ namespace ValueConverters
         {
             if (value == null)
             {
-                return DependencyProperty.UnsetValue;
+                return UnsetValue;
             }
 
             string key = Enum.GetName(value.GetType(), value);
@@ -36,7 +38,7 @@ namespace ValueConverters
                 return this.Items[key];
             }
 
-            return DependencyProperty.UnsetValue;
+            return UnsetValue;
         }
 
 #if (NETFX || WINDOWS_PHONE)
@@ -44,7 +46,7 @@ namespace ValueConverters
         {
             return dict.Contains(key);
         }
-#elif (WINDOWS_APP || WINDOWS_PHONE_APP)
+#elif (WINDOWS_APP || WINDOWS_PHONE_APP || XAMARIN)
         private static bool ContainsKey(ResourceDictionary dict, string key)
         {
             return dict.ContainsKey(key);
