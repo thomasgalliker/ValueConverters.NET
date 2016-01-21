@@ -11,7 +11,7 @@ using Windows.UI.Xaml.Data;
 
 namespace ValueConverters
 {
-    public class BoolToValueConverter<T> : ConverterBase
+    public class BoolToValueConverter<T> : BoolToValueConverterBase<T>
     {
         public static readonly DependencyProperty TrueValueProperty = DependencyProperty.Register(
             "TrueValue",
@@ -31,60 +31,22 @@ namespace ValueConverters
             typeof(BoolToValueConverter<T>),
             new PropertyMetadata(false));
 
-        public T TrueValue
+        public override T TrueValue
         {
             get { return (T)this.GetValue(TrueValueProperty); }
             set { this.SetValue(TrueValueProperty, value); }
         }
 
-        public T FalseValue
+        public override T FalseValue
         {
             get { return (T)this.GetValue(FalseValueProperty); }
             set { this.SetValue(FalseValueProperty, value); }
         }
 
-        public bool IsInverted
+        public override bool IsInverted
         {
             get { return (bool)this.GetValue(IsInvertedProperty); }
             set { this.SetValue(IsInvertedProperty, value); }
-        }
-
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            var returnValue = this.FalseValue;
-
-            if (value != null)
-            {
-                if (this.IsInverted)
-                {
-                    returnValue = (bool)value ? this.FalseValue : this.TrueValue;
-                }
-                else
-                {
-                    returnValue = (bool)value ? this.TrueValue : this.FalseValue;
-                }
-            }
-
-            return returnValue;
-        }
-
-        protected override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            bool returnValue = false;
-
-            if (value != null)
-            {
-                if (this.IsInverted)
-                {
-                    returnValue = value.Equals(this.FalseValue);
-                }
-                else
-                {
-                    returnValue = value.Equals(this.TrueValue);
-                }
-            }
-
-            return returnValue;
         }
     }
 }

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoolNegationConverter.cs" />
+    <Compile Include="BoolToValueConverterBase.cs" />
     <Compile Include="BoolToVisibilityConverter.cs" />
     <Compile Include="BoolToThicknessConverter.cs" />
     <Compile Include="BoolToBrushConverter.cs" />

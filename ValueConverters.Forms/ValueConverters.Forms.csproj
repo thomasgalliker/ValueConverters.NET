@@ -53,6 +53,9 @@
     <Compile Include="..\ValueConverters.NetFx\BoolToThicknessConverter.cs">
       <Link>BoolToThicknessConverter.cs</Link>
     </Compile>
+    <Compile Include="..\ValueConverters.NetFx\BoolToValueConverterBase.cs">
+      <Link>BoolToValueConverterBase.cs</Link>
+    </Compile>
     <Compile Include="..\ValueConverters.NetFx\ConverterBase.cs">
       <Link>ConverterBase.cs</Link>
     </Compile>

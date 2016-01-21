@@ -104,6 +104,9 @@
     <Compile Include="..\ValueConverters.NetFx\BoolToValueConverter.cs">
       <Link>BoolToValueConverter.cs</Link>
     </Compile>
+    <Compile Include="..\ValueConverters.NetFx\BoolToValueConverterBase.cs">
+      <Link>BoolToValueConverterBase.cs</Link>
+    </Compile>
     <Compile Include="..\ValueConverters.NetFx\BoolToVisibilityConverter.cs">
       <Link>BoolToVisibilityConverter.cs</Link>
     </Compile>
