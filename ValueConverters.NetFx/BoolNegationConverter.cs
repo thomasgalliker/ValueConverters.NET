@@ -2,25 +2,13 @@
 
 namespace ValueConverters
 {
-    public class BoolNegationConverter : ConverterBase
+    public class BoolNegationConverter : BoolToValueConverter<bool>
     {
-        protected override object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public BoolNegationConverter()
         {
-            if (value is bool)
-            {
-                return !(bool)value;
-            }
-
-            return false;
-        }
-
-        protected override object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            if (value is bool)
-            {
-                return !(bool)value;
-            }
-            return false;
+            this.TrueValue = true;
+            this.FalseValue = false;
+            this.IsInverted = true;
         }
     }
 }
