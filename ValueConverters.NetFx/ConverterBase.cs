@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Globalization;
 
 #if (NETFX || WINDOWS_PHONE)
@@ -29,11 +30,13 @@ namespace ValueConverters
         }
 
 #if (NETFX || WINDOWS_PHONE || XAMARIN)
+        [DebuggerStepThrough]
         object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return this.Convert(value, targetType, parameter, culture);
         }
 
+        [DebuggerStepThrough]
         object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return this.ConvertBack(value, targetType, parameter, culture);
