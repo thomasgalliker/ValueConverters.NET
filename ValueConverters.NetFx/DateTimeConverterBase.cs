@@ -21,17 +21,39 @@ namespace ValueConverters
 
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null || (DateTime)value == DateTime.MinValue)
+            if (value != null)
             {
-                return this.MinValueString;
-            }
-
-            if (targetType == typeof(string))
-            {
-                return ((DateTime)value).ToLocalTime().ToString(this.Format, culture);
+                if (value is DateTime)
+                {
+                    var dateTime = (DateTime)value;
+                    if (dateTime == DateTime.MinValue)
+                    {
+                        return this.MinValueString;
+                    }
+                    return dateTime.ToLocalTime().ToString(this.Format, culture);
+                }
             }
 
             return UnsetValue;
+        }
+
+        protected override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                if (value is DateTime)
+                {
+                    return (DateTime)value;
+                }
+                var str = value as string;
+                if (str != null)
+                {
+                    DateTime resultDateTime;
+                    DateTime.TryParse(str, out resultDateTime);
+                    return resultDateTime;
+                }
+            }
+            return null;
         }
     }
 }
