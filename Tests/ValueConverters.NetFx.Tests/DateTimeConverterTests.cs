@@ -2,6 +2,8 @@
 using System.Globalization;
 using System.Windows.Data;
 
+using FluentAssertions;
+
 using Xunit;
 
 namespace ValueConverters.NetFx.Tests
@@ -27,32 +29,18 @@ namespace ValueConverters.NetFx.Tests
         }
 
         [Fact]
-        public void ShouldNotConvertBecauseOfWrongTargetType()
+        public void ShouldConvertBack()
         {
             // Arrange
             IValueConverter dateTimeConverter = new DateTimeConverter();
-
-            var input = new DateTime(2014, 8, 26, 18, 0, 0);
-            var expectedValue = (input).ToLocalTime().ToString(DefaultFormat, CultureInfo.CurrentUICulture);
-
-            // Act
-            var convertedOutput = dateTimeConverter.Convert(input, typeof(object), null, CultureInfo.CurrentUICulture);
-
-            // Assert
-            Assert.NotEqual(convertedOutput, expectedValue);
-        }
-
-        [Fact]
-        public void ShouldThrowNotSupportedExceptionOnConvertBack()
-        {
-            // Arrange
-            IValueConverter dateTimeConverter = new DateTimeConverter();
+            DateTime dateTimeNow = DateTime.Now;
+            string dateTimeInput = dateTimeNow.ToLongTimeString();
 
             // Act
-            Action action = () => dateTimeConverter.ConvertBack(null, null, null, null);
+            var convertedOutput = (DateTime)dateTimeConverter.ConvertBack(dateTimeInput, null, null, null);
 
             // Assert
-            Assert.Throws<NotSupportedException>(action);
+            (dateTimeNow - convertedOutput).Should().BeLessThan(new TimeSpan(0, 0, 0, 1));
         }
     }
 }
