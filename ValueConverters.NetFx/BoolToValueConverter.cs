@@ -25,6 +25,12 @@ namespace ValueConverters
             typeof(BoolToValueConverter<T>),
             new PropertyMetadata(default(T)));
 
+        public static readonly DependencyProperty IsInvertedProperty = DependencyProperty.Register(
+            "IsInverted",
+            typeof(bool),
+            typeof(BoolToValueConverter<T>),
+            new PropertyMetadata(false));
+
         public T TrueValue
         {
             get { return (T)this.GetValue(TrueValueProperty); }
@@ -37,13 +43,29 @@ namespace ValueConverters
             set { this.SetValue(FalseValueProperty, value); }
         }
 
+        public bool IsInverted
+        {
+            get { return (bool)this.GetValue(IsInvertedProperty); }
+            set { this.SetValue(IsInvertedProperty, value); }
+        }
+
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null)
+            var returnValue = this.FalseValue;
+
+            if (value != null)
             {
-                return this.FalseValue;
+                if (this.IsInverted)
+                {
+                    returnValue = (bool)value ? this.FalseValue : this.TrueValue;
+                }
+                else
+                {
+                    returnValue = (bool)value ? this.TrueValue : this.FalseValue;
+                }
             }
-            return (bool)value ? this.TrueValue : this.FalseValue;
+
+            return returnValue;
         }
 
         protected override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
