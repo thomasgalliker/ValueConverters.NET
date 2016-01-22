@@ -67,7 +67,7 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="ValueConverters, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ValueConverters.1.0.2-pre1\lib\net45\ValueConverters.dll</HintPath>
+      <HintPath>..\..\packages\ValueConverters.1.0.2-pre2\lib\net45\ValueConverters.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />

@@ -1,0 +1,88 @@
+﻿<Page
+    x:Class="ValueConverterSample.UWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:valueConverters="using:ValueConverters"
+    xmlns:viewModel="using:ValueConverterSample.UWP.ViewModel"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <viewModel:MainViewModel/>
+    </Page.DataContext>
+    
+    <Page.Resources>
+        <Style x:Key="TrueStyleTemplate" TargetType="Button">
+            <Setter Property="Background" Value="LightGreen" />
+        </Style>
+        <Style x:Key="FalseStyleTemplate" TargetType="Button">
+            <Setter Property="Background" Value="MistyRose" />
+        </Style>
+
+        <valueConverters:BoolNegationConverter x:Key="BoolNegationConverter"/>
+        <valueConverters:BoolToBrushConverter x:Key="BoolToBrushConverter" TrueValue="Magenta" FalseValue="Purple"/>
+        <valueConverters:BoolToDoubleConverter x:Key="BoolToDoubleConverter" TrueValue="0" FalseValue="16"/>
+        <valueConverters:BoolToFontWeightConverter x:Key="BoolToFontWeightConverter" TrueValue="Bold" FalseValue="Normal"/>
+        <valueConverters:BoolToStringConverter x:Key="BoolToStringConverter" TrueValue="Yes" FalseValue="No"/>
+        <valueConverters:BoolToStyleConverter x:Key="BoolToStyleConverter" TrueValue="{StaticResource TrueStyleTemplate}" FalseValue="{StaticResource FalseStyleTemplate}"/>
+        <valueConverters:BoolToThicknessConverter x:Key="BoolToThicknessConverter" TrueValue="1" FalseValue="4"/>
+        <valueConverters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <valueConverters:BoolToVisibilityConverter x:Key="BoolToInvertedVisibilityConverter" IsInverted="True"/>
+        <valueConverters:DateTimeConverter x:Key="DateTimeConverter" Format="d" MinValueString="---"/>
+        <valueConverters:DebugConverter x:Key="DebugConverter"/>
+        <valueConverters:EnumToBoolConverter x:Key="EnumToBoolConverter"/>
+        <valueConverters:EnumToObjectConverter x:Key="EnumToObjectConverter"/>
+    </Page.Resources>
+
+    <Border BorderBrush="{Binding IsEditing, Converter={StaticResource BoolToBrushConverter}}"
+            BorderThickness="{Binding IsEditing, Converter={StaticResource BoolToThicknessConverter}}">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="IsEditing:"/>
+            <TextBlock Grid.Row="0" Grid.Column="1"
+               Text="{Binding IsEnabled, Converter={StaticResource BoolToStringConverter}}"
+               FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"
+               Visibility="{Binding IsEditing, Converter={StaticResource BoolToInvertedVisibilityConverter}}"/>
+
+            <CheckBox Grid.Row="0" Grid.Column="1" 
+                  Content="{Binding IsEnabled, Converter={StaticResource BoolToStringConverter}}"
+                  FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"
+                  IsChecked="{Binding IsEnabled, Converter={StaticResource DebugConverter}}"
+                  Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="ChangeDate:"/>
+            <TextBlock Grid.Row="1" Grid.Column="1"
+               Text="{Binding ChangeDate, Converter={StaticResource DateTimeConverter}}"
+               FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"
+               Visibility="{Binding IsEditing, Converter={StaticResource BoolToInvertedVisibilityConverter}}"/>
+            <TextBox Grid.Row="1" Grid.Column="1"
+               Text="{Binding ChangeDate, Converter={StaticResource DateTimeConverter}}"
+               FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"
+               Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+            <Button Grid.Row="3" Grid.Column="1" Width="100" HorizontalAlignment="Right"
+                Content="Edit" Command="{Binding EditCommand}"
+                Style="{Binding IsEditing, Converter={StaticResource BoolToStyleConverter}}"
+                IsEnabled="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}"
+                BorderThickness="{Binding IsEditing, Converter={StaticResource BoolToThicknessConverter}}"/>
+
+            <Button Grid.Row="3" Grid.Column="2" Width="100" HorizontalAlignment="left" Margin="16,0,0,0"
+                Content="Cancel" Command="{Binding CancelCommand}"
+                Style="{Binding IsEditing, Converter={StaticResource BoolToStyleConverter}}"
+                IsEnabled="{Binding IsEditing}"/>
+        </Grid>
+    </Border>
+</Page>
