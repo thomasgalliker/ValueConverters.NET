@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters</id>
-    <version>1.0.2-pre1</version>
+    <version>1.0.2-pre2</version>
     <title>ValueConverters.NET</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -16,7 +16,8 @@
       windows phone winphone wp8 wpa81 win81 windowsphone android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
-      1.0.2-pre1
+      1.0.2-pre2
+      - Added support for Windows 10 Universal Windows Platform (UWP)
       - Extended BoolToValueConverter with IsInverted property
       
       1.0.1
@@ -53,6 +54,8 @@
       <!--Windows Phone 8.1-->
   
       <!--Windows Store-->
+      
+      <!--Universal Windows Platform-->
      
     </frameworkAssemblies>
   </metadata>
@@ -76,6 +79,11 @@
     <file src="..\ValueConverters.WindowsStore\Bin\Release\ValueConverters.dll" target="lib\win81\ValueConverters.dll" />
     <file src="..\ValueConverters.WindowsStore\Bin\Release\ValueConverters.pdb" target="lib\win81\ValueConverters.pdb" />
     <file src="..\ValueConverters.WindowsStore\Bin\Release\ValueConverters.xml" target="lib\win81\ValueConverters.xml" />
+
+    <!--Universal Windows Platform-->
+    <file src="..\ValueConverters.UWP\bin\Release\ValueConverters.dll" target="lib\uap10.0\ValueConverters.dll" />
+    <file src="..\ValueConverters.UWP\bin\Release\ValueConverters.pdb" target="lib\uap10.0\ValueConverters.pdb" />
+    <file src="..\ValueConverters.UWP\bin\Release\ValueConverters.xml" target="lib\uap10.0\ValueConverters.xml" />
 
     <file src="tools\init.ps1" target="tools\init.ps1" />
     <file src="tools\install.ps1" target="tools\install.ps1" />
