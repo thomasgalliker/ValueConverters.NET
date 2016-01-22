@@ -2,7 +2,7 @@
 
 #if (NETFX || WINDOWS_PHONE)
 using System.Windows.Media;
-#elif (WINDOWS_APP || WINDOWS_PHONE_APP)
+#elif (NETFX_CORE)
 using Windows.UI.Xaml.Media;
 #endif
 

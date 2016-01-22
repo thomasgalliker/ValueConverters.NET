@@ -4,7 +4,7 @@ using System.Globalization;
 #if (NETFX || WINDOWS_PHONE)
 using System.Windows;
 using System.Windows.Markup;
-#elif (WINDOWS_APP || WINDOWS_PHONE_APP)
+#elif (NETFX_CORE)
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Markup;
 #elif (XAMARIN)
@@ -18,7 +18,7 @@ namespace ValueConverters
     /// </summary>
 #if (NETFX || WINDOWS_PHONE)
     [ContentProperty("Items")]
-#elif (WINDOWS_APP || WINDOWS_PHONE_APP)
+#elif (NETFX_CORE)
     [ContentProperty(Name = "Items")]
 #endif
     public class EnumToObjectConverter : ConverterBase
@@ -46,7 +46,7 @@ namespace ValueConverters
         {
             return dict.Contains(key);
         }
-#elif (WINDOWS_APP || WINDOWS_PHONE_APP || XAMARIN)
+#elif (NETFX_CORE || XAMARIN)
         private static bool ContainsKey(ResourceDictionary dict, string key)
         {
             return dict.ContainsKey(key);

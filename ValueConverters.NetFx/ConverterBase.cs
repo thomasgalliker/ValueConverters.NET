@@ -5,7 +5,7 @@ using System.Globalization;
 #if (NETFX || WINDOWS_PHONE)
 using System.Windows;
 using System.Windows.Data;
-#elif (WINDOWS_APP || WINDOWS_PHONE_APP)
+#elif (NETFX_CORE)
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 #elif (XAMARIN)
@@ -41,7 +41,7 @@ namespace ValueConverters
         {
             return this.ConvertBack(value, targetType, parameter, culture);
         }
-#elif (WINDOWS_APP || WINDOWS_PHONE_APP)
+#elif (NETFX_CORE)
         object IValueConverter.Convert(object value, Type targetType, object parameter, string culture)
         {
             return this.Convert(value, targetType, parameter, new CultureInfo(culture));

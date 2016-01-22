@@ -4,7 +4,7 @@ using System.Globalization;
 #if NETFX || WINDOWS_PHONE
 using System.Windows;
 using System.Windows.Data;
-#elif (WINDOWS_APP || WINDOWS_PHONE_APP)
+#elif (NETFX_CORE)
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 #endif
