@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters</id>
-    <version>1.0.2-pre2</version>
+    <version>1.0.2-pre4</version>
     <title>ValueConverters.NET</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -16,7 +16,7 @@
       windows phone winphone wp8 wpa81 win81 windowsphone android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
-      1.0.2-pre2
+      1.0.2-pre4
       - Added support for Windows 10 Universal Windows Platform (UWP)
       - Extended BoolToValueConverter with IsInverted property
       
