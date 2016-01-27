@@ -61,8 +61,10 @@
     <Compile Include="EnumToBoolConverter.cs" />
     <Compile Include="EnumToObjectConverter.cs" />
     <Compile Include="EnumWrapper.cs" />
+    <Compile Include="EnumWrapperCollection.cs" />
     <Compile Include="EnumWrapperConverter.cs" />
     <Compile Include="EnumWrapperConverterNameStyle.cs" />
+    <Compile Include="ObservableObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

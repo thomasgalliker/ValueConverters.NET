@@ -1,29 +1,34 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
-using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Windows.Input;
 
 using GalaSoft.MvvmLight.Command;
 
 using ValueConverters;
 
-using ValueConverterSample.WPF.Annotations;
 using ValueConverterSample.WPF.Model;
 
 namespace ValueConverterSample.WPF.ViewModel
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : ObservableObject
     {
         private bool isEditing;
         private bool isEnabled;
         private DateTime changeDate;
-        private RadioFrequency radioFrequency;
+        private EnumWrapper<RadioFrequency> radioFrequency;
+        private PartyMode partyMode;
+        private CultureInfo selectedLanguage;
 
         public MainViewModel()
         {
+            this.selectedLanguage = Thread.CurrentThread.CurrentUICulture;
+            this.RadioFrequencies = new EnumWrapperCollection<RadioFrequency>();
+            this.radioFrequency = this.RadioFrequencies.FirstOrDefault();
+            this.partyMode = PartyMode.Off;
+
             this.EditCommand = new RelayCommand(
                 () =>
                     {
@@ -37,6 +42,13 @@ namespace ValueConverterSample.WPF.ViewModel
                     this.IsEditing = false;
                     this.ChangeDate = DateTime.Now;
                 });
+
+            this.NextPartyModeCommand = new RelayCommand(
+               () =>
+                   {
+                       // Cycle through PartyMode enum:
+                       this.PartyMode = (PartyMode)((int)(this.PartyMode + 1) % Enum.GetValues(this.PartyMode.GetType()).Length);
+                   });
         }
 
         public bool IsEditing
@@ -48,7 +60,7 @@ namespace ValueConverterSample.WPF.ViewModel
             set
             {
                 this.isEditing = value;
-                this.OnPropertyChanged();
+                this.OnPropertyChanged(() => this.IsEditing);
             }
         }
 
@@ -61,7 +73,7 @@ namespace ValueConverterSample.WPF.ViewModel
             set
             {
                 this.isEnabled = value;
-                this.OnPropertyChanged();
+                this.OnPropertyChanged(() => this.IsEnabled);
             }
         }
 
@@ -74,16 +86,13 @@ namespace ValueConverterSample.WPF.ViewModel
             set
             {
                 this.changeDate = value;
-                this.OnPropertyChanged();
+                this.OnPropertyChanged(() => this.ChangeDate);
             }
         }
 
-        public IEnumerable<EnumWrapper<RadioFrequency>> RadioFrequencies
-        {
-            get { return EnumWrapper.CreateWrappers<RadioFrequency>().Where(r => r != RadioFrequency.Undefined); }
-        }
+        public EnumWrapperCollection<RadioFrequency> RadioFrequencies { get; private set; }
 
-        public RadioFrequency SelectedRadioFrequency
+        public EnumWrapper<RadioFrequency> SelectedRadioFrequency
         {
             get
             {
@@ -92,7 +101,20 @@ namespace ValueConverterSample.WPF.ViewModel
             set
             {
                 this.radioFrequency = value;
-                this.OnPropertyChanged();
+                this.OnPropertyChanged(() => this.SelectedRadioFrequency);
+            }
+        }
+
+        public PartyMode PartyMode
+        {
+            get
+            {
+                return this.partyMode;
+            }
+            set
+            {
+                this.partyMode = value;
+                this.OnPropertyChanged(() => this.PartyMode);
             }
         }
 
@@ -100,15 +122,43 @@ namespace ValueConverterSample.WPF.ViewModel
 
         public ICommand CancelCommand { get; private set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public ICommand NextPartyModeCommand { get; private set; }
 
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        public IEnumerable<CultureInfo> Languages
         {
-            var handler = this.PropertyChanged;
-            if (handler != null)
+            get
             {
-                handler(this, new PropertyChangedEventArgs(propertyName));
+                return new List<CultureInfo>
+                {
+                    new CultureInfo("en-US"),
+                    new CultureInfo("de"),
+                    new CultureInfo("sv")
+                };
+            }
+        }
+
+        public CultureInfo SelectedLanguage
+        {
+            get
+            {
+                return this.selectedLanguage;
+            }
+            set
+            {
+                this.selectedLanguage = value;
+                this.OnPropertyChanged(() => this.SelectedLanguage);
+
+                if (value != null)
+                {
+                    Thread.CurrentThread.CurrentUICulture = value;
+
+                    this.OnPropertyChanged(() => this.RadioFrequencies);
+                    this.OnPropertyChanged(() => this.SelectedRadioFrequency);
+                    this.OnPropertyChanged(() => this.PartyMode);
+
+                    // Here we trigger PropertyChanged events for all EnumWrapper.LocalizedValue properties
+                    this.RadioFrequencies.Refresh();
+                }
             }
         }
     }

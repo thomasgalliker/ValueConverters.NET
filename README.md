@@ -154,20 +154,16 @@ The usage of converters is on all platforms more or less the same:
 
 * Use the converter in a binding by referenceing  it as a StaticResource. 
 
-#### WPF example 
+#### General Usage of Converters in XAML 
 
-Define a converter in the Resources section of a UserControl. Specify options if required. 
+Define a converter in the Resources section of a UserControl, Window, Page, etc. Specify options if required. 
 
 ```xml 
 
  <UserControl.Resources> 
-
         <ResourceDictionary> 
-
             <converters:DateTimeConverter x:Key="DateTimeConverter" Format="d" MinValueString="-"/> 
-
         </ResourceDictionary> 
-
     </UserControl.Resources> 
 
 ``` 
@@ -179,6 +175,55 @@ Apply the converter as a StaticResource:
 <TextBox Text="{Binding EmployeeDetailViewModel.Birthdate, Converter={StaticResource DateTimeConverter}}"/> 
 
 ``` 
+
+#### Using EnumWrapperConverter 
+
+EnumWrapperConverter is used to display localized enums. The concept is fairly simple: Enums are annotated with localized string resources and wrapped into EnumWrapper<TEnumType>. The view uses the EnumWrapperConverter to extract the localized
+string resource from the resx file. Following step-by-step instructions show how to localize and bind a simple enum type in a WPF view: 
+
+1) Define new public enum type and annotate enum values with [Display] attributes: 
+
+```cs 
+
+    [DataContract] 
+    public enum PartyMode 
+    { 
+        [EnumMember] 
+        [Display(Name = "PartyMode_Off", ResourceType = typeof(PartyModeResources))] 
+        Off, 
+
+        // … 
+    } 
+``` 
+
+3) Create StringResources.resx and define strings with appropriate keys (e.g. "PartyMode_Off"). 
+
+4) Create StringResources.resx for other languages (e.g. StringResources.de.resx) and translate all strings accordingly. Use [Multilingual App Toolkit]( https://visualstudiogallery.msdn.microsoft.com/6dab9154-a7e1-46e4-bbfa-18b5e81df520) 
+for easy localization of the defined string resources. 
+
+5) Expose enum property in the ViewModel. 
+
+```cs 
+
+        public PartyMode PartyMode 
+        { 
+            get { return this.partyMode; } 
+
+            set { this.partyMode = value; 
+                  this.OnPropertyChanged(() => this.PartyMode); } 
+        } 
+
+``` 
+
+6) Bind to enum property in the View and define Converter={StaticResource EnumWrapperConverter}. 
+
+```xml 
+
+        <Label Content="{Binding PartyMode, Converter={StaticResource EnumWrapperConverter}}" /> 
+
+``` 
+
+That’s it. If you want to change the UI language at runtime, don’t forget to call OnPropertyChanged after changing CurrentUICulture. There is a WPF sample app available. 
 
 ### Links 
 

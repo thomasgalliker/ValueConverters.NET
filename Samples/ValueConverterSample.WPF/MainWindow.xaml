@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:valueConverters="clr-namespace:ValueConverters;assembly=ValueConverters"
         xmlns:viewModel="clr-namespace:ValueConverterSample.WPF.ViewModel"
-        Title="ValueConverterSample.WPF" Height="200" Width="480">
+        Title="ValueConverterSample.WPF" Height="240" Width="480">
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
@@ -41,6 +41,8 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -74,14 +76,14 @@
             <Label Grid.Row="2" Grid.Column="1"
                Content="{Binding SelectedRadioFrequency, Converter={StaticResource EnumWrapperConverter}}"
                FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"
-               Visibility="{Binding IsEditing, Converter={StaticResource BoolToInvertedVisibilityConverter}}"/>
+                   Visibility="{Binding IsEditing, Converter={StaticResource BoolToInvertedVisibilityConverter}}"/>
             <ListBox Grid.Row="2" Grid.Column="1"
                      ItemsSource="{Binding RadioFrequencies}" 
                      SelectedItem="{Binding SelectedRadioFrequency, Converter={StaticResource EnumWrapperConverter}}"
                      Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <RadioButton Content="{Binding}" GroupName="Properties">
+                        <RadioButton Content="{Binding LocalizedValue}" GroupName="Properties">
                             <RadioButton.IsChecked>
                                 <Binding Path="IsSelected"
                                          RelativeSource="{RelativeSource AncestorType=ListBoxItem}"
@@ -105,20 +107,53 @@
             <ComboBox Grid.Row="2" Grid.Column="2"
                       ItemsSource="{Binding RadioFrequencies}" 
                       SelectedItem="{Binding SelectedRadioFrequency, Converter={StaticResource EnumWrapperConverter}}"
+                      DisplayMemberPath="LocalizedValue"
+                      Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}"
+                      Height="22"
+                      VerticalAlignment="Top">
+                <!--Alternatively, instead of using 'DisplayMemberPath' you could define an ItemTemplate:-->
+                <!--<ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding LocalizedValue, Mode=OneWay}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>-->
+            </ComboBox>
+
+            <Label Grid.Row="3" Grid.Column="0" Content="Party mode:"/>
+            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Next" 
+                        Command="{Binding NextPartyModeCommand}"
+                        Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                <Label Content="{Binding PartyMode, Converter={StaticResource EnumWrapperConverter}}"
+                       FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"/>
+            </StackPanel>
+          
+
+            <Label Grid.Row="4" Grid.Column="0" Content="Language:"/>
+            <Label Grid.Row="4" Grid.Column="1"
+                   Content="{Binding SelectedLanguage.DisplayName}"
+                   FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"
+                   Visibility="{Binding IsEditing, Converter={StaticResource BoolToInvertedVisibilityConverter}}"/>
+            <ComboBox Grid.Row="4" Grid.Column="1"
+                      ItemsSource="{Binding Languages}" 
+                      SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
+                      DisplayMemberPath="DisplayName"
                       Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}"
                       Height="22"
                       VerticalAlignment="Top"/>
             
-            <Button Grid.Row="3" Grid.Column="1" Width="100" HorizontalAlignment="Right"
-                Content="Edit" Command="{Binding EditCommand}"
-                Style="{Binding IsEditing, Converter={StaticResource BoolToStyleConverter}}"
-                IsEnabled="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}"
-                BorderThickness="{Binding IsEditing, Converter={StaticResource BoolToThicknessConverter}}"/>
+            <Button Grid.Row="5" Grid.Column="1" Width="100" HorizontalAlignment="Right"
+                    Content="Edit" 
+                    Command="{Binding EditCommand}"
+                    Style="{Binding IsEditing, Converter={StaticResource BoolToStyleConverter}}"
+                    IsEnabled="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}"
+                    BorderThickness="{Binding IsEditing, Converter={StaticResource BoolToThicknessConverter}}"/>
 
-            <Button Grid.Row="3" Grid.Column="2" Width="100" HorizontalAlignment="left" Margin="16,0,0,0"
-                Content="Cancel" Command="{Binding CancelCommand}"
-                Style="{Binding IsEditing, Converter={StaticResource BoolToStyleConverter}}"
-                IsEnabled="{Binding IsEditing}"/>
+            <Button Grid.Row="5" Grid.Column="2" Width="100" HorizontalAlignment="left" Margin="16,0,0,0"
+                    Content="Cancel" 
+                    Command="{Binding CancelCommand}"
+                    Style="{Binding IsEditing, Converter={StaticResource BoolToStyleConverter}}"
+                    IsEnabled="{Binding IsEditing}"/>
         </Grid>
     </Border>
 </Window>

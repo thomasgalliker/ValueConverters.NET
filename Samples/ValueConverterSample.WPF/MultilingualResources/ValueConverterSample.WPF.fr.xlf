@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en" target-language="fr" original="VALUECONVERTERSAMPLE.WPF/RESOURCES/RADIOFREQUENCYRESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.1563.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="VALUECONVERTERSAMPLE.WPF/RESOURCES/RADIOFREQUENCYRESOURCES.RESX" datatype="resx">
+        <trans-unit id="HighFrequencyText" translate="yes" xml:space="preserve">
+          <source>High frequency</source>
+          <target state="final" state-qualifier="mt-suggestion">Haute fréquence</target>
+        </trans-unit>
+        <trans-unit id="LowFrequencyText" translate="yes" xml:space="preserve">
+          <source>Low frequency</source>
+          <target state="final" state-qualifier="mt-suggestion">Basse fréquence</target>
+        </trans-unit>
+        <trans-unit id="MediumFrequencyText" translate="yes" xml:space="preserve">
+          <source>Medium frequency</source>
+          <target state="final" state-qualifier="mt-suggestion">Moyenne fréquence</target>
+        </trans-unit>
+        <trans-unit id="Undefined" translate="no" xml:space="preserve">
+          <source>-</source>
+          <target state="final" state-qualifier="mt-suggestion">-</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="en" target-language="fr" original="VALUECONVERTERSAMPLE.WPF/RESOURCES/PARTYMODERESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.1563.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="VALUECONVERTERSAMPLE.WPF/RESOURCES/PARTYMODERESOURCES.RESX" datatype="resx">
+        <trans-unit id="PartyMode_Maybe" translate="yes" xml:space="preserve">
+          <source>Maybe</source>
+          <target state="final" state-qualifier="tm-suggestion">Peut-être</target>
+        </trans-unit>
+        <trans-unit id="PartyMode_Off" translate="yes" xml:space="preserve">
+          <source>Off</source>
+          <target state="final" state-qualifier="tm-suggestion">Désactivé</target>
+        </trans-unit>
+        <trans-unit id="PartyMode_On" translate="yes" xml:space="preserve">
+          <source>On</source>
+          <target state="final" state-qualifier="tm-suggestion">Activé</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
