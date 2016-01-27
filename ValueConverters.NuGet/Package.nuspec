@@ -18,8 +18,10 @@
     <releaseNotes>
       1.0.2-pre4
       - Added support for Windows 10 Universal Windows Platform (UWP)
+      - Added StringLengthToBoolConverter
       - Extended BoolToValueConverter with IsInverted property
-      
+      - Extended EnumWrapper with LocalizedValue property for better INotifyPropertyChanged support
+
       1.0.1
       - Added BoolNegationConverter
       - Added BoolToThicknessConverter

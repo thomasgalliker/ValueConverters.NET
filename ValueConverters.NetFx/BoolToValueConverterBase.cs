@@ -11,6 +11,11 @@ using Windows.UI.Xaml.Data;
 
 namespace ValueConverters
 {
+    /// <summary>
+    /// The idea for BoolToValueConverter comes from here:
+    /// http://geekswithblogs.net/codingbloke/archive/2010/05/28/a-generic-boolean-value-converter.aspx
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public abstract class BoolToValueConverterBase<T> : ConverterBase
     {
         public abstract T TrueValue { get; set; }
