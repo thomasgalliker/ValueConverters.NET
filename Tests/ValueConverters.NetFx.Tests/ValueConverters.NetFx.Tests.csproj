@@ -79,6 +79,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="EnumWrapperTests.cs" />
     <Compile Include="StringLengthToBoolConverterTests.cs" />
     <Compile Include="EnumToBoolConverterTests.cs" />
     <Compile Include="DebugConverterTests.cs" />

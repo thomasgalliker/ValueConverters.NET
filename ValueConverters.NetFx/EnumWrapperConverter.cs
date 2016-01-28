@@ -22,7 +22,7 @@ namespace ValueConverters
         {
             if (value == null)
             {
-                return DependencyProperty.UnsetValue;
+                return ConverterBase.UnsetValue;
             }
 
             var type = value.GetType();
@@ -43,20 +43,21 @@ namespace ValueConverters
         {
             if (value == null)
             {
-                return DependencyProperty.UnsetValue;
+                return ConverterBase.UnsetValue;
             }
 
-            if (value.GetType().GetGenericTypeDefinition() == typeof(EnumWrapper<>))
+            var type = value.GetType();
+            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(EnumWrapper<>))
             {
                 // If value from source (typically a property in a viewmodel)
                 // is already EnumWrapper<T>, no further conversion needs to be done.
-                return value;
+                return
+                 typeof(EnumWrapperConverter).GetMethod("ConvertMapper")
+                     .MakeGenericMethod(new[] { targetType })
+                     .Invoke(this, new[] { value });
             }
 
-            return
-                typeof(EnumWrapperConverter).GetMethod("ConvertMapper")
-                    .MakeGenericMethod(new[] { targetType })
-                    .Invoke(this, new[] { value });
+            return value;
         }
 
         public T ConvertMapper<T>(object value)

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 
@@ -15,8 +14,8 @@ namespace ValueConverters
         /// <returns>The wrapped enumeration values.</returns>
         public static IEnumerable<EnumWrapper<TEnumType>> CreateWrappers<TEnumType>()
         {
-            FieldInfo[] infos = typeof (TEnumType).GetFields(BindingFlags.Public | BindingFlags.Static);
-            return infos.Select(x => new EnumWrapper<TEnumType>((TEnumType) x.GetValue(null)));
+            var allEnums = Enum.GetValues(typeof(TEnumType)).OfType<TEnumType>();
+            return allEnums.Select(x => new EnumWrapper<TEnumType>(x));
         }
 
         /// <summary>
@@ -39,7 +38,7 @@ namespace ValueConverters
         /// <returns>The wrapped value.</returns>
         public static EnumWrapper<TEnumType> CreateWrapper<TEnumType>(int value)
         {
-            return new EnumWrapper<TEnumType>((TEnumType) ((object) value));
+            return new EnumWrapper<TEnumType>((TEnumType)(object)value);
         }
     }
 
@@ -54,14 +53,14 @@ namespace ValueConverters
             this.nameStyle = nameStyle;
         }
 
-        public TEnumType Value {get { return this.value; } }
+        public TEnumType Value { get { return this.value; } }
 
         /// <summary>
-    /// Use LocalizedValue to bind UI elements to.
-    /// To enforce a refresh of LocalizedValue property (e.g. when you change the UI culture at runtime)
-    /// just call the <code>Refresh</code> method.
-    /// </summary>
-    public string LocalizedValue { get { return this.ToString(); } }
+        /// Use LocalizedValue to bind UI elements to.
+        /// To enforce a refresh of LocalizedValue property (e.g. when you change the UI culture at runtime)
+        /// just call the <code>Refresh</code> method.
+        /// </summary>
+        public string LocalizedValue { get { return this.ToString(); } }
 
         /// <summary>
         ///     Implicit to string conversion.
@@ -69,23 +68,25 @@ namespace ValueConverters
         /// <returns>Value converted to a localized string.</returns>
         public override string ToString()
         {
+            // TODO: Move this code to where the value is set (e.g. ctor)
             Type enumType = typeof(TEnumType);
-            FieldInfo[] infos = enumType.GetFields(BindingFlags.Public | BindingFlags.Static);
+            var fieldInfos = enumType.GetRuntimeFields();
 
-            IEnumerable<FieldInfo> info = infos.Where(x => x.GetValue(null).Equals(this.Value));
-
+            IEnumerable<FieldInfo> info = fieldInfos.Where(x =>
+                                                    x.FieldType == enumType &&
+                                                    x.GetValue(this.Value.ToString()).Equals(this.Value));
             if (info.Any())
             {
-                return info.Select(i =>
+                return info.Select(fieldInfo =>
                 {
-                    var attribute = (DisplayAttribute)Attribute.GetCustomAttribute(i, typeof(DisplayAttribute));
-
+                    var attribute = fieldInfo.GetCustomAttributes<DisplayAttribute>().SingleOrDefault();
                     if (attribute != null)
                     {
                         return (this.nameStyle == EnumWrapperConverterNameStyle.LongName) ?
                             attribute.GetName() :
                             attribute.GetShortName();
                     }
+
                     return this.Value.ToString();
                 }).Single();
             }
