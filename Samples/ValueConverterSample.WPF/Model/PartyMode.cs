@@ -1,5 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
+
+using ValueConverters.Annotations;
 
 using ValueConverterSample.WPF.Resources;
 
