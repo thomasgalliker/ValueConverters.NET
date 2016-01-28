@@ -47,24 +47,55 @@ namespace ValueConverters.NetFx.Tests
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
             const TestEnum InutValue = TestEnum.Dolor;
+            string expectedOutput = InutValue.ToString();
 
             // Act
             var convertedOutput = converter.Convert(InutValue, null, null, null);
 
             // Assert
-            convertedOutput.ToString().Should().Be(TestEnum.Dolor.ToString());
+            convertedOutput.ToString().Should().Be(expectedOutput);
         }
 
         [Fact]
-        public void ShouldThrowArgumentNullExceptionOnConvertBack()
+        public void ShouldConvertBackIfInputValueIsEnum()
         {
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
 
-            const TestEnum InutValue = TestEnum.Ipsum;
+            const TestEnum InutValue = TestEnum.Lorem;
 
             // Act
-            Action action = () => converter.ConvertBack(InutValue, null, null, null);
+            var convertedOutput = (TestEnum)converter.ConvertBack(InutValue, null, null, null);
+
+            // Assert
+            convertedOutput.Should().Be(TestEnum.Lorem);
+        }
+
+        [Fact]
+        public void ShouldConvertBackIfInputValueIsEnumWrapper()
+        {
+            // Arrange
+            IValueConverter converter = new EnumWrapperConverter();
+
+            var inutValue = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+
+            // Act
+            var convertedOutput = (TestEnum)converter.ConvertBack(inutValue, typeof(TestEnum), null, null);
+
+            // Assert
+            convertedOutput.Should().Be(TestEnum.Lorem);
+        }
+
+        [Fact]
+        public void ShouldThrowArgumentNullExceptionOnConvertBackIfTargetTypeIsNull()
+        {
+            // Arrange
+            IValueConverter converter = new EnumWrapperConverter();
+
+            var inutValue = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+
+            // Act
+            Action action = () => { converter.ConvertBack(inutValue, null, null, null); };
 
             // Assert
             action.ShouldThrow<ArgumentNullException>();
