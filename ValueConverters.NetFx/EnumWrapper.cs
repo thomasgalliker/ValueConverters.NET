@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
+using ValueConverters.Annotations;
+
 namespace ValueConverters
 {
     public static class EnumWrapper

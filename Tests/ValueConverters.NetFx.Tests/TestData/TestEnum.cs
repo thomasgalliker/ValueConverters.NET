@@ -1,6 +1,7 @@
 ﻿
-using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
+
+using ValueConverters.Annotations;
 
 namespace ValueConverters.NetFx.Tests.TestData
 {

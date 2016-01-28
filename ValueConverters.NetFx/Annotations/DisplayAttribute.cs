@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace ValueConverters
+namespace ValueConverters.Annotations
 {
     /// <summary>
     /// Source: Mono and .Net Reference Source
