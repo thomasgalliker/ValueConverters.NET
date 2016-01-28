@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Globalization;
-using System.Windows;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Data;
+
+using FluentAssertions;
 
 using ValueConverters.NetFx.Tests.TestData;
 
 using Xunit;
-using FluentAssertions;
 
 namespace ValueConverters.NetFx.Tests
 {
@@ -54,6 +55,21 @@ namespace ValueConverters.NetFx.Tests
 
             // Assert
             convertedOutput.ToString().Should().Be(expectedOutput);
+        }
+
+        [Fact]
+        public void ShouldConvertGenericEnumerable()
+        {
+            // Arrange
+            IValueConverter converter = new EnumWrapperConverter();
+
+            var inutValue = Enum.GetValues(typeof(TestEnum)).OfType<TestEnum>();
+
+            // Act
+            var convertedOutput = (IEnumerable<EnumWrapper<TestEnum>>)converter.Convert(inutValue, null, null, null);
+
+            // Assert
+            convertedOutput.Should().HaveCount(inutValue.Count());
         }
 
         [Fact]

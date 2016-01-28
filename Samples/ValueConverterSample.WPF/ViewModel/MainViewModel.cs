@@ -19,15 +19,20 @@ namespace ValueConverterSample.WPF.ViewModel
         private bool isEnabled;
         private DateTime changeDate;
         private EnumWrapper<RadioFrequency> radioFrequency;
-        private PartyMode partyMode;
+        private PartyMode selectedPartyMode;
         private CultureInfo selectedLanguage;
 
         public MainViewModel()
         {
             this.selectedLanguage = Thread.CurrentThread.CurrentUICulture;
+
+            // Initialize RadioFrequency enums using EnumWrapper explicitly
             this.RadioFrequencies = new EnumWrapperCollection<RadioFrequency>();
             this.radioFrequency = this.RadioFrequencies.FirstOrDefault();
-            this.partyMode = PartyMode.Off;
+
+            // Initialize PartyMode enum without EnumWrapper
+            this.PartyModes = Enum.GetValues(typeof(PartyMode)).OfType<PartyMode>();
+            this.selectedPartyMode = this.PartyModes.FirstOrDefault();
 
             this.EditCommand = new RelayCommand(
                 () =>
@@ -47,7 +52,7 @@ namespace ValueConverterSample.WPF.ViewModel
                () =>
                    {
                        // Cycle through PartyMode enum:
-                       this.PartyMode = (PartyMode)((int)(this.PartyMode + 1) % Enum.GetValues(this.PartyMode.GetType()).Length);
+                       this.SelectedPartyMode = (PartyMode)((int)(this.SelectedPartyMode + 1) % Enum.GetValues(this.SelectedPartyMode.GetType()).Length);
                    });
         }
 
@@ -90,6 +95,8 @@ namespace ValueConverterSample.WPF.ViewModel
             }
         }
 
+        // RadioFrequencies and SelectedRadioFrequency are wrapped into EnumWrapper objects.
+        // Therefore, the view does not have to intercept the binding with the EnumWrapperConverter.
         public EnumWrapperCollection<RadioFrequency> RadioFrequencies { get; private set; }
 
         public EnumWrapper<RadioFrequency> SelectedRadioFrequency
@@ -105,16 +112,21 @@ namespace ValueConverterSample.WPF.ViewModel
             }
         }
 
-        public PartyMode PartyMode
+        // PartyModes and SelectedPartyMode are exposed as normal enum types.
+        // The view needs to use the EnumWrapperConverter to convert these enums
+        // on-the-fly to EnumWrapper<PartyMode> objects.
+        public IEnumerable<PartyMode> PartyModes { get; private set; }
+
+        public PartyMode SelectedPartyMode
         {
             get
             {
-                return this.partyMode;
+                return this.selectedPartyMode;
             }
             set
             {
-                this.partyMode = value;
-                this.OnPropertyChanged(() => this.PartyMode);
+                this.selectedPartyMode = value;
+                this.OnPropertyChanged(() => this.SelectedPartyMode);
             }
         }
 
@@ -154,9 +166,12 @@ namespace ValueConverterSample.WPF.ViewModel
 
                     this.OnPropertyChanged(() => this.RadioFrequencies);
                     this.OnPropertyChanged(() => this.SelectedRadioFrequency);
-                    this.OnPropertyChanged(() => this.PartyMode);
 
-                    // Here we trigger PropertyChanged events for all EnumWrapper.LocalizedValue properties
+                    this.OnPropertyChanged(() => this.PartyModes);
+                    this.OnPropertyChanged(() => this.SelectedPartyMode);
+
+                    // Refresh method triggers PropertyChanged events for all EnumWrapper.LocalizedValue properties
+                    // We can only do this for RadioFrequencies since this is a List<EnumWrapper<RadioRequency>>
                     this.RadioFrequencies.Refresh();
                 }
             }

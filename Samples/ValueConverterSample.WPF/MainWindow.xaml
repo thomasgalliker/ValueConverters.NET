@@ -79,7 +79,7 @@
                    Visibility="{Binding IsEditing, Converter={StaticResource BoolToInvertedVisibilityConverter}}"/>
             <ListBox Grid.Row="2" Grid.Column="1"
                      ItemsSource="{Binding RadioFrequencies}" 
-                     SelectedItem="{Binding SelectedRadioFrequency, Converter={StaticResource EnumWrapperConverter}}"
+                     SelectedItem="{Binding SelectedRadioFrequency}"
                      Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -106,7 +106,7 @@
             </ListBox>
             <ComboBox Grid.Row="2" Grid.Column="2"
                       ItemsSource="{Binding RadioFrequencies}" 
-                      SelectedItem="{Binding SelectedRadioFrequency, Converter={StaticResource EnumWrapperConverter}}"
+                      SelectedItem="{Binding SelectedRadioFrequency}"
                       DisplayMemberPath="LocalizedValue"
                       Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}"
                       Height="22"
@@ -124,8 +124,15 @@
                 <Button Content="Next" 
                         Command="{Binding NextPartyModeCommand}"
                         Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                <Label Content="{Binding PartyMode, Converter={StaticResource EnumWrapperConverter}}"
-                       FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"/>
+                <Label Content="{Binding SelectedPartyMode, Converter={StaticResource EnumWrapperConverter}}"
+                       FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"
+                       Visibility="{Binding IsEditing, Converter={StaticResource BoolToInvertedVisibilityConverter}}"/>
+                <ComboBox ItemsSource="{Binding PartyModes, Converter={StaticResource EnumWrapperConverter}}" 
+                          SelectedItem="{Binding SelectedPartyMode, Converter={StaticResource EnumWrapperConverter}}"
+                          DisplayMemberPath="LocalizedValue"
+                          Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}"
+                          Height="22"
+                          VerticalAlignment="Top"/>
             </StackPanel>
           
 
