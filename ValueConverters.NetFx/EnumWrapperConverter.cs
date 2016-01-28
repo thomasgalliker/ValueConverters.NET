@@ -3,7 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.Reflection;
+
+#if NETFX || WINDOWS_PHONE
 using System.Windows;
+#elif (NETFX_CORE)
+using Windows.UI.Xaml;
+#if !WINDOWS_UWP
+using ValueConverters.Extensions;
+#endif
+#endif
 
 namespace ValueConverters
 {
@@ -29,8 +38,9 @@ namespace ValueConverters
             }
 
             var type = value.GetType();
+            var typeInfo = type.GetTypeInfo();
             if (type == targetType || 
-                (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(EnumWrapper<>)))
+                (typeInfo.IsGenericType && type.GetGenericTypeDefinition() == typeof(EnumWrapper<>)))
             {
                 // If value from source (typically a property in a viewmodel)
                 // is already EnumWrapper<T>, no further conversion needs to be done.
@@ -39,7 +49,7 @@ namespace ValueConverters
 
             if (value is IEnumerable)
             {
-                if (type.IsGenericType)
+                if (typeInfo.IsGenericType)
                 {
                     var genericType = type.GetGenericArguments()[0];
                     var enumWrapperList = typeof(EnumWrapperConverter).GetMethod("CreateMapperList")

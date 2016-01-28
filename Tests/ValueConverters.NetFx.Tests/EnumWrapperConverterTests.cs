@@ -81,7 +81,7 @@ namespace ValueConverters.NetFx.Tests
             const TestEnum InutValue = TestEnum.Lorem;
 
             // Act
-            var convertedOutput = (TestEnum)converter.ConvertBack(InutValue, null, null, null);
+            var convertedOutput = (TestEnum)converter.ConvertBack(InutValue, typeof(TestEnum), null, null);
 
             // Assert
             convertedOutput.Should().Be(TestEnum.Lorem);

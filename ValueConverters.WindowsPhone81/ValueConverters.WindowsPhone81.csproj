@@ -80,6 +80,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\ValueConverters.NetFx\Annotations\DisplayAttribute.cs">
+      <Link>Annotations\DisplayAttribute.cs</Link>
+    </Compile>
     <Compile Include="..\ValueConverters.NetFx\BoolNegationConverter.cs">
       <Link>BoolNegationConverter.cs</Link>
     </Compile>
@@ -127,6 +130,27 @@
     </Compile>
     <Compile Include="..\ValueConverters.NetFx\EnumToObjectConverter.cs">
       <Link>EnumToObjectConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\ValueConverters.NetFx\EnumWrapper.cs">
+      <Link>EnumWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\ValueConverters.NetFx\EnumWrapperCollection.cs">
+      <Link>EnumWrapperCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\ValueConverters.NetFx\EnumWrapperConverter.cs">
+      <Link>EnumWrapperConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\ValueConverters.NetFx\EnumWrapperConverterNameStyle.cs">
+      <Link>EnumWrapperConverterNameStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\ValueConverters.NetFx\ObservableObject.cs">
+      <Link>ObservableObject.cs</Link>
+    </Compile>
+    <Compile Include="..\ValueConverters.NetFx\StringLengthToBoolConverter.cs">
+      <Link>StringLengthToBoolConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\ValueConverters.UWP\Extensions\ReflectionExtensions.cs">
+      <Link>Extensions\ReflectionExtensions.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
