@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters.Forms</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>ValueConverters.NET for Xamarin.Forms</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -16,23 +16,32 @@
       windows phone winphone wp8 wpa81 win81 windowsphone android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
-      1.0.0
-      - Added BoolNegationConverter
-      - Added BoolToDoubleConverter
-      - Added BoolToStringConverter
-      - Added BoolToStyleConverter
-      - Added BoolToThicknessConverter
-      - Added BoolToValueConverter
-      - Added DateTimeConverter
-      - Added DebugConverter
-      - Added EnumToBoolConverter
-      - Added EnumToObjectConverter
+1.0.1
+- Extended BoolToValueConverter with IsInverted property
+- Extended EnumWrapper with LocalizedValue property for better INotifyPropertyChanged support
+- Added BoolNegationConverter
+- Added BoolToFontAttributesConverter
+- Added BoolToThicknessConverter
+- Added BoolToVisibilityConverter
+- Added EnumToObjectConverter
+- Added EnumToBoolConverter
+- Added EnumWrapperConverter
+- Added DebugConverter
+- Added StringLengthToBoolConverter
+
+1.0.0
+- Added BoolToBrushConverter
+- Added BoolToDoubleConverter
+- Added BoolToFontWeightConverter
+- Added BoolToStringConverter
+- Added BoolToValueConverter
+- Added DateTimeConverter
     </releaseNotes>
     <copyright>Copyright 2015</copyright>
     <language>en-US</language>
     <dependencies>
       <group targetFramework="portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10">
-        <dependency id="ValueConverters" version="1.0.1" />
+        <dependency id="ValueConverters" version="1.0.2" />
       </group>
     </dependencies>
   </metadata>
