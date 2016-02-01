@@ -28,7 +28,7 @@ namespace ValueConverters
         {
             var returnValue = this.FalseValue;
 
-            if (value != null)
+            if (value is bool)
             {
                 if (this.IsInverted)
                 {
