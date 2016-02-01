@@ -133,7 +133,7 @@
                        Height="24" Stretch="Uniform"/>
                 <Button Content="Next" 
                         Command="{Binding NextPartyModeCommand}"
-                        Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}"></Button>
+                        Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}"/>
                 <Label Content="{Binding SelectedPartyMode, Converter={StaticResource EnumWrapperConverter}}"
                        FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"
                        Visibility="{Binding IsEditing, Converter={StaticResource BoolToInvertedVisibilityConverter}}"/>
