@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:valueConverters="clr-namespace:ValueConverters;assembly=ValueConverters"
         xmlns:viewModel="clr-namespace:ValueConverterSample.WPF.ViewModel"
+        xmlns:glob="clr-namespace:System.Globalization;assembly=mscorlib"
         Title="ValueConverterSample.WPF" Height="240" Width="480">
     <Window.DataContext>
         <viewModel:MainViewModel/>
@@ -72,13 +73,16 @@
 
             <Label Grid.Row="1" Grid.Column="0" Content="ChangeDate:"/>
             <Label Grid.Row="1" Grid.Column="1"
-               Content="{Binding ChangeDate, Converter={StaticResource DateTimeConverter}}"
+               Content="{Binding ChangeDate, Converter={StaticResource DateTimeConverter}, ConverterCulture={x:Static glob:CultureInfo.CurrentCulture}}"
                FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"
                Visibility="{Binding IsEditing, Converter={StaticResource BoolToInvertedVisibilityConverter}}"/>
             <TextBox Grid.Row="1" Grid.Column="1"
-               Text="{Binding ChangeDate, Converter={StaticResource DateTimeConverter}}"
+               Text="{Binding ChangeDate, Converter={StaticResource DateTimeConverter}, ConverterCulture={x:Static glob:CultureInfo.CurrentCulture}}"
                FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"
                Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            <DatePicker Grid.Row="1" Grid.Column="1"
+                        SelectedDate="{Binding ChangeDate, Mode=TwoWay}"
+                        Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}"/>
 
             <Label Grid.Row="2" Grid.Column="0" Content="Radio frequency:"/>
             <Label Grid.Row="2" Grid.Column="1"

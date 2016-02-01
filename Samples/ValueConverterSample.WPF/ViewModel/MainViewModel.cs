@@ -25,6 +25,7 @@ namespace ValueConverterSample.WPF.ViewModel
         public MainViewModel()
         {
             this.selectedLanguage = Thread.CurrentThread.CurrentUICulture;
+            this.ChangeDate = DateTime.Now;
 
             // Initialize RadioFrequency enums using EnumWrapper explicitly
             this.RadioFrequencies = new EnumWrapperCollection<RadioFrequency>();
@@ -38,14 +39,12 @@ namespace ValueConverterSample.WPF.ViewModel
                 () =>
                     {
                         this.IsEditing = true;
-                        this.ChangeDate = DateTime.Now;
                     });
 
             this.CancelCommand = new RelayCommand(
                 () =>
                 {
                     this.IsEditing = false;
-                    this.ChangeDate = DateTime.Now;
                 });
 
             this.NextPartyModeCommand = new RelayCommand(
@@ -162,6 +161,7 @@ namespace ValueConverterSample.WPF.ViewModel
 
                 if (value != null)
                 {
+                    Thread.CurrentThread.CurrentCulture = value;
                     Thread.CurrentThread.CurrentUICulture = value;
 
                     this.OnPropertyChanged(() => this.RadioFrequencies);
