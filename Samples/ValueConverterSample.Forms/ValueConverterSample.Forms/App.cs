@@ -8,7 +8,7 @@ namespace ValueConverterSample.Forms
     {
         public App()
         {
-            this.MainPage = new DemoView();
+            this.MainPage = new MainPage();
         }
 
         protected override void OnStart()
