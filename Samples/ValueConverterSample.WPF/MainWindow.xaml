@@ -50,7 +50,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" Content="IsEditing:"/>
+            <Label Grid.Row="0" Grid.Column="0" Content="IsEnabled:"/>
             <Label Grid.Row="0" Grid.Column="1"
                Content="{Binding IsEnabled, Converter={StaticResource BoolToStringConverter}}"
                FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"
