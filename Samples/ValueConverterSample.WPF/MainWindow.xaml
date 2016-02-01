@@ -28,7 +28,15 @@
         <valueConverters:DateTimeConverter x:Key="DateTimeConverter" Format="d" MinValueString="---"/>
         <valueConverters:DebugConverter x:Key="DebugConverter"/>
         <valueConverters:EnumToBoolConverter x:Key="EnumToBoolConverter"/>
-        <valueConverters:EnumToObjectConverter x:Key="EnumToObjectConverter"/>
+        <valueConverters:EnumToObjectConverter x:Key="EnumToObjectConverter">
+            <valueConverters:EnumToObjectConverter.Items>
+                <ResourceDictionary>
+                    <BitmapImage x:Key="Off" UriSource="/Resources/Images/stop.png" />
+                    <BitmapImage x:Key="On" UriSource="/Resources/Images/play.png" />
+                    <BitmapImage x:Key="Maybe" UriSource="/Resources/Images/pause.png" />
+                </ResourceDictionary>
+            </valueConverters:EnumToObjectConverter.Items>
+        </valueConverters:EnumToObjectConverter>
         <valueConverters:EnumWrapperConverter x:Key="EnumWrapperConverter"/>
     </Window.Resources>
 
@@ -121,9 +129,11 @@
 
             <Label Grid.Row="3" Grid.Column="0" Content="Party mode:"/>
             <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                <Image Source="{Binding SelectedPartyMode, Converter={StaticResource EnumToObjectConverter}}"
+                       Height="24" Stretch="Uniform"/>
                 <Button Content="Next" 
                         Command="{Binding NextPartyModeCommand}"
-                        Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                        Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}"></Button>
                 <Label Content="{Binding SelectedPartyMode, Converter={StaticResource EnumWrapperConverter}}"
                        FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"
                        Visibility="{Binding IsEditing, Converter={StaticResource BoolToInvertedVisibilityConverter}}"/>
