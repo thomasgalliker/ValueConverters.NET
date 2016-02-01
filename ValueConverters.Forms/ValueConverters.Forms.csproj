@@ -11,7 +11,7 @@
     <RootNamespace>ValueConverters</RootNamespace>
     <AssemblyName>ValueConverters.Forms</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <NuGetPackageImportStamp>
@@ -36,6 +36,9 @@
     <DocumentationFile>bin\Release\ValueConverters.Forms.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\ValueConverters.NetFx\Annotations\DisplayAttribute.cs">
+      <Link>Annotations\DisplayAttribute.cs</Link>
+    </Compile>
     <Compile Include="..\ValueConverters.NetFx\BoolNegationConverter.cs">
       <Link>BoolNegationConverter.cs</Link>
       <SubType>
@@ -71,8 +74,30 @@
     <Compile Include="..\ValueConverters.NetFx\EnumToObjectConverter.cs">
       <Link>EnumToObjectConverter.cs</Link>
     </Compile>
+    <Compile Include="..\ValueConverters.NetFx\EnumWrapper.cs">
+      <Link>EnumWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\ValueConverters.NetFx\EnumWrapperCollection.cs">
+      <Link>EnumWrapperCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\ValueConverters.NetFx\EnumWrapperConverterBase.cs">
+      <Link>EnumWrapperConverterBase.cs</Link>
+    </Compile>
+    <Compile Include="..\ValueConverters.NetFx\EnumWrapperConverterNameStyle.cs">
+      <Link>EnumWrapperConverterNameStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\ValueConverters.NetFx\ObservableObject.cs">
+      <Link>ObservableObject.cs</Link>
+    </Compile>
+    <Compile Include="..\ValueConverters.NetFx\StringLengthToBoolConverter.cs">
+      <Link>StringLengthToBoolConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\ValueConverters.UWP\Extensions\ReflectionExtensions.cs">
+      <Link>Extensions\ReflectionExtensions.cs</Link>
+    </Compile>
     <Compile Include="BoolToValueConverter.cs" />
     <Compile Include="DateTimeConverter.cs" />
+    <Compile Include="EnumWrapperConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
