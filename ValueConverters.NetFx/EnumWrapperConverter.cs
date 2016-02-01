@@ -1,4 +1,8 @@
-﻿using System.Windows;
+﻿#if NETFX || WINDOWS_PHONE
+using System.Windows;
+#elif (NETFX_CORE)
+using Windows.UI.Xaml;
+#endif
 
 namespace ValueConverters
 {

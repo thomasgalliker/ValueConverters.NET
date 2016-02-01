@@ -162,6 +162,9 @@
     <Compile Include="..\ValueConverters.NetFx\EnumWrapperConverter.cs">
       <Link>EnumWrapperConverter.cs</Link>
     </Compile>
+    <Compile Include="..\ValueConverters.NetFx\EnumWrapperConverterBase.cs">
+      <Link>EnumWrapperConverterBase.cs</Link>
+    </Compile>
     <Compile Include="..\ValueConverters.NetFx\EnumWrapperConverterNameStyle.cs">
       <Link>EnumWrapperConverterNameStyle.cs</Link>
     </Compile>
