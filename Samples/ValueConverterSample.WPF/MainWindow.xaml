@@ -132,10 +132,16 @@
                           DisplayMemberPath="LocalizedValue"
                           Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}"
                           Height="22"
-                          VerticalAlignment="Top"/>
+                          VerticalAlignment="Top">
+                    <!--Alternatively, instead of using 'DisplayMemberPath' you could define an ItemTemplate:-->
+                    <!--<ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding LocalizedValue}" Margin="0" Padding="0"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>-->
+                </ComboBox>
             </StackPanel>
           
-
             <Label Grid.Row="4" Grid.Column="0" Content="Language:"/>
             <Label Grid.Row="4" Grid.Column="1"
                    Content="{Binding SelectedLanguage.DisplayName}"
