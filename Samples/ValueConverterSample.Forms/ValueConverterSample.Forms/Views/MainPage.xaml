@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:valueConverters="clr-namespace:ValueConverters;assembly=ValueConverters.Forms"
-             xmlns:viewModels="clr-namespace:ValueConverterSample.Forms.ViewModels;assembly=ValueConverterSample.Forms"
              x:Class="ValueConverterSample.Forms.Views.MainPage">
   <ContentView.BindingContext>
   </ContentView.BindingContext>
@@ -70,10 +69,10 @@
       <Label Text="{Binding SelectedPartyMode, Converter={StaticResource EnumWrapperConverter}, StringFormat='{0}'}"
              IsVisible="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}"/>
       <Picker x:Name="partyModePicker"
-              Title="PartyMode"
-              IsVisible="{Binding IsEditing}"
-              VerticalOptions="Start"
-              HorizontalOptions="Start"/>
+                 Title="PartyMode"
+                 IsVisible="{Binding IsEditing}"
+                 VerticalOptions="Start"
+                 HorizontalOptions="Start"/>
     </StackLayout>
 
     <Label Grid.Row="4" Grid.Column="0" Text="Language:"/>
