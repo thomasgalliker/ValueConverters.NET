@@ -95,6 +95,7 @@
     <Compile Include="..\ValueConverters.UWP\Extensions\ReflectionExtensions.cs">
       <Link>Extensions\ReflectionExtensions.cs</Link>
     </Compile>
+    <Compile Include="BoolToFontWeightConverter.cs" />
     <Compile Include="BoolToValueConverter.cs" />
     <Compile Include="DateTimeConverter.cs" />
     <Compile Include="EnumWrapperConverter.cs" />

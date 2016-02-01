@@ -16,6 +16,7 @@
 
       <valueConverters:BoolNegationConverter x:Key="BoolNegationConverter"/>
       <valueConverters:BoolToDoubleConverter x:Key="BoolToDoubleConverter" TrueValue="1" FalseValue="16"/>
+      <valueConverters:BoolToFontAttributesConverter x:Key="BoolToFontAttributesConverter"/>
       <valueConverters:BoolToStringConverter x:Key="BoolToStringConverter" TrueValue="Yes" FalseValue="No"/>
       <valueConverters:BoolToStyleConverter x:Key="BoolToStyleConverter" TrueValue="{StaticResource TrueStyleTemplate}" FalseValue="{StaticResource FalseStyleTemplate}"/>
       <valueConverters:BoolToThicknessConverter x:Key="BoolToThicknessConverter" TrueValue="1" FalseValue="4"/>
@@ -44,7 +45,8 @@
     <Label Grid.Row="0" Grid.Column="0" Text="IsEnabled:"/>
     <Label Grid.Row="0" Grid.Column="1"
            Text="{Binding IsEnabled, Converter={StaticResource BoolToStringConverter}}"
-           IsVisible="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}"/>
+           IsVisible="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}"
+           FontAttributes="{Binding IsEnabled, Converter={StaticResource BoolToFontAttributesConverter}}"/>
     <Switch Grid.Row="0" Grid.Column="1"
             IsToggled="{Binding IsEnabled, Converter={StaticResource DebugConverter}}"
             IsVisible="{Binding IsEditing}"
