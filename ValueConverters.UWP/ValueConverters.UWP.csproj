@@ -180,6 +180,9 @@
     <Compile Include="..\ValueConverters.NetFx\StringLengthToBoolConverter.cs">
       <Link>StringLengthToBoolConverter.cs</Link>
     </Compile>
+    <Compile Include="..\ValueConverters.NetFx\VisibilityInverter.cs">
+      <Link>VisibilityInverter.cs</Link>
+    </Compile>
     <Compile Include="Extensions\ReflectionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Properties\ValueConverters.UWP.rd.xml" />

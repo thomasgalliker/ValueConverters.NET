@@ -45,10 +45,12 @@
       <HintPath>..\..\packages\FluentAssertions.4.2.1\lib\net45\FluentAssertions.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -79,6 +81,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="VisibilityInverterTests.cs" />
     <Compile Include="EnumWrapperTests.cs" />
     <Compile Include="StringLengthToBoolConverterTests.cs" />
     <Compile Include="EnumToBoolConverterTests.cs" />

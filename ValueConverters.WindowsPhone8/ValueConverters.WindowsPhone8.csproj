@@ -156,6 +156,9 @@
     <Compile Include="..\ValueConverters.NetFx\StringLengthToBoolConverter.cs">
       <Link>StringLengthToBoolConverter.cs</Link>
     </Compile>
+    <Compile Include="..\ValueConverters.NetFx\VisibilityInverter.cs">
+      <Link>VisibilityInverter.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />

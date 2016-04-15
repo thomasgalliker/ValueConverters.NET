@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters</id>
-    <version>1.0.2</version>
+    <version>1.0.3-pre1</version>
     <title>ValueConverters.NET</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -12,10 +12,13 @@
     <summary>A collection of commonly used IValueConverts for .NET applications.</summary>
     <description>A collection of commonly used IValueConverts for .NET applications.</description>
     <tags>
-      xamarin pcl ValueConverter ValueConverters IValueConverter
-      windows phone winphone wp8 wpa81 win81 windowsphone android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
+      xamarin pcl ValueConverter ValueConverters IValueConverter converter
+      windows phone winphone wp8 wpa81 win81 windowsphone uap uwp android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
+      1.0.3-pre1
+      - Added VisibilityInverter 
+      
       1.0.2
       - Added support for Windows 10 Universal Windows Platform (UWP)
       - Added StringLengthToBoolConverter
