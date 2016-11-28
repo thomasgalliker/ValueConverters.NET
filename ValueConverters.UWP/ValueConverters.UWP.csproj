@@ -108,85 +108,11 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\ValueConverters.NetFx\Annotations\DisplayAttribute.cs">
-      <Link>Annotations\DisplayAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\BoolNegationConverter.cs">
-      <Link>BoolNegationConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\BoolToBrushConverter.cs">
-      <Link>BoolToBrushConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\BoolToDoubleConverter.cs">
-      <Link>BoolToDoubleConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\BoolToFontWeightConverter.cs">
-      <Link>BoolToFontWeightConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\BoolToStringConverter.cs">
-      <Link>BoolToStringConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\BoolToStyleConverter.cs">
-      <Link>BoolToStyleConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\BoolToThicknessConverter.cs">
-      <Link>BoolToThicknessConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\BoolToValueConverter.cs">
-      <Link>BoolToValueConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\BoolToValueConverterBase.cs">
-      <Link>BoolToValueConverterBase.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\BoolToVisibilityConverter.cs">
-      <Link>BoolToVisibilityConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\ConverterBase.cs">
-      <Link>ConverterBase.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\DateTimeConverter.cs">
-      <Link>DateTimeConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\DateTimeConverterBase.cs">
-      <Link>DateTimeConverterBase.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\DebugConverter.cs">
-      <Link>DebugConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\EnumToBoolConverter.cs">
-      <Link>EnumToBoolConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\EnumToObjectConverter.cs">
-      <Link>EnumToObjectConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\EnumWrapper.cs">
-      <Link>EnumWrapper.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\EnumWrapperCollection.cs">
-      <Link>EnumWrapperCollection.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\EnumWrapperConverter.cs">
-      <Link>EnumWrapperConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\EnumWrapperConverterBase.cs">
-      <Link>EnumWrapperConverterBase.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\EnumWrapperConverterNameStyle.cs">
-      <Link>EnumWrapperConverterNameStyle.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\ObservableObject.cs">
-      <Link>ObservableObject.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\StringLengthToBoolConverter.cs">
-      <Link>StringLengthToBoolConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\ValueConverters.NetFx\VisibilityInverter.cs">
-      <Link>VisibilityInverter.cs</Link>
-    </Compile>
     <Compile Include="Extensions\ReflectionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Properties\ValueConverters.UWP.rd.xml" />
   </ItemGroup>
+  <Import Project="..\ValueConverters.Shared\ValueConverters.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

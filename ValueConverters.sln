@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{B5AEA046-0E87-4A7B-8F11-80B6BDDA1F2A}"
 EndProject
@@ -34,7 +34,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConverters.UWP", "Valu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConverterSample.UWP", "Samples\ValueConverterSample.UWP\ValueConverterSample.UWP.csproj", "{C9C9B3C8-98A4-433E-AADE-2ECA55E7D879}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ValueConverters.Shared", "ValueConverters.Shared\ValueConverters.Shared.shproj", "{4D17E49B-5E42-487E-B057-DA0D8D364662}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		ValueConverters.Shared\ValueConverters.Shared.projitems*{15371be7-c46d-40ae-bef1-8f44497e696d}*SharedItemsImports = 4
+		ValueConverters.Shared\ValueConverters.Shared.projitems*{4d17e49b-5e42-487e-b057-da0d8d364662}*SharedItemsImports = 13
+		ValueConverters.Shared\ValueConverters.Shared.projitems*{5876144b-47dd-4c4e-b421-bc03f191b996}*SharedItemsImports = 4
+		ValueConverters.Shared\ValueConverters.Shared.projitems*{7169373f-0b82-4e5d-9129-7cc3065b90fa}*SharedItemsImports = 4
+		ValueConverters.Shared\ValueConverters.Shared.projitems*{ed9a4ca1-c04c-457d-9a2e-7995ccf12356}*SharedItemsImports = 4
+		ValueConverters.Shared\ValueConverters.Shared.projitems*{efc0655a-c5b8-4b71-b130-3ba06f43287d}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
 		Ad-Hoc|ARM = Ad-Hoc|ARM
@@ -87,6 +97,7 @@ Global
 		{2CF5E868-1098-4C6D-9001-27D8DC0D87BE}.AppStore|x86.ActiveCfg = Release|Any CPU
 		{2CF5E868-1098-4C6D-9001-27D8DC0D87BE}.AppStore|x86.Build.0 = Release|Any CPU
 		{2CF5E868-1098-4C6D-9001-27D8DC0D87BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CF5E868-1098-4C6D-9001-27D8DC0D87BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CF5E868-1098-4C6D-9001-27D8DC0D87BE}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{2CF5E868-1098-4C6D-9001-27D8DC0D87BE}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{2CF5E868-1098-4C6D-9001-27D8DC0D87BE}.Debug|iPhone.Build.0 = Debug|Any CPU
