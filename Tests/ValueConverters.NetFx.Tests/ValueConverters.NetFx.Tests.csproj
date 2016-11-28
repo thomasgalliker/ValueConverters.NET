@@ -71,6 +71,10 @@
       <HintPath>..\..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="xunit.parallel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\xunit.parallel.1.0.0-pre8\lib\net45\xunit.parallel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -81,6 +85,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="IsEmptyConverterTests.cs" />
+    <Compile Include="Properties\xunit.assembly.config.cs" />
     <Compile Include="VisibilityInverterTests.cs" />
     <Compile Include="EnumWrapperTests.cs" />
     <Compile Include="StringLengthToBoolConverterTests.cs" />

@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Globalization;
 using System.Linq;
-using System.Windows;
-using System.Windows.Data;
-
-using ValueConverters.NetFx.Tests.TestData;
-
-using Xunit;
 using FluentAssertions;
+using ValueConverters.NetFx.Tests.TestData;
+using Xunit;
 
 namespace ValueConverters.NetFx.Tests
 {
