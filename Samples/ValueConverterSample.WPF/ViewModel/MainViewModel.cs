@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -32,7 +33,7 @@ namespace ValueConverterSample.WPF.ViewModel
             this.radioFrequency = this.RadioFrequencies.FirstOrDefault();
 
             // Initialize PartyMode enum without EnumWrapper
-            this.PartyModes = Enum.GetValues(typeof(PartyMode)).OfType<PartyMode>();
+            this.PartyModes = new ObservableCollection<PartyMode>(Enum.GetValues(typeof(PartyMode)).OfType<PartyMode>());
             this.selectedPartyMode = this.PartyModes.FirstOrDefault();
 
             this.EditCommand = new RelayCommand(
@@ -53,6 +54,20 @@ namespace ValueConverterSample.WPF.ViewModel
                        // Cycle through PartyMode enum:
                        this.SelectedPartyMode = (PartyMode)((int)(this.SelectedPartyMode + 1) % Enum.GetValues(this.SelectedPartyMode.GetType()).Length);
                    });
+
+            this.ClearPartyModesCommand = new RelayCommand(
+                () =>
+                    {
+                        this.PartyModes.Clear();
+                        this.OnPropertyChanged(() => this.PartyModes);
+                    });
+
+            this.FillPartyModesCommand = new RelayCommand(
+                () =>
+                    {
+                        this.PartyModes = new ObservableCollection<PartyMode>(Enum.GetValues(typeof(PartyMode)).OfType<PartyMode>());
+                        this.OnPropertyChanged(() => this.PartyModes);
+                    });
         }
 
         public bool IsEditing
@@ -114,7 +129,7 @@ namespace ValueConverterSample.WPF.ViewModel
         // PartyModes and SelectedPartyMode are exposed as normal enum types.
         // The view needs to use the EnumWrapperConverter to convert these enums
         // on-the-fly to EnumWrapper<PartyMode> objects.
-        public IEnumerable<PartyMode> PartyModes { get; private set; }
+        public ObservableCollection<PartyMode> PartyModes { get; private set; }
 
         public PartyMode SelectedPartyMode
         {
@@ -134,6 +149,10 @@ namespace ValueConverterSample.WPF.ViewModel
         public ICommand CancelCommand { get; private set; }
 
         public ICommand NextPartyModeCommand { get; private set; }
+
+        public ICommand ClearPartyModesCommand { get; private set; }
+
+        public ICommand FillPartyModesCommand { get; private set; }
 
         public IEnumerable<CultureInfo> Languages
         {

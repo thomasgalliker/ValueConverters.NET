@@ -39,6 +39,7 @@
             </valueConverters:EnumToObjectConverter.Items>
         </valueConverters:EnumToObjectConverter>
         <valueConverters:EnumWrapperConverter x:Key="EnumWrapperConverter"/>
+        <valueConverters:IsEmptyConverter x:Key="IsNotEmptyConverter" IsInverted="True"/>
     </Window.Resources>
 
     <Border BorderBrush="{Binding IsEditing, Converter={StaticResource BoolToBrushConverter}}"
@@ -154,13 +155,21 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>-->
                 </ComboBox>
+                <Button Content="Clear"
+                        Command="{Binding ClearPartyModesCommand}"
+                        IsEnabled="{Binding PartyModes, Converter={StaticResource IsNotEmptyConverter}}"/>
+                <Button Content="Fill"
+                        Command="{Binding FillPartyModesCommand}"
+                        IsEnabled="{Binding PartyModes, Converter={x:Static valueConverters:IsEmptyConverter.Instance}}"/>
+                
             </StackPanel>
-          
+
             <Label Grid.Row="4" Grid.Column="0" Content="Language:"/>
             <Label Grid.Row="4" Grid.Column="1"
                    Content="{Binding SelectedLanguage.DisplayName}"
                    FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"
                    Visibility="{Binding IsEditing, Converter={StaticResource BoolToInvertedVisibilityConverter}}"/>
+
             <ComboBox Grid.Row="4" Grid.Column="1"
                       ItemsSource="{Binding Languages}" 
                       SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
@@ -168,7 +177,7 @@
                       Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}"
                       Height="22"
                       VerticalAlignment="Top"/>
-            
+
             <Button Grid.Row="5" Grid.Column="1" Width="100" HorizontalAlignment="Right"
                     Content="Edit" 
                     Command="{Binding EditCommand}"
