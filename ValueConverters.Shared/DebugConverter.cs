@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace ValueConverters
 {
-    public class DebugConverter : ConverterBase
+    public class DebugConverter : SingletonConverterBase<DebugConverter>
     {
         protected override object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {

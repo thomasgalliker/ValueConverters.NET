@@ -10,10 +10,8 @@ using Windows.UI.Xaml;
 
 namespace ValueConverters
 {
-    public class IsEmptyConverter : ConverterBase
+    public class IsEmptyConverter : SingletonConverterBase<IsEmptyConverter>
     {
-        public static readonly IsEmptyConverter Instance = new IsEmptyConverter();
-
         public static readonly DependencyProperty IsInvertedProperty = DependencyProperty.Register(
             "IsInverted",
             typeof(bool),

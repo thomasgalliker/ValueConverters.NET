@@ -14,7 +14,7 @@ using Xamarin.Forms;
 
 namespace ValueConverters
 {
-    public abstract class ConverterBase : 
+    public abstract class ConverterBase :
 #if XAMARIN
         BindableObject,
 #else
@@ -26,7 +26,7 @@ namespace ValueConverters
 
         protected virtual object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotSupportedException(string.Format("Converter '{0}' does not support backward conversion.", this.GetType().Name));
+            throw new NotSupportedException($"Converter '{this.GetType().Name}' does not support backward conversion.");
         }
 
 #if (NETFX || WINDOWS_PHONE || XAMARIN)

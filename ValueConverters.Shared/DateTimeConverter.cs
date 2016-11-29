@@ -9,7 +9,7 @@ using Windows.UI.Xaml;
 
 namespace ValueConverters
 {
-    public class DateTimeConverter : DateTimeConverterBase
+    public class DateTimeConverter : DateTimeConverterBase<DateTimeConverter>
     {
         /// <summary>
         ///     The datetime format property.
