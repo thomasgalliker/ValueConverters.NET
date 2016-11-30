@@ -9,7 +9,7 @@ using Windows.UI.Xaml;
 
 namespace ValueConverters
 {
-    public class BoolToValueConverter<T> : BoolToValueConverterBase<T>
+    public class BoolToValueConverter<T> : BoolToValueConverterBase<T, BoolToValueConverter<T>>
     {
         public static readonly DependencyProperty TrueValueProperty = DependencyProperty.Register(
             "TrueValue",

@@ -13,7 +13,7 @@ namespace ValueConverters
     /// EnumToBoolConverter can be used to bind to RadioButtons.
     /// </summary>
     // Source: http://stackoverflow.com/questions/397556/how-to-bind-radiobuttons-to-an-enum
-    public class EnumToBoolConverter : ConverterBase
+    public class EnumToBoolConverter : SingletonConverterBase<EnumToBoolConverter>
     {
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

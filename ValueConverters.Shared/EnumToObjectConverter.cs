@@ -35,7 +35,7 @@ namespace ValueConverters
 #elif (NETFX_CORE)
     [ContentProperty(Name = "Items")]
 #endif
-    public class EnumToObjectConverter : ConverterBase
+    public class EnumToObjectConverter : SingletonConverterBase<EnumToObjectConverter>
     {
         public ResourceDictionary Items { get; set; }
 

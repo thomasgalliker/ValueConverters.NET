@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace ValueConverters
 {
-    public class StringLengthToBoolConverter : ConverterBase
+    public class StringLengthToBoolConverter : SingletonConverterBase<StringLengthToBoolConverter>
     {
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

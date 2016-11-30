@@ -16,7 +16,7 @@ using ValueConverters.Extensions;
 
 namespace ValueConverters
 {
-    public abstract class EnumWrapperConverterBase : ConverterBase
+    public abstract class EnumWrapperConverterBase<TConverter> : SingletonConverterBase<TConverter> where TConverter : new()
     {
         public abstract EnumWrapperConverterNameStyle NameStyle { get; set; }
 
@@ -24,7 +24,7 @@ namespace ValueConverters
         {
             if (value == null)
             {
-                return ConverterBase.UnsetValue;
+                return UnsetValue;
             }
 
             var type = value.GetType();
@@ -42,7 +42,7 @@ namespace ValueConverters
                 if (typeInfo.IsGenericType)
                 {
                     var genericType = type.GetGenericArguments()[0];
-                    var enumWrapperList = typeof(EnumWrapperConverterBase).GetMethod("CreateMapperList")
+                    var enumWrapperList = typeof(EnumWrapperConverterBase<TConverter>).GetMethod("CreateMapperList")
                         .MakeGenericMethod(new[] { genericType })
                         .Invoke(this, new[] { value, this.NameStyle });
                     return enumWrapperList;
@@ -51,7 +51,7 @@ namespace ValueConverters
                 throw new ArgumentException("EnumWrapperConverter cannot convert non-generic IEnumerable. Please bind an IEnumerable<T>.");
             }
 
-            var enumWrapper = typeof(EnumWrapperConverterBase).GetMethod("CreateMapper")
+            var enumWrapper = typeof(EnumWrapperConverterBase<TConverter>).GetMethod("CreateMapper")
                     .MakeGenericMethod(new[] { value.GetType() })
                     .Invoke(this, new[] { value, this.NameStyle });
 
@@ -62,7 +62,7 @@ namespace ValueConverters
         {
             if (value == null)
             {
-                return ConverterBase.UnsetValue;
+                return SingletonConverterBase<TConverter>.UnsetValue;
             }
 
             var type = value.GetType();
@@ -74,7 +74,7 @@ namespace ValueConverters
 
             // If value from source (typically a property in a viewmodel)
             // is already EnumWrapper<T>, no further conversion needs to be done.
-            var enumWrapper = typeof(EnumWrapperConverterBase).GetMethod("ConvertMapper")
+            var enumWrapper = typeof(EnumWrapperConverterBase<TConverter>).GetMethod("ConvertMapper")
                  .MakeGenericMethod(new[] { targetType })
                  .Invoke(this, new[] { value });
 

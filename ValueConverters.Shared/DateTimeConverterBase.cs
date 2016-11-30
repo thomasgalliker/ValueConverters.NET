@@ -11,7 +11,8 @@ using Windows.UI.Xaml.Data;
 
 namespace ValueConverters
 {
-    public abstract class DateTimeConverterBase : ConverterBase
+    public abstract class DateTimeConverterBase<TConverter> : SingletonConverterBase<TConverter>
+        where TConverter : new()
     {
         protected const string DefaultFormat = "g";
         protected const string DefaultMinValueString = "";

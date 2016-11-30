@@ -16,7 +16,9 @@ namespace ValueConverters
     /// http://geekswithblogs.net/codingbloke/archive/2010/05/28/a-generic-boolean-value-converter.aspx
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class BoolToValueConverterBase<T> : ConverterBase
+    /// <typeparam name="TConverter"></typeparam>
+    public abstract class BoolToValueConverterBase<T, TConverter> : SingletonConverterBase<TConverter> 
+        where TConverter : new()
     {
         public abstract T TrueValue { get; set; }
 

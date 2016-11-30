@@ -6,7 +6,7 @@ using Windows.UI.Xaml;
 
 namespace ValueConverters
 {
-    public class EnumWrapperConverter : EnumWrapperConverterBase
+    public class EnumWrapperConverter : EnumWrapperConverterBase<EnumWrapperConverter>
     {
         public static readonly DependencyProperty NameStyleProperty = DependencyProperty.Register(
             "NameStyle",
