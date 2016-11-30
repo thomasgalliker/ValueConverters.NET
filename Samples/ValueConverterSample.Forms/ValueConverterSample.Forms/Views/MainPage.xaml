@@ -17,6 +17,7 @@
       <valueConverters:BoolNegationConverter x:Key="BoolNegationConverter"/>
       <valueConverters:BoolToDoubleConverter x:Key="BoolToDoubleConverter" TrueValue="1" FalseValue="16"/>
       <valueConverters:BoolToFontAttributesConverter x:Key="BoolToFontAttributesConverter"/>
+      <valueConverters:BoolToColorConverter x:Key="BoolToColorConverter" TrueValue="Red" FalseValue="Green"/>
       <valueConverters:BoolToStringConverter x:Key="BoolToStringConverter" TrueValue="Yes" FalseValue="No"/>
       <valueConverters:BoolToStyleConverter x:Key="BoolToStyleConverter" TrueValue="{StaticResource TrueStyleTemplate}" FalseValue="{StaticResource FalseStyleTemplate}"/>
       <valueConverters:BoolToThicknessConverter x:Key="BoolToThicknessConverter" TrueValue="1" FalseValue="4"/>
@@ -25,6 +26,7 @@
       <valueConverters:EnumToBoolConverter x:Key="EnumToBoolConverter"/>
       <valueConverters:EnumToObjectConverter x:Key="EnumToObjectConverter"/>
       <valueConverters:EnumWrapperConverter x:Key="EnumWrapperConverter"/>
+      <valueConverters:IsEmptyConverter x:Key="IsEmptyConverter" IsInverted="True"/>
     </ResourceDictionary>
   </ContentPage.Resources>
   <Grid>
@@ -50,6 +52,7 @@
     <Switch Grid.Row="0" Grid.Column="1"
             IsToggled="{Binding IsEnabled, Converter={StaticResource DebugConverter}}"
             IsVisible="{Binding IsEditing}"
+            BackgroundColor="{Binding IsEnabled, Converter={StaticResource BoolToColorConverter}}"
             VerticalOptions="Start"
             HorizontalOptions="Start"/>
 
@@ -67,7 +70,8 @@
     <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
       <Button Text="Next"
               Command="{Binding NextPartyModeCommand}"
-              IsVisible="{Binding IsEditing}"/>
+              IsVisible="{Binding PartyModes, Converter={StaticResource IsEmptyConverter}}"
+              IsEnabled="{Binding IsEditing}"/>
       <Label Text="{Binding SelectedPartyMode, Converter={StaticResource EnumWrapperConverter}, StringFormat='{0}'}"
              IsVisible="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}"/>
       <Picker x:Name="partyModePicker"
