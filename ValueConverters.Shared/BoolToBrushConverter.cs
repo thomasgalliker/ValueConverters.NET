@@ -6,9 +6,11 @@ using System.Windows.Media;
 using Windows.UI.Xaml.Media;
 #endif
 
+#if !XAMARIN
 namespace ValueConverters
 {
     public class BoolToBrushConverter : BoolToValueConverter<Brush>
     {
     }
 }
+#endif

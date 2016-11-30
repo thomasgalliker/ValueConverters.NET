@@ -1,5 +1,6 @@
-﻿using System;
-using System.Globalization;
+﻿#if XAMARIN
+using Xamarin.Forms;
+#endif
 
 #if NETFX || WINDOWS_PHONE
 using System.Windows;
@@ -11,11 +12,19 @@ namespace ValueConverters
 {
     public class DateTimeConverter : DateTimeConverterBase<DateTimeConverter>
     {
-        /// <summary>
-        ///     The datetime format property.
-        ///     Check MSDN for information about predefined datetime formats:
-        ///     http://msdn.microsoft.com/en-us/library/362btx8f(v=vs.90).aspx.
-        /// </summary>
+        #if XAMARIN
+        public static readonly BindableProperty FormatProperty = BindableProperty.Create(
+            "Format",
+            typeof(string),
+            typeof(DateTimeConverter),
+            DefaultFormat);
+
+        public static readonly BindableProperty MinValueStringProperty = BindableProperty.Create(
+            "MinValueString",
+            typeof(string),
+            typeof(DateTimeConverter),
+            DefaultMinValueString);
+#else
         public static readonly DependencyProperty FormatProperty = DependencyProperty.Register(
             "Format",
             typeof(string),
@@ -27,7 +36,13 @@ namespace ValueConverters
             typeof(string),
             typeof(DateTimeConverter),
             new PropertyMetadata(DefaultMinValueString));
+#endif
 
+        /// <summary>
+        ///     The datetime format property.
+        ///     Check MSDN for information about predefined datetime formats:
+        ///     http://msdn.microsoft.com/en-us/library/362btx8f(v=vs.90).aspx.
+        /// </summary>
         public override string Format
         {
             get

@@ -1,5 +1,6 @@
-﻿using System.Globalization;
-using System;
+﻿#if XAMARIN
+using Xamarin.Forms;
+#endif
 
 #if NETFX || WINDOWS_PHONE
 using System.Windows;
@@ -11,6 +12,25 @@ namespace ValueConverters
 {
     public class BoolToValueConverter<T> : BoolToValueConverterBase<T, BoolToValueConverter<T>>
     {
+#if XAMARIN
+        public static readonly BindableProperty TrueValueProperty = BindableProperty.Create(
+            "TrueValue",
+            typeof(T),
+            typeof(BoolToValueConverter<T>),
+            default(T));
+
+        public static readonly BindableProperty FalseValueProperty = BindableProperty.Create(
+            "FalseValue",
+            typeof(T),
+            typeof(BoolToValueConverter<T>),
+            default(T));
+
+        public static readonly BindableProperty IsInvertedProperty = BindableProperty.Create(
+            "IsInverted",
+            typeof(bool),
+            typeof(BoolToValueConverter<T>),
+            false);
+#else
         public static readonly DependencyProperty TrueValueProperty = DependencyProperty.Register(
             "TrueValue",
             typeof(T),
@@ -28,6 +48,7 @@ namespace ValueConverters
             typeof(bool),
             typeof(BoolToValueConverter<T>),
             new PropertyMetadata(false));
+#endif
 
         public override T TrueValue
         {

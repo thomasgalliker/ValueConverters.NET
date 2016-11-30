@@ -2,6 +2,10 @@
 using System;
 using System.Collections;
 
+#if XAMARIN
+using Xamarin.Forms;
+#endif
+
 #if NETFX || WINDOWS_PHONE
 using System.Windows;
 #elif (NETFX_CORE)
@@ -12,11 +16,19 @@ namespace ValueConverters
 {
     public class IsEmptyConverter : SingletonConverterBase<IsEmptyConverter>
     {
+#if XAMARIN
+        public static readonly BindableProperty IsInvertedProperty = BindableProperty.Create(
+            "IsInverted",
+            typeof(bool),
+            typeof(IsEmptyConverter),
+            default(bool));
+#else
         public static readonly DependencyProperty IsInvertedProperty = DependencyProperty.Register(
             "IsInverted",
             typeof(bool),
             typeof(IsEmptyConverter),
             new PropertyMetadata(false));
+#endif
 
         public bool IsInverted
         {
