@@ -18,7 +18,7 @@
     <releaseNotes>
       1.0.5
       - Added IsEmptyConverter to check for empty strings and other IEnumerables
-      - Add SingletonConverterBase which provides a static/reusable Instance
+      - Added SingletonConverterBase which provides a static/reusable Instance
       
       1.0.4
       - Cleanup
