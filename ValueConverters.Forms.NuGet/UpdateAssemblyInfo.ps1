@@ -81,10 +81,7 @@ function Update-AssemblyInfoFiles ([string] $nuspecFilePath, [string] $assemblyI
 try {
   "Updating assembly info to version: $setVersion"
   ""
-  Update-AssemblyInfoFiles "Package.nuspec" "..\ValueConverters\Properties\AssemblyInfo.cs"
-  Update-AssemblyInfoFiles "Package.nuspec" "..\ValueConverters.NetFx\Properties\AssemblyInfo.cs"
-  Update-AssemblyInfoFiles "Package.nuspec" "..\ValueConverters.UWP\Properties\AssemblyInfo.cs"
-  Update-AssemblyInfoFiles "Package.nuspec" "..\ValueConverters.Windows*\Properties\AssemblyInfo.cs"
+  Update-AssemblyInfoFiles "Package.nuspec" "..\ValueConverters.Forms\Properties\AssemblyInfo.cs"
 }
 catch {
   $myError = $_.Exception.ToString()

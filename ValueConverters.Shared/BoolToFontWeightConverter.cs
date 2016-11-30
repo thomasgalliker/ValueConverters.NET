@@ -4,6 +4,7 @@ using System.Windows;
 using Windows.UI.Text;
 #endif
 
+#if !XAMARIN
 namespace ValueConverters
 {
     public class BoolToFontWeightConverter : BoolToValueConverter<FontWeight>
@@ -15,3 +16,4 @@ namespace ValueConverters
         }
     }
 }
+#endif

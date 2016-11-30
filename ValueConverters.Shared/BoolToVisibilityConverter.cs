@@ -4,6 +4,7 @@ using System.Windows;
 using Windows.UI.Xaml;
 #endif
 
+#if !XAMARIN
 namespace ValueConverters
 {
     public class BoolToVisibilityConverter : BoolToValueConverter<Visibility>
@@ -15,3 +16,4 @@ namespace ValueConverters
         }
     }
 }
+#endif
