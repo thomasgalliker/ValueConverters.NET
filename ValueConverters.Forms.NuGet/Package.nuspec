@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters.Forms</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <title>ValueConverters.NET for Xamarin.Forms</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
     <projectUrl>https://github.com/thomasgalliker/ValueConverters</projectUrl>
-    <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/master/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>A collection of commonly used IValueConverts for Xamarin.Forms applications.</summary>
     <description>A collection of commonly used IValueConverts for Xamarin.Forms applications.</description>
@@ -16,6 +16,9 @@
       windows phone winphone wp8 wpa81 win81 windowsphone android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
+      1.0.3
+      - Update nuget icon
+      
       1.0.2
       - Added IsEmptyConverter to check for empty strings and other IEnumerables
       - Added SingletonConverterBase which provides a static/reusable Instance
