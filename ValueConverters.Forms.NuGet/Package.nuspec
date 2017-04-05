@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters.Forms</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <title>ValueConverters.NET for Xamarin.Forms</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -12,10 +12,13 @@
     <summary>A collection of commonly used IValueConverts for Xamarin.Forms applications.</summary>
     <description>A collection of commonly used IValueConverts for Xamarin.Forms applications.</description>
     <tags>
-      xamarin pcl ValueConverters.Forms plugin for IValueConverter ValueConverters.Forms
+      xamarin pcl ValueConverters.Forms plugin for IValueConverter ValueConverters.Forms UI
       windows phone winphone wp8 wpa81 win81 windowsphone android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
+      1.0.4
+      - Fix nuget package dependency problem
+      
       1.0.3
       - Update nuget icon
       
@@ -49,7 +52,6 @@
     <language>en-US</language>
     <dependencies>
       <group>
-        <dependency id="ValueConverters" version="[1.0.5,)" />
         <dependency id="Xamarin.Forms" version="[2.0.0.6490,)" />
       </group>
     </dependencies>
