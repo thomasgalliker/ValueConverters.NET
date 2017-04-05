@@ -12,7 +12,7 @@
     <summary>A collection of commonly used IValueConverts for .NET applications.</summary>
     <description>A collection of commonly used IValueConverts for .NET applications.</description>
     <tags>
-      xamarin pcl ValueConverter ValueConverters IValueConverter converter
+      xamarin pcl ValueConverter ValueConverters IValueConverter converter UI
       windows phone winphone wp8 wpa81 win81 windowsphone uap uwp android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
