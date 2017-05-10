@@ -5,8 +5,8 @@
     <version>1.0.4</version>
     <title>ValueConverters.NET for Xamarin.Forms</title>
     <authors>Thomas Galliker</authors>
-    <licenseUrl>https://github.com/thomasgalliker/ValueConverters/LICENSE.txt</licenseUrl>
-    <projectUrl>https://github.com/thomasgalliker/ValueConverters</projectUrl>
+    <licenseUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/thomasgalliker/ValueConverters.NET</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/master/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>A collection of commonly used IValueConverts for Xamarin.Forms applications.</summary>
