@@ -35,6 +35,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)IsEmptyConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObservableObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringLengthToBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StringToDecimalConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VisibilityInverter.cs" />
   </ItemGroup>
 </Project>
