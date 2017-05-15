@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="IsEmptyConverterTests.cs" />
     <Compile Include="Properties\xunit.assembly.config.cs" />
+    <Compile Include="StringToDecimalConverterTests.cs" />
     <Compile Include="ValueToBoolConverterTests.cs" />
     <Compile Include="VisibilityInverterTests.cs" />
     <Compile Include="EnumWrapperTests.cs" />

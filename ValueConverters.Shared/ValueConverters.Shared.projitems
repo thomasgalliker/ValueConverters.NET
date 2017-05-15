@@ -38,6 +38,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)StringLengthToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ValueToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ValueToBoolConverterBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StringToDecimalConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VisibilityInverter.cs" />
   </ItemGroup>
 </Project>

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters</id>
-    <version>1.0.5</version>
+    <version>1.0.6-pre1</version>
     <title>ValueConverters.NET</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -12,43 +12,46 @@
     <summary>A collection of commonly used IValueConverts for .NET applications.</summary>
     <description>A collection of commonly used IValueConverts for .NET applications.</description>
     <tags>
-      xamarin pcl ValueConverter ValueConverters IValueConverter converter UI
+      xamarin pcl ValueConverter ValueConverters IValueConverter valueconverter converter UI
       windows phone winphone wp8 wpa81 win81 windowsphone uap uwp android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
-      1.0.5
-      - Added IsEmptyConverter to check for empty strings and other IEnumerables
-      - Added SingletonConverterBase which provides a static/reusable Instance
-      
-      1.0.4
-      - Cleanup
-      
-      1.0.3
-      - Added VisibilityInverter 
-      
-      1.0.2
-      - Added support for Windows 10 Universal Windows Platform (UWP)
-      - Added StringLengthToBoolConverter
-      - Extended BoolToValueConverter with IsInverted property
-      - Added EnumWrapperConverter to all platforms
-      - Extended EnumWrapper with LocalizedValue property for better INotifyPropertyChanged support
+1.0.6
+- Added StringToDecimalConverter
 
-      1.0.1
-      - Added BoolNegationConverter
-      - Added BoolToThicknessConverter
-      - Added BoolToVisibilityConverter
-      - Added EnumToObjectConverter
-      - Added EnumWrapperConverter
-      - Added EnumToBoolConverter
-      - Added DebugConverter
+1.0.5
+- Added IsEmptyConverter to check for empty strings and other IEnumerables
+- Added SingletonConverterBase which provides a static/reusable Instance
+      
+1.0.4
+- Cleanup
+      
+1.0.3
+- Added VisibilityInverter 
+      
+1.0.2
+- Added support for Windows 10 Universal Windows Platform (UWP)
+- Added StringLengthToBoolConverter
+- Extended BoolToValueConverter with IsInverted property
+- Added EnumWrapperConverter to all platforms
+- Extended EnumWrapper with LocalizedValue property for better INotifyPropertyChanged support
 
-      1.0.0
-      - Added BoolToBrushConverter
-      - Added BoolToDoubleConverter
-      - Added BoolToFontWeightConverter
-      - Added BoolToStringConverter
-      - Added BoolToValueConverter
-      - Added DateTimeConverter
+1.0.1
+- Added BoolNegationConverter
+- Added BoolToThicknessConverter
+- Added BoolToVisibilityConverter
+- Added EnumToObjectConverter
+- Added EnumWrapperConverter
+- Added EnumToBoolConverter
+- Added DebugConverter
+
+1.0.0
+- Added BoolToBrushConverter
+- Added BoolToDoubleConverter
+- Added BoolToFontWeightConverter
+- Added BoolToStringConverter
+- Added BoolToValueConverter
+- Added DateTimeConverter
     </releaseNotes>
     <copyright>Copyright 2016</copyright>
     <language>en-US</language>
