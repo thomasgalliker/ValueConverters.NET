@@ -1,5 +1,7 @@
 ﻿using System.Windows.Data;
 
+using FluentAssertions;
+
 using Xunit;
 
 namespace ValueConverters.NetFx.Tests
@@ -9,35 +11,35 @@ namespace ValueConverters.NetFx.Tests
         [Fact]
         public void ShouldConvertTrue()
         {
-            const int trueValue = 42;
-            IValueConverter converter = new ValueToBoolConverter<int> {TrueValue = trueValue};
+            const int TrueValue = 42;
+            IValueConverter converter = new ValueToBoolConverter<int> { TrueValue = TrueValue };
 
-            object result = converter.Convert(trueValue, null, null, null);
+            var result = converter.Convert(TrueValue, null, null, null);
 
-            Assert.True((bool)result);
+            result.Should().Be(true);
         }
 
         [Fact]
         public void ShouldConvertFalse()
         {
-            const int trueValue = 42;
-            IValueConverter converter = new ValueToBoolConverter<int> { TrueValue = trueValue };
-            const int input = trueValue + 1;
+            const int TrueValue = 42;
+            IValueConverter converter = new ValueToBoolConverter<int> { TrueValue = TrueValue };
+            const int Input = TrueValue + 1;
 
-            object result = converter.Convert(input, null, null, null);
+            var result = converter.Convert(Input, null, null, null);
 
-            Assert.False((bool)result);
+            result.Should().Be(false);
         }
 
         [Fact]
         public void ShouldConvertNull()
         {
-            const object trueValue = null;
-            IValueConverter converter = new ValueToBoolConverter<object> {TrueValue = trueValue};
+            const object TrueValue = null;
+            IValueConverter converter = new ValueToBoolConverter<object> { TrueValue = TrueValue };
 
-            object result = converter.Convert(trueValue, null, null, null);
+            var result = converter.Convert(TrueValue, null, null, null);
 
-            Assert.True((bool)result);
+            result.Should().Be(true);
         }
     }
 }
