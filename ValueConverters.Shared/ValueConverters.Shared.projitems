@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Annotations\DisplayAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolNegationConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolToBrushConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BoolToObjectConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolToDoubleConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolToFontWeightConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolToStringConverter.cs" />
