@@ -101,13 +101,6 @@
     <Compile Include="EnumWrapperConverterTests.cs" />
     <Compile Include="EnumToObjectConverterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestData\AppResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="TestData\TestClass.cs" />
-    <Compile Include="TestData\TestEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -117,12 +110,10 @@
       <Project>{efc0655a-c5b8-4b71-b130-3ba06f43287d}</Project>
       <Name>ValueConverters.NetFx</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="TestData\AppResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <ProjectReference Include="..\ValueConverters.Testdata\ValueConverters.Testdata.csproj">
+      <Project>{a9c5ac21-c184-4512-9110-9887eb1303ef}</Project>
+      <Name>ValueConverters.Testdata</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

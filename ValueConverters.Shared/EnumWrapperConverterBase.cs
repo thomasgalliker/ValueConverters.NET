@@ -42,7 +42,7 @@ namespace ValueConverters
                 if (typeInfo.IsGenericType)
                 {
                     var genericType = type.GetGenericArguments()[0];
-                    var enumWrapperList = typeof(EnumWrapperConverterBase<TConverter>).GetMethod("CreateMapperList")
+                    var enumWrapperList = typeof(EnumWrapperConverterBase<TConverter>).GetMethod(nameof(this.CreateMapperList))
                         .MakeGenericMethod(new[] { genericType })
                         .Invoke(this, new[] { value, this.NameStyle });
                     return enumWrapperList;
@@ -51,7 +51,7 @@ namespace ValueConverters
                 throw new ArgumentException("EnumWrapperConverter cannot convert non-generic IEnumerable. Please bind an IEnumerable<T>.");
             }
 
-            var enumWrapper = typeof(EnumWrapperConverterBase<TConverter>).GetMethod("CreateMapper")
+            var enumWrapper = typeof(EnumWrapperConverterBase<TConverter>).GetMethod(nameof(this.CreateMapper))
                     .MakeGenericMethod(new[] { value.GetType() })
                     .Invoke(this, new[] { value, this.NameStyle });
 
@@ -74,7 +74,7 @@ namespace ValueConverters
 
             // If value from source (typically a property in a viewmodel)
             // is already EnumWrapper<T>, no further conversion needs to be done.
-            var enumWrapper = typeof(EnumWrapperConverterBase<TConverter>).GetMethod("ConvertMapper")
+            var enumWrapper = typeof(EnumWrapperConverterBase<TConverter>).GetMethod(nameof(this.ConvertMapper))
                  .MakeGenericMethod(new[] { targetType })
                  .Invoke(this, new[] { value });
 

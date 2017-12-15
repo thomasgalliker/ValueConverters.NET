@@ -5,6 +5,10 @@ using System.Reflection;
 
 using ValueConverters.Annotations;
 
+#if XAMARIN || NETFX_CORE
+using ValueConverters.Extensions;
+#endif
+
 namespace ValueConverters
 {
     public static class EnumWrapper
@@ -71,26 +75,54 @@ namespace ValueConverters
         public override string ToString()
         {
             // TODO: Move this code to where the value is set (e.g. ctor)
-            Type enumType = typeof(TEnumType);
+            var enumType = typeof(TEnumType);
             var fieldInfos = enumType.GetRuntimeFields();
 
             IEnumerable<FieldInfo> info = fieldInfos.Where(x =>
                                                     x.FieldType == enumType &&
-                                                    x.GetValue(this.Value.ToString()).Equals(this.Value));
+                                                    x.GetValue(this.Value.ToString()).Equals(this.Value))
+                                                    .ToList();
             if (info.Any())
             {
-                return info.Select(fieldInfo =>
-                {
-                    var attribute = fieldInfo.GetCustomAttributes<DisplayAttribute>().SingleOrDefault();
-                    if (attribute != null)
+                return (string)info.Select(fieldInfo =>
                     {
-                        return (this.nameStyle == EnumWrapperConverterNameStyle.LongName) ?
-                            attribute.GetName() :
-                            attribute.GetShortName();
-                    }
+                        var attributes = fieldInfo.GetCustomAttributes(true).ToArray();
+                        foreach (var attribute in attributes)
+                        {
+                            var displayAttribute = attribute as DisplayAttribute;
+                            if (displayAttribute != null)
+                            {
+                                if (this.nameStyle == EnumWrapperConverterNameStyle.LongName)
+                                {
+                                    return displayAttribute.GetName();
+                                }
 
-                    return this.Value.ToString();
-                }).Single();
+                                return displayAttribute.GetShortName();
+                            }
+
+                            // HACK: In case the ValueConverters.Forms projects uses a DisplayAttribute from ValueConverters project
+                            if (attribute.GetType().Name == nameof(DisplayAttribute))
+                            {
+                                var displayAttributeType = Assembly.Load(new AssemblyName("ValueConverters")).DefinedTypes.SingleOrDefault(t => t.Name == nameof(DisplayAttribute));
+                                if (displayAttributeType == null)
+                                {
+                                    continue;
+                                }
+
+                                if (this.nameStyle == EnumWrapperConverterNameStyle.LongName)
+                                {
+                                    var getNameMethodInfo = displayAttributeType.GetMethod(nameof(DisplayAttribute.GetName));
+                                    return getNameMethodInfo.Invoke(attribute, new object[] { });
+                                }
+
+                                var getShortNameMethodInfo = displayAttributeType.GetMethod(nameof(DisplayAttribute.GetShortName));
+                                return getShortNameMethodInfo.Invoke(attribute, new object[] { });
+                            }
+                     
+                        }
+
+                        return this.Value.ToString();
+                    }).Single();
             }
 
             return string.Empty;
@@ -156,7 +188,7 @@ namespace ValueConverters
         /// <returns>The converted value.</returns>
         public static implicit operator int(EnumWrapper<TEnumType> enumToConvert)
         {
-            return Convert.ToInt32(enumToConvert.value);
+            return System.Convert.ToInt32(enumToConvert.value);
         }
 
         /// <summary>

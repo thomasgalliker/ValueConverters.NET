@@ -3,8 +3,6 @@ using System.Windows.Data;
 
 using FluentAssertions;
 
-using ValueConverters.NetFx.Tests.TestData;
-
 using Xunit;
 
 namespace ValueConverters.NetFx.Tests

@@ -8,7 +8,7 @@ using GalaSoft.MvvmLight.Command;
 
 using ValueConverters;
 
-using ValueConverterSample.Forms.Model;
+using ValueConverterSample.Model;
 
 using ObservableObject = ValueConverters.ObservableObject;
 

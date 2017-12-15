@@ -1,13 +1,30 @@
 ﻿using System;
 using System.Linq;
 using FluentAssertions;
-using ValueConverters.NetFx.Tests.TestData;
+using ValueConverters.Testdata;
+
 using Xunit;
 
 namespace ValueConverters.NetFx.Tests
 {
     public class EnumWrapperTests
     {
+        [Fact]
+        public void ShouldReturnToString()
+        {
+            // Arrange
+            var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+
+            const string ExpectedLocalizationLorem = "Lorem text";
+
+            // Act
+            var localizedValue = enumWrapper.ToString();
+
+            // Assert
+            localizedValue.Should().Be(ExpectedLocalizationLorem);
+            localizedValue.Should().Be(enumWrapper.LocalizedValue);
+        }
+
         [Fact]
         public void ShouldReturnLocalizedValue()
         {

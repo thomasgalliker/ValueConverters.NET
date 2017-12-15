@@ -37,6 +37,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)IsEmptyConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObservableObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringLengthToBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StringToObjectConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ValueToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ValueToBoolConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringToDecimalConverter.cs" />

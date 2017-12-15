@@ -4,8 +4,7 @@ using System.Linq;
 using System.Windows.Data;
 
 using FluentAssertions;
-
-using ValueConverters.NetFx.Tests.TestData;
+using ValueConverters.Testdata;
 
 using Xunit;
 

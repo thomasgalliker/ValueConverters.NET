@@ -87,17 +87,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\PartyMode.cs" />
-    <Compile Include="Resources\PartyModeResources.Designer.cs">
-      <DependentUpon>PartyModeResources.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Resources\RadioFrequencyResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RadioFrequencyResources.resx</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -105,7 +94,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\RadioFrequency.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -114,20 +102,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Resources\PartyModeResources.de.resx" />
-    <EmbeddedResource Include="Resources\PartyModeResources.fr.resx" />
-    <EmbeddedResource Include="Resources\PartyModeResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>PartyModeResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\PartyModeResources.sv.resx" />
-    <EmbeddedResource Include="Resources\RadioFrequencyResources.de.resx" />
-    <EmbeddedResource Include="Resources\RadioFrequencyResources.fr.resx" />
-    <EmbeddedResource Include="Resources\RadioFrequencyResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>RadioFrequencyResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RadioFrequencyResources.sv.resx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -148,8 +122,14 @@
       <Project>{efc0655a-c5b8-4b71-b130-3ba06f43287d}</Project>
       <Name>ValueConverters.NetFx</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ValueConverterSample.Contracts\ValueConverterSample.Contracts.csproj">
+      <Project>{00e10374-c85b-49e4-9d6b-b1e866d3d0b5}</Project>
+      <Name>ValueConverterSample.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\pause.png" />
     <Resource Include="Resources\Images\play.png" />

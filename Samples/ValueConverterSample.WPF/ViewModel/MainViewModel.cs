@@ -10,7 +10,7 @@ using GalaSoft.MvvmLight.Command;
 
 using ValueConverters;
 
-using ValueConverterSample.WPF.Model;
+using ValueConverterSample.Model;
 
 namespace ValueConverterSample.WPF.ViewModel
 {
