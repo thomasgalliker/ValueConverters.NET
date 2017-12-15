@@ -200,7 +200,7 @@ string resource from the resx file. Following step-by-step instructions show how
     } 
 ``` 
 
-3) Create StringResources.resx and define strings with appropriate keys (e.g. "PartyMode_Off"). 
+3) Create StringResources.resx and define strings with appropriate keys (e.g. "PartyMode__Off"). Make sure PublicResXFileCodeGenerator is used to generate the .Designer.cs file. (If ResXFileCodeGenerator is used, the resource lookup operations may require more time to complete).
 
 4) Create StringResources.resx for other languages (e.g. StringResources.de.resx) and translate all strings accordingly. Use [Multilingual App Toolkit]( https://visualstudiogallery.msdn.microsoft.com/6dab9154-a7e1-46e4-bbfa-18b5e81df520) 
 for easy localization of the defined string resources. 
