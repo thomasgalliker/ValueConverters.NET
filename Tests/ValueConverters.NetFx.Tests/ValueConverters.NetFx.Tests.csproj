@@ -85,6 +85,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="BoolToObjectConverterTests.cs" />
     <Compile Include="IsEmptyConverterTests.cs" />
     <Compile Include="Properties\xunit.assembly.config.cs" />
     <Compile Include="StringToDecimalConverterTests.cs" />

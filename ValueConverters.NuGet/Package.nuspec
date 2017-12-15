@@ -22,11 +22,12 @@
 1.0.6
 - Added StringToDecimalConverter
 - Added ValueToBoolConverter
+- Added BoolToObjectConverter
 
 1.0.5
 - Added IsEmptyConverter to check for empty strings and other IEnumerables
 - Added SingletonConverterBase which provides a static/reusable Instance
-      
+
 1.0.4
 - Cleanup
       
@@ -80,6 +81,11 @@
     </frameworkAssemblies>
   </metadata>
   <files>
+    <!--PCL-->
+    <file src="..\ValueConverters\bin\Release\ValueConverters.dll" target="lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\ValueConverters.dll" />
+    <file src="..\ValueConverters\bin\Release\ValueConverters.pdb" target="lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\ValueConverters.pdb" />
+    <file src="..\ValueConverters\bin\Release\ValueConverters.xml" target="lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\ValueConverters.xml" />
+
     <!--.Net 4.5-->
     <file src="..\ValueConverters.Netfx\bin\Release\ValueConverters.dll" target="lib\net45\ValueConverters.dll" />
     <file src="..\ValueConverters.Netfx\bin\Release\ValueConverters.pdb" target="lib\net45\ValueConverters.pdb" />
