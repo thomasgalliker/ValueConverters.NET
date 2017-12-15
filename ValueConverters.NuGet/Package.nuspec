@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters</id>
-    <version>1.0.7-pre3</version>
+    <version>1.0.7-pre4</version>
     <title>ValueConverters.NET</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -19,6 +19,7 @@
 1.0.7-pre
 - Bug fix in EnumWrapper when resolving Display attribute
 - Added StringToObjectConverter to map from string keys to objects
+- Added NullToBoolConverter
 
 1.0.6
 - Added StringToDecimalConverter
