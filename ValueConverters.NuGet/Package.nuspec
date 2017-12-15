@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters</id>
-    <version>1.0.7-pre4</version>
+    <version>1.0.7-pre5</version>
     <title>ValueConverters.NET</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
