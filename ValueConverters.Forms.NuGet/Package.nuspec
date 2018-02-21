@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters.Forms</id>
-    <version>1.0.7-pre9</version>
+    <version>1.0.7</version>
     <title>ValueConverters.NET for Xamarin.Forms</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/master/LICENSE.txt</licenseUrl>
@@ -13,10 +13,10 @@
     <description>A collection of commonly used IValueConverts for Xamarin.Forms applications.</description>
     <tags>
       xamarin pcl ValueConverters.Forms plugin for IValueConverter valueconverter ValueConverters.Forms UI
-      windows phone winphone wp8 wpa81 win81 windowsphone android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
+      xamarin.android android uwp xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
-1.0.7-pre
+1.0.7
 - Bug fix in EnumWrapper when resolving Display attribute
 - Added NullToBoolConverter
 
