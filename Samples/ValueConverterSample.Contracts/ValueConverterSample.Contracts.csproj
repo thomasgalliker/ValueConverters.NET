@@ -68,8 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ValueConverters, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ValueConverters.1.0.7-pre3\lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\ValueConverters.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\packages\ValueConverters.1.0.7-pre8\lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\ValueConverters.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -70,6 +70,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="ValueConverters, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ValueConverters.1.0.7-pre8\lib\net45\ValueConverters.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
