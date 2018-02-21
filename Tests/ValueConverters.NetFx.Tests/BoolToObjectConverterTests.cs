@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Data;
+﻿using System.Windows.Data;
 using FluentAssertions;
 using Xunit;
 
@@ -8,7 +7,7 @@ namespace ValueConverters.NetFx.Tests
     public class BoolToObjectConverterTests
     {
         [Fact]
-        public void ShouldConvertTrueValue()
+        public void ShouldConvert_ReturnsTrue()
         {
             // Arrange
             const string Value1 = "value 1";
@@ -19,7 +18,7 @@ namespace ValueConverters.NetFx.Tests
                 TrueValue = Value1,
                 FalseValue = Value2
             };
- 
+
             const bool InutValue = true;
 
             // Act
@@ -30,7 +29,7 @@ namespace ValueConverters.NetFx.Tests
         }
 
         [Fact]
-        public void ShouldConvertFalseValue()
+        public void ShouldConvert_ReturnsFalse()
         {
             // Arrange
             const string Value1 = "value 1";
@@ -52,18 +51,43 @@ namespace ValueConverters.NetFx.Tests
         }
 
         [Fact]
-        public void ShouldThrowNotSupportedExceptionOnConvertBack()
+        public void ShouldConvertBack_ReturnsTrue()
         {
             // Arrange
-            IValueConverter boolToObjectConverter = new BoolToObjectConverter();
+            const string Value1 = "value 1";
+            const string Value2 = "value 2";
 
-            const string InutValue = "value";
+            IValueConverter boolToObjectConverter = new BoolToObjectConverter
+            {
+                TrueValue = Value1,
+                FalseValue = Value2
+            };
 
             // Act
-            Action action = () => boolToObjectConverter.ConvertBack(InutValue, null, null, null);
+            var convertedOutput = boolToObjectConverter.ConvertBack(Value1, null, null, null);
 
             // Assert
-            Assert.Throws<NotSupportedException>(action);
+            convertedOutput.Should().Be(true);
+        }
+
+        [Fact]
+        public void ShouldConvertBack_ReturnsFalse()
+        {
+            // Arrange
+            const string Value1 = "value 1";
+            const string Value2 = "value 2";
+
+            IValueConverter boolToObjectConverter = new BoolToObjectConverter
+            {
+                TrueValue = Value1,
+                FalseValue = Value2
+            };
+
+            // Act
+            var convertedOutput = boolToObjectConverter.ConvertBack(Value2, null, null, null);
+
+            // Assert
+            convertedOutput.Should().Be(false);
         }
     }
 }
