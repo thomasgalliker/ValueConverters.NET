@@ -50,7 +50,7 @@ namespace ValueConverters.NetFx.Tests
             Action action = () => { var x = enumWrapper.LocalizedValue;  };
 
             // Assert
-            action.ShouldThrow<InvalidOperationException>();
+            action.Should().Throw<InvalidOperationException>();
         }
 
         [Fact]

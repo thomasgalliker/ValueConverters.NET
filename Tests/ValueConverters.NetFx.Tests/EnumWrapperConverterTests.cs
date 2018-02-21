@@ -38,7 +38,7 @@ namespace ValueConverters.NetFx.Tests
             Action action = () => convertedOutput.ToString();
 
             // Assert
-            action.ShouldThrow<InvalidOperationException>();
+            action.Should().Throw<InvalidOperationException>();
         }
 
         [Fact]
@@ -113,7 +113,7 @@ namespace ValueConverters.NetFx.Tests
             Action action = () => { converter.ConvertBack(inutValue, null, null, null); };
 
             // Assert
-            action.ShouldThrow<ArgumentNullException>();
+            action.Should().Throw<ArgumentNullException>();
         }
     }
 }
