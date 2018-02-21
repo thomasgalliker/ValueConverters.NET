@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters</id>
-    <version>1.0.7-pre8</version>
+    <version>1.0.7-pre9</version>
     <title>ValueConverters.NET</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -20,6 +20,7 @@
 - Bug fix in EnumWrapper when resolving Display attribute
 - Added StringToObjectConverter to map from string keys to objects
 - Added NullToBoolConverter
+- Depricated Windows Phone 8.x support
 
 1.0.6
 - Added StringToDecimalConverter
@@ -72,12 +73,6 @@
       <frameworkAssembly assemblyName="System.Xaml" targetFramework="net45" />
       <frameworkAssembly assemblyName="WindowsBase" targetFramework="net45" />
 
-      <!--Windows Phone 8-->
-  
-      <!--Windows Phone 8.1-->
-  
-      <!--Windows Store-->
-      
       <!--Universal Windows Platform-->
      
     </frameworkAssemblies>
@@ -92,21 +87,6 @@
     <file src="..\ValueConverters.Netfx\bin\Release\ValueConverters.dll" target="lib\net45\ValueConverters.dll" />
     <file src="..\ValueConverters.Netfx\bin\Release\ValueConverters.pdb" target="lib\net45\ValueConverters.pdb" />
     <file src="..\ValueConverters.Netfx\bin\Release\ValueConverters.xml" target="lib\net45\ValueConverters.xml" />
-
-    <!--Windows Phone 8-->
-    <file src="..\ValueConverters.WindowsPhone8\Bin\Release\ValueConverters.dll" target="lib\wp8\ValueConverters.dll" />
-    <file src="..\ValueConverters.WindowsPhone8\Bin\Release\ValueConverters.pdb" target="lib\wp8\ValueConverters.pdb" />
-    <file src="..\ValueConverters.WindowsPhone8\Bin\Release\ValueConverters.xml" target="lib\wp8\ValueConverters.xml" />
-
-    <!--Windows Phone 8.1-->
-    <file src="..\ValueConverters.WindowsPhone81\Bin\Release\ValueConverters.dll" target="lib\wpa81\ValueConverters.dll" />
-    <file src="..\ValueConverters.WindowsPhone81\Bin\Release\ValueConverters.pdb" target="lib\wpa81\ValueConverters.pdb" />
-    <file src="..\ValueConverters.WindowsPhone81\Bin\Release\ValueConverters.xml" target="lib\wpa81\ValueConverters.xml" />
-
-    <!--Windows Store-->
-    <file src="..\ValueConverters.WindowsStore\Bin\Release\ValueConverters.dll" target="lib\win81\ValueConverters.dll" />
-    <file src="..\ValueConverters.WindowsStore\Bin\Release\ValueConverters.pdb" target="lib\win81\ValueConverters.pdb" />
-    <file src="..\ValueConverters.WindowsStore\Bin\Release\ValueConverters.xml" target="lib\win81\ValueConverters.xml" />
 
     <!--Universal Windows Platform-->
     <file src="..\ValueConverters.UWP\bin\Release\ValueConverters.dll" target="lib\uap10.0\ValueConverters.dll" />
