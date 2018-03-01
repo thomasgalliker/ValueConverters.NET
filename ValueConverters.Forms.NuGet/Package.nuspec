@@ -16,6 +16,10 @@
       xamarin.android android uwp xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
+1.0.8-pre
+- Added BoolToImageSourceConverter
+- Added DoubleToBoolConverter, IntegerToBoolConverter, StringToBoolConverter
+
 1.0.7
 - Bug fix in EnumWrapper when resolving Display attribute
 - Added NullToBoolConverter
