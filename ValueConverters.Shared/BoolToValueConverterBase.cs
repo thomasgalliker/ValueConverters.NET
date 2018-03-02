@@ -26,7 +26,7 @@ namespace ValueConverters
 
         public abstract bool IsInverted { get; set; }
 
-        protected sealed override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var returnValue = this.FalseValue;
 
@@ -45,7 +45,7 @@ namespace ValueConverters
             return returnValue;
         }
 
-        protected sealed override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             bool returnValue = false;
 
