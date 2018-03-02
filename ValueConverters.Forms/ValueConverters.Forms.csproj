@@ -39,6 +39,7 @@
     <Compile Include="..\ValueConverters.UWP\Extensions\ReflectionExtensions.cs">
       <Link>Extensions\ReflectionExtensions.cs</Link>
     </Compile>
+    <Compile Include="BoolToGridLengthConverter.cs" />
     <Compile Include="BoolToImageSourceConverter.cs" />
     <Compile Include="BoolToColorConverter.cs" />
     <Compile Include="BoolToFontAttributesConverter.cs" />

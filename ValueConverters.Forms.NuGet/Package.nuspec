@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters.Forms</id>
-    <version>1.0.8-pre2</version>
+    <version>1.0.8-pre3</version>
     <title>ValueConverters.NET for Xamarin.Forms</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/master/LICENSE.txt</licenseUrl>
@@ -16,49 +16,49 @@
       xamarin.android android uwp xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
-1.0.8-pre
-- Added BoolToImageSourceConverter
-- Added DoubleToBoolConverter, IntegerToBoolConverter, StringToBoolConverter
+      1.0.8-pre
+      - Added BoolToImageSourceConverter, BoolToGridLengthConverter
+      - Added DoubleToBoolConverter, IntegerToBoolConverter, StringToBoolConverter
 
-1.0.7
-- Bug fix in EnumWrapper when resolving Display attribute
-- Added NullToBoolConverter
+      1.0.7
+      - Bug fix in EnumWrapper when resolving Display attribute
+      - Added NullToBoolConverter
 
-1.0.6
-- Added StringToDecimalConverter
-- Added ValueToBoolConverter
+      1.0.6
+      - Added StringToDecimalConverter
+      - Added ValueToBoolConverter
 
-1.0.4
-- Fix nuget package dependency problem
-      
-1.0.3
-- Update nuget icon
-      
-1.0.2
-- Added IsEmptyConverter to check for empty strings and other IEnumerables
-- Added SingletonConverterBase which provides a static/reusable Instance
-- Added BoolToColorConverter
+      1.0.4
+      - Fix nuget package dependency problem
 
-1.0.1
-- Extended BoolToValueConverter with IsInverted property
-- Extended EnumWrapper with LocalizedValue property for better INotifyPropertyChanged support
-- Added BoolNegationConverter
-- Added BoolToFontAttributesConverter
-- Added BoolToThicknessConverter
-- Added BoolToVisibilityConverter
-- Added EnumToObjectConverter
-- Added EnumToBoolConverter
-- Added EnumWrapperConverter
-- Added DebugConverter
-- Added StringLengthToBoolConverter
+      1.0.3
+      - Update nuget icon
 
-1.0.0
-- Added BoolToBrushConverter
-- Added BoolToDoubleConverter
-- Added BoolToFontWeightConverter
-- Added BoolToStringConverter
-- Added BoolToValueConverter
-- Added DateTimeConverter
+      1.0.2
+      - Added IsEmptyConverter to check for empty strings and other IEnumerables
+      - Added SingletonConverterBase which provides a static/reusable Instance
+      - Added BoolToColorConverter
+
+      1.0.1
+      - Extended BoolToValueConverter with IsInverted property
+      - Extended EnumWrapper with LocalizedValue property for better INotifyPropertyChanged support
+      - Added BoolNegationConverter
+      - Added BoolToFontAttributesConverter
+      - Added BoolToThicknessConverter
+      - Added BoolToVisibilityConverter
+      - Added EnumToObjectConverter
+      - Added EnumToBoolConverter
+      - Added EnumWrapperConverter
+      - Added DebugConverter
+      - Added StringLengthToBoolConverter
+
+      1.0.0
+      - Added BoolToBrushConverter
+      - Added BoolToDoubleConverter
+      - Added BoolToFontWeightConverter
+      - Added BoolToStringConverter
+      - Added BoolToValueConverter
+      - Added DateTimeConverter
     </releaseNotes>
     <copyright>Copyright 2015</copyright>
     <language>en-US</language>
