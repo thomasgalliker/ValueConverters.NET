@@ -157,7 +157,7 @@ namespace ValueConverters.NetFx.Tests
             Action action = () => { converter.ConvertBack(inutValue, typeof(string), null, null); };
 
             // Assert
-            action.ShouldThrow<InvalidCastException>();
+            action.Should().Throw<InvalidCastException>();
         }
     }
 }
