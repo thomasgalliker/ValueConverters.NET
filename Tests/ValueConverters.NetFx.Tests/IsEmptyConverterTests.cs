@@ -102,7 +102,7 @@ namespace ValueConverters.NetFx.Tests
             Action action = () => converter.ConvertBack(input, null, null, null);
 
             // Assert
-            action.ShouldThrow<NotSupportedException>();
+            action.Should().Throw<NotSupportedException>();
         }
     }
 }

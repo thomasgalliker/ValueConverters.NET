@@ -1,11 +1,11 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.7",
     "MvvmLightLibs": "5.2.0",
-    "ValueConverters": "1.0.7-pre3"
+    "ValueConverters": "1.0.7-pre8"
   },
   "frameworks": {
-    "uap10.0": {}
+    "uap10.0.10240": {}
   },
   "runtimes": {
     "win10-arm": {},
