@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("ValueConverters.NetFx")]
-[assembly: AssemblyCopyright("Copyright © 2017")]
+[assembly: AssemblyCopyright("Copyright © 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -23,4 +23,4 @@ using System.Runtime.InteropServices;
 [assembly: Guid("efc0655a-c5b8-4b71-b130-3ba06f43287d")]
 
 [assembly: AssemblyVersion("1.0.7")]
-[assembly: AssemblyFileVersion("1.0.7-pre5")]
+[assembly: AssemblyFileVersion("1.0.7-pre6")]

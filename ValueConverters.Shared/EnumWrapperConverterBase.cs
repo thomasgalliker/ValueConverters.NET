@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
-
+using System.Runtime.ExceptionServices;
 #if NETFX || WINDOWS_PHONE
 using System.Windows;
 #elif (NETFX_CORE)
@@ -51,9 +51,17 @@ namespace ValueConverters
                 throw new ArgumentException("EnumWrapperConverter cannot convert non-generic IEnumerable. Please bind an IEnumerable<T>.");
             }
 
-            var enumWrapper = typeof(EnumWrapperConverterBase<TConverter>).GetMethod(nameof(this.CreateMapper))
+            object enumWrapper = null;
+            try
+            {
+                enumWrapper = typeof(EnumWrapperConverterBase<TConverter>).GetMethod(nameof(this.CreateMapper))
                     .MakeGenericMethod(new[] { type })
                     .Invoke(this, new[] { value, this.NameStyle });
+            }
+            catch (TargetInvocationException ex)
+            {
+                ExceptionDispatchInfo.Capture(ex.InnerException).Throw();
+            }
 
             return enumWrapper;
         }
@@ -65,18 +73,38 @@ namespace ValueConverters
                 return UnsetValue;
             }
 
+            if (targetType == null)
+            {
+                throw new ArgumentNullException(nameof(targetType), "Argument 'targetType' must not be null");
+            }
+
             var type = value.GetType();
-            if (type == targetType)
+            if (type == targetType || IsNullable(targetType))
             {
                 Debug.WriteLine("EnumWrapperConverter was used to convert between equal types. Consider removing it in this particular situation.");
                 return value;
             }
 
+            // TODO GATH: Check if this exception is required
+            ////if (value is IEnumerable)
+            ////{
+            ////    throw new NotSupportedException("EnumWrapperConverter cannot convert back value of type IEnumerable<T>.");
+            ////}
+
             // If value from source (typically a property in a viewmodel)
             // is already EnumWrapper<T>, no further conversion needs to be done.
-            var enumWrapper = typeof(EnumWrapperConverterBase<TConverter>).GetMethod(nameof(this.ConvertMapper))
-                 .MakeGenericMethod(new[] { targetType })
-                 .Invoke(this, new[] { value });
+
+            object enumWrapper = null;
+            try
+            {
+                enumWrapper = typeof(EnumWrapperConverterBase<TConverter>).GetMethod(nameof(this.ConvertMapper))
+                    .MakeGenericMethod(new[] { targetType })
+                    .Invoke(this, new[] { value });
+            }
+            catch (TargetInvocationException ex)
+            {
+                ExceptionDispatchInfo.Capture(ex.InnerException).Throw();
+            }
 
             return enumWrapper;
         }
@@ -97,6 +125,11 @@ namespace ValueConverters
             {
                 yield return EnumWrapper.CreateWrapper((T)value, nameStyle);
             }
+        }
+
+        private static bool IsNullable(Type type)
+        {
+            return type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
         }
     }
 }

@@ -1,11 +1,9 @@
-﻿using System;
+﻿using FluentAssertions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Data;
-
-using FluentAssertions;
 using ValueConverters.Testdata;
-
 using Xunit;
 
 namespace ValueConverters.NetFx.Tests
@@ -87,6 +85,37 @@ namespace ValueConverters.NetFx.Tests
         }
 
         [Fact]
+        public void ShouldConvertBackIfInputValueIsEnumAndTargetTypeIsNullableEnum()
+        {
+            // Arrange
+            IValueConverter converter = new EnumWrapperConverter();
+
+            const TestEnum InutValue = TestEnum.Lorem;
+
+            // Act
+            var convertedOutput = (TestEnum)converter.ConvertBack(InutValue, typeof(TestEnum?), null, null);
+
+            // Assert
+            convertedOutput.Should().Be(TestEnum.Lorem);
+        }
+
+        [Fact]
+        public void ShouldCreateMapper()
+        {
+            // Arrange
+            var converter = new EnumWrapperConverter();
+
+            const TestEnum InutValue = TestEnum.Lorem;
+
+            // Act
+            var convertedOutput = converter.CreateMapper<TestEnum>(InutValue);
+
+            // Assert
+            convertedOutput.Value.Should().Be(TestEnum.Lorem);
+            convertedOutput.LocalizedValue.Should().Be("Lorem text");
+        }
+
+        [Fact]
         public void ShouldConvertBackIfInputValueIsEnumWrapper()
         {
             // Arrange
@@ -114,6 +143,21 @@ namespace ValueConverters.NetFx.Tests
 
             // Assert
             action.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Fact]
+        public void ShouldThrowInvalidCastExceptionOnConvertBackIfTargetTypeDoesNotMatch()
+        {
+            // Arrange
+            IValueConverter converter = new EnumWrapperConverter();
+
+            var inutValue = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+
+            // Act
+            Action action = () => { converter.ConvertBack(inutValue, typeof(string), null, null); };
+
+            // Assert
+            action.ShouldThrow<InvalidCastException>();
         }
     }
 }
