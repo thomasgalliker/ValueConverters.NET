@@ -52,7 +52,7 @@ namespace ValueConverters
             }
 
             var enumWrapper = typeof(EnumWrapperConverterBase<TConverter>).GetMethod(nameof(this.CreateMapper))
-                    .MakeGenericMethod(new[] { value.GetType() })
+                    .MakeGenericMethod(new[] { type })
                     .Invoke(this, new[] { value, this.NameStyle });
 
             return enumWrapper;
@@ -62,7 +62,7 @@ namespace ValueConverters
         {
             if (value == null)
             {
-                return SingletonConverterBase<TConverter>.UnsetValue;
+                return UnsetValue;
             }
 
             var type = value.GetType();
