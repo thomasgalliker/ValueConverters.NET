@@ -85,21 +85,6 @@ namespace ValueConverters.NetFx.Tests
         }
 
         [Fact]
-        public void ShouldConvertBackIfInputValueIsEnumAndTargetTypeIsNullableEnum()
-        {
-            // Arrange
-            IValueConverter converter = new EnumWrapperConverter();
-
-            const TestEnum InutValue = TestEnum.Lorem;
-
-            // Act
-            var convertedOutput = (TestEnum)converter.ConvertBack(InutValue, typeof(TestEnum?), null, null);
-
-            // Assert
-            convertedOutput.Should().Be(TestEnum.Lorem);
-        }
-
-        [Fact]
         public void ShouldCreateMapper()
         {
             // Arrange
@@ -116,7 +101,7 @@ namespace ValueConverters.NetFx.Tests
         }
 
         [Fact]
-        public void ShouldConvertBackIfInputValueIsEnumWrapper()
+        public void ShouldConvertBackIfInputValueIsEnumWrapper_TargetTypeIsEnum()
         {
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
@@ -128,6 +113,37 @@ namespace ValueConverters.NetFx.Tests
 
             // Assert
             convertedOutput.Should().Be(TestEnum.Lorem);
+        }
+
+        [Fact]
+        public void ShouldConvertBackIfInputValueIsEnumWrapper_TargetTypeIsNullableEnum()
+        {
+            // Arrange
+            IValueConverter converter = new EnumWrapperConverter();
+
+            var inutValue = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+
+            // Act
+            var convertedOutput = (TestEnum?)converter.ConvertBack(inutValue, typeof(TestEnum?), null, null);
+
+            // Assert
+            convertedOutput.Should().NotBeNull();
+            convertedOutput.Should().Be(TestEnum.Lorem);
+        }
+
+        [Fact]
+        public void ShouldConvertBackIfInputValueIsEnumWrapper_TargetTypeIsEnumWrapper()
+        {
+            // Arrange
+            IValueConverter converter = new EnumWrapperConverter();
+
+            var inutValue = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+
+            // Act
+            var convertedOutput = (EnumWrapper<TestEnum>)converter.ConvertBack(inutValue, typeof(EnumWrapper<TestEnum>), null, null);
+
+            // Assert
+            convertedOutput.Should().Be(inutValue);
         }
 
         [Fact]

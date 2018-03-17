@@ -78,12 +78,37 @@ namespace ValueConverters
                 throw new ArgumentNullException(nameof(targetType), "Argument 'targetType' must not be null");
             }
 
+            if (IsNullable(targetType))
+            {
+                targetType = Nullable.GetUnderlyingType(targetType);
+            }
+
             var type = value.GetType();
-            if (type == targetType || IsNullable(targetType))
+            if (type == targetType)
             {
                 Debug.WriteLine("EnumWrapperConverter was used to convert between equal types. Consider removing it in this particular situation.");
                 return value;
             }
+
+            var typeInfo = type.GetTypeInfo();
+            if (typeInfo.IsGenericType && type.GetGenericTypeDefinition() == typeof(EnumWrapper<>) && type.GetGenericArguments()[0] == targetType)
+            {
+                // Unpack EnumWrapper<T> if targetType equals T
+                object enumValue = null;
+                try
+                {
+                    enumValue = typeof(EnumWrapperConverterBase<TConverter>).GetMethod(nameof(this.UnpackEnumWrapper))
+                        .MakeGenericMethod(new[] { targetType })
+                        .Invoke(this, new[] { value });
+                }
+                catch (TargetInvocationException ex)
+                {
+                    ExceptionDispatchInfo.Capture(ex.InnerException).Throw();
+                }
+
+                return enumValue;
+            }
+
 
             // TODO GATH: Check if this exception is required
             ////if (value is IEnumerable)
@@ -117,6 +142,11 @@ namespace ValueConverters
         public EnumWrapper<T> CreateMapper<T>(object value, EnumWrapperConverterNameStyle nameStyle = EnumWrapperConverterNameStyle.LongName)
         {
             return EnumWrapper.CreateWrapper((T)value, nameStyle);
+        }
+
+        public T UnpackEnumWrapper<T>(EnumWrapper<T> value)
+        {
+            return value.Value;
         }
 
         public IEnumerable<EnumWrapper<T>> CreateMapperList<T>(object values, EnumWrapperConverterNameStyle nameStyle = EnumWrapperConverterNameStyle.LongName)
