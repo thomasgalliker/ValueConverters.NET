@@ -89,6 +89,7 @@
     <Compile Include="Properties\xunit.assembly.config.cs" />
     <Compile Include="StringToDecimalConverterTests.cs" />
     <Compile Include="ValueToBoolConverterTests.cs" />
+    <Compile Include="VersionToStringConverterTests.cs" />
     <Compile Include="VisibilityInverterTests.cs" />
     <Compile Include="EnumWrapperTests.cs" />
     <Compile Include="StringLengthToBoolConverterTests.cs" />
