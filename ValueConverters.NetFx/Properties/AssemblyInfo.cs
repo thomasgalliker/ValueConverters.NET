@@ -2,9 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
+
 [assembly: AssemblyTitle("ValueConverters.NetFx")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
@@ -23,4 +21,4 @@ using System.Runtime.InteropServices;
 [assembly: Guid("efc0655a-c5b8-4b71-b130-3ba06f43287d")]
 
 [assembly: AssemblyVersion("1.0.8")]
-[assembly: AssemblyFileVersion("1.0.8-pre6")]
+[assembly: AssemblyFileVersion("1.0.8-pre7")]
