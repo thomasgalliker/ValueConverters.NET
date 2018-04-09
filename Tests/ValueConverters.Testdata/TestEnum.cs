@@ -8,7 +8,7 @@ namespace ValueConverters.Testdata
     public enum TestEnum
     {
         [EnumMember]
-        [Display(Name = "LoremText", ResourceType = typeof(AppResources))]
+        [Display(Name = "LoremText", ShortName = "LoremText_Short", ResourceType = typeof(AppResources))]
         Lorem,
 
         [EnumMember]

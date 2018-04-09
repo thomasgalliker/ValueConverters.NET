@@ -85,7 +85,7 @@ namespace ValueConverters.NetFx.Tests
         }
 
         [Fact]
-        public void ShouldCreateMapper()
+        public void ShouldCreateMapper_LongName()
         {
             // Arrange
             var converter = new EnumWrapperConverter();
@@ -98,6 +98,22 @@ namespace ValueConverters.NetFx.Tests
             // Assert
             convertedOutput.Value.Should().Be(TestEnum.Lorem);
             convertedOutput.LocalizedValue.Should().Be("Lorem text");
+        }
+
+        [Fact]
+        public void ShouldCreateMapper_ShortName()
+        {
+            // Arrange
+            var converter = new EnumWrapperConverter{NameStyle = EnumWrapperConverterNameStyle.LongName};
+
+            const TestEnum InutValue = TestEnum.Lorem;
+
+            // Act
+            var convertedOutput = converter.CreateMapper<TestEnum>(InutValue, EnumWrapperConverterNameStyle.ShortName);
+
+            // Assert
+            convertedOutput.Value.Should().Be(TestEnum.Lorem);
+            convertedOutput.LocalizedValue.Should().Be("Lorem (short)");
         }
 
         [Fact]

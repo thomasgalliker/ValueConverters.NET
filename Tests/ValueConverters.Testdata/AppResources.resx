@@ -123,4 +123,7 @@
   <data name="LoremText" xml:space="preserve">
     <value>Lorem text</value>
   </data>
+  <data name="LoremText_Short" xml:space="preserve">
+    <value>Lorem (short)</value>
+  </data>
 </root>
