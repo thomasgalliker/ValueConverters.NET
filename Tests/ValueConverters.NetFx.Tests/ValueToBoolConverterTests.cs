@@ -89,5 +89,23 @@ namespace ValueConverters.NetFx.Tests
 
             result.Should().Be(TrueValue);
         }
+
+        [Fact]
+        public void ShouldUseBaseWhenConverting()
+        {
+            const int TrueValue = 42;
+            const int FalseValue = 0;
+            IValueConverter converter = new ValueToBoolConverter<int> {
+                TrueValue = TrueValue,
+                FalseValue = FalseValue,
+                BaseOnFalseValue = true,
+            };
+            const int Input = TrueValue + 1;
+
+            var result = converter.Convert(Input, null, null, null);
+
+            result.Should().Be(true);
+
+        }
     }
 }
