@@ -33,6 +33,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConverters.Testdata", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConverterSample.Contracts", "Samples\ValueConverterSample.Contracts\ValueConverterSample.Contracts.csproj", "{00E10374-C85B-49E4-9D6B-B1E866D3D0B5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repo", "Repo", "{6F8E6421-DA91-44F9-BB51-C1699927C09C}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		ValueConverters.Shared\ValueConverters.Shared.projitems*{15371be7-c46d-40ae-bef1-8f44497e696d}*SharedItemsImports = 4
