@@ -62,7 +62,7 @@
 - Added BoolToValueConverter
 - Added DateTimeConverter
     </releaseNotes>
-    <copyright>Copyright 2015</copyright>
+    <copyright>Copyright 2018</copyright>
     <language>en-US</language>
     <dependencies>
       <group>
