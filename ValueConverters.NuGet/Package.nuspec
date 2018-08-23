@@ -2,20 +2,23 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters</id>
-    <version>1.0.8</version>
+    <version>1.0.9-pre1</version>
     <title>ValueConverters.NET</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
     <projectUrl>https://github.com/thomasgalliker/ValueConverters.NET</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/master/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <summary>A collection of commonly used IValueConverts for .NET applications.</summary>
-    <description>A collection of commonly used IValueConverts for .NET applications.</description>
+    <summary>A collection of commonly used IValueConverters for .NET applications.</summary>
+    <description>A collection of commonly used IValueConverters for .NET applications.</description>
     <tags>
       xamarin pcl ValueConverters.Forms plugin for IValueConverter valueconverter ValueConverters.Forms UI
       xamarin.android android uwp xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
+1.0.9-pre
+- Add support for .Net Standard
+
 1.0.8
 - Added DoubleToBoolConverter, IntegerToBoolConverter, StringToBoolConverter
 - EnumWrapperConverter ConvertBack support for Nullable&#60;T&#62;
