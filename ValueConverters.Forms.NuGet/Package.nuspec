@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters.Forms</id>
-    <version>1.0.8-pre7</version>
+    <version>1.0.8</version>
     <title>ValueConverters.NET for Xamarin.Forms</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/master/LICENSE.txt</licenseUrl>
@@ -16,7 +16,7 @@
       xamarin.android android uwp xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
-1.0.8-pre
+1.0.8
 - Added BoolToImageSourceConverter, BoolToGridLengthConverter
 - Added DoubleToBoolConverter, IntegerToBoolConverter, StringToBoolConverter
 - EnumWrapperConverter ConvertBack support for Nullable&#60;T&#62;
