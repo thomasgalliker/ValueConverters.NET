@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>ValueConverters.Forms</AssemblyName>
+    <RootNamespace>ValueConverters</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;XAMARIN</DefineConstants>
+  </PropertyGroup>
+
+  <Import Project="..\ValueConverters.Shared\ValueConverters.Shared.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <Compile Include="..\ValueConverters.UWP\Extensions\ReflectionExtensions.cs" Link="Extensions\ReflectionExtensions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
+</Project>
