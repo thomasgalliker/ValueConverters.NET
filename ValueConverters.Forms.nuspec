@@ -73,7 +73,7 @@
     </dependencies>
   </metadata>
   <files>
-    <!--.Net 4.6-->
+    <!--.Net 4.6.1-->
     <file src="ValueConverters.Forms\bin\Release\net461\ValueConverters.Forms.dll" target="lib\net461\ValueConverters.Forms.dll" />
     <file src="ValueConverters.Forms\bin\Release\net461\ValueConverters.Forms.pdb" target="lib\net461\ValueConverters.Forms.pdb" />
 
@@ -81,9 +81,5 @@
     <file src="ValueConverters.Forms\bin\Release\netstandard1.2\ValueConverters.Forms.dll" target="lib\netstandard1.2\ValueConverters.Forms.dll" />
     <file src="ValueConverters.Forms\bin\Release\netstandard1.2\ValueConverters.Forms.pdb" target="lib\netstandard1.2\ValueConverters.Forms.pdb" />
     <file src="ValueConverters.Forms\bin\Release\netstandard1.2\ValueConverters.Forms.deps.json" target="lib\netstandard1.2\ValueConverters.Forms.deps.json" />
-
-    <file src="tools\init.ps1" target="tools\init.ps1" />
-    <file src="tools\install.ps1" target="tools\install.ps1" />
-    <file src="tools\uninstall.ps1" target="tools\uninstall.ps1" />
   </files>
 </package>
