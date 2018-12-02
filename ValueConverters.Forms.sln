@@ -14,7 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{888519FD-761A-499E-85F2-2AE4268F4257}"
 	ProjectSection(SolutionItems) = preProject
 		ValueConverters.Forms.nuspec = ValueConverters.Forms.nuspec
-		ValueConverters.nuspec = ValueConverters.nuspec
+		ValueConverters.Forms.yml = ValueConverters.Forms.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValueConvertersSample.Forms", "Samples\ValueConvertersSample.Forms\ValueConvertersSample.Forms.csproj", "{F9865DC3-22F7-405F-A7DA-1BAC947C2740}"
