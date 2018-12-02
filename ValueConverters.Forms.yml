@@ -22,6 +22,7 @@ variables:
   solution: 'ValueConverters.Forms.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  buildVersionPostfix: '-pre'
   nuspecFile: 'ValueConverters.Forms.nuspec'
 
 steps:
