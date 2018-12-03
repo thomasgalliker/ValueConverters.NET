@@ -30,8 +30,8 @@ steps:
   displayName: 'Set Assembly Manifest Data'
   inputs:
     FileNames: |
-     ValueConverters.NetFx\Properties\AssemblyInfo.cs
-     ValueConverters.NetStandard\ValueConverters.NetStandard.csproj
+     ValueConverters.NetFx\Properties\AssemblyInfo.cs,
+     ValueConverters.NetStandard\ValueConverters.NetStandard.csproj,
      ValueConverters.UWP\Properties\AssemblyInfo.cs
     InsertAttributes: true
     Title: 'ValueConverters.NET'
