@@ -81,18 +81,18 @@
   </metadata>
   <files>
     <!--.Net 4.5-->
-    <file src="..\ValueConverters.Netfx\bin\Release\ValueConverters.dll" target="lib\net45\ValueConverters.dll" />
-    <file src="..\ValueConverters.Netfx\bin\Release\ValueConverters.pdb" target="lib\net45\ValueConverters.pdb" />
-    <file src="..\ValueConverters.Netfx\bin\Release\ValueConverters.xml" target="lib\net45\ValueConverters.xml" />
+    <file src="ValueConverters.Netfx\bin\Release\ValueConverters.dll" target="lib\net45\ValueConverters.dll" />
+    <file src="ValueConverters.Netfx\bin\Release\ValueConverters.pdb" target="lib\net45\ValueConverters.pdb" />
+    <file src="ValueConverters.Netfx\bin\Release\ValueConverters.xml" target="lib\net45\ValueConverters.xml" />
 
     <!--Universal Windows Platform-->
-    <file src="..\ValueConverters.UWP\bin\Release\ValueConverters.dll" target="lib\uap10.0\ValueConverters.dll" />
-    <file src="..\ValueConverters.UWP\bin\Release\ValueConverters.pdb" target="lib\uap10.0\ValueConverters.pdb" />
-    <file src="..\ValueConverters.UWP\bin\Release\ValueConverters.xml" target="lib\uap10.0\ValueConverters.xml" />
+    <file src="ValueConverters.UWP\bin\Release\ValueConverters.dll" target="lib\uap10.0\ValueConverters.dll" />
+    <file src="ValueConverters.UWP\bin\Release\ValueConverters.pdb" target="lib\uap10.0\ValueConverters.pdb" />
+    <file src="ValueConverters.UWP\bin\Release\ValueConverters.xml" target="lib\uap10.0\ValueConverters.xml" />
 
     <!--Net Standard 1.2-->
-    <file src="..\ValueConverters.NetStandard\bin\Release\netstandard1.2\ValueConverters.dll" target="lib\netstandard1.2\ValueConverters.dll" />
-    <file src="..\ValueConverters.NetStandard\bin\Release\netstandard1.2\ValueConverters.pdb" target="lib\netstandard1.2\ValueConverters.pdb" />
-    <file src="..\ValueConverters.NetStandard\bin\Release\netstandard1.2\ValueConverters.deps.json" target="lib\netstandard1.2\ValueConverters.deps.json" />
+    <file src="ValueConverters.NetStandard\bin\Release\netstandard1.2\ValueConverters.dll" target="lib\netstandard1.2\ValueConverters.dll" />
+    <file src="ValueConverters.NetStandard\bin\Release\netstandard1.2\ValueConverters.pdb" target="lib\netstandard1.2\ValueConverters.pdb" />
+    <file src="ValueConverters.NetStandard\bin\Release\netstandard1.2\ValueConverters.deps.json" target="lib\netstandard1.2\ValueConverters.deps.json" />
   </files>
 </package>
