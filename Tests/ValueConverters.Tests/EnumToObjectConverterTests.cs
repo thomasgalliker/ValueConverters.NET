@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Data;
 using FluentAssertions;
-using ValueConverters.Testdata;
+using ValueConverters.Tests.Testdata;
 using Xunit;
 
 namespace ValueConverters.NetFx.Tests
@@ -29,7 +29,7 @@ namespace ValueConverters.NetFx.Tests
                     { key3, Value3 },
                 }
             };
- 
+
             const TestEnum InutValue = TestEnum.Ipsum;
 
             // Act

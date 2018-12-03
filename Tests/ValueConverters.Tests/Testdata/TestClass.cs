@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace ValueConverters.Testdata
+namespace ValueConverters.Tests.Testdata
 {
     [DataContract]
     public class TestClass

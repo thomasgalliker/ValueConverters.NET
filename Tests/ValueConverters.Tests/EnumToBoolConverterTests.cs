@@ -1,6 +1,5 @@
 ﻿using System.Windows.Data;
-using ValueConverters.Testdata;
-
+using ValueConverters.Tests.Testdata;
 using Xunit;
 
 namespace ValueConverters.NetFx.Tests

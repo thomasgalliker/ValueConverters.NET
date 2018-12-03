@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq;
 using FluentAssertions;
-using ValueConverters.Testdata;
-
+using ValueConverters.Tests.Testdata;
 using Xunit;
 
 namespace ValueConverters.NetFx.Tests
@@ -37,7 +36,7 @@ namespace ValueConverters.NetFx.Tests
             var localizedValue = enumWrapper.LocalizedValue;
 
             // Assert
-           localizedValue.Should().Be(ExpectedLocalizationLorem);
+            localizedValue.Should().Be(ExpectedLocalizationLorem);
         }
 
         [Fact]
@@ -47,7 +46,7 @@ namespace ValueConverters.NetFx.Tests
             var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Ipsum);
 
             // Act
-            Action action = () => { var x = enumWrapper.LocalizedValue;  };
+            Action action = () => { var x = enumWrapper.LocalizedValue; };
 
             // Assert
             action.Should().Throw<InvalidOperationException>();

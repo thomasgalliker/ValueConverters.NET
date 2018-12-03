@@ -1,8 +1,7 @@
 ﻿using System.Runtime.Serialization;
-
 using ValueConverters.Annotations;
 
-namespace ValueConverters.Testdata
+namespace ValueConverters.Tests.Testdata
 {
     [DataContract]
     public enum TestEnum

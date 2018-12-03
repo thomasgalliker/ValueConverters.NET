@@ -1,9 +1,9 @@
-﻿using FluentAssertions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Data;
-using ValueConverters.Testdata;
+using FluentAssertions;
+using ValueConverters.Tests.Testdata;
 using Xunit;
 
 namespace ValueConverters.NetFx.Tests
@@ -104,7 +104,7 @@ namespace ValueConverters.NetFx.Tests
         public void ShouldCreateMapper_ShortName()
         {
             // Arrange
-            var converter = new EnumWrapperConverter{NameStyle = EnumWrapperConverterNameStyle.LongName};
+            var converter = new EnumWrapperConverter { NameStyle = EnumWrapperConverterNameStyle.LongName };
 
             const TestEnum InutValue = TestEnum.Lorem;
 
