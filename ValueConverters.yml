@@ -70,7 +70,7 @@ steps:
   continueOnError: false
   inputs:
     command: test
-    projects: '**/*.Tests.csproj'
+    projects: '**/ValueConverters.Tests.csproj'
     arguments: ''
 
 - task: NuGetCommand@2
