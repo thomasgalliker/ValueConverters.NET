@@ -15,8 +15,30 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\ValueConverters.Forms\ValueConverters.Forms.csproj" />
-    <ProjectReference Include="..\ValueConverterSample.Contracts\ValueConvertersSample.Contracts.csproj" />
-    <ProjectReference Include="..\ValueConvertersSample.Contracts\ValueConvertersSample.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\PartyModeResources.Designer.cs">
+      <DependentUpon>PartyModeResources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\RadioFrequencyResources.Designer.cs">
+      <DependentUpon>RadioFrequencyResources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\PartyModeResources.resx">
+      <LastGenOutput>PartyModeResources.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\RadioFrequencyResources.resx">
+      <LastGenOutput>RadioFrequencyResources.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

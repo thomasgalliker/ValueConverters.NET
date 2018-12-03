@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Input;
 using ValueConverters;
-using ValueConverterSample.Model;
+using ValueConvertersSample.Forms.Model;
 using ObservableObject = ValueConverters.ObservableObject;
 
 namespace ValueConvertersSample.Forms.ViewModels
