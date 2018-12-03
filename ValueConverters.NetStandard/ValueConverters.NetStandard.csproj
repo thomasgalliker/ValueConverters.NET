@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.2</TargetFramework>
+    <AssemblyName>ValueConverters</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\ValueConverters.Shared\Annotations\DisplayAttribute.cs" Link="Annotations\DisplayAttribute.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Annotations\" />
+  </ItemGroup>
+
+</Project>

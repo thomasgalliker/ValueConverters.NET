@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>ValueConverters</id>
+    <version>2.0.0</version>
+    <title>ValueConverters.NET</title>
+    <authors>Thomas Galliker</authors>
+    <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
+    <projectUrl>https://github.com/thomasgalliker/ValueConverters.NET</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/master/logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>A collection of commonly used IValueConverters for .NET applications.</summary>
+    <description>A collection of commonly used IValueConverters for .NET applications.</description>
+    <tags>IValueConverter;ValueConverter;ValueConverters;converter;ValueConverters.Forms;UI;ToValueConverter</tags>
+    <releaseNotes>
+2.0.0-pre
+- Add support for .Net Standard
+
+1.0.8
+- Added DoubleToBoolConverter, IntegerToBoolConverter, StringToBoolConverter
+- EnumWrapperConverter ConvertBack support for Nullable&#60;T&#62;
+- Added VersionToStringConverter with parameter 'fieldCount'
+
+1.0.7
+- Bug fix in EnumWrapper when resolving Display attribute
+- Added StringToObjectConverter to map from string keys to objects
+- Added NullToBoolConverter
+- Depricated Windows Phone 8.x support
+
+1.0.6
+- Added StringToDecimalConverter
+- Added ValueToBoolConverter
+- Added BoolToObjectConverter
+
+1.0.5
+- Added IsEmptyConverter to check for empty strings and other IEnumerables
+- Added SingletonConverterBase which provides a static/reusable Instance
+
+1.0.4
+- Cleanup
+      
+1.0.3
+- Added VisibilityInverter 
+      
+1.0.2
+- Added support for Windows 10 Universal Windows Platform (UWP)
+- Added StringLengthToBoolConverter
+- Extended BoolToValueConverter with IsInverted property
+- Added EnumWrapperConverter to all platforms
+- Extended EnumWrapper with LocalizedValue property for better INotifyPropertyChanged support
+
+1.0.1
+- Added BoolNegationConverter
+- Added BoolToThicknessConverter
+- Added BoolToVisibilityConverter
+- Added EnumToObjectConverter
+- Added EnumWrapperConverter
+- Added EnumToBoolConverter
+- Added DebugConverter
+
+1.0.0
+- Added BoolToBrushConverter
+- Added BoolToDoubleConverter
+- Added BoolToFontWeightConverter
+- Added BoolToStringConverter
+- Added BoolToValueConverter
+- Added DateTimeConverter
+    </releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <language>en-US</language>
+    <dependencies>
+    </dependencies>
+    <frameworkAssemblies>
+      <!--.Net 4.5-->
+      <frameworkAssembly assemblyName="PresentationCore" targetFramework="net45" />
+      <frameworkAssembly assemblyName="PresentationFramework" targetFramework="net45" />
+      <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework="net45" />
+      <frameworkAssembly assemblyName="System.Xaml" targetFramework="net45" />
+      <frameworkAssembly assemblyName="WindowsBase" targetFramework="net45" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <!--.Net 4.5-->
+    <file src="ValueConverters.Netfx\bin\Release\ValueConverters.dll" target="lib\net45\ValueConverters.dll" />
+    <file src="ValueConverters.Netfx\bin\Release\ValueConverters.pdb" target="lib\net45\ValueConverters.pdb" />
+    <file src="ValueConverters.Netfx\bin\Release\ValueConverters.xml" target="lib\net45\ValueConverters.xml" />
+
+    <!--Universal Windows Platform-->
+    <file src="ValueConverters.UWP\bin\Release\ValueConverters.dll" target="lib\uap10.0\ValueConverters.dll" />
+    <file src="ValueConverters.UWP\bin\Release\ValueConverters.pdb" target="lib\uap10.0\ValueConverters.pdb" />
+    <file src="ValueConverters.UWP\bin\Release\ValueConverters.xml" target="lib\uap10.0\ValueConverters.xml" />
+
+    <!--Net Standard 1.2-->
+    <file src="ValueConverters.NetStandard\bin\Release\netstandard1.2\ValueConverters.dll" target="lib\netstandard1.2\ValueConverters.dll" />
+    <file src="ValueConverters.NetStandard\bin\Release\netstandard1.2\ValueConverters.pdb" target="lib\netstandard1.2\ValueConverters.pdb" />
+    <file src="ValueConverters.NetStandard\bin\Release\netstandard1.2\ValueConverters.deps.json" target="lib\netstandard1.2\ValueConverters.deps.json" />
+  </files>
+</package>
