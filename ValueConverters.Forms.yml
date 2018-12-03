@@ -29,7 +29,7 @@ steps:
 - task: bleddynrichards.Assembly-Info-Task.Assembly-Info-Task.Assembly-Info-Task@1
   displayName: 'Set Assembly Manifest Data'
   inputs:
-   FileNames: |
+    FileNames: |
      AssemblyInfo.cs
      ValueConverters.Forms.csproj
     InsertAttributes: true
