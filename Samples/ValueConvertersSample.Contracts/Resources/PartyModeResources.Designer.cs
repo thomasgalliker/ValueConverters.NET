@@ -10,6 +10,7 @@
 
 namespace ValueConvertersSample.Contracts.Resources {
     using System;
+    using System.Reflection;
     
     
     /// <summary>
@@ -39,7 +40,7 @@ namespace ValueConvertersSample.Contracts.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ValueConvertersSample.Contracts.Resources.PartyModeResources", typeof(PartyModeResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ValueConvertersSample.Contracts.Resources.PartyModeResources", typeof(PartyModeResources).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
