@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters.Forms</id>
-    <version>2.0.0-pre1</version>
+    <version>2.0.0</version>
     <title>ValueConverters.NET for Xamarin.Forms</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/master/LICENSE.txt</licenseUrl>
@@ -11,9 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>A collection of commonly used IValueConverters for Xamarin.Forms applications.</summary>
     <description>A collection of commonly used IValueConverters for Xamarin.Forms applications.</description>
-    <tags>
-      xamarin pcl ValueConverters.Forms plugin for IValueConverter valueconverter ValueConverters.Forms UI
-    </tags>
+    <tags>IValueConverter;ValueConverter;ValueConverters;converter;ValueConverters.Forms;UI;ToValueConverter</tags>
     <releaseNotes>
 2.0.0-pre
 - Add support for .Net Standard
