@@ -33,8 +33,8 @@ steps:
      ValueConverters.Forms.csproj
      AssemblyInfo.cs
     InsertAttributes: true
-    Title: 'ValueConverters.Forms'
-    Description: ''
+    Title: 'ValueConverters.NET for Xamarin.Forms'
+    Description: 'A collection of commonly used IValueConverters for Xamarin.Forms applications'
     Company: 'superdev GmbH'
     Copyright: '(c) $(date:yyyy) superdev GmbH'
     VersionNumber: '$(Build.BuildNumber)'
