@@ -70,9 +70,6 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="ValueConverters, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ValueConverters.1.0.7-pre8\lib\net45\ValueConverters.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -125,9 +122,9 @@
       <Project>{efc0655a-c5b8-4b71-b130-3ba06f43287d}</Project>
       <Name>ValueConverters.NetFx</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ValueConverterSample.Contracts\ValueConverterSample.Contracts.csproj">
-      <Project>{00e10374-c85b-49e4-9d6b-b1e866d3d0b5}</Project>
-      <Name>ValueConverterSample.Contracts</Name>
+    <ProjectReference Include="..\ValueConvertersSample.Contracts\ValueConvertersSample.Contracts.csproj">
+      <Project>{6fd6f3cd-8cd5-432e-9de1-4aa4382e1279}</Project>
+      <Name>ValueConvertersSample.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

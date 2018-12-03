@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\ValueConverters.Forms\ValueConverters.Forms.csproj" />
     <ProjectReference Include="..\ValueConverterSample.Contracts\ValueConvertersSample.Contracts.csproj" />
+    <ProjectReference Include="..\ValueConvertersSample.Contracts\ValueConvertersSample.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

@@ -128,6 +128,16 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ValueConverters.UWP\ValueConverters.UWP.csproj">
+      <Project>{15371be7-c46d-40ae-bef1-8f44497e696d}</Project>
+      <Name>ValueConverters.UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ValueConvertersSample.Contracts\ValueConvertersSample.Contracts.csproj">
+      <Project>{6fd6f3cd-8cd5-432e-9de1-4aa4382e1279}</Project>
+      <Name>ValueConvertersSample.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
