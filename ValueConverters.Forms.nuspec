@@ -66,7 +66,8 @@
     <language>en-US</language>
     <dependencies>
       <group>
-        <dependency id="ValueConverters" version="[2.0.18338.1-pre,)" />
+        <dependency id="ValueConverters.Annotations" version="[$version$,)" />
+        <dependency id="ValueConverters" version="[$version$,)" />
         <dependency id="Xamarin.Forms" version="[2.4.0.280,)" />
       </group>
     </dependencies>
