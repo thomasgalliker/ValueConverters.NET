@@ -102,7 +102,7 @@ namespace ValueConverters
 
                             // HACK: In case the ValueConverters.Forms projects uses a DisplayAttribute from ValueConverters project
                             var type = attribute.GetType();
-                            if (type.Name == nameof(DisplayAttribute) && type.Namespace == "ValueConverters.Annotations")
+                            if (type.Name == nameof(DisplayAttribute))
                             {
                                 TypeInfo displayAttributeType = null;
                                 try
