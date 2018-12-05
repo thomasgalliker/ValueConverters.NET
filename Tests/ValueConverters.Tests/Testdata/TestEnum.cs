@@ -18,7 +18,7 @@ namespace ValueConverters.Tests.Testdata
         Dolor, // Test if conversion works without annotation
 
         [TestAnnotations.Display] // Test if handling of third-party DisplayAttribute works
-        Thrid
+        Fourth
     }
 
 
