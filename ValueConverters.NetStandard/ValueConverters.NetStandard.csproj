@@ -5,12 +5,4 @@
     <AssemblyName>ValueConverters</AssemblyName>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="..\ValueConverters.Shared\Annotations\DisplayAttribute.cs" Link="Annotations\DisplayAttribute.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Annotations\" />
-  </ItemGroup>
-
 </Project>

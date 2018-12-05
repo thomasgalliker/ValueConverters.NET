@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
@@ -89,8 +90,7 @@ namespace ValueConverters
                         var attributes = fieldInfo.GetCustomAttributes(true).ToArray();
                         foreach (var attribute in attributes)
                         {
-                            var displayAttribute = attribute as DisplayAttribute;
-                            if (displayAttribute != null)
+                            if (attribute is DisplayAttribute displayAttribute)
                             {
                                 if (this.nameStyle == EnumWrapperConverterNameStyle.LongName)
                                 {
@@ -101,9 +101,20 @@ namespace ValueConverters
                             }
 
                             // HACK: In case the ValueConverters.Forms projects uses a DisplayAttribute from ValueConverters project
-                            if (attribute.GetType().Name == nameof(DisplayAttribute))
+                            var type = attribute.GetType();
+                            if (type.Name == nameof(DisplayAttribute) && type.Namespace == "ValueConverters.Annotations")
                             {
-                                var displayAttributeType = Assembly.Load(new AssemblyName("ValueConverters")).DefinedTypes.SingleOrDefault(t => t.Name == nameof(DisplayAttribute));
+                                TypeInfo displayAttributeType = null;
+                                try
+                                {
+                                    displayAttributeType = Assembly.Load(new AssemblyName("ValueConverters")).DefinedTypes.SingleOrDefault(t => t.Name == nameof(DisplayAttribute));
+                                   
+                                }
+                                catch (Exception ex)
+                                {
+                                    Debug.WriteLine(ex);
+                                }
+
                                 if (displayAttributeType == null)
                                 {
                                     continue;
@@ -117,8 +128,9 @@ namespace ValueConverters
 
                                 var getShortNameMethodInfo = displayAttributeType.GetMethod(nameof(DisplayAttribute.GetShortName));
                                 return getShortNameMethodInfo.Invoke(attribute, new object[] { });
+
                             }
-                     
+
                         }
 
                         return this.Value.ToString();

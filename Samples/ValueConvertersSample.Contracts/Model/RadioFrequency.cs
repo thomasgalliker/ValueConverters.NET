@@ -1,8 +1,7 @@
-﻿
-using ValueConverters.Annotations;
+﻿using ValueConverters.Annotations;
 using ValueConvertersSample.Contracts.Resources;
 
-namespace ValueConverterSample.Model
+namespace ValueConvertersSample.Contracts.Model
 {
     public enum RadioFrequency
     {

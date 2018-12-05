@@ -9,7 +9,6 @@
     <Import_RootNamespace>ValueConverters</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Annotations\DisplayAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolNegationConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolToBrushConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolToObjectConverter.cs" />

@@ -68,6 +68,21 @@ namespace ValueConverters.NetFx.Tests
         }
 
         [Fact]
+        public void ShouldReturnEnumToStringIfInvalidDisplayAttributeIsSet()
+        {
+            // Arrange
+            var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Thrid);
+
+            string expectedLocalizationDolor = TestEnum.Thrid.ToString();
+
+            // Act
+            var localizedValue = enumWrapper.LocalizedValue;
+
+            // Assert
+            localizedValue.Should().Be(expectedLocalizationDolor);
+        }
+
+        [Fact]
         public void ShouldCreateWrappers()
         {
             // Act
