@@ -9,13 +9,12 @@
     <projectUrl>https://github.com/thomasgalliker/ValueConverters.NET</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/master/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <summary>A collection of commonly used IValueConverters for .NET applications.</summary>
-    <description>A collection of commonly used IValueConverters for .NET applications.</description>
-    <tags>IValueConverter;ValueConverter;ValueConverters;converter;ValueConverters.Forms;UI;ToValueConverter</tags>
+    <summary>DisplayAttribute for ValueConverters.NET</summary>
+    <description>DisplayAttribute for ValueConverters.NET</description>
+    <tags>IValueConverter;ValueConverter;ValueConverters;converter;ValueConverters.Forms;UI;ToValueConverter;DisplayAttribute</tags>
     <releaseNotes>
-2.0.0-pre
-- Add support for .Net Standard
-
+2.0.0
+- Initial commit
     </releaseNotes>
     <copyright>Copyright 2018</copyright>
     <language>en-US</language>
@@ -28,7 +27,6 @@
     <!--.Net 4.5-->
     <file src="ValueConverters.Annotations\bin\Release\net45\ValueConverters.Annotations.dll" target="lib\net45\ValueConverters.Annotations.dll" />
     <file src="ValueConverters.Annotations\bin\Release\net45\ValueConverters.Annotations.pdb" target="lib\net45\ValueConverters.Annotations.pdb" />
-    <file src="ValueConverters.Annotations\bin\Release\net45\ValueConverters.Annotations.xml" target="lib\net45\ValueConverters.Annotations.xml" />
   
   <!--Net Standard 1.0-->
     <file src="ValueConverters.Annotations\bin\Release\netstandard1.0\ValueConverters.Annotations.dll" target="lib\netstandard1.0\ValueConverters.Annotations.dll" />
