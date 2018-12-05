@@ -24,6 +24,7 @@ variables:
   buildConfiguration: 'Release'
   buildVersionPostfix: '-pre'
   nuspecFile: 'ValueConverters.nuspec'
+  nuspecFileAnnotations: 'ValueConverters.Annotations.nuspec'
 
 steps:
 - task: bleddynrichards.Assembly-Info-Task.Assembly-Info-Task.Assembly-Info-Task@1
@@ -31,7 +32,7 @@ steps:
   inputs:
     FileNames: |
      AssemblyInfo.cs
-     ValueConverters.NetStandard.csproj
+     ValueConverters.Annotations.csproj
     InsertAttributes: true
     Title: 'ValueConverters.NET'
     Description: 'A collection of commonly used IValueConverters for .NET applications'
@@ -72,6 +73,20 @@ steps:
     projects: '**/ValueConverters.Tests.csproj'
     arguments: ''
 
+    
+- task: NuGetCommand@2
+  displayName: 'Pack NuGet PreRelease Annotations'
+  inputs:
+    command: custom
+    arguments: pack $(nuspecFileAnnotations) -Version $(PackageVersionPre) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
+
+- task: NuGetCommand@2
+  displayName: 'Pack NuGet Prod Annotations'
+  inputs:
+    command: custom
+    arguments: pack $(nuspecFileAnnotations) -Version $(PackageVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
+
+
 - task: NuGetCommand@2
   displayName: 'Pack NuGet PreRelease'
   inputs:
@@ -83,6 +98,7 @@ steps:
   inputs:
     command: custom
     arguments: pack $(nuspecFile) -Version $(PackageVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
+
 
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
