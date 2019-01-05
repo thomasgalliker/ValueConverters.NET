@@ -53,6 +53,10 @@
     <Folder Include="Properties\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ValueConverters.Annotations\ValueConverters.Annotations.csproj" />
+  </ItemGroup>
+
   <Import Project="..\ValueConverters.Shared\ValueConverters.Shared.projitems" Label="Shared" />
 
 </Project>

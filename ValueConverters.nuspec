@@ -69,6 +69,9 @@
     <copyright>Copyright 2018</copyright>
     <language>en-US</language>
     <dependencies>
+      <group>
+        <dependency id="ValueConverters.Annotations" version="[$version$,)" />
+      </group>
     </dependencies>
     <frameworkAssemblies>
       <!--.Net 4.5-->
@@ -89,10 +92,5 @@
     <file src="ValueConverters.UWP\bin\Release\ValueConverters.dll" target="lib\uap10.0\ValueConverters.dll" />
     <file src="ValueConverters.UWP\bin\Release\ValueConverters.pdb" target="lib\uap10.0\ValueConverters.pdb" />
     <file src="ValueConverters.UWP\bin\Release\ValueConverters.xml" target="lib\uap10.0\ValueConverters.xml" />
-
-    <!--Net Standard 1.2-->
-    <file src="ValueConverters.NetStandard\bin\Release\netstandard1.2\ValueConverters.dll" target="lib\netstandard1.2\ValueConverters.dll" />
-    <file src="ValueConverters.NetStandard\bin\Release\netstandard1.2\ValueConverters.pdb" target="lib\netstandard1.2\ValueConverters.pdb" />
-    <file src="ValueConverters.NetStandard\bin\Release\netstandard1.2\ValueConverters.deps.json" target="lib\netstandard1.2\ValueConverters.deps.json" />
   </files>
 </package>

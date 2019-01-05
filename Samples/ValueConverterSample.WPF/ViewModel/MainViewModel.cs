@@ -9,8 +9,7 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 
 using ValueConverters;
-
-using ValueConverterSample.Model;
+using ValueConvertersSample.Contracts.Model;
 
 namespace ValueConverterSample.WPF.ViewModel
 {

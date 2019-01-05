@@ -15,6 +15,7 @@
     <releaseNotes>
 2.0.0-pre
 - Add support for .Net Standard
+- Add ByteToImageSourceConverter to convert between byte[] and Xamarin Forms ImageSource
 
 1.0.8
 - Added BoolToImageSourceConverter, BoolToGridLengthConverter
@@ -66,6 +67,7 @@
     <language>en-US</language>
     <dependencies>
       <group>
+        <dependency id="ValueConverters.Annotations" version="[$version$,)" />
         <dependency id="Xamarin.Forms" version="[2.4.0.280,)" />
       </group>
     </dependencies>
