@@ -17,6 +17,10 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ValueConverters.Shared", "V
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A40B9C6A-925B-455F-A48E-8FD6E62FDB64}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
 		ValueConverters.Annotations.nuspec = ValueConverters.Annotations.nuspec
 		ValueConverters.nuspec = ValueConverters.nuspec
 		ValueConverters.yml = ValueConverters.yml
