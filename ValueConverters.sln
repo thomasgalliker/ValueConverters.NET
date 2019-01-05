@@ -17,6 +17,10 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ValueConverters.Shared", "V
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A40B9C6A-925B-455F-A48E-8FD6E62FDB64}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
 		ValueConverters.Annotations.nuspec = ValueConverters.Annotations.nuspec
 		ValueConverters.nuspec = ValueConverters.nuspec
 		ValueConverters.yml = ValueConverters.yml
@@ -29,14 +33,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConverters.Net45", "ValueConverters.NetFx\ValueConverters.Net45.csproj", "{EFC0655A-C5B8-4B71-B130-3BA06F43287D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValueConverters.Annotations", "ValueConverters.Annotations\ValueConverters.Annotations.csproj", "{B0366D3D-B8B0-4B91-9867-DA88AD68252E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repo", "Repo", "{6F8E6421-DA91-44F9-BB51-C1699927C09C}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		.gitignore = .gitignore
-		LICENSE.txt = LICENSE.txt
-		README.md = README.md
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
