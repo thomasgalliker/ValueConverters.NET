@@ -15,7 +15,7 @@ using Property = Xamarin.Forms.BindableProperty;
 
 namespace ValueConverters
 {
-    public class ValueToBoolConverter<T> : ValueToBoolConverterBase<T, ValueToBoolConverter<T>>
+    public class ValueToBoolConverter<T> : ReversibleValueToBoolConverterBase<T, ValueToBoolConverter<T>>
     {
         public override T TrueValue {
             get
@@ -30,6 +30,20 @@ namespace ValueConverters
 
         public static readonly Property TrueValueProperty =
             PropertyHelper.Create<T, ValueToBoolConverter<T>>(nameof(TrueValue));
+
+        public override T FalseValue {
+            get
+            {
+                return (T)this.GetValue(FalseValueProperty);
+            }
+            set
+            {
+                this.SetValue(FalseValueProperty, value);
+            }
+        }
+
+        public static readonly Property FalseValueProperty =
+            PropertyHelper.Create<T, ValueToBoolConverter<T>>(nameof(FalseValue));
     }
 
     public class ValueToBoolConverter : ValueToBoolConverter<object>
