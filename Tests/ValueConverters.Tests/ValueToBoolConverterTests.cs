@@ -46,7 +46,7 @@ namespace ValueConverters.NetFx.Tests
         public void ShouldConvertTrueBack()
         {
             const int TrueValue = 42;
-            IValueConverter converter = new ValueToBoolConverter<int?>{TrueValue = TrueValue};
+            IValueConverter converter = new ValueToBoolConverter<int?> { TrueValue = TrueValue };
 
             var result = converter.ConvertBack(true, typeof(int?), null, null);
 
@@ -57,7 +57,7 @@ namespace ValueConverters.NetFx.Tests
         public void ShouldConvertFalseBack()
         {
             const int FalseValue = 42;
-            IValueConverter converter = new ValueToBoolConverter<int?>{FalseValue = FalseValue};
+            IValueConverter converter = new ValueToBoolConverter<int?> { FalseValue = FalseValue };
 
             var result = converter.ConvertBack(false, typeof(int?), null, null);
 
@@ -79,7 +79,8 @@ namespace ValueConverters.NetFx.Tests
         {
             const int FalseValue = -42;
             const int TrueValue = 42;
-            IValueConverter converter = new ValueToBoolConverter<int?> {
+            IValueConverter converter = new ValueToBoolConverter<int?>
+            {
                 FalseValue = FalseValue,
                 TrueValue = TrueValue,
                 IsInverted = true,
@@ -95,7 +96,8 @@ namespace ValueConverters.NetFx.Tests
         {
             const int TrueValue = 42;
             const int FalseValue = 0;
-            IValueConverter converter = new ValueToBoolConverter<int> {
+            IValueConverter converter = new ValueToBoolConverter<int>
+            {
                 TrueValue = TrueValue,
                 FalseValue = FalseValue,
                 BaseOnFalseValue = true,
