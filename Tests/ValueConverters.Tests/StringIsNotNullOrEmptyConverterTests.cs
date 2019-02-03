@@ -7,13 +7,13 @@ using Xunit;
 
 namespace ValueConverters.NetFx.Tests
 {
-    public class StringLengthToBoolConverterTests
+    public class StringIsNotNullOrEmptyConverterTests
     {
         [Fact]
         public void ShouldConvertEmptyStringToFalse()
         {
             // Arrange
-            IValueConverter converter = new StringLengthToBoolConverter();
+            IValueConverter converter = new StringIsNotNullOrEmptyConverter();
 
             bool ExpectedValue = false;
             object input = string.Empty;
@@ -25,10 +25,11 @@ namespace ValueConverters.NetFx.Tests
             convertedOutput.Should().Be(ExpectedValue);
         }
 
+        [Fact]
         public void ShouldConvertStringToTrue()
         {
             // Arrange
-            IValueConverter converter = new StringLengthToBoolConverter();
+            IValueConverter converter = new StringIsNotNullOrEmptyConverter();
 
             bool ExpectedValue = true;
             object input = "test";
@@ -44,7 +45,7 @@ namespace ValueConverters.NetFx.Tests
         public void ShouldThrowNotSupportedExceptionOnConvertBack()
         {
             // Arrange
-            IValueConverter converter = new StringLengthToBoolConverter();
+            IValueConverter converter = new StringIsNotNullOrEmptyConverter();
 
             const bool InutValue = true;
 

@@ -15,56 +15,57 @@
     <releaseNotes>
 2.0.0-pre
 - Add support for .Net Standard
+- Rename StringLengthToBoolConverter to StringIsNotNullOrEmptyConverter
 
 1.0.8
-- Added DoubleToBoolConverter, IntegerToBoolConverter, StringToBoolConverter
+- Add DoubleToBoolConverter, IntegerToBoolConverter, StringToBoolConverter
 - EnumWrapperConverter ConvertBack support for Nullable&#60;T&#62;
-- Added VersionToStringConverter with parameter 'fieldCount'
+- Add VersionToStringConverter with parameter 'fieldCount'
 
 1.0.7
 - Bug fix in EnumWrapper when resolving Display attribute
-- Added StringToObjectConverter to map from string keys to objects
-- Added NullToBoolConverter
+- Add StringToObjectConverter to map from string keys to objects
+- Add NullToBoolConverter
 - Depricated Windows Phone 8.x support
 
 1.0.6
-- Added StringToDecimalConverter
-- Added ValueToBoolConverter
-- Added BoolToObjectConverter
+- Add StringToDecimalConverter
+- Add ValueToBoolConverter
+- Add BoolToObjectConverter
 
 1.0.5
-- Added IsEmptyConverter to check for empty strings and other IEnumerables
-- Added SingletonConverterBase which provides a static/reusable Instance
+- Add IsEmptyConverter to check for empty strings and other IEnumerables
+- Add SingletonConverterBase which provides a static/reusable Instance
 
 1.0.4
 - Cleanup
       
 1.0.3
-- Added VisibilityInverter 
+- Add VisibilityInverter 
       
 1.0.2
-- Added support for Windows 10 Universal Windows Platform (UWP)
-- Added StringLengthToBoolConverter
+- Add support for Windows 10 Universal Windows Platform (UWP)
+- Add StringLengthToBoolConverter
 - Extended BoolToValueConverter with IsInverted property
-- Added EnumWrapperConverter to all platforms
+- Add EnumWrapperConverter to all platforms
 - Extended EnumWrapper with LocalizedValue property for better INotifyPropertyChanged support
 
 1.0.1
-- Added BoolNegationConverter
-- Added BoolToThicknessConverter
-- Added BoolToVisibilityConverter
-- Added EnumToObjectConverter
-- Added EnumWrapperConverter
-- Added EnumToBoolConverter
-- Added DebugConverter
+- Add BoolNegationConverter
+- Add BoolToThicknessConverter
+- Add BoolToVisibilityConverter
+- Add EnumToObjectConverter
+- Add EnumWrapperConverter
+- Add EnumToBoolConverter
+- Add DebugConverter
 
 1.0.0
-- Added BoolToBrushConverter
-- Added BoolToDoubleConverter
-- Added BoolToFontWeightConverter
-- Added BoolToStringConverter
-- Added BoolToValueConverter
-- Added DateTimeConverter
+- Add BoolToBrushConverter
+- Add BoolToDoubleConverter
+- Add BoolToFontWeightConverter
+- Add BoolToStringConverter
+- Add BoolToValueConverter
+- Add DateTimeConverter
     </releaseNotes>
     <copyright>Copyright 2018</copyright>
     <language>en-US</language>
