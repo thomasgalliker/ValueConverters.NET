@@ -3,15 +3,15 @@
   <metadata>
     <id>ValueConverters</id>
     <version>2.0.0</version>
-    <title>ValueConverters.NET</title>
+    <title>IValueConverters for WPF</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
     <projectUrl>https://github.com/thomasgalliker/ValueConverters.NET</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/master/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <summary>A collection of commonly used IValueConverters for .NET applications.</summary>
-    <description>A collection of commonly used IValueConverters for .NET applications.</description>
-    <tags>IValueConverter;ValueConverter;ValueConverters;converter;ValueConverters.Forms;UI;ToValueConverter</tags>
+    <summary>A collection of commonly used IValueConverters for WPF applications.</summary>
+    <description>A collection of commonly used IValueConverters for WPF applications.</description>
+    <tags>IValueConverter;ValueConverter;ValueConverters;value;converter;ValueConverters.Forms;UI;WPF;ToValueConverter</tags>
     <releaseNotes>
 2.0.0-pre
 - Add support for .Net Standard
