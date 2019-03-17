@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 using ValueConverters.Annotations;
 
 namespace ValueConverters.Tests.Testdata
@@ -14,6 +15,17 @@ namespace ValueConverters.Tests.Testdata
         [Display(Name = "IpsumText", ResourceType = typeof(AppResources))]
         Ipsum,
 
-        Dolor // Test if conversion works without annotation
+        Dolor, // Test if conversion works without annotation
+
+        [TestAnnotations.Display] // Test if handling of third-party DisplayAttribute works
+        Fourth
     }
+
+
+}
+
+namespace ValueConverters.Tests.Testdata.TestAnnotations
+{
+    public class DisplayAttribute : Attribute
+    { }
 }

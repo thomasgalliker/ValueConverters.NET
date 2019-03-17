@@ -46,6 +46,12 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ValueConverters.Annotations\ValueConverters.Annotations.csproj">
+      <Project>{b0366d3d-b8b0-4b91-9867-da88ad68252e}</Project>
+      <Name>ValueConverters.Annotations</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\ValueConverters.Shared\ValueConverters.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

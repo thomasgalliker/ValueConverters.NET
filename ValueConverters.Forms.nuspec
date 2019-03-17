@@ -3,7 +3,7 @@
   <metadata>
     <id>ValueConverters.Forms</id>
     <version>2.0.0</version>
-    <title>ValueConverters.NET for Xamarin.Forms</title>
+    <title>IValueConverters for Xamarin.Forms</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/master/LICENSE.txt</licenseUrl>
     <projectUrl>https://github.com/thomasgalliker/ValueConverters.NET</projectUrl>
@@ -11,24 +11,26 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>A collection of commonly used IValueConverters for Xamarin.Forms applications.</summary>
     <description>A collection of commonly used IValueConverters for Xamarin.Forms applications.</description>
-    <tags>IValueConverter;ValueConverter;ValueConverters;converter;ValueConverters.Forms;UI;ToValueConverter</tags>
+    <tags>IValueConverter;ValueConverter;ValueConverters;value;converter;ValueConverters.Forms;UI;WPF;ToValueConverter</tags>
     <releaseNotes>
 2.0.0-pre
 - Add support for .Net Standard
+- Rename StringLengthToBoolConverter to StringIsNotNullOrEmptyConverter
+- Add ByteToImageSourceConverter to convert between byte[] and Xamarin Forms ImageSource
 
 1.0.8
-- Added BoolToImageSourceConverter, BoolToGridLengthConverter
-- Added DoubleToBoolConverter, IntegerToBoolConverter, StringToBoolConverter
+- Add BoolToImageSourceConverter, BoolToGridLengthConverter
+- Add DoubleToBoolConverter, IntegerToBoolConverter, StringToBoolConverter
 - EnumWrapperConverter ConvertBack support for Nullable&#60;T&#62;
-- Added VersionToStringConverter with parameter 'fieldCount'
+- Add VersionToStringConverter with parameter 'fieldCount'
       
 1.0.7
 - Bug fix in EnumWrapper when resolving Display attribute
-- Added NullToBoolConverter
+- Add NullToBoolConverter
 
 1.0.6
-- Added StringToDecimalConverter
-- Added ValueToBoolConverter
+- Add StringToDecimalConverter
+- Add ValueToBoolConverter
 
 1.0.4
 - Fix nuget package dependency problem
@@ -37,35 +39,36 @@
 - Update nuget icon
 
 1.0.2
-- Added IsEmptyConverter to check for empty strings and other IEnumerables
-- Added SingletonConverterBase which provides a static/reusable Instance
-- Added BoolToColorConverter
+- Add IsEmptyConverter to check for empty strings and other IEnumerables
+- Add SingletonConverterBase which provides a static/reusable Instance
+- Add BoolToColorConverter
 
 1.0.1
 - Extended BoolToValueConverter with IsInverted property
 - Extended EnumWrapper with LocalizedValue property for better INotifyPropertyChanged support
-- Added BoolNegationConverter
-- Added BoolToFontAttributesConverter
-- Added BoolToThicknessConverter
-- Added BoolToVisibilityConverter
-- Added EnumToObjectConverter
-- Added EnumToBoolConverter
-- Added EnumWrapperConverter
-- Added DebugConverter
-- Added StringLengthToBoolConverter
+- Add BoolNegationConverter
+- Add BoolToFontAttributesConverter
+- Add BoolToThicknessConverter
+- Add BoolToVisibilityConverter
+- Add EnumToObjectConverter
+- Add EnumToBoolConverter
+- Add EnumWrapperConverter
+- Add DebugConverter
+- Add StringLengthToBoolConverter
 
 1.0.0
-- Added BoolToBrushConverter
-- Added BoolToDoubleConverter
-- Added BoolToFontWeightConverter
-- Added BoolToStringConverter
-- Added BoolToValueConverter
-- Added DateTimeConverter
+- Add BoolToBrushConverter
+- Add BoolToDoubleConverter
+- Add BoolToFontWeightConverter
+- Add BoolToStringConverter
+- Add BoolToValueConverter
+- Add DateTimeConverter
     </releaseNotes>
     <copyright>Copyright 2018</copyright>
     <language>en-US</language>
     <dependencies>
       <group>
+        <dependency id="ValueConverters.Annotations" version="[$version$,)" />
         <dependency id="Xamarin.Forms" version="[2.4.0.280,)" />
       </group>
     </dependencies>

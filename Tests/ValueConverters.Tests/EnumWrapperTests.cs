@@ -68,17 +68,33 @@ namespace ValueConverters.NetFx.Tests
         }
 
         [Fact]
+        public void ShouldReturnEnumToStringIfInvalidDisplayAttributeIsSet()
+        {
+            // Arrange
+            var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Fourth);
+
+            string expectedLocalizationFourth = TestEnum.Fourth.ToString();
+
+            // Act
+            var localizedValue = enumWrapper.LocalizedValue;
+
+            // Assert
+            localizedValue.Should().Be(expectedLocalizationFourth);
+        }
+
+        [Fact]
         public void ShouldCreateWrappers()
         {
             // Act
             var enumWrappers = EnumWrapper.CreateWrappers<TestEnum>().ToArray();
 
             // Assert
-            enumWrappers.Should().HaveCount(3);
+            enumWrappers.Should().HaveCount(4);
 
             enumWrappers[0].Value.Should().Be(TestEnum.Lorem);
             enumWrappers[1].Value.Should().Be(TestEnum.Ipsum);
             enumWrappers[2].Value.Should().Be(TestEnum.Dolor);
+            enumWrappers[3].Value.Should().Be(TestEnum.Fourth);
         }
     }
 }

@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Globalization;
-
 #if (NETFX || WINDOWS_PHONE)
 using System.Windows;
 using System.Windows.Data;
 using Property = System.Windows.DependencyProperty;
 
 #elif (NETFX_CORE)
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Data;
 using Property = Windows.UI.Xaml.DependencyProperty;
 
 #elif (XAMARIN)
@@ -25,19 +22,13 @@ namespace ValueConverters
 
         public bool IsInverted
         {
-            get
-            {
-                return (bool)this.GetValue(IsInvertedProperty);
-            }
-            set
-            {
-                this.SetValue(IsInvertedProperty, value);
-            }
+            get { return (bool)this.GetValue(IsInvertedProperty); }
+            set { this.SetValue(IsInvertedProperty, value); }
         }
 
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            T trueValue = this.TrueValue;
+            var trueValue = this.TrueValue;
             return Equals(value, trueValue) ^ this.IsInverted;
         }
 

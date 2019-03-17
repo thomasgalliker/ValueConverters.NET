@@ -30,8 +30,8 @@ steps:
   displayName: 'Set Assembly Manifest Data'
   inputs:
     FileNames: |
-     ValueConverters.Forms.csproj
      AssemblyInfo.cs
+     ValueConverters.Forms.csproj
     InsertAttributes: true
     Title: 'ValueConverters.NET for Xamarin.Forms'
     Description: 'A collection of commonly used IValueConverters for Xamarin.Forms applications'
