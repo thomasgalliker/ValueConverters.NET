@@ -16,6 +16,7 @@
 2.0.0-pre
 - Add support for .Net Standard
 - Rename StringLengthToBoolConverter to StringIsNotNullOrEmptyConverter
+- Add GuidToStringConverter to convert Guid to string (and back)
 
 1.0.8
 - Add DoubleToBoolConverter, IntegerToBoolConverter, StringToBoolConverter

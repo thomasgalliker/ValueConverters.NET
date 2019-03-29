@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)BoolToValueConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConverterBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GuidToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DoubleToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ReversibleValueToBoolConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringToBoolConverter.cs" />
