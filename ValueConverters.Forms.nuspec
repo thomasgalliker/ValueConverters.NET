@@ -17,6 +17,7 @@
 - Add support for .Net Standard
 - Rename StringLengthToBoolConverter to StringIsNotNullOrEmptyConverter
 - Add ByteToImageSourceConverter to convert between byte[] and Xamarin Forms ImageSource
+- Add GuidToStringConverter to convert Guid to string (and back)
 
 1.0.8
 - Add BoolToImageSourceConverter, BoolToGridLengthConverter
