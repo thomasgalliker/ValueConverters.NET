@@ -1,10 +1,7 @@
-﻿
-using System.Windows.Data;
-
+﻿using System.Windows.Data;
 using Xunit;
-using Xunit.Abstractions;
 
-namespace ValueConverters.NetFx.Tests
+namespace ValueConverters.Tests
 {
     public class DebugConverterTests
     {
