@@ -1,6 +1,16 @@
 ﻿using System;
 using System.Globalization;
 
+#if XAMARIN
+using Xamarin.Forms;
+#endif
+
+#if NETFX || WINDOWS_PHONE
+using System.Windows;
+#elif (NETFX_CORE)
+using Windows.UI.Xaml;
+#endif
+
 namespace ValueConverters
 {
     [Obsolete("StringLengthToBoolConverter has been renamed to StringIsNotNullOrEmptyConverter. Please use StringIsNotNullOrEmptyConverter. StringLengthToBoolConverter will be removed in future releases.")]
@@ -8,11 +18,42 @@ namespace ValueConverters
     {
     }
 
-    public class StringIsNotNullOrEmptyConverter : SingletonConverterBase<StringIsNotNullOrEmptyConverter>
+    public class StringIsNotNullOrEmptyConverter : StringIsNullOrEmptyConverter
     {
+        public StringIsNotNullOrEmptyConverter()
+        {
+            IsInverted = true;
+        }
+    }
+
+    public class StringIsNullOrEmptyConverter : SingletonConverterBase<StringIsNotNullOrEmptyConverter>
+    {
+#if XAMARIN
+        public static readonly BindableProperty IsInvertedProperty = BindableProperty.Create(
+            "IsInverted",
+            typeof(bool),
+            typeof(BoolToValueConverter<T>),
+            false);
+#else
+        public static readonly DependencyProperty IsInvertedProperty = DependencyProperty.Register(
+            "IsInverted",
+            typeof(bool),
+            typeof(StringIsNullOrEmptyConverter),
+            new PropertyMetadata(false));
+#endif
+
+        public bool IsInverted
+        {
+            get { return (bool)this.GetValue(IsInvertedProperty); }
+            set { this.SetValue(IsInvertedProperty, value); }
+        }
+
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return !string.IsNullOrEmpty(value as string);
+            if (IsInverted)
+                return !string.IsNullOrEmpty(value as string);
+            else
+                return string.IsNullOrEmpty(value as string);
         }
     }
 }
