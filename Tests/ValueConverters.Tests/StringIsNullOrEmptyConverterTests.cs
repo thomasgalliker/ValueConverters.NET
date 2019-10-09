@@ -1,35 +1,32 @@
 ﻿using System;
 using System.Windows.Data;
+
 using FluentAssertions;
+
 using Xunit;
 
-namespace ValueConverters.Tests
+namespace ValueConverters.NetFx.Tests
 {
-    public class StringIsNotNullOrEmptyConverterTests
+    public class StringIsNullOrEmptyConverterTests
     {
         [Fact]
         public void ShouldConvertEmptyStringToFalse()
         {
             // Arrange
-            IValueConverter converter = new StringIsNotNullOrEmptyConverter();
+            IValueConverter converter = new StringIsNullOrEmptyConverter();
 
-            bool ExpectedValue = false;
-            object input = string.Empty;
-
-            // Act
-            var convertedOutput = converter.Convert(input, null, null, null);
-
-            // Assert
-            convertedOutput.Should().Be(ExpectedValue);
+            // Act & assert
+            converter.Convert(string.Empty, null, null, null).Should().Be(true);
+            converter.Convert(null, null, null, null).Should().Be(true);
         }
 
         [Fact]
-        public void ShouldConvertStringToTrue()
+        public void ShouldConvertStringToFalse()
         {
             // Arrange
-            IValueConverter converter = new StringIsNotNullOrEmptyConverter();
+            IValueConverter converter = new StringIsNullOrEmptyConverter();
 
-            bool ExpectedValue = true;
+            bool ExpectedValue = false;
             object input = "test";
 
             // Act
@@ -43,7 +40,7 @@ namespace ValueConverters.Tests
         public void ShouldThrowNotSupportedExceptionOnConvertBack()
         {
             // Arrange
-            IValueConverter converter = new StringIsNotNullOrEmptyConverter();
+            IValueConverter converter = new StringIsNullOrEmptyConverter();
 
             const bool InutValue = true;
 
