@@ -30,13 +30,13 @@ namespace ValueConverters
     {
 #if XAMARIN
         public static readonly BindableProperty IsInvertedProperty = BindableProperty.Create(
-            "IsInverted",
+            nameof(IsInverted),
             typeof(bool),
-            typeof(BoolToValueConverter<T>),
+            typeof(StringIsNullOrEmptyConverter),
             false);
 #else
         public static readonly DependencyProperty IsInvertedProperty = DependencyProperty.Register(
-            "IsInverted",
+            nameof(IsInverted),
             typeof(bool),
             typeof(StringIsNullOrEmptyConverter),
             new PropertyMetadata(false));
@@ -51,9 +51,11 @@ namespace ValueConverters
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (IsInverted)
+            {
                 return !string.IsNullOrEmpty(value as string);
-            else
-                return string.IsNullOrEmpty(value as string);
+            }
+
+            return string.IsNullOrEmpty(value as string);
         }
     }
 }
