@@ -5,28 +5,28 @@ using Xunit;
 
 namespace ValueConverters.Tests
 {
-    public class SubtractConverterTest
+    public class SubtractConverterTests
     {
         [Fact]
         public void SubtractDoubleIntputTest()
         {
-            // arrange
+            // Arrange
             IValueConverter sut = new SubtractConverter();
 
-            // act
+            // Act
             var result = sut.Convert(4.444, null, 1.111, null);
 
-            // assert
+            // Assert
             result.Should().Be(3.333);
         }
 
         [Fact]
         public void SubtractInvalidIntputTest()
         {
-            // arrange
+            // Arrange
             IValueConverter sut = new SubtractConverter();
 
-            // act & assert
+            // Act & assert
             sut.Convert("foo", null, null, null).Should().Be("foo");
             sut.Convert(4.444, null, null, null).Should().Be(4.444);
             sut.Convert(4.444, null, "foo", null).Should().Be(4.444);
@@ -35,7 +35,7 @@ namespace ValueConverters.Tests
         [Fact]
         public void SubtractStringIntputTest()
         {
-            // arrange
+            // Arrange
             IValueConverter sut = new SubtractConverter();
 
             // act & assert
