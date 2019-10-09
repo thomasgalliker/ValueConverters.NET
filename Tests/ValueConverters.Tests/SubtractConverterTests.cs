@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
 using FluentAssertions;
 using Xunit;
@@ -7,40 +8,60 @@ namespace ValueConverters.Tests
 {
     public class SubtractConverterTests
     {
-        [Fact]
-        public void SubtractDoubleIntputTest()
+        [Theory]
+        [ClassData(typeof(SubtractConverterValidTestdata))]
+        public void ShouldSubtractValidInput(object value, object parameter, CultureInfo culture, object expectedResult)
         {
             // Arrange
-            IValueConverter sut = new SubtractConverter();
+            IValueConverter converter = new SubtractConverter();
 
             // Act
-            var result = sut.Convert(4.444, null, 1.111, null);
+            var result = converter.Convert(value, null, parameter, culture);
 
             // Assert
-            result.Should().Be(3.333);
+            result.Should().Be(expectedResult);
         }
 
-        [Fact]
-        public void SubtractInvalidIntputTest()
+        public class SubtractConverterValidTestdata : TheoryData<object, object, CultureInfo, object>
         {
-            // Arrange
-            IValueConverter sut = new SubtractConverter();
+            public SubtractConverterValidTestdata()
+            {
+                // Integer
+                this.Add(0, 0, CultureInfo.InvariantCulture, 0);
+                this.Add(4, 2, CultureInfo.InvariantCulture, 2);
 
-            // Act & assert
-            sut.Convert("foo", null, null, null).Should().Be("foo");
-            sut.Convert(4.444, null, null, null).Should().Be(4.444);
-            sut.Convert(4.444, null, "foo", null).Should().Be(4.444);
+                // Double
+                this.Add(0d, 1.111d, CultureInfo.InvariantCulture, -1.111d);
+                this.Add(4.444d, 1.111d, CultureInfo.InvariantCulture, 3.333d);
+
+                // String
+                this.Add("4,444", "1,111", new CultureInfo("de-de"), 3.333d);
+                this.Add("4.444", "1.111", new CultureInfo("en-us"), 3.333d);
+            }
         }
 
-        [Fact]
-        public void SubtractStringIntputTest()
+        [Theory]
+        [ClassData(typeof(SubtractConverterInvalidTestdata))]
+        public void ShouldNotSubtractInvalidInput(object value, object parameter, CultureInfo culture, object expectedResult)
         {
             // Arrange
-            IValueConverter sut = new SubtractConverter();
+            IValueConverter converter = new SubtractConverter();
 
-            // act & assert
-            sut.Convert("4,444", null, "1,111", new CultureInfo("de-de")).Should().Be(3.333);
-            sut.Convert("4.444", null, "1.111", new CultureInfo("en-us")).Should().Be(3.333);
+            // Act
+            var result = converter.Convert(value, null, parameter, culture);
+
+            // Assert
+            result.Should().Be(expectedResult);
+        }
+
+        public class SubtractConverterInvalidTestdata : TheoryData<object, object, CultureInfo, object>
+        {
+            public SubtractConverterInvalidTestdata()
+            {
+                this.Add(null, null, CultureInfo.InvariantCulture, DependencyProperty.UnsetValue);
+                this.Add("", "", CultureInfo.InvariantCulture, DependencyProperty.UnsetValue);
+                this.Add("foo", null, CultureInfo.InvariantCulture, DependencyProperty.UnsetValue);
+            }
         }
     }
 }
