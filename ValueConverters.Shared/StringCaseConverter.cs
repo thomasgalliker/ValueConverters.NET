@@ -22,12 +22,20 @@ namespace ValueConverters
 
             if (string.Equals(stringParameter, "U", StringComparison.CurrentCultureIgnoreCase))
             {
+#if WINDOWS_UWP
+                return stringValue.ToUpper();
+#else
                 return stringValue.ToUpper(culture);
+#endif
             }
-            
+
             if (string.Equals(stringParameter, "L", StringComparison.CurrentCultureIgnoreCase))
             {
+#if WINDOWS_UWP
+                return stringValue.ToLower();
+#else
                 return stringValue.ToLower(culture);
+#endif
             }
 
             return stringValue;
