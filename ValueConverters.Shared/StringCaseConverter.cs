@@ -22,7 +22,7 @@ namespace ValueConverters
 
             if (string.Equals(stringParameter, "U", StringComparison.CurrentCultureIgnoreCase))
             {
-#if WINDOWS_UWP
+#if WINDOWS_UWP || XAMARIN
                 return stringValue.ToUpper();
 #else
                 return stringValue.ToUpper(culture);
@@ -31,7 +31,7 @@ namespace ValueConverters
 
             if (string.Equals(stringParameter, "L", StringComparison.CurrentCultureIgnoreCase))
             {
-#if WINDOWS_UWP
+#if WINDOWS_UWP || XAMARIN
                 return stringValue.ToLower();
 #else
                 return stringValue.ToLower(culture);
