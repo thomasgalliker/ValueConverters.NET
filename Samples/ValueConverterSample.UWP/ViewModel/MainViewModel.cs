@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-
-using GalaSoft.MvvmLight.Command;
 
 namespace ValueConverterSample.UWP.ViewModel
 {
@@ -16,14 +13,14 @@ namespace ValueConverterSample.UWP.ViewModel
 
         public MainViewModel()
         {
-            this.EditCommand = new RelayCommand(
+            this.EditCommand = new DelegateCommand(
                 () =>
                     {
                         this.IsEditing = true;
                         this.ChangeDate = DateTime.Now;
                     });
 
-            this.CancelCommand = new RelayCommand(
+            this.CancelCommand = new DelegateCommand(
                 () =>
                 {
                     this.IsEditing = false;
