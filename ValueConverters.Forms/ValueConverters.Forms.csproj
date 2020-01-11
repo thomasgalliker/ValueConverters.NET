@@ -37,8 +37,8 @@
     <Product>ValueConverters.Forms</Product>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <RootNamespace>ValueConverters</RootNamespace>
-    <PackageReleaseNotes>Test</PackageReleaseNotes>
-    <Copyright>Copyright 2018</Copyright>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Copyright>Copyright 2019</Copyright>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">

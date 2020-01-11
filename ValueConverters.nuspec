@@ -13,10 +13,11 @@
     <description>A collection of commonly used IValueConverters for WPF applications.</description>
     <tags>IValueConverter;ValueConverter;ValueConverters;value;converter;ValueConverters.Forms;UI;WPF;ToValueConverter</tags>
     <releaseNotes>
-2.0.0-pre
+2.0.0
 - Add support for .Net Standard
 - Rename StringLengthToBoolConverter to StringIsNotNullOrEmptyConverter
 - Add GuidToStringConverter to convert Guid to string (and back)
+- Add StringCaseConverter for ToUpper and ToLower conversion of strings
 
 1.0.8
 - Add DoubleToBoolConverter, IntegerToBoolConverter, StringToBoolConverter

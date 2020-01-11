@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="ebbf04b3-9924-412a-943b-9ac5e871d01b"
+    Name="38dbc872-f5d0-4a05-9220-873a5b0edd3a"
     Publisher="CN=Thomas"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="ebbf04b3-9924-412a-943b-9ac5e871d01b" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="38dbc872-f5d0-4a05-9220-873a5b0edd3a" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>ValueConverterSample.UWP</DisplayName>

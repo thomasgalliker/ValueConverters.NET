@@ -2,7 +2,6 @@
     x:Class="ValueConverterSample.UWP.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ValueConverterSample.UWP"
-    RequestedTheme="Light">
+    xmlns:local="using:ValueConverterSample.UWP">
 
 </Application>

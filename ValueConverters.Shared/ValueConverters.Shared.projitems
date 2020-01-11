@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)GuidToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DoubleToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ReversibleValueToBoolConverterBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StringCaseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IntegerToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NullToBoolConverter.cs" />
@@ -43,6 +44,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)ObservableObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringIsNotNullOrEmptyConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringToObjectConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AddConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SubtractConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ValueToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ValueToBoolConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringToDecimalConverter.cs" />
