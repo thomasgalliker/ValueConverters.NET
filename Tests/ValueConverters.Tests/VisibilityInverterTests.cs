@@ -1,9 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Data;
-
 using Xunit;
 
-namespace ValueConverters.NetFx.Tests
+namespace ValueConverters.Tests
 {
     public class VisibilityInverterTests
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Globalization;
-
+using System.Reflection;
 #if (NETFX || WINDOWS_PHONE)
 #elif (NETFX_CORE)
 using Windows.UI.Xaml;
@@ -40,7 +40,8 @@ namespace ValueConverters
                 return UnsetValue;
             }
 
-            var key = Enum.GetName(value.GetType(), value);
+            var type = value.GetType();
+            var key = Enum.GetName(type, value);
             return base.Convert(key, targetType, parameter, culture);
         }
     }
