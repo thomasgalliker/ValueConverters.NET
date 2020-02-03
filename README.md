@@ -242,4 +242,4 @@ Windows.UI.Xaml.Data.IValueConverter interface
 
 ### License 
 
-CrossPlatformLibrary is Copyright &copy; 2016 [Thomas Galliker]( https://ch.linkedin.com/in/thomasgalliker). Free for non-commercial use. For commercial use please contact the author. 
+ValueConverters.NET is Copyright &copy; 2019 [Thomas Galliker]( https://ch.linkedin.com/in/thomasgalliker). Free for non-commercial use. For commercial use please contact the author. 

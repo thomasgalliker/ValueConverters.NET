@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
-
 using FluentAssertions;
-
 using Xunit;
 
-namespace ValueConverters.NetFx.Tests
+namespace ValueConverters.Tests
 {
     public class DateTimeConverterTests
     {
