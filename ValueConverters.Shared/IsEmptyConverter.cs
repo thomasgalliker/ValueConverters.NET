@@ -14,6 +14,9 @@ using Windows.UI.Xaml;
 
 namespace ValueConverters
 {
+#if (NETFX || NET_CORE)
+    [System.Windows.Data.ValueConversion(typeof(IEnumerable), typeof(bool))]
+#endif
     public class IsEmptyConverter : SingletonConverterBase<IsEmptyConverter>
     {
 #if XAMARIN

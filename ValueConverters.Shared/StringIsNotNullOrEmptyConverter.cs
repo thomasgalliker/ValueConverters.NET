@@ -8,6 +8,9 @@ namespace ValueConverters
     {
     }
 
+#if (NETFX || NET_CORE)
+    [System.Windows.Data.ValueConversion(typeof(string), typeof(bool))]
+#endif
     public class StringIsNotNullOrEmptyConverter : SingletonConverterBase<StringIsNotNullOrEmptyConverter>
     {
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)

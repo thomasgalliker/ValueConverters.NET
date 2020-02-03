@@ -16,9 +16,9 @@ namespace ValueConverters
     /// <summary>
     /// StringToObjectConverter can be used to select different resources based on given string name.
     /// This can be particularly useful if a string key needs to represent an image on the user interface.
-    /// 
+    ///
     /// Use the Items property to create a ResourceDictionary which contains object-to-string-name mappings.
-    /// 
+    ///
     /// Check out following example:
     /// <example>
     ///    <ResourceDictionary>
@@ -33,6 +33,9 @@ namespace ValueConverters
     [ContentProperty("Items")]
 #elif (NETFX_CORE)
     [ContentProperty(Name = "Items")]
+#endif
+#if (NETFX || NET_CORE)
+    [System.Windows.Data.ValueConversion(typeof(string), typeof(object))]
 #endif
     public class StringToObjectConverter : SingletonConverterBase<StringToObjectConverter>
     {

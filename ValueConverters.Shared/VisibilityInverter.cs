@@ -7,6 +7,9 @@ using Windows.UI.Xaml;
 #if !XAMARIN
 namespace ValueConverters
 {
+#if (NETFX || NET_CORE)
+    [System.Windows.Data.ValueConversion(typeof(Visibility), typeof(Visibility))]
+#endif
     public class VisibilityInverter : BoolToValueConverter<Visibility>
     {
         public VisibilityInverter()

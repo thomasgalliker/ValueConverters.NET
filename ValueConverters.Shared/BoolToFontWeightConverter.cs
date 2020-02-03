@@ -7,6 +7,9 @@ using Windows.UI.Text;
 #if !XAMARIN
 namespace ValueConverters
 {
+#if (NETFX || NET_CORE)
+    [System.Windows.Data.ValueConversion(typeof(bool), typeof(FontWeight))]
+#endif
     public class BoolToFontWeightConverter : BoolToValueConverter<FontWeight>
     {
         public BoolToFontWeightConverter()

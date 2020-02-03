@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using System;
-using System.Collections;
 
 #if XAMARIN
 using Xamarin.Forms;
@@ -14,6 +13,9 @@ using Windows.UI.Xaml;
 
 namespace ValueConverters
 {
+#if (NETFX || NET_CORE)
+    [System.Windows.Data.ValueConversion(typeof(object), typeof(bool))]
+#endif
     public class NullToBoolConverter : SingletonConverterBase<NullToBoolConverter>
     {
 #if XAMARIN

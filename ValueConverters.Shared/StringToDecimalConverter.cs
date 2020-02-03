@@ -3,6 +3,9 @@ using System.Globalization;
 
 namespace ValueConverters
 {
+#if (NETFX || NET_CORE)
+    [System.Windows.Data.ValueConversion(typeof(string), typeof(decimal))]
+#endif
     public class StringToDecimalConverter : SingletonConverterBase<StringToDecimalConverter>
     {
         private static readonly NumberStyles DefaultNumberStyles = NumberStyles.Any;

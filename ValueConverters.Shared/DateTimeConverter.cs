@@ -3,6 +3,7 @@ using Xamarin.Forms;
 #endif
 
 #if NETFX || WINDOWS_PHONE
+using System;
 using System.Windows;
 #elif (NETFX_CORE)
 using Windows.UI.Xaml;
@@ -10,9 +11,12 @@ using Windows.UI.Xaml;
 
 namespace ValueConverters
 {
+#if (NETFX || NET_CORE)
+    [System.Windows.Data.ValueConversion(typeof(DateTime), typeof(string))]
+#endif
     public class DateTimeConverter : DateTimeConverterBase<DateTimeConverter>
     {
-        #if XAMARIN
+#if XAMARIN
         public static readonly BindableProperty FormatProperty = BindableProperty.Create(
             "Format",
             typeof(string),

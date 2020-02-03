@@ -6,10 +6,13 @@ namespace ValueConverters
     /// <summary>
     /// Converts System.Version objects to string. Parameter can be used to limit the number of Version components to return.
     /// [1] Major Version
-    /// [2] Minor Version 
+    /// [2] Minor Version
     /// [3] Build Number
     /// [4] Revision
     /// </summary>
+#if (NETFX || NET_CORE)
+    [System.Windows.Data.ValueConversion(typeof(Version), typeof(string))]
+#endif
     public class VersionToStringConverter : ConverterBase
     {
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)

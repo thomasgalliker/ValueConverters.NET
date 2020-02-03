@@ -2,6 +2,9 @@
 
 namespace ValueConverters
 {
+#if (NETFX || NET_CORE)
+    [System.Windows.Data.ValueConversion(typeof(Guid), typeof(string))]
+#endif
     public class GuidToStringConverter : SingletonConverterBase<GuidToStringConverter>
     {
         public bool ToUpper { get; set; }
