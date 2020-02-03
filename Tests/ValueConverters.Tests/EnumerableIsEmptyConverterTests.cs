@@ -9,13 +9,13 @@ using Xunit;
 
 namespace ValueConverters.NetFx.Tests
 {
-    public class IsEmptyConverterTests
+    public class EnumerableIsEmptyConverterTests
     {
         [Fact]
         public void ShouldConvertStringToIsEmptyBool()
         {
             // Arrange
-            IValueConverter converter = new IsEmptyConverter { IsInverted = false };
+            IValueConverter converter = new EnumerableIsEmptyConverter { IsInverted = false };
 
             const string Input = "test";
             const bool ExpectedValue = false;
@@ -31,7 +31,7 @@ namespace ValueConverters.NetFx.Tests
         public void ShouldConvertEmptyStringToIsEmptyBool()
         {
             // Arrange
-            IValueConverter converter = new IsEmptyConverter { IsInverted = false };
+            IValueConverter converter = new EnumerableIsEmptyConverter { IsInverted = false };
 
             var input = string.Empty;
             const bool ExpectedValue = true;
@@ -47,7 +47,7 @@ namespace ValueConverters.NetFx.Tests
         public void ShouldConvertNullStringToIsEmptyBool()
         {
             // Arrange
-            IValueConverter converter = new IsEmptyConverter { IsInverted = false };
+            IValueConverter converter = new EnumerableIsEmptyConverter { IsInverted = false };
 
             const string Input = null;
             const bool ExpectedValue = true;
@@ -63,7 +63,7 @@ namespace ValueConverters.NetFx.Tests
         public void ShouldConvertIEnumerableToIsEmptyBool()
         {
             // Arrange
-            IValueConverter converter = new IsEmptyConverter { IsInverted = false };
+            IValueConverter converter = new EnumerableIsEmptyConverter { IsInverted = false };
 
             var input = new List<string> { "Pi", "pa", "po" };
             const bool ExpectedValue = false;
@@ -79,7 +79,7 @@ namespace ValueConverters.NetFx.Tests
         public void ShouldConvertIEnumerableToIsEmptyBoolInverted()
         {
             // Arrange
-            IValueConverter converter = new IsEmptyConverter { IsInverted = true };
+            IValueConverter converter = new EnumerableIsEmptyConverter { IsInverted = true };
 
             var input = new List<string> { "Pi", "pa", "po" };
             const bool ExpectedValue = true;
@@ -95,7 +95,7 @@ namespace ValueConverters.NetFx.Tests
         public void ShouldConvertBackIEnumerableToIsEmptyBool()
         {
             // Arrange
-            IValueConverter converter = new IsEmptyConverter();
+            IValueConverter converter = new EnumerableIsEmptyConverter();
             object input = false;
 
             // Act

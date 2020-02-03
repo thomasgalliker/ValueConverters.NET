@@ -26,7 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ReversibleValueToBoolConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IntegerToBoolConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)NullToBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectIsNullConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PropertyHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SingletonConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DateTimeConverter.cs" />
@@ -39,7 +39,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)EnumWrapperConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EnumWrapperConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EnumWrapperConverterNameStyle.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)IsEmptyConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EnumerableIsEmptyConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObservableObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringIsNotNullOrEmptyConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringToObjectConverter.cs" />
