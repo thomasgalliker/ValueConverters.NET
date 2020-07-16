@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)GuidToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DoubleToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ReversibleValueToBoolConverterBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StringCaseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IntegerToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NullToBoolConverter.cs" />

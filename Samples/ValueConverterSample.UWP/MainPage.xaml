@@ -5,13 +5,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:valueConverters="using:ValueConverters"
-    xmlns:viewModel="using:ValueConverterSample.UWP.ViewModel"
+   xmlns:viewModel="using:ValueConverterSample.UWP.ViewModel"
     mc:Ignorable="d">
 
     <Page.DataContext>
         <viewModel:MainViewModel/>
     </Page.DataContext>
-    
+
     <Page.Resources>
         <Style x:Key="TrueStyleTemplate" TargetType="Button">
             <Setter Property="Background" Value="LightGreen" />
