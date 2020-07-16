@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2003
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{4BC4E1B2-CC44-47BB-AFF9-3683622916D3}"
 EndProject
@@ -28,6 +28,7 @@ EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		ValueConverters.Shared\ValueConverters.Shared.projitems*{4d17e49b-5e42-487e-b057-da0d8d364662}*SharedItemsImports = 13
+		ValueConverters.Shared\ValueConverters.Shared.projitems*{5fd5e20e-e679-41a2-a024-9e5d3b43f0e9}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU

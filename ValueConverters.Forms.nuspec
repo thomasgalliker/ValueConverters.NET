@@ -13,11 +13,12 @@
     <description>A collection of commonly used IValueConverters for Xamarin.Forms applications.</description>
     <tags>IValueConverter;ValueConverter;ValueConverters;value;converter;ValueConverters.Forms;UI;WPF;ToValueConverter</tags>
     <releaseNotes>
-2.0.0-pre
-- Add support for .Net Standard
+2.0.0
+- Add support for .NET Standard
 - Rename StringLengthToBoolConverter to StringIsNotNullOrEmptyConverter
 - Add ByteToImageSourceConverter to convert between byte[] and Xamarin Forms ImageSource
 - Add GuidToStringConverter to convert Guid to string (and back)
+- Add BoolToKeyboardConverter to toggle between two keyboard types
 
 1.0.8
 - Add BoolToImageSourceConverter, BoolToGridLengthConverter
@@ -65,7 +66,7 @@
 - Add BoolToValueConverter
 - Add DateTimeConverter
     </releaseNotes>
-    <copyright>Copyright 2018</copyright>
+    <copyright>Copyright 2020</copyright>
     <language>en-US</language>
     <dependencies>
       <group>

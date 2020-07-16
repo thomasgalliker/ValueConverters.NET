@@ -38,7 +38,7 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <RootNamespace>ValueConverters</RootNamespace>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <Copyright>Copyright 2019</Copyright>
+    <Copyright>Copyright 2020</Copyright>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
