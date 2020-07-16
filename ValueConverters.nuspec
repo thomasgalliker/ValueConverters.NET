@@ -14,7 +14,7 @@
     <tags>IValueConverter;ValueConverter;ValueConverters;value;converter;ValueConverters.Forms;UI;WPF;ToValueConverter</tags>
     <releaseNotes>
 2.0.0-pre
-- Add support for .Net Standard
+- Add support for .NET Standard
 - Rename StringLengthToBoolConverter to StringIsNotNullOrEmptyConverter
 - Add GuidToStringConverter to convert Guid to string (and back)
 
@@ -68,7 +68,7 @@
 - Add BoolToValueConverter
 - Add DateTimeConverter
     </releaseNotes>
-    <copyright>Copyright 2018</copyright>
+    <copyright>Copyright 2020</copyright>
     <language>en-US</language>
     <dependencies>
       <group>
