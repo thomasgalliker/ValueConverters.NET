@@ -46,6 +46,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)StringToObjectConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AddConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SubtractConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ValueConverterGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ValueToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ValueToBoolConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringToDecimalConverter.cs" />
