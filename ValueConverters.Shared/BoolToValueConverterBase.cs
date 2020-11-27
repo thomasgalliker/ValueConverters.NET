@@ -30,15 +30,15 @@ namespace ValueConverters
         {
             var returnValue = this.FalseValue;
 
-            if (value is bool)
+            if (value is bool boolValue)
             {
                 if (this.IsInverted)
                 {
-                    returnValue = (bool)value ? this.FalseValue : this.TrueValue;
+                    returnValue = boolValue ? this.FalseValue : this.TrueValue;
                 }
                 else
                 {
-                    returnValue = (bool)value ? this.TrueValue : this.FalseValue;
+                    returnValue = boolValue ? this.TrueValue : this.FalseValue;
                 }
             }
 
