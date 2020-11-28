@@ -81,6 +81,11 @@ steps:
   displayName: 'Use NuGet 5.x'
   inputs:
     versionSpec: 5.x
+    
+- task: NuGetCommand@2
+  displayName: 'NuGet restore'
+  inputs:
+    restoreSolution: '$(solution)'
 
 - powershell: |
    Write-Host "##vso[task.setvariable variable=PackageVersion]$(Build.BuildNumber)"
