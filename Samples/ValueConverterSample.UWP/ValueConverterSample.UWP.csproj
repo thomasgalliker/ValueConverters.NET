@@ -153,12 +153,12 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.9</Version>
+      <Version>6.2.11</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ValueConverters.UWP\ValueConverters.UWP.csproj">
-      <Project>{15371be7-c46d-40ae-bef1-8f44497e696d}</Project>
+      <Project>{06819ef7-950f-46a8-9fb9-2807af1090d0}</Project>
       <Name>ValueConverters.UWP</Name>
     </ProjectReference>
   </ItemGroup>
