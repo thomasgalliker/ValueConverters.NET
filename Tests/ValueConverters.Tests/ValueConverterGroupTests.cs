@@ -48,7 +48,7 @@ namespace ValueConverters.Tests
             public ValueConverterGroupValidTestdata()
             {
                 // Empty converters list
-                this.Add(null, null, null, CultureInfo.InvariantCulture, null);
+                this.Add(null, null, null, CultureInfo.InvariantCulture, ConverterBase.UnsetValue);
                 this.Add(new List<IValueConverter>(), null, null, CultureInfo.InvariantCulture, null);
                
                 // Sequence of add/subtract converters

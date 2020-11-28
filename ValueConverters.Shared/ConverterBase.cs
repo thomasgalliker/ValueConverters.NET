@@ -75,9 +75,9 @@ namespace ValueConverters
 #endif
 
 #if XAMARIN
-        protected static readonly object UnsetValue = null;
+        public static readonly object UnsetValue = null;
 #else
-        protected static readonly object UnsetValue = DependencyProperty.UnsetValue;
+        public static readonly object UnsetValue = DependencyProperty.UnsetValue;
 #endif
 
     }
