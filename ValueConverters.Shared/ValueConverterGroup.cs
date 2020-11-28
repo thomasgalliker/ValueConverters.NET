@@ -16,8 +16,8 @@ using Xamarin.Forms;
 namespace ValueConverters
 {
     /// <summary>
-    /// Value converters which aggregates the results of a sequence of converters.
-    /// Converter1 >> Converter2 >> Converter3
+    /// Value converters which aggregates the results of a sequence of converters: Converter1 >> Converter2 >> Converter3
+    /// The output of converter N becomes the input of converter N+1.
     /// </summary>
 #if (NETFX || WINDOWS_PHONE)
     [ContentProperty(nameof(Converters))]
@@ -30,12 +30,12 @@ namespace ValueConverters
 
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return this.Converters.Aggregate(value, (current, converter) => converter.Convert(current, targetType, parameter, culture));
+            return this.Converters?.Aggregate(value, (current, converter) => converter.Convert(current, targetType, parameter, culture));
         }
 
         protected override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return this.Converters.Reverse<IValueConverter>().Aggregate(value, (current, converter) => converter.Convert(current, targetType, parameter, culture));
+            return this.Converters?.Reverse<IValueConverter>().Aggregate(value, (current, converter) => converter.Convert(current, targetType, parameter, culture));
         }
     }
 }
