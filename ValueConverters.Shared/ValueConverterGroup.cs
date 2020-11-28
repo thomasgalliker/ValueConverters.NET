@@ -4,11 +4,12 @@ using System.Globalization;
 using System.Linq;
 
 #if (NETFX || WINDOWS_PHONE)
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
 #elif (NETFX_CORE)
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Markup;
+using Windows.UI.Xaml.Data;
 #elif (XAMARIN)
 using Xamarin.Forms;
 #endif
@@ -19,7 +20,7 @@ namespace ValueConverters
     /// Value converters which aggregates the results of a sequence of converters: Converter1 >> Converter2 >> Converter3
     /// The output of converter N becomes the input of converter N+1.
     /// </summary>
-#if (NETFX || WINDOWS_PHONE)
+#if (NETFX || XAMARIN || WINDOWS_PHONE)
     [ContentProperty(nameof(Converters))]
 #elif (NETFX_CORE)
     [ContentProperty(Name = nameof(Converters))]
