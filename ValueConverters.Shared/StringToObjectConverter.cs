@@ -29,10 +29,10 @@ namespace ValueConverters
     /// </example>
     /// Source: http://stackoverflow.com/questions/2787725/how-to-display-different-enum-icons-using-xaml-only
     /// </summary>
-#if (NETFX || WINDOWS_PHONE)
-    [ContentProperty("Items")]
+#if (NETFX || XAMARIN || WINDOWS_PHONE)
+    [ContentProperty(nameof(Items))]
 #elif (NETFX_CORE)
-    [ContentProperty(Name = "Items")]
+    [ContentProperty(Name = nameof(Items))]
 #endif
     public class StringToObjectConverter : SingletonConverterBase<StringToObjectConverter>
     {

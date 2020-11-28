@@ -21,6 +21,7 @@ namespace ValueConverterSample.WPF.ViewModel
         private EnumWrapper<RadioFrequency> radioFrequency;
         private PartyMode selectedPartyMode;
         private CultureInfo selectedLanguage;
+        private string userName;
 
         public MainViewModel()
         {
@@ -69,12 +70,19 @@ namespace ValueConverterSample.WPF.ViewModel
                     });
         }
 
+        public string UserName
+        {
+            get => this.userName;
+            set
+            {
+                this.userName = value;
+                this.OnPropertyChanged(() => this.UserName);
+            }
+        }
+        
         public bool IsEditing
         {
-            get
-            {
-                return this.isEditing;
-            }
+            get => this.isEditing;
             set
             {
                 this.isEditing = value;
