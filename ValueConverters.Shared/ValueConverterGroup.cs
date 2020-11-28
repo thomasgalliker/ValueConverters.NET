@@ -32,12 +32,32 @@ namespace ValueConverters
 
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return this.Converters?.Aggregate(value, (current, converter) => converter.Convert(current, targetType, parameter, culture));
+            if (this.Converters is IEnumerable<IValueConverter> converters)
+            {
+#if NETFX_CORE
+                var language = culture?.ToString();
+#else
+                var language = culture;
+#endif
+                return converters.Aggregate(value, (current, converter) => converter.Convert(current, targetType, parameter, language));
+            }
+
+            return UnsetValue;
         }
 
         protected override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return this.Converters?.Reverse<IValueConverter>().Aggregate(value, (current, converter) => converter.Convert(current, targetType, parameter, culture));
+            if (this.Converters is IEnumerable<IValueConverter> converters)
+            {
+#if NETFX_CORE
+                var language = culture?.ToString();
+#else
+                var language = culture;
+#endif
+                return converters.Reverse<IValueConverter>().Aggregate(value, (current, converter) => converter.Convert(current, targetType, parameter, language));
+            }
+
+            return UnsetValue;
         }
     }
 }

@@ -42,15 +42,36 @@ namespace ValueConverters
             return this.ConvertBack(value, targetType, parameter, culture);
         }
 #elif (NETFX_CORE)
-        object IValueConverter.Convert(object value, Type targetType, object parameter, string culture)
+        [DebuggerStepThrough]
+        object IValueConverter.Convert(object value, Type targetType, object parameter, string language)
         {
-            return this.Convert(value, targetType, parameter, new CultureInfo(culture));
+            var cultureInfo = TryGetCultureInfo(language);
+            return this.Convert(value, targetType, parameter, cultureInfo);
         }
 
-        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, string culture)
+        [DebuggerStepThrough]
+        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            return this.ConvertBack(value, targetType, parameter, new CultureInfo(culture));
+            var cultureInfo = TryGetCultureInfo(language);
+            return this.ConvertBack(value, targetType, parameter, cultureInfo);
         }
+
+        private static CultureInfo TryGetCultureInfo(string language)
+        {
+            if (string.IsNullOrEmpty(language))
+            {
+                try
+                {
+                    return new CultureInfo(language);
+                }
+                catch
+                {
+                }
+            }
+
+            return CultureInfo.CurrentUICulture;
+        }
+
 #endif
 
 #if XAMARIN
