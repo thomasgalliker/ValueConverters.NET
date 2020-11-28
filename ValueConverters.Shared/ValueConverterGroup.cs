@@ -10,6 +10,7 @@ using System.Windows.Markup;
 #elif (NETFX_CORE)
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Markup;
 #elif (XAMARIN)
 using Xamarin.Forms;
 #endif
