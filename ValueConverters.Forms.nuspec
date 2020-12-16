@@ -16,6 +16,7 @@
 2.1.x
 - Fix null reference exception in UWP (language to cultureinfo conversion)
 - Add ValueConverterGroup for piped IValueConverter sequences
+- Add ItemTappedEventArgsConverter to extract selected item from ItemTappedEventArgs
 
 2.0.0
 - Add support for .NET Standard
