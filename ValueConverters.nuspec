@@ -16,6 +16,8 @@
 2.1.x
 - Fix null reference exception in UWP (language to cultureinfo conversion)
 - Add ValueConverterGroup for piped IValueConverter sequences
+- Add FirstOrDefaultConverter to extract first or default object from IEnumerable
+- Add ValueToEnumerableConverter to wrap value into IEnumerable
 
 2.0.0-pre
 - Add support for .NET Standard
