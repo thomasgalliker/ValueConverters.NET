@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using System;
-using System.Collections;
 
 #if XAMARIN
 using Xamarin.Forms;
@@ -14,7 +13,12 @@ using Windows.UI.Xaml;
 
 namespace ValueConverters
 {
-    public class NullToBoolConverter : SingletonConverterBase<NullToBoolConverter>
+    [Obsolete("NullToBoolConverter has been renamed to ObjectIsNullConverter. Please use ObjectIsNullConverter. NullToBoolConverter will be removed in future releases.")]
+    public class NullToBoolConverter : ObjectIsNullConverter
+    {
+    }
+
+    public class ObjectIsNullConverter : SingletonConverterBase<ObjectIsNullConverter>
     {
 #if XAMARIN
         public static readonly BindableProperty IsInvertedProperty = BindableProperty.Create(
@@ -26,7 +30,7 @@ namespace ValueConverters
         public static readonly DependencyProperty IsInvertedProperty = DependencyProperty.Register(
             nameof(IsInverted),
             typeof(bool),
-            typeof(NullToBoolConverter),
+            typeof(ObjectIsNullConverter),
             new PropertyMetadata(false));
 #endif
 
