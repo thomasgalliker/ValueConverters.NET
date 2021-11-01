@@ -98,9 +98,9 @@
     <file src="ValueConverters.Netfx\bin\Release\ValueConverters.xml" target="lib\net45\ValueConverters.xml" />
 
     <!--.NET 5.0-->
-    <file src="ValueConverters.WPF\bin\Release\net5.0-windows\ValueConverters.dll" target="lib\net5.0-windows\ValueConverters.dll" />
-    <file src="ValueConverters.WPF\bin\Release\net5.0-windows\ValueConverters.pdb" target="lib\net5.0-windows\ValueConverters.pdb" />
-    <file src="ValueConverters.WPF\bin\Release\net5.0-windows\ValueConverters.xml" target="lib\net5.0-windows\ValueConverters.xml" />
+    <file src="ValueConverters.WPF\bin\Release\net5.0-windows\ValueConverters.dll" target="lib\net5.0-windows7\ValueConverters.dll" />
+    <file src="ValueConverters.WPF\bin\Release\net5.0-windows\ValueConverters.pdb" target="lib\net5.0-windows7\ValueConverters.pdb" />
+    <file src="ValueConverters.WPF\bin\Release\net5.0-windows\ValueConverters.xml" target="lib\net5.0-windows7\ValueConverters.xml" />
 
     <!--UWP-->
     <file src="ValueConverters.UWP\bin\Release\ValueConverters.dll" target="lib\uap10.0\ValueConverters.dll" />
