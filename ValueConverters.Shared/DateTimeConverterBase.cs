@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-#if NETFX || WINDOWS_PHONE
+#if NETFX || NET5_0_OR_GREATER
 using System.Windows;
 using System.Windows.Data;
 #elif (NETFX_CORE)
@@ -18,21 +18,18 @@ namespace ValueConverters
         protected const string DefaultMinValueString = "";
 
         public abstract string Format { get; set; }
+
         public abstract string MinValueString { get; set; }
 
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null)
+            if (value is DateTime dateTime)
             {
-                if (value is DateTime)
+                if (dateTime == DateTime.MinValue)
                 {
-                    var dateTime = (DateTime)value;
-                    if (dateTime == DateTime.MinValue)
-                    {
-                        return this.MinValueString;
-                    }
-                    return dateTime.ToLocalTime().ToString(this.Format, culture);
+                    return this.MinValueString;
                 }
+                return dateTime.ToLocalTime().ToString(this.Format, culture);
             }
 
             return UnsetValue;
@@ -42,15 +39,13 @@ namespace ValueConverters
         {
             if (value != null)
             {
-                if (value is DateTime)
+                if (value is DateTime dateTime)
                 {
-                    return (DateTime)value;
+                    return dateTime;
                 }
-                var str = value as string;
-                if (str != null)
+                if (value is string str)
                 {
-                    DateTime resultDateTime;
-                    DateTime.TryParse(str, out resultDateTime);
+                    DateTime.TryParse(str, out var resultDateTime);
                     return resultDateTime;
                 }
             }

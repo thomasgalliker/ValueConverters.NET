@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters</id>
-    <version>2.0.0</version>
+    <version>1.0.0</version>
     <title>IValueConverters for WPF</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -92,12 +92,17 @@
     </frameworkAssemblies>
   </metadata>
   <files>
-    <!--.Net 4.5-->
+    <!--.NET Framework 4.5-->
     <file src="ValueConverters.Netfx\bin\Release\ValueConverters.dll" target="lib\net45\ValueConverters.dll" />
     <file src="ValueConverters.Netfx\bin\Release\ValueConverters.pdb" target="lib\net45\ValueConverters.pdb" />
     <file src="ValueConverters.Netfx\bin\Release\ValueConverters.xml" target="lib\net45\ValueConverters.xml" />
 
-    <!--Universal Windows Platform-->
+    <!--.NET 5.0-->
+    <file src="ValueConverters.WPF\bin\Release\net5.0-windows\ValueConverters.dll" target="lib\net5.0-windows\ValueConverters.dll" />
+    <file src="ValueConverters.WPF\bin\Release\net5.0-windows\ValueConverters.pdb" target="lib\net5.0-windows\ValueConverters.pdb" />
+    <file src="ValueConverters.WPF\bin\Release\net5.0-windows\ValueConverters.xml" target="lib\net5.0-windows\ValueConverters.xml" />
+
+    <!--UWP-->
     <file src="ValueConverters.UWP\bin\Release\ValueConverters.dll" target="lib\uap10.0\ValueConverters.dll" />
     <file src="ValueConverters.UWP\bin\Release\ValueConverters.pdb" target="lib\uap10.0\ValueConverters.pdb" />
     <file src="ValueConverters.UWP\bin\Release\ValueConverters.xml" target="lib\uap10.0\ValueConverters.xml" />

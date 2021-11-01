@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-#if (NETFX || WINDOWS_PHONE)
+#if (NETFX || NET5_0_OR_GREATER)
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
@@ -21,7 +21,7 @@ namespace ValueConverters
     /// Value converters which aggregates the results of a sequence of converters: Converter1 >> Converter2 >> Converter3
     /// The output of converter N becomes the input of converter N+1.
     /// </summary>
-#if (NETFX || XAMARIN || WINDOWS_PHONE)
+#if (NETFX || XAMARIN || NET5_0_OR_GREATER)
     [ContentProperty(nameof(Converters))]
 #elif (NETFX_CORE)
     [ContentProperty(Name = nameof(Converters))]

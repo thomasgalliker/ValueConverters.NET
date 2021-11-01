@@ -56,7 +56,8 @@
         <valueConverters:DateTimeConverter
             x:Key="DateTimeConverter"
             Format="d"
-            MinValueString="---" />
+            MinValueString="---"
+            PreferredCulture="CurrentUICulture"/>
         <valueConverters:DebugConverter x:Key="DebugConverter" />
         <valueConverters:EnumToBoolConverter x:Key="EnumToBoolConverter" />
         <valueConverters:EnumToObjectConverter x:Key="EnumToObjectConverter">

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-#if NETFX || WINDOWS_PHONE
+#if NETFX || NET5_0_OR_GREATER
 using System.Windows;
 #elif (NETFX_CORE)
 using Windows.UI.Xaml;
@@ -17,31 +17,29 @@ namespace ValueConverters
     {
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var parameterString = parameter as string;
-            if (parameterString == null)
+            if (parameter is string parameterString)
             {
-                return UnsetValue;
+                if (Enum.IsDefined(value.GetType(), value) == false)
+                {
+                    return UnsetValue;
+                }
+
+                var parameterValue = Enum.Parse(value.GetType(), parameterString);
+
+                return parameterValue.Equals(value);
             }
 
-            if (Enum.IsDefined(value.GetType(), value) == false)
-            {
-                return UnsetValue;
-            }
-
-            var parameterValue = Enum.Parse(value.GetType(), parameterString);
-
-            return parameterValue.Equals(value);
+            return UnsetValue;
         }
 
         protected override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var parameterString = parameter as string;
-            if (parameterString == null)
+            if (parameter is string parameterString)
             {
-                return UnsetValue;
+                return Enum.Parse(targetType, parameterString);
             }
 
-            return Enum.Parse(targetType, parameterString);
+            return UnsetValue;
         }
     }
 }

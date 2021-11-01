@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>ValueConverters</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ValueConverters.Annotations\ValueConverters.Annotations.csproj" />
+  </ItemGroup>
+
+  <Import Project="..\ValueConverters.Shared\ValueConverters.Shared.projitems" Label="Shared" />
+
+</Project>

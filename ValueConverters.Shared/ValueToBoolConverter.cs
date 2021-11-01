@@ -1,4 +1,4 @@
-﻿#if (NETFX || WINDOWS_PHONE)
+﻿#if (NETFX || NET5_0_OR_GREATER)
 using System.Windows;
 using System.Windows.Data;
 using Property = System.Windows.DependencyProperty;

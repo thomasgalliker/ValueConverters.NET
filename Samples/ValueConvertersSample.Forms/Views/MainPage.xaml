@@ -21,7 +21,7 @@
             <valueConverters:BoolToStringConverter x:Key="BoolToStringConverter" TrueValue="Yes" FalseValue="No"/>
             <valueConverters:BoolToStyleConverter x:Key="BoolToStyleConverter" TrueValue="{StaticResource TrueStyleTemplate}" FalseValue="{StaticResource FalseStyleTemplate}"/>
             <valueConverters:BoolToThicknessConverter x:Key="BoolToThicknessConverter" TrueValue="1" FalseValue="4"/>
-            <valueConverters:DateTimeConverter x:Key="DateTimeConverter" Format="d" MinValueString="---"/>
+            <valueConverters:DateTimeConverter x:Key="DateTimeConverter" Format="d" MinValueString="---" PreferredCulture="CurrentUICulture"/>
             <valueConverters:DebugConverter x:Key="DebugConverter"/>
             <valueConverters:EnumToBoolConverter x:Key="EnumToBoolConverter"/>
             <valueConverters:StringToObjectConverter x:Key="StringToObjectConverter"/>

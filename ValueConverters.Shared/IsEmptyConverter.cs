@@ -6,7 +6,7 @@ using System.Collections;
 using Xamarin.Forms;
 #endif
 
-#if NETFX || WINDOWS_PHONE
+#if NETFX || NET5_0_OR_GREATER
 using System.Windows;
 #elif (NETFX_CORE)
 using Windows.UI.Xaml;
@@ -38,8 +38,7 @@ namespace ValueConverters
 
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var enumerable = value as IEnumerable;
-            if (enumerable != null)
+            if (value is IEnumerable enumerable)
             {
                 var hasAtLeastOne = enumerable.GetEnumerator().MoveNext();
                 return (hasAtLeastOne == false) ^ this.IsInverted;

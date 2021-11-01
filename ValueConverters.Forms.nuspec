@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters.Forms</id>
-    <version>2.0.0</version>
+    <version>1.0.0</version>
     <title>IValueConverters for Xamarin.Forms</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/master/LICENSE.txt</licenseUrl>
@@ -81,11 +81,11 @@
     </dependencies>
   </metadata>
   <files>
-    <!--.Net 4.6.1-->
+    <!--.NET 4.6.1-->
     <file src="ValueConverters.Forms\bin\Release\net461\ValueConverters.Forms.dll" target="lib\net461\ValueConverters.Forms.dll" />
     <file src="ValueConverters.Forms\bin\Release\net461\ValueConverters.Forms.pdb" target="lib\net461\ValueConverters.Forms.pdb" />
 
-    <!--.Net Standard 1.2-->
+    <!--.NET Standard 1.2-->
     <file src="ValueConverters.Forms\bin\Release\netstandard1.2\ValueConverters.Forms.dll" target="lib\netstandard1.2\ValueConverters.Forms.dll" />
     <file src="ValueConverters.Forms\bin\Release\netstandard1.2\ValueConverters.Forms.pdb" target="lib\netstandard1.2\ValueConverters.Forms.pdb" />
     <file src="ValueConverters.Forms\bin\Release\netstandard1.2\ValueConverters.Forms.deps.json" target="lib\netstandard1.2\ValueConverters.Forms.deps.json" />
