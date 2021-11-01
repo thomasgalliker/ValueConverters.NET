@@ -1,11 +1,11 @@
 ####################################################################
-# VSTS Build Configuration, Version 1.3
+# VSTS Build Configuration, Version 1.4
 #
-# (c)2020 superdev GmbH
+# (c)2021 superdev GmbH
 ####################################################################
 
-name: 2.1.$(date:yy)$(DayOfYear).$(rev:rr)
-  
+name: $[format('{0}', variables['buildName'])]
+
 pool:
   vmImage: 'windows-2019'
 
@@ -14,21 +14,35 @@ trigger:
     include:
     - master
     - develop
-    - release/*
     - feature/*
+    - bugfix/*
 
   paths:
     exclude:
     - README.md
+    - Images/*
+    - Samples/*
 
 variables:
   solution: 'ValueConverters.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  buildVersionPostfix: '-pre'
   nuspecFile: 'ValueConverters.nuspec'
   nuspecFileAnnotations: 'ValueConverters.Annotations.nuspec'
-  disable.coverage.autogenerate: 'true'
+  nuspecFileForms: 'ValueConverters.Forms.nuspec'
+  majorVersion: 2
+  minorVersion: 2
+  patchVersion: $[counter(format('{0}.{1}', variables.majorVersion, variables.minorVersion), 0)]
+  ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master') }}:
+    # Versioning: 1.0.0
+    semVersion: $[format('{0}.{1}.{2}', variables.majorVersion, variables.minorVersion, variables.patchVersion)]
+  ${{ if and(ne(variables['Build.SourceBranch'], 'refs/heads/master'), not(startsWith(variables['Build.SourceBranch'], 'refs/pull/'))) }}:
+    # Versioning: 1.0.0-pre
+    semVersion: $[format('{0}.{1}.{2}-pre', variables.majorVersion, variables.minorVersion, variables.patchVersion)]
+  ${{ if startsWith(variables['Build.SourceBranch'], 'refs/pull/') }}:
+    # Versioning: 1.0.0-pr.000000001
+    semVersion: $[format('{0}.{1}.{2}-pr.{3}', variables.majorVersion, variables.minorVersion, variables.patchVersion, variables['System.PullRequest.PullRequestId'])]
+  buildName: $[format('{0}', variables.semVersion)]
 
 steps:
 - task: Bash@3
@@ -36,9 +50,9 @@ steps:
   inputs:
     targetType: 'inline'
     script: 'env | sort'
-
+   
 - task: Assembly-Info-NetFramework@2
-  displayName: 'Update Assembly Info (.Net Framework)'
+  displayName: 'Update Assembly Info (.NET Framework)'
   inputs:
     Path: '$(Build.SourcesDirectory)'
     FileNames: '**\AssemblyInfo.cs'
@@ -46,7 +60,7 @@ steps:
     FileEncoding: 'auto'
     WriteBOM: false
     Title: 'ValueConverters.NET'
-    Description: 'A collection of commonly used IValueConverters for .NET applications'
+    Description: ''
     Company: 'superdev GmbH'
     Copyright: '(c) $(date:YYYY) superdev GmbH'
     VersionNumber: '$(Build.BuildNumber)'
@@ -57,7 +71,7 @@ steps:
     DisableTelemetry: false
 
 - task: Assembly-Info-NetCore@2
-  displayName: 'Update Assembly Info (.Net Core/Standard)'
+  displayName: 'Update Assembly Info (.NET Core/Standard)'
   inputs:
     Path: '$(Build.SourcesDirectory)'
     FileNames: |
@@ -66,7 +80,7 @@ steps:
     FileEncoding: 'auto'
     WriteBOM: false
     Product: 'ValueConverters.NET'
-    Description: 'A collection of commonly used IValueConverters for .NET applications'
+    Description: ''
     Company: 'superdev GmbH'
     Copyright: '(c) $(date:YYYY) superdev GmbH'
     VersionNumber: '$(Build.BuildNumber)'
@@ -77,20 +91,16 @@ steps:
     FailOnWarning: false
     DisableTelemetry: false'
 
+
 - task: NuGetToolInstaller@0
   displayName: 'Use NuGet 5.x'
   inputs:
     versionSpec: 5.x
-    
+
 - task: NuGetCommand@2
   displayName: 'NuGet restore'
   inputs:
     restoreSolution: '$(solution)'
-
-- powershell: |
-   Write-Host "##vso[task.setvariable variable=PackageVersion]$(Build.BuildNumber)"
-   Write-Host "##vso[task.setvariable variable=PackageVersionPre]$(Build.BuildNumber)$(BuildVersionPostfix)"
-  displayName: 'Set PackageVersion'
 
 - task: VSBuild@1
   displayName: 'Build solution'
@@ -102,39 +112,37 @@ steps:
 
 - task: DotNetCoreCLI@2
   displayName: 'Run UnitTests'
-  continueOnError: false
   inputs:
     command: test
-    projects: '**/ValueConverters.Tests.csproj'
-    arguments: ''
+    projects: '**/*.Tests.csproj'
+    arguments: '--no-restore --no-build --configuration $(buildConfiguration) /p:CollectCoverage=true /p:Exclude="[Microsoft*]*%2C[Mono*]*%2C[xunit*]*%2C[*.Testdata]*" /p:CoverletOutput=UnitTests.coverage.cobertura.xml /p:MergeWith=$(Build.SourcesDirectory)/Tests/CoverletOutput/coverage.json /p:CoverletOutputFormat=cobertura'
+    
+- task: Palmmedia.reportgenerator.reportgenerator-build-release-task.reportgenerator@4
+  displayName: 'Create Code Coverage Report'
+  inputs:
+    reports: '$(Build.SourcesDirectory)/Tests/**/*.coverage.cobertura.xml'
+    targetdir: '$(Build.SourcesDirectory)/CodeCoverage'
+    reporttypes: 'Cobertura'
+    assemblyfilters: '-xunit*'
 
+- task: NuGetCommand@2
+  displayName: 'Pack ValueConverters'
+  inputs:
+    command: custom
+    arguments: pack $(nuspecFile) -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
     
 - task: NuGetCommand@2
-  displayName: 'Pack NuGet PreRelease Annotations'
+  displayName: 'Pack ValueConverters.Annotations'
   inputs:
     command: custom
-    arguments: pack $(nuspecFileAnnotations) -Version $(PackageVersionPre) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
-
+    arguments: pack $(nuspecFileAnnotations) -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
+        
 - task: NuGetCommand@2
-  displayName: 'Pack NuGet Prod Annotations'
+  displayName: 'Pack ValueConverters.Forms'
   inputs:
     command: custom
-    arguments: pack $(nuspecFileAnnotations) -Version $(PackageVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
-
-
-- task: NuGetCommand@2
-  displayName: 'Pack NuGet PreRelease'
-  inputs:
-    command: custom
-    arguments: pack $(nuspecFile) -Version $(PackageVersionPre) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
-
-- task: NuGetCommand@2
-  displayName: 'Pack NuGet Prod'
-  inputs:
-    command: custom
-    arguments: pack $(nuspecFile) -Version $(PackageVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
-
-
+    arguments: pack $(nuspecFileForms) -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
+    
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
   inputs:
@@ -145,8 +153,13 @@ steps:
      **\bin\*.nupkg
 
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
+     
+- task: PublishCodeCoverageResults@1
+  displayName: 'Publish code coverage'
+  inputs:
+    codeCoverageTool: Cobertura
+    summaryFileLocation: '$(Build.SourcesDirectory)/CodeCoverage/Cobertura.xml'
+    reportDirectory: '$(Build.SourcesDirectory)/CodeCoverage'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
-
