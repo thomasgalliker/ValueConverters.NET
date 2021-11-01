@@ -29,20 +29,22 @@ namespace ValueConverters.Annotations
         public string ShortName { get; set; }
 
         public string Prompt { get; set; }
-        
+
         public bool AutoGenerateField
         {
             get
             {
                 if (!this.autoGenerateField.HasValue)
                 {
-                    throw new InvalidOperationException(string.Format(PropertyNotSetMessage, nameof(AutoGenerateField)));
+                    throw new InvalidOperationException(string.Format(PropertyNotSetMessage, nameof(this.AutoGenerateField)));
                 }
 
                 return this.autoGenerateField.Value;
             }
-            set {
-                this.autoGenerateField = value; }
+            set
+            {
+                this.autoGenerateField = value;
+            }
         }
 
         public bool AutoGenerateFilter
@@ -51,26 +53,32 @@ namespace ValueConverters.Annotations
             {
                 if (this.autoGenerateFilter == null)
                 {
-                    throw new InvalidOperationException(string.Format(PropertyNotSetMessage, nameof(AutoGenerateFilter)));
+                    throw new InvalidOperationException(string.Format(PropertyNotSetMessage, nameof(this.AutoGenerateFilter)));
                 }
 
                 return this.autoGenerateFilter.Value;
             }
-            set {
-                this.autoGenerateFilter = value; }
+            set
+            {
+                this.autoGenerateFilter = value;
+            }
         }
-       
+
         public int Order
         {
             get
             {
                 if (this.order == null)
-                    throw new InvalidOperationException(string.Format(PropertyNotSetMessage, nameof(Order)));
+                {
+                    throw new InvalidOperationException(string.Format(PropertyNotSetMessage, nameof(this.Order)));
+                }
 
                 return this.order.Value;
             }
-            set {
-                this.order = value; }
+            set
+            {
+                this.order = value;
+            }
         }
 
         private string GetLocalizedString(string propertyName, string key)
@@ -104,7 +112,7 @@ namespace ValueConverters.Annotations
             // If it's not valid, go ahead and throw an InvalidOperationException
             if (!isValid)
             {
-                var message = 
+                var message =
                     $"Cannot retrieve property '{propertyName}' because localization failed. " +
                     $"Type '{this.ResourceType} is not public or does not contain a public static string property with the name '{key}'.";
                 throw new InvalidOperationException(message);
@@ -130,28 +138,28 @@ namespace ValueConverters.Annotations
 
         public string GetName()
         {
-            return this.GetLocalizedString(nameof(Name), this.Name);
+            return this.GetLocalizedString(nameof(this.Name), this.Name);
         }
 
         public string GetShortName()
         {
             // Short name falls back on Name if the short name isn't set
-            return this.GetLocalizedString(nameof(ShortName), this.ShortName) ?? this.GetName();
+            return this.GetLocalizedString(nameof(this.ShortName), this.ShortName) ?? this.GetName();
         }
 
         public string GetDescription()
         {
-            return this.GetLocalizedString(nameof(Description), this.Description);
+            return this.GetLocalizedString(nameof(this.Description), this.Description);
         }
 
         public string GetPrompt()
         {
-            return this.GetLocalizedString(nameof(Prompt), this.Prompt);
+            return this.GetLocalizedString(nameof(this.Prompt), this.Prompt);
         }
 
         public string GetGroupName()
         {
-            return this.GetLocalizedString(nameof(GroupName), this.GroupName);
+            return this.GetLocalizedString(nameof(this.GroupName), this.GroupName);
         }
     }
 }
