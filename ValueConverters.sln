@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValueConvertersSample.Contr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValueConverters.Tests", "Tests\ValueConverters.Tests\ValueConverters.Tests.csproj", "{04323B62-FC00-4AA7-BBDC-F3F1A31C67B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConverters.Net45", "ValueConverters.NetFx\ValueConverters.Net45.csproj", "{EFC0655A-C5B8-4B71-B130-3BA06F43287D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConverters.Netfx", "ValueConverters.NetFx\ValueConverters.Netfx.csproj", "{EFC0655A-C5B8-4B71-B130-3BA06F43287D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValueConverters.Annotations", "ValueConverters.Annotations\ValueConverters.Annotations.csproj", "{B0366D3D-B8B0-4B91-9867-DA88AD68252E}"
 EndProject
