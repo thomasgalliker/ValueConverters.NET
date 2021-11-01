@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\ValueConverters.Annotations\ValueConverters.Annotations.csproj" />
-    <ProjectReference Include="..\..\ValueConverters.NetFx\ValueConverters.Net45.csproj" />
+    <ProjectReference Include="..\..\ValueConverters.NetFx\ValueConverters.Netfx.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -45,8 +45,4 @@
   <ItemGroup Condition="'$(TargetFramework)' == 'net40|net45'">
     <Reference Include="System" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
 </Project>

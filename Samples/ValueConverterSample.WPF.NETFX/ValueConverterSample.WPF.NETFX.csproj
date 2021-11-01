@@ -100,9 +100,9 @@
     <XliffResource Include="MultilingualResources\ValueConverterSample.WPF.sv.xlf" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ValueConverters.NetFx\ValueConverters.Net45.csproj">
+    <ProjectReference Include="..\..\ValueConverters.NetFx\ValueConverters.Netfx.csproj">
       <Project>{efc0655a-c5b8-4b71-b130-3ba06f43287d}</Project>
-      <Name>ValueConverters.Net45</Name>
+      <Name>ValueConverters.Netfx</Name>
     </ProjectReference>
     <ProjectReference Include="..\ValueConvertersSample.Contracts\ValueConvertersSample.Contracts.csproj">
       <Project>{6fd6f3cd-8cd5-432e-9de1-4aa4382e1279}</Project>
