@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System;
 
-#if NETFX || WINDOWS_PHONE
+#if NETFX || NET5_0_OR_GREATER
 using System.Windows;
 using System.Windows.Data;
 #elif (NETFX_CORE)
@@ -30,15 +30,15 @@ namespace ValueConverters
         {
             var returnValue = this.FalseValue;
 
-            if (value is bool)
+            if (value is bool boolValue)
             {
                 if (this.IsInverted)
                 {
-                    returnValue = (bool)value ? this.FalseValue : this.TrueValue;
+                    returnValue = boolValue ? this.FalseValue : this.TrueValue;
                 }
                 else
                 {
-                    returnValue = (bool)value ? this.TrueValue : this.FalseValue;
+                    returnValue = boolValue ? this.TrueValue : this.FalseValue;
                 }
             }
 

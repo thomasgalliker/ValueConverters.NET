@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\pause.png" />
+    <None Remove="Resources\Images\play.png" />
+    <None Remove="Resources\Images\stop.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ValueConverters.WPF\ValueConverters.WPF.csproj" />
+    <ProjectReference Include="..\ValueConvertersSample.Contracts\ValueConvertersSample.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\pause.png" />
+    <Resource Include="Resources\Images\play.png" />
+    <Resource Include="Resources\Images\stop.png" />
+  </ItemGroup>
+
+</Project>

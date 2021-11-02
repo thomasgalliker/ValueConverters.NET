@@ -1,4 +1,4 @@
-﻿#if (NETFX || WINDOWS_PHONE)
+﻿#if (NETFX || NET5_0_OR_GREATER)
 using System.Windows;
 using System.Windows.Data;
 using Property = System.Windows.DependencyProperty;
@@ -24,6 +24,6 @@ namespace ValueConverters
             Property.Register(name, typeof(T), typeof(TParent), new PropertyMetadata(defaultValue));
 #endif
 
-        public static Property Create<T, TParent>(string name) => Create<T, TParent>(name, default(T));
+        public static Property Create<T, TParent>(string name) => Create<T, TParent>(name, default);
     }
 }

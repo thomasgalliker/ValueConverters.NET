@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-#if (NETFX || WINDOWS_PHONE)
+#if (NETFX || NET5_0_OR_GREATER)
 using System.Windows;
 using System.Windows.Markup;
 #elif (NETFX_CORE)
@@ -29,10 +29,10 @@ namespace ValueConverters
     /// </example>
     /// Source: http://stackoverflow.com/questions/2787725/how-to-display-different-enum-icons-using-xaml-only
     /// </summary>
-#if (NETFX || WINDOWS_PHONE)
-    [ContentProperty("Items")]
+#if (NETFX || XAMARIN || NET5_0_OR_GREATER)
+    [ContentProperty(nameof(Items))]
 #elif (NETFX_CORE)
-    [ContentProperty(Name = "Items")]
+    [ContentProperty(Name = nameof(Items))]
 #endif
     public class StringToObjectConverter : SingletonConverterBase<StringToObjectConverter>
     {
@@ -40,8 +40,7 @@ namespace ValueConverters
 
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var key = value as string;
-            if (key != null)
+            if (value is string key)
             {
                 if (this.Items != null && ContainsKey(this.Items, key))
                 {
@@ -52,7 +51,7 @@ namespace ValueConverters
             return UnsetValue;
         }
 
-#if (NETFX || WINDOWS_PHONE)
+#if (NETFX || NET5_0_OR_GREATER)
         private static bool ContainsKey(ResourceDictionary dict, string key)
         {
             return dict.Contains(key);

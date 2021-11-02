@@ -15,17 +15,12 @@ namespace ValueConverters
                 return;
             }
 
-            var memberExp = property.Body as MemberExpression;
-            if (memberExp == null)
+            if (!(property.Body is MemberExpression memberExp))
             {
                 return;
             }
 
-            var handler = this.PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(memberExp.Member.Name));
-            }
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(memberExp.Member.Name));
         }
     }
 }

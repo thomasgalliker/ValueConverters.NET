@@ -12,11 +12,10 @@
     <summary>DisplayAttribute for ValueConverters.NET</summary>
     <description>DisplayAttribute for ValueConverters.NET</description>
     <tags>IValueConverter;ValueConverter;ValueConverters;converter;ValueConverters.Forms;UI;ToValueConverter;DisplayAttribute</tags>
-    <releaseNotes>
-2.0.0
+    <releaseNotes>2.0.0
 - Initial commit
     </releaseNotes>
-    <copyright>Copyright 2018</copyright>
+    <copyright>Copyright 2021</copyright>
     <language>en-US</language>
     <dependencies>
     </dependencies>
@@ -24,13 +23,28 @@
     </frameworkAssemblies>
   </metadata>
   <files>
-    <!--.Net 4.5-->
+    <!--.NET 4.5-->
     <file src="ValueConverters.Annotations\bin\Release\net45\ValueConverters.Annotations.dll" target="lib\net45\ValueConverters.Annotations.dll" />
     <file src="ValueConverters.Annotations\bin\Release\net45\ValueConverters.Annotations.pdb" target="lib\net45\ValueConverters.Annotations.pdb" />
-  
-  <!--Net Standard 1.0-->
+
+    <!--NET Standard 1.0-->
     <file src="ValueConverters.Annotations\bin\Release\netstandard1.0\ValueConverters.Annotations.dll" target="lib\netstandard1.0\ValueConverters.Annotations.dll" />
     <file src="ValueConverters.Annotations\bin\Release\netstandard1.0\ValueConverters.Annotations.pdb" target="lib\netstandard1.0\ValueConverters.Annotations.pdb" />
     <file src="ValueConverters.Annotations\bin\Release\netstandard1.0\ValueConverters.Annotations.deps.json" target="lib\netstandard1.0\ValueConverters.Annotations.deps.json" />
+    
+    <!--NET Standard 1.4-->
+    <file src="ValueConverters.Annotations\bin\Release\netstandard1.4\ValueConverters.Annotations.dll" target="lib\netstandard1.4\ValueConverters.Annotations.dll" />
+    <file src="ValueConverters.Annotations\bin\Release\netstandard1.4\ValueConverters.Annotations.pdb" target="lib\netstandard1.4\ValueConverters.Annotations.pdb" />
+    <file src="ValueConverters.Annotations\bin\Release\netstandard1.4\ValueConverters.Annotations.deps.json" target="lib\netstandard1.4\ValueConverters.Annotations.deps.json" />
+    
+    <!--NET Standard 1.6-->
+    <file src="ValueConverters.Annotations\bin\Release\netstandard1.6\ValueConverters.Annotations.dll" target="lib\netstandard1.6\ValueConverters.Annotations.dll" />
+    <file src="ValueConverters.Annotations\bin\Release\netstandard1.6\ValueConverters.Annotations.pdb" target="lib\netstandard1.6\ValueConverters.Annotations.pdb" />
+    <file src="ValueConverters.Annotations\bin\Release\netstandard1.6\ValueConverters.Annotations.deps.json" target="lib\netstandard1.6\ValueConverters.Annotations.deps.json" />
+    
+    <!--NET Standard 2.0-->
+    <file src="ValueConverters.Annotations\bin\Release\netstandard2.0\ValueConverters.Annotations.dll" target="lib\netstandard2.0\ValueConverters.Annotations.dll" />
+    <file src="ValueConverters.Annotations\bin\Release\netstandard2.0\ValueConverters.Annotations.pdb" target="lib\netstandard2.0\ValueConverters.Annotations.pdb" />
+    <file src="ValueConverters.Annotations\bin\Release\netstandard2.0\ValueConverters.Annotations.deps.json" target="lib\netstandard2.0\ValueConverters.Annotations.deps.json" />
   </files>
 </package>

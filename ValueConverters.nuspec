@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValueConverters</id>
-    <version>2.0.0</version>
+    <version>1.0.0</version>
     <title>IValueConverters for WPF</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -13,8 +13,14 @@
     <description>A collection of commonly used IValueConverters for WPF applications.</description>
     <tags>IValueConverter;ValueConverter;ValueConverters;value;converter;ValueConverters.Forms;UI;WPF;ToValueConverter</tags>
     <releaseNotes>
-2.0.0
-- Add support for .Net Standard
+2.1.x
+- Fix null reference exception in UWP (language to cultureinfo conversion)
+- Add ValueConverterGroup for piped IValueConverter sequences
+- Add FirstOrDefaultConverter to extract first or default object from IEnumerable
+- Add ValueToEnumerableConverter to wrap value into IEnumerable
+
+2.0.0-pre
+- Add support for .NET Standard
 - Rename StringLengthToBoolConverter to StringIsNotNullOrEmptyConverter
 - Add GuidToStringConverter to convert Guid to string (and back)
 - Add StringCaseConverter for ToUpper and ToLower conversion of strings
@@ -69,7 +75,7 @@
 - Add BoolToValueConverter
 - Add DateTimeConverter
     </releaseNotes>
-    <copyright>Copyright 2018</copyright>
+    <copyright>Copyright 2021</copyright>
     <language>en-US</language>
     <dependencies>
       <group>
@@ -86,12 +92,17 @@
     </frameworkAssemblies>
   </metadata>
   <files>
-    <!--.Net 4.5-->
+    <!--.NET Framework 4.5-->
     <file src="ValueConverters.Netfx\bin\Release\ValueConverters.dll" target="lib\net45\ValueConverters.dll" />
     <file src="ValueConverters.Netfx\bin\Release\ValueConverters.pdb" target="lib\net45\ValueConverters.pdb" />
     <file src="ValueConverters.Netfx\bin\Release\ValueConverters.xml" target="lib\net45\ValueConverters.xml" />
 
-    <!--Universal Windows Platform-->
+    <!--.NET 5.0-->
+    <file src="ValueConverters.WPF\bin\Release\net5.0-windows\ValueConverters.dll" target="lib\net5.0-windows7\ValueConverters.dll" />
+    <file src="ValueConverters.WPF\bin\Release\net5.0-windows\ValueConverters.pdb" target="lib\net5.0-windows7\ValueConverters.pdb" />
+    <file src="ValueConverters.WPF\bin\Release\net5.0-windows\ValueConverters.xml" target="lib\net5.0-windows7\ValueConverters.xml" />
+
+    <!--UWP-->
     <file src="ValueConverters.UWP\bin\Release\ValueConverters.dll" target="lib\uap10.0\ValueConverters.dll" />
     <file src="ValueConverters.UWP\bin\Release\ValueConverters.pdb" target="lib\uap10.0\ValueConverters.pdb" />
     <file src="ValueConverters.UWP\bin\Release\ValueConverters.xml" target="lib\uap10.0\ValueConverters.xml" />

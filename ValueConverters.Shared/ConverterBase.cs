@@ -1,8 +1,7 @@
-﻿using System.Diagnostics;
-using System;
+﻿using System;
 using System.Globalization;
 
-#if (NETFX || WINDOWS_PHONE)
+#if (NETFX || NET5_0_OR_GREATER)
 using System.Windows;
 using System.Windows.Data;
 #elif (NETFX_CORE)
@@ -22,6 +21,12 @@ namespace ValueConverters
 #endif
         IValueConverter
     {
+        /// <summary>
+        /// Allows to override the default culture used in <seealso cref="IValueConverter"/> for the current converter.
+        /// The default override behavior can be configured in <seealso cref="ValueConvertersConfig.DefaultPreferredCulture"/>.
+        /// </summary>
+        public PreferredCulture PreferredCulture { get; set; } = ValueConvertersConfig.DefaultPreferredCulture;
+
         protected abstract object Convert(object value, Type targetType, object parameter, CultureInfo culture);
 
         protected virtual object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -29,34 +34,65 @@ namespace ValueConverters
             throw new NotSupportedException($"Converter '{this.GetType().Name}' does not support backward conversion.");
         }
 
-#if (NETFX || WINDOWS_PHONE || XAMARIN)
-        [DebuggerStepThrough]
+
+#if (NETFX || NET5_0_OR_GREATER || XAMARIN)
         object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return this.Convert(value, targetType, parameter, culture);
+            return this.Convert(value, targetType, parameter, this.SelectCulture(() => culture));
         }
 
-        [DebuggerStepThrough]
         object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return this.ConvertBack(value, targetType, parameter, culture);
+            return this.ConvertBack(value, targetType, parameter, this.SelectCulture(() => culture));
         }
 #elif (NETFX_CORE)
-        object IValueConverter.Convert(object value, Type targetType, object parameter, string culture)
+        object IValueConverter.Convert(object value, Type targetType, object parameter, string language)
         {
-            return this.Convert(value, targetType, parameter, new CultureInfo(culture));
+            var cultureInfo = this.SelectCulture(() => TryConvertToCultureInfo(language));
+            return this.Convert(value, targetType, parameter, cultureInfo);
         }
 
-        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, string culture)
+        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            return this.ConvertBack(value, targetType, parameter, new CultureInfo(culture));
+            var cultureInfo = this.SelectCulture(() => TryConvertToCultureInfo(language));
+            return this.ConvertBack(value, targetType, parameter, cultureInfo);
         }
+
+        private static CultureInfo TryConvertToCultureInfo(string language)
+        {
+            if (string.IsNullOrEmpty(language))
+            {
+                try
+                {
+                    return new CultureInfo(language);
+                }
+                catch
+                {
+                }
+            }
+
+            return CultureInfo.CurrentUICulture;
+        }
+
 #endif
+        private CultureInfo SelectCulture(Func<CultureInfo> converterCulture)
+        {
+            switch (this.PreferredCulture)
+            {
+                case PreferredCulture.CurrentCulture:
+                    return CultureInfo.CurrentCulture;
+                case PreferredCulture.CurrentUICulture:
+                    return CultureInfo.CurrentUICulture;
+                default:
+                    return converterCulture();
+            }
+        }
+
 
 #if XAMARIN
-        protected static readonly object UnsetValue = null;
+        public static readonly object UnsetValue = null;
 #else
-        protected static readonly object UnsetValue = DependencyProperty.UnsetValue;
+        public static readonly object UnsetValue = DependencyProperty.UnsetValue;
 #endif
 
     }
