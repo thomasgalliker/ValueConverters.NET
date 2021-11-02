@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 #endif
 
-#if NETFX || WINDOWS_PHONE
+#if NETFX || NET5_0_OR_GREATER
 using System.Windows;
 #elif (NETFX_CORE)
 using Windows.UI.Xaml;
@@ -45,26 +45,14 @@ namespace ValueConverters
         /// </summary>
         public override string Format
         {
-            get
-            {
-                return (string)this.GetValue(FormatProperty);
-            }
-            set
-            {
-                this.SetValue(FormatProperty, value);
-            }
+            get => (string)this.GetValue(FormatProperty);
+            set => this.SetValue(FormatProperty, value);
         }
 
         public override string MinValueString
         {
-            get
-            {
-                return (string)this.GetValue(MinValueStringProperty);
-            }
-            set
-            {
-                this.SetValue(MinValueStringProperty, value);
-            }
+            get => (string)this.GetValue(MinValueStringProperty);
+            set => this.SetValue(MinValueStringProperty, value);
         }
     }
 }

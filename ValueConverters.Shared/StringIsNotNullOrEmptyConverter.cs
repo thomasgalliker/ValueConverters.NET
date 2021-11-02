@@ -5,7 +5,7 @@ using System.Globalization;
 using Xamarin.Forms;
 #endif
 
-#if NETFX || WINDOWS_PHONE
+#if NETFX || NET5_0_OR_GREATER
 using System.Windows;
 #elif (NETFX_CORE)
 using Windows.UI.Xaml;
@@ -22,7 +22,7 @@ namespace ValueConverters
     {
         public StringIsNotNullOrEmptyConverter()
         {
-            IsInverted = true;
+            this.IsInverted = true;
         }
     }
 
@@ -50,7 +50,7 @@ namespace ValueConverters
 
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (IsInverted)
+            if (this.IsInverted)
             {
                 return !string.IsNullOrEmpty(value as string);
             }
