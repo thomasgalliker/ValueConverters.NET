@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValueConvertersSample.Contracts", "Samples\ValueConvertersSample.Contracts\ValueConvertersSample.Contracts.csproj", "{6FD6F3CD-8CD5-432E-9DE1-4AA4382E1279}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValueConverters.Tests", "Tests\ValueConverters.Tests\ValueConverters.Tests.csproj", "{04323B62-FC00-4AA7-BBDC-F3F1A31C67B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValueConverters.Netfx.Tests", "Tests\ValueConverters.Tests\ValueConverters.Netfx.Tests.csproj", "{04323B62-FC00-4AA7-BBDC-F3F1A31C67B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConverters.Netfx", "ValueConverters.NetFx\ValueConverters.Netfx.csproj", "{EFC0655A-C5B8-4B71-B130-3BA06F43287D}"
 EndProject
@@ -45,7 +45,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XFSample.Android", "Samples
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XFSample.iOS", "Samples\XFSample\XFSample.iOS\XFSample.iOS.csproj", "{54996A84-EDA6-4C11-B803-83C08867F2D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XFSample", "Samples\XFSample\XFSample\XFSample.csproj", "{3CC9B691-D0F7-4AF5-B53E-E4BF623068DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XFSample", "Samples\XFSample\XFSample\XFSample.csproj", "{3CC9B691-D0F7-4AF5-B53E-E4BF623068DC}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
