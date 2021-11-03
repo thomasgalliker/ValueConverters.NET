@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Data;
 using FluentAssertions;
+using ValueConverters.Netfx.Tests.Testdata;
 using ValueConverters.Tests.Testdata;
 using Xunit;
 
