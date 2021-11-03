@@ -39,7 +39,7 @@
     <PackageReleaseNotes>
 
     </PackageReleaseNotes>
-    <Copyright>Copyright 2020</Copyright>
+    <Copyright>Copyright 2021</Copyright>
   </PropertyGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' == 'net40|net45'">
