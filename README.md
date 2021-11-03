@@ -19,144 +19,144 @@ You can use this library in any .Net project which is compatible to PCL (e.g. Xa
 
 Following table illustrates which converters are supported on the respective platforms: 
 
-<table> 
-  <tr> 
-    <td>Converter name</td> 
-    <td>WPF</td> 
-    <td>Windows Phone 8 (SL)</td> 
-    <td>Windows Phone 8.1</td> 
-    <td>Universal Windows Platform</td> 
-    <td>Xamarin Forms</td> 
-  </tr> 
-  <tr> 
-    <td>BoolNegationConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>BoolToBrushConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td></td> 
-  </tr> 
-  <tr> 
-    <td>BoolToDoubleConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>BoolToFontAttributesConverter</td> 
-    <td></td> 
-    <td></td> 
-    <td></td> 
-    <td></td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>BoolToFontWeightConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td></td> 
-  </tr> 
-  <tr> 
-    <td>BoolToStringConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>BoolToStyleConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>BoolToThicknessConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>BoolToValueConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>BoolToVisibilityConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td></td> 
-  </tr> 
-  <tr> 
-    <td>DateTimeConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>DebugConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>EnumToBoolConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>EnumToObjectConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>EnumWrapperConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-</table> 
+<table>
+	<tbody>
+		<tr>
+			<td>&nbsp;</td>
+			<td colspan="4" rowspan="1" style="text-align:center">Platform</td>
+		</tr>
+		<tr>
+			<td>Converter</td>
+			<td>WPF (.NET Framework)</td>
+			<td>WPF (.NET)</td>
+			<td>Universal Windows Platform</td>
+			<td>Xamarin Forms</td>
+		</tr>
+		<tr>
+			<td><p>BoolNegationConverter<br />
+			Inverts the bool value true to false and vice versa.</p>
+			</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+		</tr>
+		<tr>
+			<td><p>BoolToBrushConverter<br />
+			Converts a bool value to a Brush.</p>
+			</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td><p>BoolToDoubleConverter<br />
+			Converts a bool value to double.</p>
+			</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+		</tr>
+		<tr>
+			<td>BoolToFontAttributesConverter</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>✓</td>
+		</tr>
+		<tr>
+			<td>BoolToFontWeightConverter</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>BoolToStringConverter</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+		</tr>
+		<tr>
+			<td>BoolToStyleConverter</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+		</tr>
+		<tr>
+			<td>BoolToThicknessConverter</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+		</tr>
+		<tr>
+			<td><strong>BoolToValueConverter</strong><br />
+			This is a generic converter used to convert any bool value to a target value of any type. TrueValue is returned for bool &quot;true&quot; and FalseValue is return for bool &quot;false&quot;.</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+		</tr>
+		<tr>
+			<td><strong>BoolToVisibilityConverter</strong><br />
+			Converts a bool value to Visibility.Collapsed (false) and Visibility.Visible (true).</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td><strong>DateTimeConverter</strong><br />
+			Converts DateTime values to string using given Format. If the value is DateTime.MinValue, the configured&nbsp;MinValueString is returned.</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+		</tr>
+		<tr>
+			<td>DebugConverter</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+		</tr>
+		<tr>
+			<td>EnumToBoolConverter</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+		</tr>
+		<tr>
+			<td>EnumToObjectConverter<br />
+			Maps a resource dictionary of enum keys to objects. This converter is useful to map enums to (localized) strings or images.</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+		</tr>
+		<tr>
+			<td>EnumWrapperConverter</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+			<td>✓</td>
+		</tr>
+	</tbody>
+</table>
+
+
 
 
 ### API Usage 
 
 The usage of converters is on all platforms more or less the same: 
-
 * Define the converter in the resources area of the view/page/usercontrol. 
-
 * Use the converter in a binding by referenceing  it as a StaticResource. 
 
 #### General Usage of Converters in XAML 
@@ -230,16 +230,24 @@ for easy localization of the defined string resources.
 
 That’s it. If you want to change the UI language at runtime, don’t forget to call OnPropertyChanged after changing CurrentUICulture. There is a WPF sample app available. 
 
+### Converter Culture
+Value converters are culture-aware. Both the Convert and ConvertBack methods have a culture parameter that indicates the cultural information. If cultural information is irrelevant to the conversion, then you can ignore that parameter in your custom converter.
+
+By default, the culture parameter is provided by the underlaying platform. If you want to override the provided culture, use the property PreferredCulture. You can select from one of the following override behaviors:
+- **PreferredCulture.ConverterCulture**: Default, uses the converter culture provided by the underlying platform.
+- **ConverterCulture.CurrentCulture**: Overrides the default converter culture with CultureInfo.CurrentCulture.
+- **ConverterCulture.CurrentUICulture**: Overrides the default converter culture with CultureInfo.CurrentUICulture.
+
+This is particularly helpful in WPF applications, since it is a known/unresolved bug that the provided culture parameter does not update when CultureInfo.CurrentCulture or CultureInfo.CurrentUICulture is updated.
+Use **ValueConvertersConfig.DefaultPreferredCulture** to configure the default converter culture for all converters.
+ 
 ### Links 
 
-System.Windows.Data.IValueConverter Interface 
-
+- System.Windows.Data.IValueConverter Interface
 [ https://msdn.microsoft.com/en-us/library/system.windows.data.ivalueconverter(v=vs.110).aspx]( https://msdn.microsoft.com/en-us/library/system.windows.data.ivalueconverter(v=vs.110).aspx)  
 
-Windows.UI.Xaml.Data.IValueConverter interface 
-
+- Windows.UI.Xaml.Data.IValueConverter interface:
 [ https://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.data.ivalueconverter]( https://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.data.ivalueconverter)  
 
 ### License 
-
-ValueConverters.NET is Copyright &copy; 2019 [Thomas Galliker]( https://ch.linkedin.com/in/thomasgalliker). Free for non-commercial use. For commercial use please contact the author. 
+ValueConverters.NET is Copyright &copy; 2021 [Thomas Galliker]( https://ch.linkedin.com/in/thomasgalliker). Free for non-commercial use. For commercial use please contact the author. 

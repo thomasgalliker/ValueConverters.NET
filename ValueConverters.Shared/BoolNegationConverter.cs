@@ -9,12 +9,4 @@
             this.IsInverted = true;
         }
     }
-
-    public class InverseBoolConverter : BoolNegationConverter
-    {
-    }
-
-    public class BoolInverter : BoolNegationConverter
-    {
-    }
 }

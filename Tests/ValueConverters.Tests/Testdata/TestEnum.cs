@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using ValueConverters.Annotations;
+using ValueConverters.Netfx.Tests.Testdata;
 
 namespace ValueConverters.Tests.Testdata
 {
