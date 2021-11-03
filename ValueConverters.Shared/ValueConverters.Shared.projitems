@@ -9,6 +9,7 @@
     <Import_RootNamespace>ValueConverters</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)BoolInverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolNegationConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolToBrushConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolToObjectConverter.cs" />
@@ -24,6 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)FirstOrDefaultConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GuidToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DoubleToBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)InverseBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PreferredCulture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ReversibleValueToBoolConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringCaseConverter.cs" />
