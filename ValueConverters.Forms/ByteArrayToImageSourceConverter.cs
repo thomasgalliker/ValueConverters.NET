@@ -22,7 +22,7 @@ namespace ValueConverters
                 return ImageSource.FromStream(() => new MemoryStream(imageBytes));
             }
 
-            return UnsetValue;
+            return ConverterBase.UnsetValue;
         }
     }
 }
