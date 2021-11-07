@@ -1,9 +1,14 @@
 ﻿using System;
-using System.Windows;
-using System.Windows.Data;
 using FluentAssertions;
 using ValueConverters.Tests.Testdata;
 using Xunit;
+
+#if(XAMARIN)
+using Xamarin.Forms;
+#elif (NET || NETFRAMEWORK)
+using System.Windows;
+using System.Windows.Data;
+#endif
 
 namespace ValueConverters.Tests
 {
@@ -63,7 +68,7 @@ namespace ValueConverters.Tests
             var convertedOutput = enumToObjectConverter.Convert(InutValue, null, null, null);
 
             // Assert
-            Assert.Equal(DependencyProperty.UnsetValue, convertedOutput);
+            Assert.Equal(ConverterBase.UnsetValue, convertedOutput);
         }
 
         [Fact]
@@ -78,7 +83,7 @@ namespace ValueConverters.Tests
             var convertedOutput = enumToObjectConverter.Convert(InutValue, null, null, null);
 
             // Assert
-            Assert.Equal(DependencyProperty.UnsetValue, convertedOutput);
+            Assert.Equal(ConverterBase.UnsetValue, convertedOutput);
         }
 
         [Fact]

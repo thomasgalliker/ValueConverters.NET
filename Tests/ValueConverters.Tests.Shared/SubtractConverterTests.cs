@@ -1,8 +1,12 @@
 ﻿using System.Globalization;
-using System.Windows;
-using System.Windows.Data;
 using FluentAssertions;
 using Xunit;
+
+#if (XAMARIN)
+using Xamarin.Forms;
+#elif (NET || NETFRAMEWORK)
+using System.Windows.Data;
+#endif
 
 namespace ValueConverters.Tests
 {
@@ -58,9 +62,9 @@ namespace ValueConverters.Tests
         {
             public SubtractConverterInvalidTestdata()
             {
-                this.Add(null, null, CultureInfo.InvariantCulture, DependencyProperty.UnsetValue);
-                this.Add("", "", CultureInfo.InvariantCulture, DependencyProperty.UnsetValue);
-                this.Add("foo", null, CultureInfo.InvariantCulture, DependencyProperty.UnsetValue);
+                this.Add(null, null, CultureInfo.InvariantCulture, ConverterBase.UnsetValue);
+                this.Add("", "", CultureInfo.InvariantCulture, ConverterBase.UnsetValue);
+                this.Add("foo", null, CultureInfo.InvariantCulture, ConverterBase.UnsetValue);
             }
         }
     }

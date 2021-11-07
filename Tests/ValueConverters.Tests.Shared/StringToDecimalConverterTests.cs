@@ -1,6 +1,11 @@
-﻿using System.Windows.Data;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Xunit;
+
+#if(XAMARIN)
+using Xamarin.Forms;
+#elif (NET || NETFRAMEWORK)
+using System.Windows.Data;
+#endif
 
 namespace ValueConverters.Tests
 {

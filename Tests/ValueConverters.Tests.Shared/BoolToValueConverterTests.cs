@@ -1,5 +1,10 @@
-﻿using System.Windows.Data;
-using Xunit;
+﻿using Xunit;
+
+#if(XAMARIN)
+using Xamarin.Forms;
+#elif (NET || NETFRAMEWORK)
+using System.Windows.Data;
+#endif
 
 namespace ValueConverters.Tests
 {

@@ -1,9 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
-using System.Windows;
-using System.Windows.Data;
 using FluentAssertions;
 using Xunit;
+
+#if(XAMARIN)
+using Xamarin.Forms;
+#elif (NET || NETFRAMEWORK)
+using System.Windows.Data;
+#endif
 
 namespace ValueConverters.Tests
 {
@@ -50,7 +54,7 @@ namespace ValueConverters.Tests
                 // Empty converters list
                 this.Add(null, null, null, CultureInfo.InvariantCulture, ConverterBase.UnsetValue);
                 this.Add(new List<IValueConverter>(), null, null, CultureInfo.InvariantCulture, null);
-               
+
                 // Sequence of add/subtract converters
                 this.Add(new List<IValueConverter> { new AddConverter() }, 10, 20, CultureInfo.InvariantCulture, 30);
                 this.Add(new List<IValueConverter> { new AddConverter(), new AddConverter() }, 10, 20, CultureInfo.InvariantCulture, 50);

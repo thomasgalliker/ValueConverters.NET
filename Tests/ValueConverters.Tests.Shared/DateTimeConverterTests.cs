@@ -1,8 +1,14 @@
 ﻿using System;
 using System.Globalization;
-using System.Windows.Data;
+
 using FluentAssertions;
 using Xunit;
+
+#if(XAMARIN)
+using Xamarin.Forms;
+#elif (NET || NETFRAMEWORK)
+using System.Windows.Data;
+#endif
 
 namespace ValueConverters.Tests
 {
@@ -18,7 +24,7 @@ namespace ValueConverters.Tests
 
             var input = new DateTime(2014, 8, 26, 18, 0, 0);
             var expectedValue = (input).ToLocalTime().ToString(DefaultFormat, CultureInfo.CurrentUICulture);
-            
+
             // Act
             var convertedOutput = dateTimeConverter.Convert(input, typeof(string), null, CultureInfo.CurrentUICulture);
 

@@ -35,6 +35,5 @@
     <Compile Include="$(MSBuildThisFileDirectory)ValueToBoolConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ValueToEnumerableConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VersionToStringConverterTests.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)VisibilityInverterTests.cs" />
   </ItemGroup>
 </Project>

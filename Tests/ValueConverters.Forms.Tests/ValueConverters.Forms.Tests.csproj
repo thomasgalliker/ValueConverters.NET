@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <RootNamespace>ValueConverters.Tests</RootNamespace>
+    <DefineConstants>$(DefineConstants);XAMARIN</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,29 +23,22 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\ValueConverters.Annotations\ValueConverters.Annotations.csproj" />
-    <ProjectReference Include="..\..\ValueConverters.NetFx\ValueConverters.Netfx.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="WindowsBase" />
+    <ProjectReference Include="..\..\ValueConverters.Forms\ValueConverters.Forms.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Testdata\AppResources.Designer.cs">
+      <DependentUpon>AppResources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Testdata\AppResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
