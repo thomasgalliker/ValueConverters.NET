@@ -44,12 +44,11 @@ namespace ValueConverters.Tests
                 this.Add("Sentence", "u", CultureInfo.InvariantCulture, "SENTENCE");
 
                 // To Title Case
-#if NETSTANDARD2_0_OR_GREATER
                 this.Add(null, "t", CultureInfo.InvariantCulture, ConverterBase.UnsetValue);
                 this.Add("", "t", CultureInfo.InvariantCulture, "");
-                this.Add("this is a sentence", "t", CultureInfo.InvariantCulture, "UP UP UP");
-                this.Add("sentence", "t", CultureInfo.InvariantCulture, "SENTENCE");
-#endif
+                this.Add("this is a title", "t", new CultureInfo("en-US"), "This Is A Title");
+                this.Add("this is a title", "t", new CultureInfo("en-UK"), "This Is A Title");
+                this.Add("das ist ein Titel", "t", new CultureInfo("de-DE"), "Das Ist Ein Titel");
             }
         }
 

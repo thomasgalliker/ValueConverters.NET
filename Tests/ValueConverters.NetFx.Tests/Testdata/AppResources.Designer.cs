@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ValueConverters.Netfx.Tests.Testdata {
+namespace ValueConverters.Tests.Testdata {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ValueConverters.Netfx.Tests.Testdata {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ValueConverters.Netfx.Tests.Testdata.AppResources", typeof(AppResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ValueConverters.Tests.Testdata.AppResources", typeof(AppResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

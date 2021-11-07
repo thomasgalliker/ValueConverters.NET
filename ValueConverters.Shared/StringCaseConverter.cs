@@ -32,11 +32,9 @@ namespace ValueConverters
                     case "L":
                     case "l":
                         return culture.TextInfo.ToLower(stringValue);
-#if NETSTANDARD2_0_OR_GREATER
                     case "T":
                     case "t":
                         return culture.TextInfo.ToTitleCase(stringValue);
-#endif
                     default:
                         throw new ArgumentException($"Parameter '{stringParameter}' is not valid", nameof(parameter));
                 }
