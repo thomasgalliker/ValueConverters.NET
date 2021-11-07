@@ -13,40 +13,40 @@ using Windows.UI.Xaml;
 
 namespace ValueConverters
 {
-    public class DateTimeConverter : SingletonConverterBase<DateTimeConverter>
+    public class TimeSpanToStringConverter : SingletonConverterBase<TimeSpanToStringConverter>
     {
-        protected const string DefaultFormat = "g";
+        protected const string DefaultFormat = @"g";
         protected const string DefaultMinValueString = "";
 
 #if XAMARIN
         public static readonly BindableProperty FormatProperty = BindableProperty.Create(
             "Format",
             typeof(string),
-            typeof(DateTimeConverter),
+            typeof(TimeSpanToStringConverter),
             DefaultFormat);
 
         public static readonly BindableProperty MinValueStringProperty = BindableProperty.Create(
             "MinValueString",
             typeof(string),
-            typeof(DateTimeConverter),
+            typeof(TimeSpanToStringConverter),
             DefaultMinValueString);
 #else
         public static readonly DependencyProperty FormatProperty = DependencyProperty.Register(
             "Format",
             typeof(string),
-            typeof(DateTimeConverter),
+            typeof(TimeSpanToStringConverter),
             new PropertyMetadata(DefaultFormat));
 
         public static readonly DependencyProperty MinValueStringProperty = DependencyProperty.Register(
             "MinValueString",
             typeof(string),
-            typeof(DateTimeConverter),
+            typeof(TimeSpanToStringConverter),
             new PropertyMetadata(DefaultMinValueString));
 #endif
 
         /// <summary>
-        /// The datetime format property.
-        /// Standard date and time format strings: https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings
+        /// The timespan format property.
+        /// Standard date and time format strings: https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-timespan-format-strings
         /// </summary>
         public string Format
         {
@@ -62,14 +62,14 @@ namespace ValueConverters
 
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is DateTime dateTime)
+            if (value is TimeSpan timeSpan)
             {
-                if (dateTime == DateTime.MinValue)
+                if (timeSpan == TimeSpan.MinValue)
                 {
                     return this.MinValueString;
                 }
 
-                return dateTime.ToLocalTime().ToString(this.Format, culture);
+                return timeSpan.ToString(this.Format, culture);
             }
 
             return UnsetValue;
@@ -79,15 +79,15 @@ namespace ValueConverters
         {
             if (value != null)
             {
-                if (value is DateTime dateTime)
+                if (value is TimeSpan timeSpan)
                 {
-                    return dateTime;
+                    return timeSpan;
                 }
 
                 if (value is string str)
                 {
-                    DateTime.TryParse(str, out var resultDateTime);
-                    return resultDateTime;
+                    TimeSpan.TryParse(str, out var resultTimeSpan);
+                    return resultTimeSpan;
                 }
             }
             return null;

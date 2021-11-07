@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)BoolToValueConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConverterBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TimeSpanToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FirstOrDefaultConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GuidToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DoubleToBoolConverter.cs" />
@@ -36,7 +37,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)PropertyHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SingletonConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DateTimeConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DateTimeConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DebugConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EnumToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EnumToObjectConverter.cs" />

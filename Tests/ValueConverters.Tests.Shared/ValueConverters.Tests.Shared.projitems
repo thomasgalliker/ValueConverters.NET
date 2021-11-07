@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)GuidToStringConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IsEmptyConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\xunit.assembly.config.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TimeSpanToStringConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringCaseConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringIsNotNullOrEmptyConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringIsNullOrEmptyConverterTests.cs" />
