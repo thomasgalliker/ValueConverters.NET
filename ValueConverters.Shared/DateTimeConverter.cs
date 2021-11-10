@@ -20,25 +20,25 @@ namespace ValueConverters
 
 #if XAMARIN
         public static readonly BindableProperty FormatProperty = BindableProperty.Create(
-            "Format",
+            nameof(Format),
             typeof(string),
             typeof(DateTimeConverter),
             DefaultFormat);
 
         public static readonly BindableProperty MinValueStringProperty = BindableProperty.Create(
-            "MinValueString",
+            nameof(MinValueString),
             typeof(string),
             typeof(DateTimeConverter),
             DefaultMinValueString);
 #else
         public static readonly DependencyProperty FormatProperty = DependencyProperty.Register(
-            "Format",
+            nameof(Format),
             typeof(string),
             typeof(DateTimeConverter),
             new PropertyMetadata(DefaultFormat));
 
         public static readonly DependencyProperty MinValueStringProperty = DependencyProperty.Register(
-            "MinValueString",
+            nameof(MinValueString),
             typeof(string),
             typeof(DateTimeConverter),
             new PropertyMetadata(DefaultMinValueString));
