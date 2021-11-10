@@ -85,7 +85,8 @@ namespace ValueConverters
                     return this.MinValueString;
                 }
 
-                return dateTime.WithTimeZone(this.timeZone.Local).ToString(this.Format, culture);
+                var localDateTime = dateTime.WithTimeZone(this.timeZone.Local);
+                return localDateTime.ToString(this.Format, culture);
             }
 
             return UnsetValue;

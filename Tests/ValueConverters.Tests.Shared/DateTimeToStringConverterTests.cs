@@ -21,9 +21,10 @@ namespace ValueConverters.Tests
 
         public DateTimeToStringConverterTests()
         {
+            var testTimeZone = TimeZoneInfo.CreateCustomTimeZone("0", TimeSpan.FromHours(1), "Test Time Zone", "Test Time Zone");
             this.timeZoneInfoMock = new Mock<ITimeZoneInfo>();
             this.timeZoneInfoMock.SetupGet(t => t.Local)
-                .Returns(TimeZoneInfo.Utc);
+                .Returns(testTimeZone);
         }
 
         [Theory]
@@ -50,8 +51,7 @@ namespace ValueConverters.Tests
             {
                 this.Add(null, null, CultureInfo.InvariantCulture, ConverterBase.UnsetValue);
                 this.Add(DateTime.MinValue, null, CultureInfo.InvariantCulture, "-");
-                this.Add(new DateTime(2014, 8, 26, 18, 0, 0, DateTimeKind.Unspecified), null, CultureInfo.InvariantCulture, "08/26/2014 16:00");
-                this.Add(new DateTime(2014, 8, 26, 18, 0, 0, DateTimeKind.Utc), null, CultureInfo.InvariantCulture, "08/26/2014 18:00");
+                this.Add(new DateTime(2014, 8, 26, 18, 0, 0, DateTimeKind.Utc), null, CultureInfo.InvariantCulture, "08/26/2014 19:00");
                 this.Add(new DateTime(2014, 8, 26, 18, 0, 0, DateTimeKind.Local), null, CultureInfo.InvariantCulture, "08/26/2014 18:00");
             }
         }
