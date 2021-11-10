@@ -1,13 +1,12 @@
 ﻿<Window
-    x:Class="ValueConverterSample.WPF.MainWindow"
+    x:Class="ValueConverterSample.WPF.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:glob="clr-namespace:System.Globalization;assembly=mscorlib"
     xmlns:valueConverters="clr-namespace:ValueConverters;assembly=ValueConverters"
     xmlns:viewModel="clr-namespace:ValueConverterSample.WPF.ViewModel"
-    Title="ValueConverterSample.WPF"
-    Width="480"
-    Height="240">
+    Title="ValueConvertersSample.WPF"
+    SizeToContent="WidthAndHeight">
     <Window.DataContext>
         <viewModel:MainViewModel />
     </Window.DataContext>
@@ -79,6 +78,11 @@
             <valueConverters:BoolToVisibilityConverter />
             <valueConverters:DebugConverter />
         </valueConverters:ValueConverterGroup>
+
+        <valueConverters:MinMaxValueToBoolConverter
+            x:Key="MinMaxValueToBoolConverter"
+            MaxValue="80"
+            MinValue="20" />
     </Window.Resources>
 
     <Border
@@ -87,6 +91,7 @@
         CornerRadius="{Binding IsEditing, Converter={StaticResource BoolToDoubleConverter}}">
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -300,6 +305,19 @@
                 Content="Cancel"
                 IsEnabled="{Binding IsEditing}"
                 Style="{Binding IsEditing, Converter={StaticResource BoolToStyleConverter}}" />
+
+            <TextBlock
+                Grid.Row="7"
+                Grid.Column="0"
+                Text="{Binding Source={x:Reference Slider}, Path=Value, Converter={StaticResource MinMaxValueToBoolConverter}, StringFormat='In range: {0}'}" />
+
+            <Slider
+                x:Name="Slider"
+                Grid.Row="7"
+                Grid.Column="1"
+                Maximum="100"
+                Minimum="0"
+                Ticks="1" />
         </Grid>
     </Border>
 </Window>

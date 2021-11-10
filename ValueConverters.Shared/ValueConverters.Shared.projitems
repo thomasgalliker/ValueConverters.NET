@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)BoolToValueConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConverterBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MinMaxValueToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TimeSpanToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FirstOrDefaultConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GuidToStringConverter.cs" />
