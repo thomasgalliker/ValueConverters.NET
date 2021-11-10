@@ -14,7 +14,7 @@
     <tags>IValueConverter;ValueConverter;ValueConverters;value;converter;ValueConverters.Forms;UI;WPF;ToValueConverter</tags>
     <releaseNotes>
 2.3.x
-- Add MinMaxValueToBoolConverter
+- Add MinMaxValueToBoolConverter, IsInRangeConverter
 
 2.2.x
 - Add PreferredCulture to each converter in order to determine the preferred cultureinfo
