@@ -16,20 +16,20 @@ using Windows.UI.Xaml;
 namespace ValueConverters
 {
     /// <summary>
-    /// Converts a <seealso cref="DateTime"/> value to string using formatting specified in <seealso cref="DefaultFormat"/>.
+    /// Converts a <seealso cref="DateTimeOffset"/> value to string using formatting specified in <seealso cref="DefaultFormat"/>.
     /// </summary>
-    public class DateTimeToStringConverter : SingletonConverterBase<DateTimeToStringConverter>
+    public class DateTimeOffsetToStringConverter : SingletonConverterBase<DateTimeOffsetToStringConverter>
     {
         protected const string DefaultFormat = "g";
         protected const string DefaultMinValueString = "";
 
         private readonly ITimeZoneInfo timeZone;
 
-        public DateTimeToStringConverter() : this(SystemTimeZoneInfo.Current)
+        public DateTimeOffsetToStringConverter() : this(SystemTimeZoneInfo.Current)
         {
         }
 
-        internal DateTimeToStringConverter(ITimeZoneInfo timeZone)
+        internal DateTimeOffsetToStringConverter(ITimeZoneInfo timeZone)
         {
             this.timeZone = timeZone;
         }
@@ -38,25 +38,25 @@ namespace ValueConverters
         public static readonly BindableProperty FormatProperty = BindableProperty.Create(
             nameof(Format),
             typeof(string),
-            typeof(DateTimeToStringConverter),
+            typeof(DateTimeOffsetToStringConverter),
             DefaultFormat);
 
         public static readonly BindableProperty MinValueStringProperty = BindableProperty.Create(
             nameof(MinValueString),
             typeof(string),
-            typeof(DateTimeToStringConverter),
+            typeof(DateTimeOffsetToStringConverter),
             DefaultMinValueString);
 #else
         public static readonly DependencyProperty FormatProperty = DependencyProperty.Register(
             nameof(Format),
             typeof(string),
-            typeof(DateTimeToStringConverter),
+            typeof(DateTimeOffsetToStringConverter),
             new PropertyMetadata(DefaultFormat));
 
         public static readonly DependencyProperty MinValueStringProperty = DependencyProperty.Register(
             nameof(MinValueString),
             typeof(string),
-            typeof(DateTimeToStringConverter),
+            typeof(DateTimeOffsetToStringConverter),
             new PropertyMetadata(DefaultMinValueString));
 #endif
 
@@ -78,14 +78,14 @@ namespace ValueConverters
 
         protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is DateTime dateTime)
+            if (value is DateTimeOffset dateTimeOffset)
             {
-                if (dateTime == DateTime.MinValue)
+                if (dateTimeOffset == DateTimeOffset.MinValue)
                 {
                     return this.MinValueString;
                 }
 
-                return dateTime.WithTimeZone(this.timeZone.Local).ToString(this.Format, culture);
+                return dateTimeOffset.WithTimeZone(this.timeZone.Local).ToString(this.Format, culture);
             }
 
             return UnsetValue;
@@ -95,16 +95,16 @@ namespace ValueConverters
         {
             if (value != null)
             {
-                if (value is DateTime dateTime)
+                if (value is DateTimeOffset dateTimeOffset)
                 {
-                    return dateTime;
+                    return dateTimeOffset;
                 }
 
                 if (value is string str)
                 {
-                    if (DateTime.TryParse(str, out var parsedDateTime))
+                    if (DateTimeOffset.TryParse(str, out var parsedDateTimeOffset))
                     {
-                        return parsedDateTime.WithTimeZone(this.timeZone.Utc);
+                        return parsedDateTimeOffset.WithTimeZone(this.timeZone.Utc);
                     }
                 }
             }
@@ -112,4 +112,5 @@ namespace ValueConverters
             return UnsetValue;
         }
     }
+
 }

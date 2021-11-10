@@ -13,8 +13,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)BoolNegationConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolToObjectConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolToValueConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DateTimeOffsetToStringConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DateTimeToStringConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MinMaxValueToBoolConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DateTimeConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DebugConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EnumToBoolConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EnumToObjectConverterTests.cs" />

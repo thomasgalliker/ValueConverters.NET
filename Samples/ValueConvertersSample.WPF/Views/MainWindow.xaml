@@ -52,8 +52,8 @@
             TrueValue="1" />
         <valueConverters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <valueConverters:BoolToVisibilityConverter x:Key="BoolToInvertedVisibilityConverter" IsInverted="True" />
-        <valueConverters:DateTimeConverter
-            x:Key="DateTimeConverter"
+        <valueConverters:DateTimeToStringConverter
+            x:Key="DateTimeToStringConverter"
             Format="d"
             MinValueString="---"
             PreferredCulture="CurrentUICulture" />
@@ -146,14 +146,14 @@
             <Label
                 Grid.Row="2"
                 Grid.Column="1"
-                Content="{Binding ChangeDate, Converter={StaticResource DateTimeConverter}, ConverterCulture={x:Static glob:CultureInfo.CurrentCulture}}"
+                Content="{Binding ChangeDate, Converter={StaticResource DateTimeToStringConverter}, ConverterCulture={x:Static glob:CultureInfo.CurrentCulture}}"
                 FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"
                 Visibility="{Binding IsEditing, Converter={StaticResource BoolToInvertedVisibilityConverter}}" />
             <TextBox
                 Grid.Row="2"
                 Grid.Column="1"
                 FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"
-                Text="{Binding ChangeDate, Converter={StaticResource DateTimeConverter}, ConverterCulture={x:Static glob:CultureInfo.CurrentCulture}}"
+                Text="{Binding ChangeDate, Converter={StaticResource DateTimeToStringConverter}, ConverterCulture={x:Static glob:CultureInfo.CurrentCulture}}"
                 Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}" />
             <DatePicker
                 Grid.Row="2"
