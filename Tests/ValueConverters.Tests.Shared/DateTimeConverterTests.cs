@@ -16,20 +16,32 @@ namespace ValueConverters.Tests
     {
         private const string DefaultFormat = "g";
 
-        [Fact]
-        public void ShouldConvert()
+        [Theory]
+        [ClassData(typeof(DateTimeConverterTestsValidTestdata))]
+        public void ShouldConvert(object value, object parameter, CultureInfo culture, object expectedResult)
         {
             // Arrange
-            IValueConverter dateTimeConverter = new DateTimeConverter();
-
-            var input = new DateTime(2014, 8, 26, 18, 0, 0);
-            var expectedValue = (input).ToLocalTime().ToString(DefaultFormat, CultureInfo.CurrentUICulture);
+            IValueConverter dateTimeConverter = new DateTimeConverter
+            {
+                Format = DefaultFormat,
+                MinValueString = "-",
+            };
 
             // Act
-            var convertedOutput = dateTimeConverter.Convert(input, typeof(string), null, CultureInfo.CurrentUICulture);
+            var result = dateTimeConverter.Convert(value, null, parameter, culture);
 
             // Assert
-            Assert.Equal(expectedValue, convertedOutput);
+            result.Should().Be(expectedResult);
+        }
+
+        public class DateTimeConverterTestsValidTestdata : TheoryData<object, object, CultureInfo, object>
+        {
+            public DateTimeConverterTestsValidTestdata()
+            {
+                this.Add(null, null, CultureInfo.InvariantCulture, ConverterBase.UnsetValue);
+                this.Add(DateTime.MinValue, null, CultureInfo.InvariantCulture, "-");
+                this.Add(new DateTime(2014, 8, 26, 18, 0, 0), null, CultureInfo.InvariantCulture, "08/26/2014 20:00");
+            }
         }
 
         [Fact]
