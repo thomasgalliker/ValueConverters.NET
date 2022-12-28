@@ -9,6 +9,7 @@
     <Import_RootNamespace>ValueConverters</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AssemblyConfig.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolInverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolNegationConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolToBrushConverter.cs" />
@@ -22,10 +23,20 @@
     <Compile Include="$(MSBuildThisFileDirectory)BoolToValueConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConverterBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DateTimeOffsetConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DateTimeOffsetToStringConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DateTimeToStringConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\DateTimeExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IsInRangeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MinMaxValueToBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ITimeZoneInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\SystemTimeZoneInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TimeSpanToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FirstOrDefaultConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GuidToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DoubleToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)InverseBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)InvertedBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PreferredCulture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ReversibleValueToBoolConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringCaseConverter.cs" />
@@ -35,7 +46,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)PropertyHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SingletonConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DateTimeConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DateTimeConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DebugConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EnumToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EnumToObjectConverter.cs" />

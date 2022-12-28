@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>492df5ea-702c-4b13-857c-90f510e10470</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>ValueConverters.Tests.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AddConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BoolNegationConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BoolToObjectConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BoolToValueConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DateTimeOffsetToStringConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DateTimeToStringConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MinMaxValueToBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DebugConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EnumToBoolConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EnumToObjectConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EnumWrapperConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EnumWrapperTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FirstOrDefaultConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GuidToStringConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IsEmptyConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Properties\xunit.assembly.config.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TimeSpanToStringConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StringCaseConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StringIsNotNullOrEmptyConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StringIsNullOrEmptyConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StringToDecimalConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SubtractConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Testdata\TestClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Testdata\TestEnum.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ValueConverterGroupTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ValueToBoolConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ValueToEnumerableConverterTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VersionToStringConverterTests.cs" />
+  </ItemGroup>
+</Project>

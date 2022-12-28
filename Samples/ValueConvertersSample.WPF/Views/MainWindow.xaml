@@ -2,15 +2,11 @@
     x:Class="ValueConvertersSample.WPF.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:glob="clr-namespace:System.Globalization;assembly=mscorlib"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:valueConverters="clr-namespace:ValueConverters;assembly=ValueConverters"
     xmlns:viewModel="clr-namespace:ValueConverterSample.WPF.ViewModel"
-    Title="MainWindow"
-    Width="800"
-    Height="450"
-    mc:Ignorable="d">
+    Title="ValueConvertersSample.WPF"
+    SizeToContent="WidthAndHeight">
     <Window.DataContext>
         <viewModel:MainViewModel />
     </Window.DataContext>
@@ -56,8 +52,8 @@
             TrueValue="1" />
         <valueConverters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <valueConverters:BoolToVisibilityConverter x:Key="BoolToInvertedVisibilityConverter" IsInverted="True" />
-        <valueConverters:DateTimeConverter
-            x:Key="DateTimeConverter"
+        <valueConverters:DateTimeToStringConverter
+            x:Key="DateTimeToStringConverter"
             Format="d"
             MinValueString="---"
             PreferredCulture="CurrentUICulture" />
@@ -82,6 +78,11 @@
             <valueConverters:BoolToVisibilityConverter />
             <valueConverters:DebugConverter />
         </valueConverters:ValueConverterGroup>
+
+        <valueConverters:MinMaxValueToBoolConverter
+            x:Key="MinMaxValueToBoolConverter"
+            MaxValue="80"
+            MinValue="20" />
     </Window.Resources>
 
     <Border
@@ -90,6 +91,7 @@
         CornerRadius="{Binding IsEditing, Converter={StaticResource BoolToDoubleConverter}}">
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -144,14 +146,14 @@
             <Label
                 Grid.Row="2"
                 Grid.Column="1"
-                Content="{Binding ChangeDate, Converter={StaticResource DateTimeConverter}, ConverterCulture={x:Static glob:CultureInfo.CurrentCulture}}"
+                Content="{Binding ChangeDate, Converter={StaticResource DateTimeToStringConverter}, ConverterCulture={x:Static glob:CultureInfo.CurrentCulture}}"
                 FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"
                 Visibility="{Binding IsEditing, Converter={StaticResource BoolToInvertedVisibilityConverter}}" />
             <TextBox
                 Grid.Row="2"
                 Grid.Column="1"
                 FontWeight="{Binding IsEnabled, Converter={StaticResource BoolToFontWeightConverter}}"
-                Text="{Binding ChangeDate, Converter={StaticResource DateTimeConverter}, ConverterCulture={x:Static glob:CultureInfo.CurrentCulture}}"
+                Text="{Binding ChangeDate, Converter={StaticResource DateTimeToStringConverter}, ConverterCulture={x:Static glob:CultureInfo.CurrentCulture}}"
                 Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}" />
             <DatePicker
                 Grid.Row="2"
@@ -303,6 +305,19 @@
                 Content="Cancel"
                 IsEnabled="{Binding IsEditing}"
                 Style="{Binding IsEditing, Converter={StaticResource BoolToStyleConverter}}" />
+
+            <TextBlock
+                Grid.Row="7"
+                Grid.Column="0"
+                Text="{Binding Source={x:Reference Slider}, Path=Value, Converter={StaticResource MinMaxValueToBoolConverter}, StringFormat='In range: {0}'}" />
+
+            <Slider
+                x:Name="Slider"
+                Grid.Row="7"
+                Grid.Column="1"
+                Maximum="100"
+                Minimum="0"
+                Ticks="1" />
         </Grid>
     </Border>
 </Window>
