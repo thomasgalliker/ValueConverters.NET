@@ -23,8 +23,7 @@
 		<VersionPrefix>1.0.0</VersionPrefix>
 		<Version>1.0.0</Version>
 		<Authors>Thomas Galliker</Authors>
-		<!--<TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>-->
-		<AssemblyName>ValueConverters</AssemblyName>
+		<AssemblyName>ValueConverters.MAUI</AssemblyName>
 		<PackageId>ValueConverters.MAUI</PackageId>
 		<PackageTags>IValueConverter;ValueConverter;ValueConverters;converter;ValueConverters.Forms;UI;ToValueConverter;DisplayAttribute</PackageTags>
 		<PackageIconUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/develop/Images/logo.png</PackageIconUrl>
