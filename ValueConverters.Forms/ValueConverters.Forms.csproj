@@ -24,10 +24,6 @@
     <DefineConstants>$(DefineConstants);XAMARIN</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net48' ">
-    <DefineConstants>$(DefineConstants);NETFX</DefineConstants>
-  </PropertyGroup>
-
   <PropertyGroup>
     <ApplicationIcon />
     <OutputType>Library</OutputType>
