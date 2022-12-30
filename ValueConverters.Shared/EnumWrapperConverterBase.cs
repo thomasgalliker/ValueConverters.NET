@@ -6,12 +6,14 @@ using System.Globalization;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
 
-#if NETFX || NET5_0_OR_GREATER
+#if (NETFX || NETWPF)
 using System.Windows;
+
 #elif (NETFX_CORE)
 using Windows.UI.Xaml;
+
 #endif
-#if XAMARIN || (NETFX_CORE && !WINDOWS_UWP)
+#if XAMARIN || MAUI || (NETFX_CORE && !WINDOWS_UWP)
 using ValueConverters.Extensions;
 #endif
 
