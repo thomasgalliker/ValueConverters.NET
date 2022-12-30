@@ -90,19 +90,19 @@
       </group>
     </dependencies>
     <frameworkAssemblies>
-      <!--.Net 4.5-->
-      <frameworkAssembly assemblyName="PresentationCore" targetFramework="net45" />
-      <frameworkAssembly assemblyName="PresentationFramework" targetFramework="net45" />
-      <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework="net45" />
-      <frameworkAssembly assemblyName="System.Xaml" targetFramework="net45" />
-      <frameworkAssembly assemblyName="WindowsBase" targetFramework="net45" />
+      <!--.NET Framework 4.8-->
+      <frameworkAssembly assemblyName="PresentationCore" targetFramework="net48" />
+      <frameworkAssembly assemblyName="PresentationFramework" targetFramework="net48" />
+      <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework="net48" />
+      <frameworkAssembly assemblyName="System.Xaml" targetFramework="net48" />
+      <frameworkAssembly assemblyName="WindowsBase" targetFramework="net48" />
     </frameworkAssemblies>
   </metadata>
   <files>
-    <!--.NET Framework 4.5-->
-    <file src="ValueConverters.Netfx\bin\Release\ValueConverters.dll" target="lib\net45\ValueConverters.dll" />
-    <file src="ValueConverters.Netfx\bin\Release\ValueConverters.pdb" target="lib\net45\ValueConverters.pdb" />
-    <file src="ValueConverters.Netfx\bin\Release\ValueConverters.xml" target="lib\net45\ValueConverters.xml" />
+	<!--.NET Framework 4.8-->
+    <file src="ValueConverters.Netfx\bin\Release\ValueConverters.dll" target="lib\net48\ValueConverters.dll" />
+    <file src="ValueConverters.Netfx\bin\Release\ValueConverters.pdb" target="lib\net48\ValueConverters.pdb" />
+    <file src="ValueConverters.Netfx\bin\Release\ValueConverters.xml" target="lib\net48\ValueConverters.xml" />
 
     <!--.NET 5.0-->
     <file src="ValueConverters.WPF\bin\Release\net5.0-windows\ValueConverters.dll" target="lib\net5.0-windows7\ValueConverters.dll" />
