@@ -140,6 +140,7 @@ steps:
     packagesToPack: ValueConverters.MAUI/ValueConverters.MAUI.csproj
     versioningScheme: byEnvVar
     versionEnvVar: semVersion
+    nobuild: true
     
 - task: DotNetCoreCLI@2
   displayName: 'Pack ValueConverters.Annotations'
@@ -148,6 +149,7 @@ steps:
     packagesToPack: ValueConverters.Annotations/ValueConverters.Annotations.csproj
     versioningScheme: byEnvVar
     versionEnvVar: semVersion
+    nobuild: true
       
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
