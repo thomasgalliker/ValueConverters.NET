@@ -114,10 +114,12 @@
                 Text="Next" />
             <Label IsVisible="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}" Text="{Binding SelectedPartyMode, Converter={StaticResource EnumWrapperConverter}, StringFormat='{0}'}" />
             <Picker
-                x:Name="partyModePicker"
                 Title="PartyMode"
                 HorizontalOptions="Start"
                 IsVisible="{Binding IsEditing}"
+                ItemDisplayBinding="{Binding LocalizedValue}"
+                ItemsSource="{Binding PartyModes, Converter={StaticResource EnumWrapperConverter}}"
+                SelectedItem="{Binding SelectedPartyMode, Converter={StaticResource EnumWrapperConverter}}"
                 VerticalOptions="Start" />
         </StackLayout>
 
@@ -131,12 +133,14 @@
             IsVisible="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}"
             Text="{Binding SelectedLanguage.DisplayName}" />
         <Picker
-            x:Name="languagePicker"
             Title="Language"
             Grid.Row="4"
             Grid.Column="1"
             HorizontalOptions="Start"
             IsVisible="{Binding IsEditing}"
+            ItemDisplayBinding="{Binding DisplayName}"
+            ItemsSource="{Binding Languages}"
+            SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
             VerticalOptions="Start" />
 
         <Button
