@@ -1,12 +1,13 @@
-﻿using System.Globalization;
+﻿using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Windows.Input;
+
 using ValueConverters;
 using ValueConvertersSample.Contracts.Model;
-using ObservableObject = ValueConverters.ObservableObject;
 
-namespace MauiApp1.ViewModels
+namespace ValueConvertersSample.MAUI.ViewModels
 {
-    public class MainViewModel : ObservableObject
+    public class MainViewModel : BindableBase
     {
         private bool isEditing;
         private bool isEnabled;
@@ -14,25 +15,26 @@ namespace MauiApp1.ViewModels
         private EnumWrapper<RadioFrequency> radioFrequency;
         private PartyMode selectedPartyMode;
         private CultureInfo selectedLanguage;
+        private string userName;
 
         public MainViewModel()
         {
-            this.selectedLanguage = CultureInfo.CurrentUICulture;
+            this.selectedLanguage = Thread.CurrentThread.CurrentUICulture;
+            this.ChangeDate = DateTime.Now;
 
             // Initialize RadioFrequency enums using EnumWrapper explicitly
             this.RadioFrequencies = new EnumWrapperCollection<RadioFrequency>();
             this.radioFrequency = this.RadioFrequencies.FirstOrDefault();
 
             // Initialize PartyMode enum without EnumWrapper
-            this.PartyModes = Enum.GetValues(typeof(PartyMode)).OfType<PartyMode>();
+            this.PartyModes = new ObservableCollection<PartyMode>(Enum.GetValues(typeof(PartyMode)).OfType<PartyMode>());
             this.selectedPartyMode = this.PartyModes.FirstOrDefault();
 
             this.EditCommand = new DelegateCommand(
                 () =>
-                    {
-                        this.ChangeDate = DateTime.Now;
-                        this.IsEditing = true;
-                    });
+                {
+                    this.IsEditing = true;
+                });
 
             this.CancelCommand = new DelegateCommand(
                 () =>
@@ -42,49 +44,52 @@ namespace MauiApp1.ViewModels
 
             this.NextPartyModeCommand = new DelegateCommand(
                () =>
-                   {
-                       // Cycle through PartyMode enum:
-                       this.SelectedPartyMode = (PartyMode)((int)(this.SelectedPartyMode + 1) % Enum.GetValues(this.SelectedPartyMode.GetType()).Length);
-                   });
+               {
+                   // Cycle through PartyMode enum:
+                   this.SelectedPartyMode = (PartyMode)((int)(this.SelectedPartyMode + 1) % Enum.GetValues(this.SelectedPartyMode.GetType()).Length);
+               });
+
+            this.ClearPartyModesCommand = new DelegateCommand(
+                () =>
+                {
+                    this.PartyModes.Clear();
+                    this.RaisePropertyChanged(nameof(this.PartyModes));
+                });
+
+            this.FillPartyModesCommand = new DelegateCommand(
+                () =>
+                {
+                    this.PartyModes = new ObservableCollection<PartyMode>(Enum.GetValues(typeof(PartyMode)).OfType<PartyMode>());
+                    this.RaisePropertyChanged(nameof(this.PartyModes));
+                });
+        }
+
+        public string UserName
+        {
+            get => this.userName;
+            set => this.SetProperty(ref this.userName, value);
         }
 
         public bool IsEditing
         {
-            get
-            {
-                return this.isEditing;
-            }
+            get => this.isEditing;
             set
             {
                 this.isEditing = value;
-                this.OnPropertyChanged(() => this.IsEditing);
+                this.RaisePropertyChanged(nameof(this.IsEditing));
             }
         }
 
         public bool IsEnabled
         {
-            get
-            {
-                return this.isEnabled;
-            }
-            set
-            {
-                this.isEnabled = value;
-                this.OnPropertyChanged(() => this.IsEnabled);
-            }
+            get => this.isEnabled;
+            set => this.SetProperty(ref this.isEnabled, value);
         }
 
         public DateTime ChangeDate
         {
-            get
-            {
-                return this.changeDate;
-            }
-            set
-            {
-                this.changeDate = value;
-                this.OnPropertyChanged(() => this.ChangeDate);
-            }
+            get => this.changeDate;
+            set => this.SetProperty(ref this.changeDate, value);
         }
 
         // RadioFrequencies and SelectedRadioFrequency are wrapped into EnumWrapper objects.
@@ -93,33 +98,19 @@ namespace MauiApp1.ViewModels
 
         public EnumWrapper<RadioFrequency> SelectedRadioFrequency
         {
-            get
-            {
-                return this.radioFrequency;
-            }
-            set
-            {
-                this.radioFrequency = value;
-                this.OnPropertyChanged(() => this.SelectedRadioFrequency);
-            }
+            get => this.radioFrequency;
+            set => this.SetProperty(ref this.radioFrequency, value);
         }
 
         // PartyModes and SelectedPartyMode are exposed as normal enum types.
         // The view needs to use the EnumWrapperConverter to convert these enums
         // on-the-fly to EnumWrapper<PartyMode> objects.
-        public IEnumerable<PartyMode> PartyModes { get; private set; }
+        public ObservableCollection<PartyMode> PartyModes { get; private set; }
 
         public PartyMode SelectedPartyMode
         {
-            get
-            {
-                return this.selectedPartyMode;
-            }
-            set
-            {
-                this.selectedPartyMode = value;
-                this.OnPropertyChanged(() => this.SelectedPartyMode);
-            }
+            get => this.selectedPartyMode;
+            set => this.SetProperty(ref this.selectedPartyMode, value);
         }
 
         public ICommand EditCommand { get; private set; }
@@ -128,37 +119,39 @@ namespace MauiApp1.ViewModels
 
         public ICommand NextPartyModeCommand { get; private set; }
 
+        public ICommand ClearPartyModesCommand { get; private set; }
+
+        public ICommand FillPartyModesCommand { get; private set; }
+
         public IEnumerable<CultureInfo> Languages => new List<CultureInfo>
-                {
-                    new CultureInfo("en-US"),
-                    new CultureInfo("de"),
-                    new CultureInfo("sv")
-                };
+        {
+            new CultureInfo("en-US"),
+            new CultureInfo("de"),
+            new CultureInfo("sv")
+        };
 
         public CultureInfo SelectedLanguage
         {
-            get
-            {
-                return this.selectedLanguage;
-            }
+            get => this.selectedLanguage;
             set
             {
-                this.selectedLanguage = value;
-                this.OnPropertyChanged(() => this.SelectedLanguage);
-
-                if (value != null)
+                if (this.SetProperty(ref this.selectedLanguage, value))
                 {
-                    CultureInfo.DefaultThreadCurrentUICulture = value;
+                    if (value != null)
+                    {
+                        Thread.CurrentThread.CurrentCulture = value;
+                        Thread.CurrentThread.CurrentUICulture = value;
 
-                    this.OnPropertyChanged(() => this.RadioFrequencies);
-                    this.OnPropertyChanged(() => this.SelectedRadioFrequency);
+                        this.RaisePropertyChanged();
+                        //this.RaisePropertyChanged(nameof(this.RadioFrequencies));
+                        //this.RaisePropertyChanged(nameof(this.SelectedRadioFrequency));
+                        //this.RaisePropertyChanged(nameof(this.PartyModes));
+                        //this.RaisePropertyChanged(nameof(this.SelectedPartyMode));
 
-                    this.OnPropertyChanged(() => this.PartyModes);
-                    this.OnPropertyChanged(() => this.SelectedPartyMode);
-
-                    // Refresh method triggers PropertyChanged events for all EnumWrapper.LocalizedValue properties
-                    // We can only do this for RadioFrequencies since this is a List<EnumWrapper<RadioRequency>>
-                    this.RadioFrequencies.Refresh();
+                        // Refresh method triggers PropertyChanged events for all EnumWrapper.LocalizedValue properties
+                        // We can only do this for RadioFrequencies since this is a List<EnumWrapper<RadioRequency>>
+                        this.RadioFrequencies.Refresh();
+                    }
                 }
             }
         }

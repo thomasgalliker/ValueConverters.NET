@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace MauiApp1.ViewModels
+namespace ValueConvertersSample.MAUI.ViewModels
 {
     public class DelegateCommand : ICommand
     {

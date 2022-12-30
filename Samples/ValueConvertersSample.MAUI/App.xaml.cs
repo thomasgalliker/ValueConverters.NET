@@ -1,4 +1,4 @@
-﻿namespace MauiApp1
+﻿namespace ValueConvertersSample.MAUI
 {
     public partial class App : Application
     {

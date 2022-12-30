@@ -1,6 +1,6 @@
-﻿using MauiApp1.ViewModels;
+﻿using ValueConvertersSample.MAUI.ViewModels;
 
-namespace MauiApp1
+namespace ValueConvertersSample.MAUI
 {
     public partial class MainPage : ContentPage
     {
