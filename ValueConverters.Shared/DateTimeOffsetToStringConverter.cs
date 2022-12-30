@@ -7,8 +7,9 @@ using ValueConverters.Services;
 using Xamarin.Forms;
 #endif
 
-#if NETFX || NET5_0_OR_GREATER
+#if (NETFX || NETWPF)
 using System.Windows;
+
 #elif (NETFX_CORE)
 using Windows.UI.Xaml;
 #endif
@@ -34,7 +35,7 @@ namespace ValueConverters
             this.timeZone = timeZone;
         }
 
-#if XAMARIN
+#if XAMARIN || MAUI
         public static readonly BindableProperty FormatProperty = BindableProperty.Create(
             nameof(Format),
             typeof(string),

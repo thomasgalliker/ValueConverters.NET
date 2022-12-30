@@ -1,22 +1,25 @@
-﻿using System.Globalization;
-using System;
+﻿using System;
 using System.Collections;
+using System.Globalization;
 
-#if XAMARIN
-using Xamarin.Forms;
-#endif
-
-#if NETFX || NET5_0_OR_GREATER
+#if NETFX || NETWPF
 using System.Windows;
-#elif (NETFX_CORE)
+
+#elif NETFX_CORE
 using Windows.UI.Xaml;
+
+#elif (XAMARIN)
+using Xamarin.Forms;
+
+#elif (MAUI)
+using Microsoft.Maui;
 #endif
 
 namespace ValueConverters
 {
     public class IsEmptyConverter : SingletonConverterBase<IsEmptyConverter>
     {
-#if XAMARIN
+#if XAMARIN || MAUI
         public static readonly BindableProperty IsInvertedProperty = BindableProperty.Create(
             "IsInverted",
             typeof(bool),

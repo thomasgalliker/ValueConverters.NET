@@ -1,4 +1,4 @@
-﻿#if (NETFX || NET5_0_OR_GREATER)
+﻿#if (NETFX || NETWPF)
 using System.Windows;
 using System.Windows.Data;
 using Property = System.Windows.DependencyProperty;
@@ -9,6 +9,10 @@ using Property = Windows.UI.Xaml.DependencyProperty;
 #elif (XAMARIN)
 using Xamarin.Forms;
 using Property = Xamarin.Forms.BindableProperty;
+
+#elif (MAUI)
+using Microsoft.Maui;
+using Property = Microsoft.Maui.Controls.BindableProperty;
 #endif
 
 namespace ValueConverters
@@ -17,8 +21,8 @@ namespace ValueConverters
     {
         public override T TrueValue
         {
-            get { return (T)this.GetValue(TrueValueProperty); }
-            set { this.SetValue(TrueValueProperty, value); }
+            get => (T)this.GetValue(TrueValueProperty);
+            set => this.SetValue(TrueValueProperty, value);
         }
 
         public static readonly Property TrueValueProperty =
@@ -26,8 +30,8 @@ namespace ValueConverters
 
         public override T FalseValue
         {
-            get { return (T)this.GetValue(FalseValueProperty); }
-            set { this.SetValue(FalseValueProperty, value); }
+            get => (T)this.GetValue(FalseValueProperty);
+            set => this.SetValue(FalseValueProperty, value);
         }
 
         public static readonly Property FalseValueProperty =

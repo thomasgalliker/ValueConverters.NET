@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Globalization;
 
-#if XAMARIN
-using Xamarin.Forms;
-#endif
-
-#if NETFX || NET5_0_OR_GREATER
+#if NETFX || NETWPF
 using System.Windows;
-#elif (NETFX_CORE)
+
+#elif NETFX_CORE
 using Windows.UI.Xaml;
+
+#elif XAMARIN
+using Xamarin.Forms;
 #endif
 
 namespace ValueConverters
@@ -22,43 +22,43 @@ namespace ValueConverters
     /// </summary>
     public class MinMaxValueToBoolConverter : SingletonConverterBase<MinMaxValueToBoolConverter>
     {
-#if XAMARIN
+#if XAMARIN || MAUI
         public static readonly BindableProperty MaxValueProperty = 
             BindableProperty.Create(
                 nameof(MaxValue),
-                typeof(IComparable),
+                typeof(object),
                 typeof(MinMaxValueToBoolConverter));
 
         public static readonly BindableProperty MinValueProperty = 
             BindableProperty.Create(
                 nameof(MinValue),
-                typeof(IComparable),
+                typeof(object),
                 typeof(MinMaxValueToBoolConverter));
 #else
         public static readonly DependencyProperty MaxValueProperty =
             DependencyProperty.Register(
                 nameof(MaxValue),
-                typeof(IComparable),
+                typeof(object),
                 typeof(MinMaxValueToBoolConverter),
                 new PropertyMetadata(defaultValue: null));
 
         public static readonly DependencyProperty MinValueProperty =
             DependencyProperty.Register(
                 nameof(MinValue),
-                typeof(IComparable),
+                typeof(object),
                 typeof(MinMaxValueToBoolConverter),
                 new PropertyMetadata(defaultValue: null));
 #endif
 
-        public IComparable MaxValue
+        public object MaxValue
         {
-            get => (IComparable)this.GetValue(MaxValueProperty);
+            get => this.GetValue(MaxValueProperty);
             set => this.SetValue(MaxValueProperty, value);
         }
 
-        public IComparable MinValue
+        public object MinValue
         {
-            get => (IComparable)this.GetValue(MinValueProperty);
+            get => this.GetValue(MinValueProperty);
             set => this.SetValue(MinValueProperty, value);
         }
 
@@ -70,11 +70,20 @@ namespace ValueConverters
                 return UnsetValue;
             }
 
+            if (this.MinValue is not IComparable)
+            {
+                throw new ArgumentException("MinValue must implement IComparable interface", nameof(this.MinValue));
+            }
+
+            if (this.MaxValue is not IComparable)
+            {
+                throw new ArgumentException("MaxValue must implement IComparable interface", nameof(this.MaxValue));
+            }
+
             var minValue = System.Convert.ChangeType(this.MinValue, comparable.GetType());
             var maxValue = System.Convert.ChangeType(this.MaxValue, comparable.GetType());
 
-            var inRange = comparable.CompareTo(minValue) >= 0 && comparable.CompareTo(maxValue) <= 0;
-            return inRange;
+            return (comparable.CompareTo(minValue) >= 0 && comparable.CompareTo(maxValue) <= 0);
         }
     }
 }

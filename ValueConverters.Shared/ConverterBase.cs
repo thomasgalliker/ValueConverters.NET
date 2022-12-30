@@ -1,20 +1,29 @@
 ﻿using System;
 using System.Globalization;
 
-#if (NETFX || NET5_0_OR_GREATER)
+#if (NETFX || NETWPF)
 using System.Windows;
 using System.Windows.Data;
+using Property = System.Windows.DependencyProperty;
+
 #elif (NETFX_CORE)
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
+using Property = Windows.UI.Xaml.DependencyProperty;
+
 #elif (XAMARIN)
 using Xamarin.Forms;
+using Property = Xamarin.Forms.BindableProperty;
+
+#elif (MAUI)
+using Microsoft.Maui;
+using Property = Microsoft.Maui.Controls.BindableProperty;
 #endif
 
 namespace ValueConverters
 {
     public abstract class ConverterBase :
-#if XAMARIN
+#if XAMARIN || MAUI
         BindableObject,
 #else
         DependencyObject,
@@ -50,8 +59,7 @@ namespace ValueConverters
             throw new NotSupportedException($"Converter '{this.GetType().Name}' does not support backward conversion.");
         }
 
-
-#if (NETFX || NET5_0_OR_GREATER || XAMARIN)
+#if (NETFX || NETWPF || XAMARIN || MAUI)
         object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return this.Convert(value, targetType, parameter, this.SelectCulture(() => culture));
@@ -61,6 +69,7 @@ namespace ValueConverters
         {
             return this.ConvertBack(value, targetType, parameter, this.SelectCulture(() => culture));
         }
+
 #elif (NETFX_CORE)
         object IValueConverter.Convert(object value, Type targetType, object parameter, string language)
         {
@@ -105,7 +114,7 @@ namespace ValueConverters
         }
 
 
-#if XAMARIN
+#if XAMARIN || MAUI
         public static readonly object UnsetValue = null;
 #else
         public static readonly object UnsetValue = DependencyProperty.UnsetValue;

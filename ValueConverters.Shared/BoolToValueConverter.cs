@@ -1,18 +1,23 @@
-﻿#if XAMARIN
-using Xamarin.Forms;
-#endif
-
-#if NETFX || NET5_0_OR_GREATER
+﻿#if (NETFX || NETWPF)
 using System.Windows;
-#elif (NETFX_CORE)
+using System.Windows.Data;
+
+#elif NETFX_CORE
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Data;
+
+#elif XAMARIN
+using Xamarin.Forms;
+
+#elif MAUI
+using Microsoft.Maui;
 #endif
 
 namespace ValueConverters
 {
     public class BoolToValueConverter<T> : BoolToValueConverterBase<T, BoolToValueConverter<T>>
     {
-#if XAMARIN
+#if XAMARIN || MAUI
         public static readonly BindableProperty TrueValueProperty = BindableProperty.Create(
             "TrueValue",
             typeof(T),
@@ -52,20 +57,20 @@ namespace ValueConverters
 
         public override T TrueValue
         {
-            get { return (T)this.GetValue(TrueValueProperty); }
-            set { this.SetValue(TrueValueProperty, value); }
+            get => (T)this.GetValue(TrueValueProperty);
+            set => this.SetValue(TrueValueProperty, value);
         }
 
         public override T FalseValue
         {
-            get { return (T)this.GetValue(FalseValueProperty); }
-            set { this.SetValue(FalseValueProperty, value); }
+            get => (T)this.GetValue(FalseValueProperty);
+            set => this.SetValue(FalseValueProperty, value);
         }
 
         public override bool IsInverted
         {
-            get { return (bool)this.GetValue(IsInvertedProperty); }
-            set { this.SetValue(IsInvertedProperty, value); }
+            get => (bool)this.GetValue(IsInvertedProperty);
+            set => this.SetValue(IsInvertedProperty, value);
         }
     }
 }

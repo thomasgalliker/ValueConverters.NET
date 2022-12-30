@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Globalization;
 
-#if XAMARIN
-using Xamarin.Forms;
-#endif
-
-#if NETFX || NET5_0_OR_GREATER
+#if (NETFX || NETWPF)
 using System.Windows;
-#elif (NETFX_CORE)
+using System.Windows.Data;
+
+#elif NETFX_CORE
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Data;
+
+#elif XAMARIN
+using Xamarin.Forms;
+
+#elif MAUI
+using Microsoft.Maui;
 #endif
 
 namespace ValueConverters
@@ -18,7 +23,7 @@ namespace ValueConverters
         protected const string DefaultFormat = @"g";
         protected const string DefaultMinValueString = "";
 
-#if XAMARIN
+#if XAMARIN || MAUI
         public static readonly BindableProperty FormatProperty = BindableProperty.Create(
             "Format",
             typeof(string),
