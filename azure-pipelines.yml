@@ -133,26 +133,14 @@ steps:
     command: custom
     arguments: pack $(nuspecFileForms) -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
     
-- task: DotNetCoreCLI@2
-  displayName: 'NuGet restore'
-  inputs:
-    command: restore
-    projects: '$(solution)'
-
-- task: DotNetCoreCLI@2
-  displayName: 'Build solution'
-  inputs:
-    projects: '$(solution)'
-    arguments: '--no-restore --configuration $(buildConfiguration)'
-    
-- task: DotNetCoreCLI@2
-  displayName: 'Pack ValueConverters.MAUI'
-  inputs:
-    command: pack
-    packagesToPack: ValueConverters.MAUI/ValueConverters.MAUI.csproj
-    versioningScheme: byEnvVar
-    versionEnvVar: semVersion
-    nobuild: true
+#- task: DotNetCoreCLI@2
+#  displayName: 'Pack ValueConverters.MAUI'
+#  inputs:
+#    command: pack
+#    packagesToPack: ValueConverters.MAUI/ValueConverters.MAUI.csproj
+#    versioningScheme: byEnvVar
+#    versionEnvVar: semVersion
+#    nobuild: true
     
 - task: DotNetCoreCLI@2
   displayName: 'Pack ValueConverters.Annotations'
