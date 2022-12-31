@@ -6,6 +6,9 @@
 
 name: $[format('{0}', variables['buildName'])]
 
+pool:
+  vmImage: 'windows-2022'
+
 trigger:
   branches:
     include:
@@ -36,230 +39,133 @@ variables:
     semVersion: $[format('{0}.{1}.{2}-pr.{3}', variables.majorVersion, variables.minorVersion, variables.patchVersion, variables['System.PullRequest.PullRequestId'])]
   buildName: $[format('{0}', variables.semVersion)]
 
-jobs:
-- job: Job1
-  displayName: 'Build Job1'
-  workspace:
-    clean: all
-  pool:
-    vmImage: 'windows-2019'
-
-  steps:
-  - task: Bash@3
-    displayName: 'Print all variables'
-    inputs:
-      targetType: 'inline'
-      script: 'env | sort'
-     
-  - task: Assembly-Info-NetFramework@2
-    displayName: 'Update Assembly Info (.NET Framework)'
-    inputs:
-      Path: '$(Build.SourcesDirectory)'
-      FileNames: '**\AssemblyInfo.cs'
-      InsertAttributes: true
-      FileEncoding: 'auto'
-      WriteBOM: false
-      Title: 'ValueConverters.NET'
-      Description: ''
-      Company: 'superdev GmbH'
-      Copyright: '(c) $(date:YYYY) superdev GmbH'
-      VersionNumber: '$(Build.BuildNumber)'
-      FileVersionNumber: '$(Build.BuildNumber)'
-      InformationalVersion: '$(Build.BuildNumber)'
-      LogLevel: 'verbose'
-      FailOnWarning: false
-      DisableTelemetry: false
-  
-  - task: Assembly-Info-NetCore@2
-    displayName: 'Update Assembly Info (.NET Core/Standard)'
-    inputs:
-      Path: '$(Build.SourcesDirectory)'
-      FileNames: |
-        **/*.csproj
-      InsertAttributes: true
-      FileEncoding: 'auto'
-      WriteBOM: false
-      Product: 'ValueConverters.NET'
-      Description: ''
-      Company: 'superdev GmbH'
-      Copyright: '(c) $(date:YYYY) superdev GmbH'
-      VersionNumber: '$(Build.BuildNumber)'
-      FileVersionNumber: '$(Build.BuildNumber)'
-      InformationalVersion: '$(Build.BuildNumber)'
-      PackageVersion: '$(Build.BuildNumber)'
-      LogLevel: 'verbose'
-      FailOnWarning: false
-      DisableTelemetry: false'
-  
-  - task: NuGetToolInstaller@0
-    displayName: 'Use NuGet 5.x'
-    inputs:
-      versionSpec: 5.x
-  
-  - task: NuGetCommand@2
-    displayName: 'NuGet restore'
-    inputs:
-      restoreSolution: '$(solution)'
-  
-  - task: VSBuild@1
-    displayName: 'Build solution'
-    inputs:
-      solution: '$(solution)'
-      msbuildArgs: ''
-      platform: '$(buildPlatform)'
-      configuration: '$(buildConfiguration)'
-  
-  - task: DotNetCoreCLI@2
-    displayName: 'Run UnitTests'
-    inputs:
-      command: test
-      projects: '**/*.Tests.csproj'
-      arguments: '--no-restore --no-build --configuration $(buildConfiguration) /p:CollectCoverage=true /p:Exclude="[Microsoft*]*%2C[Mono*]*%2C[xunit*]*%2C[*.Testdata]*" /p:CoverletOutput=UnitTests.coverage.cobertura.xml /p:MergeWith=$(Build.SourcesDirectory)/Tests/CoverletOutput/coverage.json /p:CoverletOutputFormat=cobertura'
-      
-  - task: Palmmedia.reportgenerator.reportgenerator-build-release-task.reportgenerator@4
-    displayName: 'Create Code Coverage Report'
-    inputs:
-      reports: '$(Build.SourcesDirectory)/Tests/**/*.coverage.cobertura.xml'
-      targetdir: '$(Build.SourcesDirectory)/CodeCoverage'
-      reporttypes: 'Cobertura'
-      assemblyfilters: '-xunit*'
-  
-  - task: NuGetCommand@2
-    displayName: 'Pack ValueConverters'
-    inputs:
-      command: custom
-      arguments: pack ValueConverters.nuspec -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
-      
-  - task: NuGetCommand@2
-    displayName: 'Pack ValueConverters.Forms'
-    inputs:
-      command: custom
-      arguments: pack ValueConverters.Forms.nuspec -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
-      
-  - task: CopyFiles@2
-    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-    inputs:
-      SourceFolder: '$(system.defaultworkingdirectory)'
-  
-      Contents: |
-       **\bin\$(buildConfiguration)\**
-       **\bin\*.nupkg
-  
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
-       
-  - task: PublishCodeCoverageResults@1
-    displayName: 'Publish code coverage'
-    inputs:
-      codeCoverageTool: Cobertura
-      summaryFileLocation: '$(Build.SourcesDirectory)/CodeCoverage/Cobertura.xml'
-      reportDirectory: '$(Build.SourcesDirectory)/CodeCoverage'
-  
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
-
-- job: Job2
-  displayName: 'Build Job2'
-  workspace:
-    clean: all
-  pool:
-    vmImage: 'windows-2022'
-    
-  steps:
-  - task: Bash@3
-    displayName: 'Print all variables'
-    inputs:
-      targetType: 'inline'
-      script: 'env | sort'
-     
-  - task: Assembly-Info-NetCore@2
-    displayName: 'Update Assembly Info (.NET Core/Standard)'
-    inputs:
-      Path: '$(Build.SourcesDirectory)'
-      FileNames: |
-        **/*.csproj
-      InsertAttributes: true
-      FileEncoding: 'auto'
-      WriteBOM: false
-      Product: 'ValueConverters.NET'
-      Description: ''
-      Company: 'superdev GmbH'
-      Copyright: '(c) $(date:YYYY) superdev GmbH'
-      VersionNumber: '$(Build.BuildNumber)'
-      FileVersionNumber: '$(Build.BuildNumber)'
-      InformationalVersion: '$(Build.BuildNumber)'
-      PackageVersion: '$(Build.BuildNumber)'
-      LogLevel: 'verbose'
-      FailOnWarning: false
-      DisableTelemetry: false'
-  
-  - task: NuGetToolInstaller@0
-    displayName: 'Use NuGet 6.x'
-    inputs:
-      versionSpec: 6.x
-  
-  - task: NuGetCommand@2
-    displayName: 'NuGet restore'
-    inputs:
-      restoreSolution: '$(solution)'
-  
-  - task: VSBuild@1
-    displayName: 'Build solution'
-    inputs:
-      solution: '$(solution)'
-      msbuildArgs: ''
-      platform: '$(buildPlatform)'
-      configuration: '$(buildConfiguration)'
-  
-  - task: DotNetCoreCLI@2
-    displayName: 'Run UnitTests'
-    inputs:
-      command: test
-      projects: '**/*.Tests.csproj'
-      arguments: '--no-restore --no-build --configuration $(buildConfiguration) /p:CollectCoverage=true /p:Exclude="[Microsoft*]*%2C[Mono*]*%2C[xunit*]*%2C[*.Testdata]*" /p:CoverletOutput=UnitTests.coverage.cobertura.xml /p:MergeWith=$(Build.SourcesDirectory)/Tests/CoverletOutput/coverage.json /p:CoverletOutputFormat=cobertura'
-      
-  - task: Palmmedia.reportgenerator.reportgenerator-build-release-task.reportgenerator@4
-    displayName: 'Create Code Coverage Report'
-    inputs:
-      reports: '$(Build.SourcesDirectory)/Tests/**/*.coverage.cobertura*.xml'
-      targetdir: '$(Build.SourcesDirectory)/CodeCoverage'
-      reporttypes: 'Cobertura'
-      assemblyfilters: '-xunit*'
+steps:
+- task: Bash@3
+  displayName: 'Print all variables'
+  inputs:
+    targetType: 'inline'
+    script: 'env | sort'
    
-  - task: DotNetCoreCLI@2
-    displayName: 'Pack ValueConverters.MAUI'
-    inputs:
-      command: pack
-      packagesToPack: ValueConverters.MAUI/ValueConverters.MAUI.csproj
-      versioningScheme: byEnvVar
-      versionEnvVar: semVersion
-      nobuild: true
+- task: Assembly-Info-NetFramework@2
+  displayName: 'Update Assembly Info (.NET Framework)'
+  inputs:
+    Path: '$(Build.SourcesDirectory)'
+    FileNames: '**\AssemblyInfo.cs'
+    InsertAttributes: true
+    FileEncoding: 'auto'
+    WriteBOM: false
+    Title: 'ValueConverters.NET'
+    Description: ''
+    Company: 'superdev GmbH'
+    Copyright: '(c) $(date:YYYY) superdev GmbH'
+    VersionNumber: '$(Build.BuildNumber)'
+    FileVersionNumber: '$(Build.BuildNumber)'
+    InformationalVersion: '$(Build.BuildNumber)'
+    LogLevel: 'verbose'
+    FailOnWarning: false
+    DisableTelemetry: false
+
+- task: Assembly-Info-NetCore@2
+  displayName: 'Update Assembly Info (.NET Core/Standard)'
+  inputs:
+    Path: '$(Build.SourcesDirectory)'
+    FileNames: |
+      **/*.csproj
+    InsertAttributes: true
+    FileEncoding: 'auto'
+    WriteBOM: false
+    Product: 'ValueConverters.NET'
+    Description: ''
+    Company: 'superdev GmbH'
+    Copyright: '(c) $(date:YYYY) superdev GmbH'
+    VersionNumber: '$(Build.BuildNumber)'
+    FileVersionNumber: '$(Build.BuildNumber)'
+    InformationalVersion: '$(Build.BuildNumber)'
+    PackageVersion: '$(Build.BuildNumber)'
+    LogLevel: 'verbose'
+    FailOnWarning: false
+    DisableTelemetry: false'
+
+- task: NuGetToolInstaller@0
+  displayName: 'Use NuGet 6.x'
+  inputs:
+    versionSpec: 6.x
+
+- task: NuGetCommand@2
+  displayName: 'NuGet restore'
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: VSBuild@1
+  displayName: 'Build solution'
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: ''
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Run UnitTests'
+  inputs:
+    command: test
+    projects: '**/*.Tests.csproj'
+    arguments: '--no-restore --no-build --configuration $(buildConfiguration) /p:CollectCoverage=true /p:Exclude="[Microsoft*]*%2C[Mono*]*%2C[xunit*]*%2C[*.Testdata]*" /p:CoverletOutput=UnitTests.coverage.cobertura.xml /p:MergeWith=$(Build.SourcesDirectory)/Tests/CoverletOutput/coverage.json /p:CoverletOutputFormat=cobertura'
+    
+- task: Palmmedia.reportgenerator.reportgenerator-build-release-task.reportgenerator@4
+  displayName: 'Create Code Coverage Report'
+  inputs:
+    reports: '$(Build.SourcesDirectory)/Tests/**/*.coverage.cobertura*.xml'
+    targetdir: '$(Build.SourcesDirectory)/CodeCoverage'
+    reporttypes: 'Cobertura'
+    assemblyfilters: '-xunit*'
+    
+- task: NuGetCommand@2
+  displayName: 'Pack ValueConverters'
+  inputs:
+    command: custom
+    arguments: pack ValueConverters.nuspec -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
+          
+- task: NuGetCommand@2
+  displayName: 'Pack ValueConverters.Forms'
+  inputs:
+    command: custom
+    arguments: pack ValueConverters.Forms.nuspec -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
+    
+- task: DotNetCoreCLI@2
+  displayName: 'Pack ValueConverters.MAUI'
+  inputs:
+    command: pack
+    packagesToPack: ValueConverters.MAUI/ValueConverters.MAUI.csproj
+    versioningScheme: byEnvVar
+    versionEnvVar: semVersion
+    nobuild: true
+    
+- task: DotNetCoreCLI@2
+  displayName: 'Pack ValueConverters.Annotations'
+  inputs:
+    command: pack
+    packagesToPack: ValueConverters.Annotations/ValueConverters.Annotations.csproj
+    versioningScheme: byEnvVar
+    versionEnvVar: semVersion
+    nobuild: true
       
-  - task: DotNetCoreCLI@2
-    displayName: 'Pack ValueConverters.Annotations'
-    inputs:
-      command: pack
-      packagesToPack: ValueConverters.Annotations/ValueConverters.Annotations.csproj
-      versioningScheme: byEnvVar
-      versionEnvVar: semVersion
-      nobuild: true
-        
-  - task: CopyFiles@2
-    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-    inputs:
-      SourceFolder: '$(system.defaultworkingdirectory)'
-  
-      Contents: |
-       **\bin\$(BuildConfiguration)\**
-       **\bin\*.nupkg
-  
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
-       
-  - task: PublishCodeCoverageResults@1
-    displayName: 'Publish code coverage'
-    inputs:
-      codeCoverageTool: Cobertura
-      summaryFileLocation: '$(Build.SourcesDirectory)/CodeCoverage/Cobertura.xml'
-      reportDirectory: '$(Build.SourcesDirectory)/CodeCoverage'
-  
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '$(system.defaultworkingdirectory)'
+
+    Contents: |
+     **\bin\$(BuildConfiguration)\**
+     **\bin\*.nupkg
+
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+     
+- task: PublishCodeCoverageResults@1
+  displayName: 'Publish code coverage'
+  inputs:
+    codeCoverageTool: Cobertura
+    summaryFileLocation: '$(Build.SourcesDirectory)/CodeCoverage/Cobertura.xml'
+    reportDirectory: '$(Build.SourcesDirectory)/CodeCoverage'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
