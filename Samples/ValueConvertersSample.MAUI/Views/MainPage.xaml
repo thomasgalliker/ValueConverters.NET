@@ -3,7 +3,8 @@
     x:Class="ValueConvertersSample.MAUI.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:valueConverters="clr-namespace:ValueConverters;assembly=ValueConverters">
+    xmlns:valueConverters="clr-namespace:ValueConverters;assembly=ValueConverters"
+    Title="ValueConverters Sample App for .NET MAUI">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="TrueStyleTemplate" TargetType="Button">
