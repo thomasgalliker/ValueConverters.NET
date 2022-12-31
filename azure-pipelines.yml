@@ -22,8 +22,6 @@ variables:
   solution: 'ValueConverters.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  nuspecFile: 'ValueConverters.nuspec'
-  nuspecFileForms: 'ValueConverters.Forms.nuspec'
   majorVersion: 3
   minorVersion: 0
   patchVersion: $[counter(format('{0}.{1}', variables.majorVersion, variables.minorVersion), 0)]
@@ -130,13 +128,13 @@ jobs:
     displayName: 'Pack ValueConverters'
     inputs:
       command: custom
-      arguments: pack $(nuspecFile) -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
+      arguments: pack ValueConverters.nuspec -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
       
   - task: NuGetCommand@2
     displayName: 'Pack ValueConverters.Forms'
     inputs:
       command: custom
-      arguments: pack $(nuspecFileForms) -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
+      arguments: pack ValueConverters.Forms.nuspec -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
       
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
