@@ -43,10 +43,7 @@
 		<Product>ValueConverters.MAUI</Product>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<RootNamespace>ValueConverters</RootNamespace>
-		<PackageReleaseNotes>
-			3.0.0
-			- Initial release
-		</PackageReleaseNotes>
+		<PackageReleaseNotes>See https://www.nuget.org/packages/ValueConverters#release-body-tab</PackageReleaseNotes>
 		<Copyright>Copyright 2022</Copyright>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>

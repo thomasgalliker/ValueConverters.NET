@@ -12,9 +12,7 @@
     <summary>A collection of commonly used IValueConverters for Xamarin.Forms applications.</summary>
     <description>A collection of commonly used IValueConverters for Xamarin.Forms applications.</description>
     <tags>IValueConverter;ValueConverter;ValueConverters;value;converter;ValueConverters.Forms;UI;WPF;ToValueConverter</tags>
-    <releaseNotes>
-      See https://www.nuget.org/packages/ValueConverters#releasenotes-tab
-    </releaseNotes>
+    <releaseNotes>See https://www.nuget.org/packages/ValueConverters#release-body-tab</releaseNotes>
     <copyright>Copyright 2022</copyright>
     <language>en-US</language>
     <dependencies>
