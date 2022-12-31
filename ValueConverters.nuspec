@@ -12,7 +12,9 @@
     <summary>A collection of commonly used IValueConverters for WPF applications.</summary>
     <description>A collection of commonly used IValueConverters for WPF applications.</description>
     <tags>IValueConverter;ValueConverter;ValueConverters;value;converter;ValueConverters.Forms;UI;WPF;ToValueConverter</tags>
-    <releaseNotes>
+    <releaseNotes>3.0.x
+- Add support for .NET MAUI
+
 2.3.x
 - Add MinMaxValueToBoolConverter, IsInRangeConverter
 
