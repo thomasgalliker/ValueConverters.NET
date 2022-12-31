@@ -52,6 +52,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Include="..\ValueConverters.Forms\BoolToFontAttributesConverter.cs" Link="BoolToFontAttributesConverter.cs" />
+	  <Compile Include="..\ValueConverters.Forms\BoolToImageSourceConverter.cs" Link="BoolToImageSourceConverter.cs" />
+	  <Compile Include="..\ValueConverters.Forms\BoolToKeyboardConverter.cs" Link="BoolToKeyboardConverter.cs" />
+	  <Compile Include="..\ValueConverters.Forms\ByteArrayToImageSourceConverter.cs" Link="ByteArrayToImageSourceConverter.cs" />
+	  <Compile Include="..\ValueConverters.Forms\ByteToImageSourceConverter.cs" Link="ByteToImageSourceConverter.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Include="..\README.md">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
