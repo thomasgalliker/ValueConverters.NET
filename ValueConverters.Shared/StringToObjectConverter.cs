@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-#if (NETFX || NET5_0_OR_GREATER)
+#if (NETFX || NETWPF)
 using System.Windows;
 using System.Windows.Markup;
 #elif (NETFX_CORE)
@@ -29,7 +29,7 @@ namespace ValueConverters
     /// </example>
     /// Source: http://stackoverflow.com/questions/2787725/how-to-display-different-enum-icons-using-xaml-only
     /// </summary>
-#if (NETFX || XAMARIN || NET5_0_OR_GREATER)
+#if (NETFX || XAMARIN || NETWPF)
     [ContentProperty(nameof(Items))]
 #elif (NETFX_CORE)
     [ContentProperty(Name = nameof(Items))]
@@ -51,12 +51,12 @@ namespace ValueConverters
             return UnsetValue;
         }
 
-#if (NETFX || NET5_0_OR_GREATER)
+#if (NETFX || NETWPF)
         private static bool ContainsKey(ResourceDictionary dict, string key)
         {
             return dict.Contains(key);
         }
-#elif (NETFX_CORE || XAMARIN)
+#elif (NETFX_CORE || XAMARIN || MAUI)
         private static bool ContainsKey(ResourceDictionary dict, string key)
         {
             return dict.ContainsKey(key);

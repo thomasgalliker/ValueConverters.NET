@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace ValueConverters
 {
@@ -8,7 +9,7 @@ namespace ValueConverters
         private static readonly Lazy<TConverter> InstanceConstructor = new Lazy<TConverter>(() =>
         {
             return new TConverter();
-        }, System.Threading.LazyThreadSafetyMode.PublicationOnly);
+        }, LazyThreadSafetyMode.PublicationOnly);
 
         public static TConverter Instance => InstanceConstructor.Value;
     }

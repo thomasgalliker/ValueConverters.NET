@@ -1,13 +1,5 @@
 ﻿using System.Globalization;
 
-#if NETFX || NET5_0_OR_GREATER
-using System.Windows.Data;
-#elif (NETFX_CORE)
-using Windows.UI.Xaml.Data;
-#elif (XAMARIN)
-using Xamarin.Forms;
-#endif
-
 namespace ValueConverters
 {
     public enum PreferredCulture

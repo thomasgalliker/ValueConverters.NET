@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-#if (NETFX || NET5_0_OR_GREATER)
+#if (NETFX || NETWPF)
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
+
 #elif (NETFX_CORE)
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Markup;
+
 #elif (XAMARIN)
 using Xamarin.Forms;
+
+#elif (MAUI)
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
 #endif
 
 namespace ValueConverters
@@ -21,7 +27,7 @@ namespace ValueConverters
     /// Value converters which aggregates the results of a sequence of converters: Converter1 >> Converter2 >> Converter3
     /// The output of converter N becomes the input of converter N+1.
     /// </summary>
-#if (NETFX || XAMARIN || NET5_0_OR_GREATER)
+#if (NETFX || NETWPF || XAMARIN || MAUI)
     [ContentProperty(nameof(Converters))]
 #elif (NETFX_CORE)
     [ContentProperty(Name = nameof(Converters))]

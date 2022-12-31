@@ -1,18 +1,18 @@
-﻿#if XAMARIN
-using Xamarin.Forms;
-#endif
-
-#if NETFX || NET5_0_OR_GREATER
+﻿#if (NETFX || NETWPF)
 using System.Windows;
+
 #elif (NETFX_CORE)
 using Windows.UI.Xaml;
+
+#elif XAMARIN
+using Xamarin.Forms;
 #endif
 
 namespace ValueConverters
 {
     public class EnumWrapperConverter : EnumWrapperConverterBase<EnumWrapperConverter>
     {
-#if XAMARIN
+#if XAMARIN || MAUI
         public static readonly BindableProperty NameStyleProperty = BindableProperty.Create(
             "NameStyle",
             typeof(EnumWrapperConverterNameStyle),
@@ -29,8 +29,8 @@ namespace ValueConverters
 
         public override EnumWrapperConverterNameStyle NameStyle
         {
-            get { return (EnumWrapperConverterNameStyle)this.GetValue(NameStyleProperty); }
-            set { this.SetValue(NameStyleProperty, value); }
+            get => (EnumWrapperConverterNameStyle)this.GetValue(NameStyleProperty);
+            set => this.SetValue(NameStyleProperty, value);
         }
     }
 }

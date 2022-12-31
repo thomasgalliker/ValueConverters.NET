@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AssemblyConfig.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BindableBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolInverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolNegationConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoolToBrushConverter.cs" />
@@ -55,7 +56,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)EnumWrapperConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EnumWrapperConverterNameStyle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IsEmptyConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ObservableObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringIsNotNullOrEmptyConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringToObjectConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AddConverter.cs" />

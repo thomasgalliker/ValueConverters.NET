@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
 
 using ValueConverters.Annotations;
@@ -49,7 +49,7 @@ namespace ValueConverters
         }
     }
 
-    public class EnumWrapper<TEnumType> : ObservableObject, IEquatable<EnumWrapper<TEnumType>>
+    public class EnumWrapper<TEnumType> : BindableBase, IEquatable<EnumWrapper<TEnumType>>
     {
         private readonly TEnumType value;
         private readonly EnumWrapperConverterNameStyle nameStyle;
@@ -236,8 +236,8 @@ namespace ValueConverters
 
         public void Refresh()
         {
-            this.OnPropertyChanged(() => this.Value);
-            this.OnPropertyChanged(() => this.LocalizedValue);
+            this.RaisePropertyChanged(nameof(this.Value));
+            this.RaisePropertyChanged(nameof(this.LocalizedValue));
         }
     }
 }
