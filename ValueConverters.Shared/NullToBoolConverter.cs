@@ -2,21 +2,21 @@
 using System;
 using System.Collections;
 
-#if XAMARIN
-using Xamarin.Forms;
-#endif
-
-#if NETFX || NET5_0_OR_GREATER
+#if (NETFX || NETWPF)
 using System.Windows;
+
 #elif (NETFX_CORE)
 using Windows.UI.Xaml;
+
+#elif XAMARIN
+using Xamarin.Forms;
 #endif
 
 namespace ValueConverters
 {
     public class NullToBoolConverter : SingletonConverterBase<NullToBoolConverter>
     {
-#if XAMARIN
+#if XAMARIN || MAUI
         public static readonly BindableProperty IsInvertedProperty = BindableProperty.Create(
             nameof(IsInverted),
             typeof(bool),

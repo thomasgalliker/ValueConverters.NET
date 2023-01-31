@@ -1,13 +1,13 @@
 ####################################################################
 # VSTS Build Configuration, Version 1.4
 #
-# (c)2021 superdev GmbH
+# (c)2022 superdev GmbH
 ####################################################################
 
 name: $[format('{0}', variables['buildName'])]
 
 pool:
-  vmImage: 'windows-2019'
+  vmImage: 'windows-2022'
 
 trigger:
   branches:
@@ -19,19 +19,14 @@ trigger:
 
   paths:
     exclude:
-    - README.md
-    - Images/*
-    - Samples/*
+    - Docs/*
 
 variables:
   solution: 'ValueConverters.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  nuspecFile: 'ValueConverters.nuspec'
-  nuspecFileAnnotations: 'ValueConverters.Annotations.nuspec'
-  nuspecFileForms: 'ValueConverters.Forms.nuspec'
-  majorVersion: 2
-  minorVersion: 2
+  majorVersion: 3
+  minorVersion: 0
   patchVersion: $[counter(format('{0}.{1}', variables.majorVersion, variables.minorVersion), 0)]
   ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master') }}:
     # Versioning: 1.0.0
@@ -91,11 +86,10 @@ steps:
     FailOnWarning: false
     DisableTelemetry: false'
 
-
 - task: NuGetToolInstaller@0
-  displayName: 'Use NuGet 5.x'
+  displayName: 'Use NuGet 6.x'
   inputs:
-    versionSpec: 5.x
+    versionSpec: 6.x
 
 - task: NuGetCommand@2
   displayName: 'NuGet restore'
@@ -120,36 +114,50 @@ steps:
 - task: Palmmedia.reportgenerator.reportgenerator-build-release-task.reportgenerator@4
   displayName: 'Create Code Coverage Report'
   inputs:
-    reports: '$(Build.SourcesDirectory)/Tests/**/*.coverage.cobertura.xml'
+    reports: '$(Build.SourcesDirectory)/Tests/**/*.coverage.cobertura*.xml'
     targetdir: '$(Build.SourcesDirectory)/CodeCoverage'
     reporttypes: 'Cobertura'
     assemblyfilters: '-xunit*'
-
+    
 - task: NuGetCommand@2
   displayName: 'Pack ValueConverters'
   inputs:
     command: custom
-    arguments: pack $(nuspecFile) -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
-    
-- task: NuGetCommand@2
-  displayName: 'Pack ValueConverters.Annotations'
-  inputs:
-    command: custom
-    arguments: pack $(nuspecFileAnnotations) -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
-        
+    arguments: pack ValueConverters.nuspec -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
+          
 - task: NuGetCommand@2
   displayName: 'Pack ValueConverters.Forms'
   inputs:
     command: custom
-    arguments: pack $(nuspecFileForms) -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
+    arguments: pack ValueConverters.Forms.nuspec -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
     
+- task: DotNetCoreCLI@2
+  displayName: 'Pack ValueConverters.MAUI'
+  inputs:
+    command: pack
+    packagesToPack: ValueConverters.MAUI/ValueConverters.MAUI.csproj
+    versioningScheme: byEnvVar
+    versionEnvVar: semVersion
+    nobuild: true
+    packDirectory: $(Build.ArtifactStagingDirectory)\artifacts
+    
+- task: DotNetCoreCLI@2
+  displayName: 'Pack ValueConverters.Annotations'
+  inputs:
+    command: pack
+    packagesToPack: ValueConverters.Annotations/ValueConverters.Annotations.csproj
+    versioningScheme: byEnvVar
+    versionEnvVar: semVersion
+    nobuild: true
+    packDirectory: $(Build.ArtifactStagingDirectory)\artifacts
+      
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
   inputs:
     SourceFolder: '$(system.defaultworkingdirectory)'
 
     Contents: |
-     **\bin\$(buildConfiguration)\**
+     **\bin\$(BuildConfiguration)\**
      **\bin\*.nupkg
 
     TargetFolder: '$(Build.ArtifactStagingDirectory)'

@@ -11,152 +11,19 @@ Use the following command to install ValueConverters using NuGet package manager
 
 ```PM> Install-Package ValueConverters``` 
 
-You can use this library in any .Net project which is compatible to PCL (e.g. Xamarin Android, iOS, Windows Phone, Windows Store, Universal Apps, etc.). There is a special NuGet package for Xamarin.Forms available: 
+If your target platform is Xamarin.Forms use following NuGet package: 
 
 ```PM> Install-Package ValueConverters.Forms``` 
 
-### Supported ValueConverters 
+If your target platform is .NET MAUI use following NuGet package: 
 
-Following table illustrates which converters are supported on the respective platforms: 
-
-<table> 
-  <tr> 
-    <td>Converter name</td> 
-    <td>WPF</td> 
-    <td>Windows Phone 8 (SL)</td> 
-    <td>Windows Phone 8.1</td> 
-    <td>Universal Windows Platform</td> 
-    <td>Xamarin Forms</td> 
-  </tr> 
-  <tr> 
-    <td>BoolNegationConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>BoolToBrushConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td></td> 
-  </tr> 
-  <tr> 
-    <td>BoolToDoubleConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>BoolToFontAttributesConverter</td> 
-    <td></td> 
-    <td></td> 
-    <td></td> 
-    <td></td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>BoolToFontWeightConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td></td> 
-  </tr> 
-  <tr> 
-    <td>BoolToStringConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>BoolToStyleConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>BoolToThicknessConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>BoolToValueConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>BoolToVisibilityConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td></td> 
-  </tr> 
-  <tr> 
-    <td>DateTimeConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>DebugConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>EnumToBoolConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>EnumToObjectConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-  <tr> 
-    <td>EnumWrapperConverter</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-    <td>✓</td> 
-  </tr> 
-</table> 
+```PM> Install-Package ValueConverters.MAUI``` 
 
 
 ### API Usage 
 
 The usage of converters is on all platforms more or less the same: 
-
 * Define the converter in the resources area of the view/page/usercontrol. 
-
 * Use the converter in a binding by referenceing  it as a StaticResource. 
 
 #### General Usage of Converters in XAML 
@@ -230,16 +97,24 @@ for easy localization of the defined string resources.
 
 That’s it. If you want to change the UI language at runtime, don’t forget to call OnPropertyChanged after changing CurrentUICulture. There is a WPF sample app available. 
 
+### Converter Culture
+Value converters are culture-aware. Both the Convert and ConvertBack methods have a culture parameter that indicates the cultural information. If cultural information is irrelevant to the conversion, then you can ignore that parameter in your custom converter.
+
+By default, the culture parameter is provided by the underlaying platform. If you want to override the provided culture, use the property PreferredCulture. You can select from one of the following override behaviors:
+- **PreferredCulture.ConverterCulture**: Default, uses the converter culture provided by the underlying platform.
+- **ConverterCulture.CurrentCulture**: Overrides the default converter culture with CultureInfo.CurrentCulture.
+- **ConverterCulture.CurrentUICulture**: Overrides the default converter culture with CultureInfo.CurrentUICulture.
+
+This is particularly helpful in WPF applications, since it is a known/unresolved bug that the provided culture parameter does not update when CultureInfo.CurrentCulture or CultureInfo.CurrentUICulture is updated.
+Use **ValueConvertersConfig.DefaultPreferredCulture** to configure the default converter culture for all converters.
+ 
 ### Links 
 
-System.Windows.Data.IValueConverter Interface 
-
+- System.Windows.Data.IValueConverter Interface
 [ https://msdn.microsoft.com/en-us/library/system.windows.data.ivalueconverter(v=vs.110).aspx]( https://msdn.microsoft.com/en-us/library/system.windows.data.ivalueconverter(v=vs.110).aspx)  
 
-Windows.UI.Xaml.Data.IValueConverter interface 
-
+- Windows.UI.Xaml.Data.IValueConverter interface:
 [ https://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.data.ivalueconverter]( https://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.data.ivalueconverter)  
 
 ### License 
-
-ValueConverters.NET is Copyright &copy; 2019 [Thomas Galliker]( https://ch.linkedin.com/in/thomasgalliker). Free for non-commercial use. For commercial use please contact the author. 
+ValueConverters.NET is Copyright &copy; 2021 [Thomas Galliker]( https://ch.linkedin.com/in/thomasgalliker). Free for non-commercial use. For commercial use please contact the author. 

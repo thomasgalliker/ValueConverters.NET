@@ -2,15 +2,27 @@
 
 namespace ValueConverters
 {
+    /// <summary>
+    /// Converts a <seealso cref="Guid"/> to <seealso cref="string"/>
+    /// </summary>
     public class GuidToStringConverter : SingletonConverterBase<GuidToStringConverter>
     {
+        /// <summary>
+        /// Determines if the string needs to be upper case.
+        /// </summary>
         public bool ToUpper { get; set; }
 
+        /// <summary>
+        /// The format used to convert the Guid to string.
+        /// </summary>
+        public string Format { get; set; } = "D";
+
+        /// <inheritdoc/>
         protected override object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value is Guid guid)
             {
-                var guidString = guid.ToString("D");
+                var guidString = guid.ToString(this.Format);
 
                 if (this.ToUpper)
                 {
@@ -23,6 +35,7 @@ namespace ValueConverters
             return UnsetValue;
         }
 
+        /// <inheritdoc/>
         protected override object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value is string guidString)

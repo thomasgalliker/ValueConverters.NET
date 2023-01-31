@@ -1,12 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFrameworks>net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <AssemblyName>ValueConverters</AssemblyName>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	<PropertyGroup>
+		<DefineConstants>$(DefineConstants);NETWPF</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>bin\Release\net5.0-windows\ValueConverters.xml</DocumentationFile>
   </PropertyGroup>
 

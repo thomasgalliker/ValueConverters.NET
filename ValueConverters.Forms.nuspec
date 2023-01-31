@@ -7,71 +7,13 @@
     <authors>Thomas Galliker</authors>
     <licenseUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/master/LICENSE.txt</licenseUrl>
     <projectUrl>https://github.com/thomasgalliker/ValueConverters.NET</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/master/logo.png</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/develop/Images/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>A collection of commonly used IValueConverters for Xamarin.Forms applications.</summary>
     <description>A collection of commonly used IValueConverters for Xamarin.Forms applications.</description>
     <tags>IValueConverter;ValueConverter;ValueConverters;value;converter;ValueConverters.Forms;UI;WPF;ToValueConverter</tags>
-    <releaseNotes>
-2.1.x
-- Fix null reference exception in UWP (language to cultureinfo conversion)
-- Add ValueConverterGroup for piped IValueConverter sequences
-- Add ItemTappedEventArgsConverter to extract selected item from ItemTappedEventArgs
-
-2.0.0
-- Add support for .NET Standard
-- Rename StringLengthToBoolConverter to StringIsNotNullOrEmptyConverter
-- Add ByteToImageSourceConverter to convert between byte[] and Xamarin Forms ImageSource
-- Add GuidToStringConverter to convert Guid to string (and back)
-- Add BoolToKeyboardConverter to toggle between two keyboard types
-
-1.0.8
-- Add BoolToImageSourceConverter, BoolToGridLengthConverter
-- Add DoubleToBoolConverter, IntegerToBoolConverter, StringToBoolConverter
-- EnumWrapperConverter ConvertBack support for Nullable&#60;T&#62;
-- Add VersionToStringConverter with parameter 'fieldCount'
-      
-1.0.7
-- Bug fix in EnumWrapper when resolving Display attribute
-- Add NullToBoolConverter
-
-1.0.6
-- Add StringToDecimalConverter
-- Add ValueToBoolConverter
-
-1.0.4
-- Fix nuget package dependency problem
-
-1.0.3
-- Update nuget icon
-
-1.0.2
-- Add IsEmptyConverter to check for empty strings and other IEnumerables
-- Add SingletonConverterBase which provides a static/reusable Instance
-- Add BoolToColorConverter
-
-1.0.1
-- Extended BoolToValueConverter with IsInverted property
-- Extended EnumWrapper with LocalizedValue property for better INotifyPropertyChanged support
-- Add BoolNegationConverter
-- Add BoolToFontAttributesConverter
-- Add BoolToThicknessConverter
-- Add BoolToVisibilityConverter
-- Add EnumToObjectConverter
-- Add EnumToBoolConverter
-- Add EnumWrapperConverter
-- Add DebugConverter
-- Add StringLengthToBoolConverter
-
-1.0.0
-- Add BoolToBrushConverter
-- Add BoolToDoubleConverter
-- Add BoolToFontWeightConverter
-- Add BoolToStringConverter
-- Add BoolToValueConverter
-- Add DateTimeConverter
-    </releaseNotes>
-    <copyright>Copyright 2021</copyright>
+    <releaseNotes>See https://www.nuget.org/packages/ValueConverters#release-body-tab</releaseNotes>
+    <copyright>Copyright 2022</copyright>
     <language>en-US</language>
     <dependencies>
       <group>
@@ -81,13 +23,15 @@
     </dependencies>
   </metadata>
   <files>
-    <!--.NET 4.6.1-->
-    <file src="ValueConverters.Forms\bin\Release\net461\ValueConverters.Forms.dll" target="lib\net461\ValueConverters.Forms.dll" />
-    <file src="ValueConverters.Forms\bin\Release\net461\ValueConverters.Forms.pdb" target="lib\net461\ValueConverters.Forms.pdb" />
+    <!--.NET Framework 4.8-->
+    <file src="ValueConverters.Forms\bin\Release\net48\ValueConverters.Forms.dll" target="lib\net48\ValueConverters.Forms.dll" />
+    <file src="ValueConverters.Forms\bin\Release\net48\ValueConverters.Forms.pdb" target="lib\net48\ValueConverters.Forms.pdb" />
+    <file src="ValueConverters.Forms\bin\Release\net48\ValueConverters.Forms.xml" target="lib\net48\ValueConverters.Forms.xml" />
 
-    <!--.NET Standard 1.2-->
-    <file src="ValueConverters.Forms\bin\Release\netstandard1.2\ValueConverters.Forms.dll" target="lib\netstandard1.2\ValueConverters.Forms.dll" />
-    <file src="ValueConverters.Forms\bin\Release\netstandard1.2\ValueConverters.Forms.pdb" target="lib\netstandard1.2\ValueConverters.Forms.pdb" />
-    <file src="ValueConverters.Forms\bin\Release\netstandard1.2\ValueConverters.Forms.deps.json" target="lib\netstandard1.2\ValueConverters.Forms.deps.json" />
+    <!--.NET Standard 2.0-->
+    <file src="ValueConverters.Forms\bin\Release\netstandard2.0\ValueConverters.Forms.dll" target="lib\netstandard2.0\ValueConverters.Forms.dll" />
+    <file src="ValueConverters.Forms\bin\Release\netstandard2.0\ValueConverters.Forms.pdb" target="lib\netstandard2.0\ValueConverters.Forms.pdb" />
+    <file src="ValueConverters.Forms\bin\Release\netstandard2.0\ValueConverters.Forms.xml" target="lib\netstandard2.0\ValueConverters.Forms.xml" />
+    <file src="ValueConverters.Forms\bin\Release\netstandard2.0\ValueConverters.Forms.deps.json" target="lib\netstandard2.0\ValueConverters.Forms.deps.json" />
   </files>
 </package>

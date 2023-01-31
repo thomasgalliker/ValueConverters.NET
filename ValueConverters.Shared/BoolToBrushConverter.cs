@@ -1,12 +1,11 @@
 ﻿
-
-#if (NETFX || NET5_0_OR_GREATER)
+#if (NETFX || NETWPF)
 using System.Windows.Media;
 #elif (NETFX_CORE)
 using Windows.UI.Xaml.Media;
 #endif
 
-#if !XAMARIN
+#if NETFX || NETFX_CORE || NETWPF
 namespace ValueConverters
 {
     public class BoolToBrushConverter : BoolToValueConverter<Brush>

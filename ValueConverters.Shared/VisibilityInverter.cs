@@ -1,10 +1,10 @@
-﻿#if (NETFX || NET5_0_OR_GREATER)
+﻿#if (NETFX)
 using System.Windows;
 #elif (NETFX_CORE)
 using Windows.UI.Xaml;
 #endif
 
-#if !XAMARIN
+#if NETFX || NETFX_CORE
 namespace ValueConverters
 {
     public class VisibilityInverter : BoolToValueConverter<Visibility>
