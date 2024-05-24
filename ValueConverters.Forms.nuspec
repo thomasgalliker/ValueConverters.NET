@@ -13,7 +13,7 @@
     <description>A collection of commonly used IValueConverters for Xamarin.Forms applications.</description>
     <tags>IValueConverter;ValueConverter;ValueConverters;value;converter;ValueConverters.Forms;UI;WPF;ToValueConverter</tags>
     <releaseNotes>See https://www.nuget.org/packages/ValueConverters#release-body-tab</releaseNotes>
-    <copyright>Copyright 2022</copyright>
+    <Copyright>Copyright $([System.DateTime]::Now.ToString(`yyyy`)) © Thomas Galliker</Copyright>
     <language>en-US</language>
     <dependencies>
       <group>
