@@ -85,6 +85,26 @@ steps:
     LogLevel: 'verbose'
     FailOnWarning: false
     DisableTelemetry: false'
+    
+- task: UseDotNet@2
+  displayName: 'Use .NET 8.x'
+  inputs:
+    version: 8.x
+    
+- task: Bash@3
+  displayName: Install .NET MAUI
+  inputs:
+    targetType: 'inline'
+    script: |
+      dotnet nuget locals all --clear 
+      dotnet workload install maui android ios maui-android maui-ios --source https://api.nuget.org/v3/index.json
+
+- task: JavaToolInstaller@0
+  displayName: "Install Java"
+  inputs:
+    versionSpec: '11'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
 
 - task: NuGetToolInstaller@0
   displayName: 'Use NuGet 6.x'
