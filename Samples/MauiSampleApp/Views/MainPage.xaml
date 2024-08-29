@@ -7,10 +7,14 @@
     Title="ValueConverters Sample App for .NET MAUI">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="TrueStyleTemplate" TargetType="Button">
+            <Style
+                x:Key="TrueStyleTemplate"
+                TargetType="Button">
                 <Setter Property="BackgroundColor" Value="Green" />
             </Style>
-            <Style x:Key="FalseStyleTemplate" TargetType="Button">
+            <Style
+                x:Key="FalseStyleTemplate"
+                TargetType="Button">
                 <Setter Property="BackgroundColor" Value="Red" />
             </Style>
 
@@ -46,7 +50,9 @@
             <valueConverters:StringToObjectConverter x:Key="StringToObjectConverter" />
             <valueConverters:EnumToObjectConverter x:Key="EnumToObjectConverter" />
             <valueConverters:EnumWrapperConverter x:Key="EnumWrapperConverter" />
-            <valueConverters:IsEmptyConverter x:Key="IsEmptyConverter" IsInverted="True" />
+            <valueConverters:IsEmptyConverter
+                x:Key="IsEmptyConverter"
+                IsInverted="True" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid>
@@ -78,9 +84,9 @@
             Grid.Row="0"
             Grid.Column="1"
             BackgroundColor="{Binding IsEnabled, Converter={StaticResource BoolToColorConverter}}"
-            HorizontalOptions="Start"
             IsToggled="{Binding IsEnabled, Converter={StaticResource DebugConverter}}"
             IsVisible="{Binding IsEditing}"
+            HorizontalOptions="Start"
             VerticalOptions="Start" />
 
         <Label
@@ -96,8 +102,8 @@
             Grid.Row="1"
             Grid.Column="1"
             Date="{Binding ChangeDate}"
-            HorizontalOptions="Start"
             IsVisible="{Binding IsEditing}"
+            HorizontalOptions="Start"
             VerticalOptions="Start" />
 
         <Label
@@ -113,14 +119,16 @@
                 IsEnabled="{Binding IsEditing}"
                 IsVisible="{Binding PartyModes, Converter={StaticResource IsEmptyConverter}}"
                 Text="Next" />
-            <Label IsVisible="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}" Text="{Binding SelectedPartyMode, Converter={StaticResource EnumWrapperConverter}, StringFormat='{0}'}" />
+            <Label
+                IsVisible="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}"
+                Text="{Binding SelectedPartyMode, Converter={StaticResource EnumWrapperConverter}, StringFormat='{0}'}" />
             <Picker
                 Title="PartyMode"
-                HorizontalOptions="Start"
                 IsVisible="{Binding IsEditing}"
                 ItemDisplayBinding="{Binding LocalizedValue}"
                 ItemsSource="{Binding PartyModes, Converter={StaticResource EnumWrapperConverter}}"
                 SelectedItem="{Binding SelectedPartyMode, Converter={StaticResource EnumWrapperConverter}}"
+                HorizontalOptions="Start"
                 VerticalOptions="Start" />
         </StackLayout>
 
@@ -137,11 +145,11 @@
             Title="Language"
             Grid.Row="4"
             Grid.Column="1"
-            HorizontalOptions="Start"
             IsVisible="{Binding IsEditing}"
             ItemDisplayBinding="{Binding DisplayName}"
             ItemsSource="{Binding Languages}"
             SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
+            HorizontalOptions="Start"
             VerticalOptions="Start" />
 
         <Button

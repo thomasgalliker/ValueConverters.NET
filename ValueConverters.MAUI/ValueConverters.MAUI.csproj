@@ -75,9 +75,4 @@
 	  <ProjectReference Include="..\ValueConverters.Annotations\ValueConverters.Annotations.csproj" />
 	</ItemGroup>
   
-  <!--<ItemGroup>
-    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-  </ItemGroup>-->
-
 </Project>
