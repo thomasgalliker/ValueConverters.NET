@@ -84,7 +84,7 @@
 - Add BoolToValueConverter
 - Add DateTimeConverter
     </releaseNotes>
-    <Copyright>Copyright $([System.DateTime]::Now.ToString(`yyyy`)) © Thomas Galliker</Copyright>
+    <copyright>Copyright 2024 © Thomas Galliker</copyright>
     <language>en-US</language>
     <dependencies>
       <group>
