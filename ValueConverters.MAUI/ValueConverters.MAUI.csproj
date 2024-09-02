@@ -73,5 +73,5 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\ValueConverters.Annotations\ValueConverters.Annotations.csproj" />
 	</ItemGroup>
-  
+
 </Project>

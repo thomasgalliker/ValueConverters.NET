@@ -3,7 +3,7 @@
     x:Class="MauiSampleApp.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:valueConverters="clr-namespace:ValueConverters;assembly=ValueConverters"
+    xmlns:c="http://schemas.superdev.ch/valueconverters/2016/xaml"
     Title="ValueConverters Sample App for .NET MAUI">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -18,39 +18,39 @@
                 <Setter Property="BackgroundColor" Value="Red" />
             </Style>
 
-            <valueConverters:BoolNegationConverter x:Key="BoolNegationConverter" />
-            <valueConverters:BoolToDoubleConverter
+            <c:BoolNegationConverter x:Key="BoolNegationConverter" />
+            <c:BoolToDoubleConverter
                 x:Key="BoolToDoubleConverter"
                 FalseValue="16"
                 TrueValue="1" />
-            <valueConverters:BoolToFontAttributesConverter x:Key="BoolToFontAttributesConverter" />
-            <valueConverters:BoolToColorConverter
+            <c:BoolToFontAttributesConverter x:Key="BoolToFontAttributesConverter" />
+            <c:BoolToColorConverter
                 x:Key="BoolToColorConverter"
                 FalseValue="Green"
                 TrueValue="Red" />
-            <valueConverters:BoolToStringConverter
+            <c:BoolToStringConverter
                 x:Key="BoolToStringConverter"
                 FalseValue="No"
                 TrueValue="Yes" />
-            <valueConverters:BoolToStyleConverter
+            <c:BoolToStyleConverter
                 x:Key="BoolToStyleConverter"
                 FalseValue="{StaticResource FalseStyleTemplate}"
                 TrueValue="{StaticResource TrueStyleTemplate}" />
-            <valueConverters:BoolToThicknessConverter
+            <c:BoolToThicknessConverter
                 x:Key="BoolToThicknessConverter"
                 FalseValue="4"
                 TrueValue="1" />
-            <valueConverters:DateTimeConverter
+            <c:DateTimeConverter
                 x:Key="DateTimeConverter"
                 Format="d"
                 MinValueString="---"
                 PreferredCulture="CurrentUICulture" />
-            <valueConverters:DebugConverter x:Key="DebugConverter" />
-            <valueConverters:EnumToBoolConverter x:Key="EnumToBoolConverter" />
-            <valueConverters:StringToObjectConverter x:Key="StringToObjectConverter" />
-            <valueConverters:EnumToObjectConverter x:Key="EnumToObjectConverter" />
-            <valueConverters:EnumWrapperConverter x:Key="EnumWrapperConverter" />
-            <valueConverters:IsEmptyConverter
+            <c:DebugConverter x:Key="DebugConverter" />
+            <c:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+            <c:StringToObjectConverter x:Key="StringToObjectConverter" />
+            <c:EnumToObjectConverter x:Key="EnumToObjectConverter" />
+            <c:EnumWrapperConverter x:Key="EnumWrapperConverter" />
+            <c:IsEmptyConverter
                 x:Key="IsEmptyConverter"
                 IsInverted="True" />
         </ResourceDictionary>
