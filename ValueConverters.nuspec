@@ -12,7 +12,10 @@
     <summary>A collection of commonly used IValueConverters for WPF applications.</summary>
     <description>A collection of commonly used IValueConverters for WPF applications.</description>
     <tags>IValueConverter;ValueConverter;ValueConverters;value;converter;ValueConverters.Forms;UI;WPF;ToValueConverter</tags>
-    <releaseNotes>3.0.x
+    <releaseNotes>3.1.x
+- Add XmlnsPrefix and XmlnsDefinition
+
+3.0.x
 - Add support for .NET MAUI
 
 2.3.x
