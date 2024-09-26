@@ -33,7 +33,7 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <RootNamespace>ValueConverters</RootNamespace>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <Copyright>Copyright 2022</Copyright>
+    <Copyright>Copyright $([System.DateTime]::Now.ToString(`yyyy`)) © Thomas Galliker</Copyright>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

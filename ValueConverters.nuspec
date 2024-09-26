@@ -12,7 +12,10 @@
     <summary>A collection of commonly used IValueConverters for WPF applications.</summary>
     <description>A collection of commonly used IValueConverters for WPF applications.</description>
     <tags>IValueConverter;ValueConverter;ValueConverters;value;converter;ValueConverters.Forms;UI;WPF;ToValueConverter</tags>
-    <releaseNotes>3.0.x
+    <releaseNotes>3.1.x
+- Add XmlnsPrefix and XmlnsDefinition
+
+3.0.x
 - Add support for .NET MAUI
 
 2.3.x
@@ -84,7 +87,7 @@
 - Add BoolToValueConverter
 - Add DateTimeConverter
     </releaseNotes>
-    <copyright>Copyright 2022</copyright>
+    <copyright>Copyright 2024 © Thomas Galliker</copyright>
     <language>en-US</language>
     <dependencies>
       <group>
@@ -106,10 +109,15 @@
     <file src="ValueConverters.Netfx\bin\Release\ValueConverters.pdb" target="lib\net48\ValueConverters.pdb" />
     <file src="ValueConverters.Netfx\bin\Release\ValueConverters.xml" target="lib\net48\ValueConverters.xml" />
 
-    <!--.NET 5.0-->
-    <file src="ValueConverters.WPF\bin\Release\net5.0-windows\ValueConverters.dll" target="lib\net5.0-windows7\ValueConverters.dll" />
-    <file src="ValueConverters.WPF\bin\Release\net5.0-windows\ValueConverters.pdb" target="lib\net5.0-windows7\ValueConverters.pdb" />
-    <file src="ValueConverters.WPF\bin\Release\net5.0-windows\ValueConverters.xml" target="lib\net5.0-windows7\ValueConverters.xml" />
+    <!--.NET 7.0-->
+    <file src="ValueConverters.WPF\bin\Release\net7.0-windows\ValueConverters.dll" target="lib\net7.0-windows7\ValueConverters.dll" />
+    <file src="ValueConverters.WPF\bin\Release\net7.0-windows\ValueConverters.pdb" target="lib\net7.0-windows7\ValueConverters.pdb" />
+    <file src="ValueConverters.WPF\bin\Release\net7.0-windows\ValueConverters.xml" target="lib\net7.0-windows7\ValueConverters.xml" />
+
+    <!--.NET 8.0-->
+    <file src="ValueConverters.WPF\bin\Release\net8.0-windows\ValueConverters.dll" target="lib\net8.0-windows7\ValueConverters.dll" />
+    <file src="ValueConverters.WPF\bin\Release\net8.0-windows\ValueConverters.pdb" target="lib\net8.0-windows7\ValueConverters.pdb" />
+    <file src="ValueConverters.WPF\bin\Release\net8.0-windows\ValueConverters.xml" target="lib\net8.0-windows7\ValueConverters.xml" />
 
     <!--UWP-->
     <file src="ValueConverters.UWP\bin\Release\ValueConverters.dll" target="lib\uap10.0\ValueConverters.dll" />
