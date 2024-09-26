@@ -60,7 +60,7 @@ namespace ValueConverters
 #else
                 var language = culture;
 #endif
-                return converters.Reverse<IValueConverter>().Aggregate(value, (current, converter) => converter.Convert(current, targetType, parameter, language));
+                return converters.Reverse<IValueConverter>().Aggregate(value, (current, converter) => converter.ConvertBack(current, targetType, parameter, language));
             }
 
             return UnsetValue;
