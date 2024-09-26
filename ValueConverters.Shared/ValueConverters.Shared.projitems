@@ -59,6 +59,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)StringIsNotNullOrEmptyConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringToObjectConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AddConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TraceConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ValueConvertersConfig.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ValueToEnumerableConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SubtractConverter.cs" />
