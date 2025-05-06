@@ -108,7 +108,6 @@ namespace ValueConverters
                                 try
                                 {
                                     displayAttributeType = Assembly.Load(new AssemblyName("ValueConverters")).DefinedTypes.SingleOrDefault(t => t.Name == nameof(DisplayAttribute));
-                                   
                                 }
                                 catch (Exception ex)
                                 {
