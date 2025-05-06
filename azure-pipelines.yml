@@ -25,8 +25,8 @@ variables:
   solution: 'ValueConverters.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  majorVersion: 3
-  minorVersion: 2
+  majorVersion: 4
+  minorVersion: 0
   patchVersion: $[counter(format('{0}.{1}', variables.majorVersion, variables.minorVersion), 0)]
   ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master') }}:
     # Versioning: 1.0.0
@@ -145,12 +145,6 @@ steps:
     command: custom
     arguments: pack ValueConverters.nuspec -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
           
-- task: NuGetCommand@2
-  displayName: 'Pack ValueConverters.Forms'
-  inputs:
-    command: custom
-    arguments: pack ValueConverters.Forms.nuspec -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
-    
 - task: DotNetCoreCLI@2
   displayName: 'Pack ValueConverters.MAUI'
   inputs:

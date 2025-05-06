@@ -11,66 +11,54 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>A collection of commonly used IValueConverters for WPF applications.</summary>
     <description>A collection of commonly used IValueConverters for WPF applications.</description>
-    <tags>IValueConverter;ValueConverter;ValueConverters;value;converter;ValueConverters.Forms;UI;WPF;ToValueConverter</tags>
-    <releaseNotes>3.1.x
+    <tags>IValueConverter;ValueConverter;ValueConverters;value;converter;UI;WPF;ToValueConverter</tags>
+    <releaseNotes>4.0
+- Remove support for Xamarin.Forms and UWP.
+
+3.1
 - Add XmlnsPrefix and XmlnsDefinition
 
-3.0.x
+3.0
 - Add support for .NET MAUI
 
-2.3.x
+2.3
 - Add MinMaxValueToBoolConverter, IsInRangeConverter
 
-2.2.x
+2.2
 - Add PreferredCulture to each converter in order to determine the preferred cultureinfo
 - Maintenance updates
 
-2.1.x
+2.1
 - Fix null reference exception in UWP (language to cultureinfo conversion)
 - Add ValueConverterGroup for piped IValueConverter sequences
 - Add FirstOrDefaultConverter to extract first or default object from IEnumerable
 - Add ValueToEnumerableConverter to wrap value into IEnumerable
 
-2.0.x
+2.0
 - Add support for .NET Standard
 - Rename StringLengthToBoolConverter to StringIsNotNullOrEmptyConverter
 - Add GuidToStringConverter to convert Guid to string (and back)
 - Add StringCaseConverter for ToUpper and ToLower conversion of strings
 
-1.0.8
+1.0
 - Add DoubleToBoolConverter, IntegerToBoolConverter, StringToBoolConverter
 - EnumWrapperConverter ConvertBack support for Nullable&#60;T&#62;
 - Add VersionToStringConverter with parameter 'fieldCount'
-
-1.0.7
 - Bug fix in EnumWrapper when resolving Display attribute
 - Add StringToObjectConverter to map from string keys to objects
 - Add NullToBoolConverter
 - Depricated Windows Phone 8.x support
-
-1.0.6
 - Add StringToDecimalConverter
 - Add ValueToBoolConverter
 - Add BoolToObjectConverter
-
-1.0.5
 - Add IsEmptyConverter to check for empty strings and other IEnumerables
 - Add SingletonConverterBase which provides a static/reusable Instance
-
-1.0.4
-- Cleanup
-      
-1.0.3
 - Add VisibilityInverter 
-      
-1.0.2
 - Add support for Windows 10 Universal Windows Platform (UWP)
 - Add StringLengthToBoolConverter
 - Extended BoolToValueConverter with IsInverted property
 - Add EnumWrapperConverter to all platforms
 - Extended EnumWrapper with LocalizedValue property for better INotifyPropertyChanged support
-
-1.0.1
 - Add BoolNegationConverter
 - Add BoolToThicknessConverter
 - Add BoolToVisibilityConverter
@@ -78,8 +66,6 @@
 - Add EnumWrapperConverter
 - Add EnumToBoolConverter
 - Add DebugConverter
-
-1.0.0
 - Add BoolToBrushConverter
 - Add BoolToDoubleConverter
 - Add BoolToFontWeightConverter

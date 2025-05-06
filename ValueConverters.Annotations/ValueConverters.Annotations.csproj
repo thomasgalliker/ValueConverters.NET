@@ -9,7 +9,7 @@
 		<TargetFrameworks>netstandard1.0;netstandard1.4;netstandard1.6;netstandard2.0;net48</TargetFrameworks>
 		<AssemblyName>ValueConverters.Annotations</AssemblyName>
 		<PackageId>ValueConverters.Annotations</PackageId>
-		<PackageTags>IValueConverter;ValueConverter;ValueConverters;converter;ValueConverters.Forms;UI;ToValueConverter;DisplayAttribute</PackageTags>
+		<PackageTags>IValueConverter;ValueConverter;ValueConverters;converter;UI;ToValueConverter;DisplayAttribute</PackageTags>
 		<PackageIconUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/develop/Images/logo.png</PackageIconUrl>
 		<PackageProjectUrl>https://github.com/thomasgalliker/ValueConverters.NET</PackageProjectUrl>
 		<PackageLicenseUrl>http://opensource.org/licenses/Apache-2.0</PackageLicenseUrl>

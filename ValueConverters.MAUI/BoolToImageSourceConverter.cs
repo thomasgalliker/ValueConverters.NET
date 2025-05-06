@@ -1,8 +1,4 @@
-﻿#if XAMARIN
-using Xamarin.Forms;
-#elif MAUI
-using Microsoft.Maui;
-#endif
+﻿using Microsoft.Maui.Controls;
 
 namespace ValueConverters
 {

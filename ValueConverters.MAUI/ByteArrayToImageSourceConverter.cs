@@ -1,12 +1,5 @@
-﻿using System;
-using System.Globalization;
-using System.IO;
-
-#if XAMARIN
-using Xamarin.Forms;
-#elif MAUI
-using Microsoft.Maui;
-#endif
+﻿using System.Globalization;
+using Microsoft.Maui.Controls;
 
 namespace ValueConverters
 {

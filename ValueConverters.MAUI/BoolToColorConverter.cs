@@ -1,4 +1,6 @@
-﻿namespace ValueConverters
+﻿using Microsoft.Maui.Graphics;
+
+namespace ValueConverters
 {
     /// <summary>
     /// Converts a bool value to Color.
