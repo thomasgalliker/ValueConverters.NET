@@ -27,7 +27,10 @@ namespace MauiSampleApp.ViewModels
             this.radioFrequency = this.RadioFrequencies.FirstOrDefault();
 
             // Initialize PartyMode enum without EnumWrapper
-            this.PartyModes = new ObservableCollection<PartyMode>(Enum.GetValues(typeof(PartyMode)).OfType<PartyMode>());
+            var partyModes = Enum.GetValues<PartyMode>();
+            this.PartyModesArray = partyModes;
+
+            this.PartyModes = new ObservableCollection<PartyMode>(partyModes);
             this.selectedPartyMode = this.PartyModes.FirstOrDefault();
 
             this.EditCommand = new DelegateCommand(
@@ -106,6 +109,8 @@ namespace MauiSampleApp.ViewModels
         // The view needs to use the EnumWrapperConverter to convert these enums
         // on-the-fly to EnumWrapper<PartyMode> objects.
         public ObservableCollection<PartyMode> PartyModes { get; private set; }
+
+        public PartyMode[] PartyModesArray { get; private set; }
 
         public PartyMode SelectedPartyMode
         {

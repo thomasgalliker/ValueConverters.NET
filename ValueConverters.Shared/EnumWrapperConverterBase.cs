@@ -45,13 +45,23 @@ namespace ValueConverters
                 if (typeInfo.IsGenericType)
                 {
                     var genericType = type.GetGenericArguments()[0];
-                    var enumWrapperList = typeof(EnumWrapperConverterBase<TConverter>).GetMethod(nameof(this.CreateMapperList))
+                    var enumWrapperArray = typeof(EnumWrapperConverterBase<TConverter>).GetMethod(nameof(this.CreateEnumWrapperArray))
                         .MakeGenericMethod(new[] { genericType })
                         .Invoke(this, new[] { value, this.NameStyle });
-                    return enumWrapperList;
+                    return enumWrapperArray;
                 }
 
-                throw new ArgumentException("EnumWrapperConverter cannot convert non-generic IEnumerable. Please bind an IEnumerable<T>.");
+                if (typeInfo.IsArray)
+                {
+                    var elementType = type.GetElementType();
+                    var enumWrapperArray = typeof(EnumWrapperConverterBase<TConverter>).GetMethod(nameof(this.CreateEnumWrapperArray))
+                        .MakeGenericMethod(new[] { elementType })
+                        .Invoke(this, new[] { value, this.NameStyle });
+                    return enumWrapperArray;
+                }
+
+                throw new NotSupportedException(
+                    "EnumWrapperConverter can currently only convert IEnumerable<T> and arrays into EnumWrapper<T> objects.");
             }
 
             object enumWrapper = null;
@@ -152,12 +162,18 @@ namespace ValueConverters
             return value.Value;
         }
 
-        public IEnumerable<EnumWrapper<T>> CreateMapperList<T>(object values, EnumWrapperConverterNameStyle nameStyle = EnumWrapperConverterNameStyle.LongName)
+        public IEnumerable<EnumWrapper<T>> CreateEnumWrapperEnumerable<T>(object values, EnumWrapperConverterNameStyle nameStyle = EnumWrapperConverterNameStyle.LongName)
         {
             foreach (var value in (IEnumerable)values)
             {
                 yield return EnumWrapper.CreateWrapper((T)value, nameStyle);
             }
+        }
+
+        public EnumWrapper<T>[] CreateEnumWrapperArray<T>(object values, EnumWrapperConverterNameStyle nameStyle = EnumWrapperConverterNameStyle.LongName)
+        {
+            var enumerable = this.CreateEnumWrapperEnumerable<T>(values, nameStyle);
+            return enumerable.ToArray();
         }
 
         private static bool IsNullable(Type type)

@@ -4,7 +4,9 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:c="http://schemas.superdev.ch/valueconverters/2016/xaml"
-    Title="ValueConverters Sample App for .NET MAUI">
+    xmlns:vm="clr-namespace:MauiSampleApp.ViewModels"
+    Title="ValueConverters Sample App for .NET MAUI"
+    x:DataType="vm:MainViewModel">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style
@@ -84,7 +86,7 @@
             Grid.Row="0"
             Grid.Column="1"
             BackgroundColor="{Binding IsEnabled, Converter={StaticResource BoolToColorConverter}}"
-            IsToggled="{Binding IsEnabled, Converter={StaticResource DebugConverter}}"
+            IsToggled="{Binding IsEnabled}"
             IsVisible="{Binding IsEditing}"
             HorizontalOptions="Start"
             VerticalOptions="Start" />
@@ -125,8 +127,8 @@
             <Picker
                 Title="PartyMode"
                 IsVisible="{Binding IsEditing}"
-                ItemDisplayBinding="{Binding LocalizedValue}"
-                ItemsSource="{Binding PartyModes, Converter={StaticResource EnumWrapperConverter}}"
+                ItemDisplayBinding="{Binding LocalizedValue, Converter={StaticResource DebugConverter}}"
+                ItemsSource="{Binding PartyModesArray, Converter={StaticResource EnumWrapperConverter}}"
                 SelectedItem="{Binding SelectedPartyMode, Converter={StaticResource EnumWrapperConverter}}"
                 HorizontalOptions="Start"
                 VerticalOptions="Start" />
