@@ -87,9 +87,9 @@ steps:
     DisableTelemetry: true
     
 - task: UseDotNet@2
-  displayName: 'Use .NET 8.x'
+  displayName: 'Use .NET 9.x'
   inputs:
-    version: 8.x
+    version: 9.x
     
 - task: Bash@3
   displayName: Install .NET MAUI
