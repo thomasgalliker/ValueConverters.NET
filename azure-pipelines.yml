@@ -63,7 +63,7 @@ steps:
     InformationalVersion: '$(Build.BuildNumber)'
     LogLevel: 'verbose'
     FailOnWarning: false
-    DisableTelemetry: false
+    DisableTelemetry: true
 
 - task: Assembly-Info-NetCore@2
   displayName: 'Update Assembly Info (.NET Core/Standard)'
