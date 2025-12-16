@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui;
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// Converts a bool value to GridLength.

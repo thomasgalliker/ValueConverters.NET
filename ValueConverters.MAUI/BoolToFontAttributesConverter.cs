@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// Converts a bool value to FontAttributes.
