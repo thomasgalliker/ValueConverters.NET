@@ -96,8 +96,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      dotnet nuget locals all --clear 
-      dotnet workload install maui android ios maui-android maui-ios --source https://api.nuget.org/v3/index.json
+      dotnet workload install maui
 
 - task: JavaToolInstaller@0
   displayName: "Install Java"
