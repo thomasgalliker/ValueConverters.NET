@@ -1,10 +1,10 @@
 ﻿<Window
-    x:Class="ValueConverterSample.WPF.Views.MainWindow"
+    x:Class="ValueConvertersSample.WPF.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:glob="clr-namespace:System.Globalization;assembly=mscorlib"
     xmlns:valueConverters="clr-namespace:ValueConverters;assembly=ValueConverters"
-    xmlns:viewModel="clr-namespace:ValueConverterSample.WPF.ViewModel"
+    xmlns:viewModel="clr-namespace:ValueConvertersSample.WPF.ViewModel"
     Title="ValueConvertersSample.WPF"
     SizeToContent="WidthAndHeight">
     <Window.DataContext>

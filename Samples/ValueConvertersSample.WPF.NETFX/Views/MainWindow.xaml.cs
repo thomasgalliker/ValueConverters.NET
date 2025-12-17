@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace ValueConverterSample.WPF.Views
+namespace ValueConvertersSample.WPF.Views
 {
     public partial class MainWindow : Window
     {

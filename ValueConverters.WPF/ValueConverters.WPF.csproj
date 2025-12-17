@@ -1,18 +1,21 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0-windows;net9.0-windows</TargetFrameworks>
+    <TargetFrameworks>net48;net8.0-windows;net9.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <AssemblyName>ValueConverters</AssemblyName>
     <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
-	<PropertyGroup>
-		<DefineConstants>$(DefineConstants);NETWPF</DefineConstants>
-	</PropertyGroup>
+  <PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
+    <DefineConstants>$(DefineConstants);NETWPF</DefineConstants>
+  </PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\net8.0-windows\ValueConverters.xml</DocumentationFile>
+  <PropertyGroup Condition="$(TargetFramework.StartsWith('net4'))">
+    <DefineConstants>$(DefineConstants);NETFX;NETWPF</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>

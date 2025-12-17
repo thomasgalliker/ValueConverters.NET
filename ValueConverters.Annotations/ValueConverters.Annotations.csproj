@@ -17,6 +17,7 @@
 		<RepositoryUrl>https://github.com/thomasgalliker/ValueConverters.NET</RepositoryUrl>
 		<SignAssembly>True</SignAssembly>
 		<LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
 	</PropertyGroup>
 
 	<PropertyGroup>
