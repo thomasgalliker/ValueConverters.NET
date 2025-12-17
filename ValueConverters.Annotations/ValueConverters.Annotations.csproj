@@ -18,7 +18,7 @@
     <Description>DisplayAttribute used for ValueConverters.</Description>
     <Version>1.0.0</Version>
     <Authors>Thomas Galliker</Authors>
-    <PackageId>ValueConverters</PackageId>
+    <PackageId>ValueConverters.Annotations</PackageId>
     <PackageTags>IValueConverter;ValueConverter;ValueConverters;value;converter;UI;WPF;ToValueConverter</PackageTags>
     <PackageIcon>logo.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
