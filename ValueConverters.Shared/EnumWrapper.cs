@@ -100,7 +100,7 @@ namespace ValueConverters
                                 return displayAttribute.GetShortName();
                             }
 
-                            // HACK: In case the ValueConverters.Forms projects uses a DisplayAttribute from ValueConverters project
+                            // HACK: In case the ValueConverters.Maui (?) project uses a DisplayAttribute from ValueConverters project
                             var type = attribute.GetType();
                             if (type.Name == nameof(DisplayAttribute))
                             {
@@ -108,7 +108,6 @@ namespace ValueConverters
                                 try
                                 {
                                     displayAttributeType = Assembly.Load(new AssemblyName("ValueConverters")).DefinedTypes.SingleOrDefault(t => t.Name == nameof(DisplayAttribute));
-                                   
                                 }
                                 catch (Exception ex)
                                 {

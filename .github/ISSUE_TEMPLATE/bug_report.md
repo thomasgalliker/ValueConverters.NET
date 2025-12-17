@@ -1,33 +1,32 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: "[Bug]"
+title: "[Bug] "
 labels: bug
 assignees: ''
 
 ---
 
-### Description
+#### Description
+<!-- Provide a clear and concise description of the bug, including what the bug is and where it occurs. -->
 
-### Steps to Reproduce
+#### Steps to Reproduce
+<!-- List the steps to reproduce the issue. Make sure to include every step needed to encounter the bug. -->
 
 1. 
 2. 
 3. 
 
-### Expected Behavior
+#### Expected Behavior
+- 
 
-### Actual Behavior
+#### Actual Behavior
+- 
 
-### Basic Information
+#### Basic Information
+- Version with issue: 
+- Last known good version: 
 
-- Version with issue:
-- Last known good version:
-
-### Screenshots
-
-<!-- If the issue is a visual issue, please include screenshots showing the problem if possible -->
-
-### Reproduction Link
-
-<!-- If possible, please upload or provide a link to a reproduction case -->
+#### Screenshots, Attachments, Links
+<!-- If the issue is a visual issue, please include screenshots showing the problem if possible. 
+     If possible, please upload or provide a link to a reproduction case. -->

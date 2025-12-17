@@ -1,5 +1,5 @@
 # ValueConverters.NET 
-[![Version](https://img.shields.io/nuget/v/ValueConverters.svg)](https://www.nuget.org/packages/ValueConverters)  [![Downloads](https://img.shields.io/nuget/dt/ValueConverters.svg)](https://www.nuget.org/packages/ValueConverters)
+[![Version](https://img.shields.io/nuget/v/ValueConverters.svg)](https://www.nuget.org/packages/ValueConverters) [![Downloads](https://img.shields.io/nuget/dt/ValueConverters.svg)](https://www.nuget.org/packages/ValueConverters) [![Buy Me a Coffee](https://img.shields.io/badge/support-buy%20me%20a%20coffee-FFDD00)](https://buymeacoffee.com/thomasgalliker)
 
 This library contains a collection of most commonly used implementations of the IValueConverter interface. ValueConverters are used to convert values bound from the view to the view model - and in some cases also backwards. 
 
@@ -10,10 +10,6 @@ This library is available on NuGet: [ https://www.nuget.org/packages/ValueConver
 Use the following command to install ValueConverters using NuGet package manager console: 
 
 ```PM> Install-Package ValueConverters``` 
-
-If your target platform is Xamarin.Forms use following NuGet package: 
-
-```PM> Install-Package ValueConverters.Forms``` 
 
 If your target platform is .NET MAUI use following NuGet package: 
 

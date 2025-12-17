@@ -4,7 +4,7 @@ using System.Diagnostics;
 namespace ValueConverters
 {
     /// <summary>
-    /// Writes Debuge.WriteLine with value, targetType, parameter and culture.
+    /// Writes Debug.WriteLine with value, targetType, parameter and culture.
     /// </summary>
     public class DebugConverter : SingletonConverterBase<DebugConverter>
     {

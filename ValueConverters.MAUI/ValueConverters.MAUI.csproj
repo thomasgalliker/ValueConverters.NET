@@ -1,11 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0;net7.0-android;net7.0-ios;net7.0-maccatalyst;net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst;net9.0;net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
 		<UseMaui>true</UseMaui>
-    <MauiVersion Condition="$(TargetFramework.Contains('net7.0'))">7.0.49</MauiVersion>
     <MauiVersion Condition="$(TargetFramework.Contains('net8.0'))">8.0.3</MauiVersion>
+    <MauiVersion Condition="$(TargetFramework.Contains('net9.0'))">9.0.0</MauiVersion>
     <SingleProject>true</SingleProject>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
@@ -27,7 +26,7 @@
 		<Authors>Thomas Galliker</Authors>
 		<AssemblyName>ValueConverters</AssemblyName>
 		<PackageId>ValueConverters.MAUI</PackageId>
-		<PackageTags>IValueConverter;ValueConverter;ValueConverters;converter;ValueConverters.Forms;UI;ToValueConverter;DisplayAttribute</PackageTags>
+		<PackageTags>IValueConverter;ValueConverter;ValueConverters;converter;UI;ToValueConverter;DisplayAttribute</PackageTags>
     <PackageIcon>logo.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageProjectUrl>https://github.com/thomasgalliker/ValueConverters.NET</PackageProjectUrl>
@@ -49,14 +48,6 @@
     <Copyright>Copyright $([System.DateTime]::Now.ToString(`yyyy`)) © Thomas Galliker</Copyright>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <Compile Include="..\ValueConverters.Forms\BoolToFontAttributesConverter.cs" Link="BoolToFontAttributesConverter.cs" />
-	  <Compile Include="..\ValueConverters.Forms\BoolToImageSourceConverter.cs" Link="BoolToImageSourceConverter.cs" />
-	  <Compile Include="..\ValueConverters.Forms\BoolToKeyboardConverter.cs" Link="BoolToKeyboardConverter.cs" />
-	  <Compile Include="..\ValueConverters.Forms\ByteArrayToImageSourceConverter.cs" Link="ByteArrayToImageSourceConverter.cs" />
-	  <Compile Include="..\ValueConverters.Forms\ByteToImageSourceConverter.cs" Link="ByteToImageSourceConverter.cs" />
-	</ItemGroup>
 
 	<ItemGroup>
     <None Include="..\README.md" Pack="True" PackagePath="\" />
