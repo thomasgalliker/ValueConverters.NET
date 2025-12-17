@@ -1,18 +1,18 @@
 ####################################################################
-# VSTS Build Configuration, Version 1.4
+# Azure DevOps Build Configuration
 #
-# (c)2022 superdev GmbH
+# (c)2025 superdev GmbH
 ####################################################################
 
 name: $[format('{0}', variables['buildName'])]
 
 pool:
-  vmImage: 'windows-2022'
+  vmImage: 'windows-latest'
 
 trigger:
   branches:
     include:
-    - master
+    - main
     - develop
     - feature/*
     - bugfix/*
@@ -25,13 +25,13 @@ variables:
   solution: 'ValueConverters.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  majorVersion: 3
-  minorVersion: 2
+  majorVersion: 4
+  minorVersion: 0
   patchVersion: $[counter(format('{0}.{1}', variables.majorVersion, variables.minorVersion), 0)]
-  ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master') }}:
+  ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
     # Versioning: 1.0.0
     semVersion: $[format('{0}.{1}.{2}', variables.majorVersion, variables.minorVersion, variables.patchVersion)]
-  ${{ if and(ne(variables['Build.SourceBranch'], 'refs/heads/master'), not(startsWith(variables['Build.SourceBranch'], 'refs/pull/'))) }}:
+  ${{ if and(ne(variables['Build.SourceBranch'], 'refs/heads/main'), not(startsWith(variables['Build.SourceBranch'], 'refs/pull/'))) }}:
     # Versioning: 1.0.0-pre
     semVersion: $[format('{0}.{1}.{2}-pre', variables.majorVersion, variables.minorVersion, variables.patchVersion)]
   ${{ if startsWith(variables['Build.SourceBranch'], 'refs/pull/') }}:
@@ -63,7 +63,7 @@ steps:
     InformationalVersion: '$(Build.BuildNumber)'
     LogLevel: 'verbose'
     FailOnWarning: false
-    DisableTelemetry: false
+    DisableTelemetry: true
 
 - task: Assembly-Info-NetCore@2
   displayName: 'Update Assembly Info (.NET Core/Standard)'
@@ -87,22 +87,21 @@ steps:
     DisableTelemetry: true
     
 - task: UseDotNet@2
-  displayName: 'Use .NET 8.x'
+  displayName: 'Use .NET 9.0.x'
   inputs:
-    version: 8.x
+    version: 9.0.x
     
 - task: Bash@3
   displayName: Install .NET MAUI
   inputs:
     targetType: 'inline'
     script: |
-      dotnet nuget locals all --clear 
-      dotnet workload install maui android ios maui-android maui-ios --source https://api.nuget.org/v3/index.json
+      dotnet workload install maui
 
 - task: JavaToolInstaller@0
   displayName: "Install Java"
   inputs:
-    versionSpec: '11'
+    versionSpec: '17'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
 
@@ -145,12 +144,6 @@ steps:
     command: custom
     arguments: pack ValueConverters.nuspec -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
           
-- task: NuGetCommand@2
-  displayName: 'Pack ValueConverters.Forms'
-  inputs:
-    command: custom
-    arguments: pack ValueConverters.Forms.nuspec -Version $(semVersion) -NoPackageAnalysis -outputdirectory $(Build.ArtifactStagingDirectory)\artifacts
-    
 - task: DotNetCoreCLI@2
   displayName: 'Pack ValueConverters.MAUI'
   inputs:
@@ -175,11 +168,9 @@ steps:
   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
   inputs:
     SourceFolder: '$(system.defaultworkingdirectory)'
-
     Contents: |
      **\bin\$(BuildConfiguration)\**
      **\bin\*.nupkg
-
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
      
 - task: PublishCodeCoverageResults@2

@@ -1,10 +1,4 @@
-﻿#if XAMARIN
-using Xamarin.Forms;
-#elif MAUI
-using Microsoft.Maui;
-#endif
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// Converts a bool value to FontAttributes.

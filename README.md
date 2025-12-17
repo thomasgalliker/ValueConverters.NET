@@ -11,10 +11,6 @@ Use the following command to install ValueConverters using NuGet package manager
 
 ```PM> Install-Package ValueConverters``` 
 
-If your target platform is Xamarin.Forms use following NuGet package: 
-
-```PM> Install-Package ValueConverters.Forms``` 
-
 If your target platform is .NET MAUI use following NuGet package: 
 
 ```PM> Install-Package ValueConverters.MAUI``` 

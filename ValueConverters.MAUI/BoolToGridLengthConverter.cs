@@ -1,6 +1,4 @@
-﻿using Xamarin.Forms;
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// Converts a bool value to GridLength.
