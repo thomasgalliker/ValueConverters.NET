@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst;net9.0;net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
     <OutputType>Library</OutputType>
-    <AssemblyName>ValueConverters.MAUI</AssemblyName>
+    <AssemblyName>ValueConverters</AssemblyName>
     <RootNamespace>ValueConverters</RootNamespace>
     <UseMaui>true</UseMaui>
     <MauiVersion Condition="$(TargetFramework.Contains('net8.0'))">8.0.3</MauiVersion>
