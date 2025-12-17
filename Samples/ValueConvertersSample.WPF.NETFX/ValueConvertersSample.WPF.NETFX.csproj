@@ -9,7 +9,7 @@
     <Platforms>AnyCPU</Platforms>
     <WarningLevel>4</WarningLevel>
     <LangVersion>latest</LangVersion>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
