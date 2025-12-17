@@ -15,7 +15,7 @@ namespace ValueConverters.Tests
     {
         [Theory]
         [ClassData(typeof(FirstOrDefaultConverterTestdata))]
-        public void ShouldConvert(object value, object parameter, CultureInfo culture, object expectedResult)
+        public void ShouldConvert(object ?value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new FirstOrDefaultConverter();
@@ -27,7 +27,7 @@ namespace ValueConverters.Tests
             result.Should().Be(expectedResult);
         }
 
-        public class FirstOrDefaultConverterTestdata : TheoryData<object, object, CultureInfo, object>
+        public class FirstOrDefaultConverterTestdata : TheoryData<object?, object?, CultureInfo?, object?>
         {
             public FirstOrDefaultConverterTestdata()
             {

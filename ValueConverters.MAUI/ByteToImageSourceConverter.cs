@@ -8,7 +8,7 @@ namespace ValueConverters
     public class ByteToImageSourceConverter : ConverterBase
     {
         /// <inheritdoc/>
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (!(value is byte[] image))
             {

@@ -16,7 +16,7 @@ namespace ValueConverters.Tests
     {
         [Theory]
         [ClassData(typeof(MinMaxValueToBoolConverterValidTestdata))]
-        public void ShouldConvert(object value, object parameter, CultureInfo culture, object expectedResult)
+        public void ShouldConvert(object ?value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter valueConverter = new MinMaxValueToBoolConverter
@@ -32,7 +32,7 @@ namespace ValueConverters.Tests
             result.Should().Be(expectedResult);
         }
 
-        public class MinMaxValueToBoolConverterValidTestdata : TheoryData<object, object, CultureInfo, object>
+        public class MinMaxValueToBoolConverterValidTestdata : TheoryData<object?, object?, CultureInfo?, object?>
         {
             public MinMaxValueToBoolConverterValidTestdata()
             {

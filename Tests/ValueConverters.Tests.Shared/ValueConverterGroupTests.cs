@@ -32,7 +32,7 @@ namespace ValueConverters.Tests
 
         [Theory]
         [ClassData(typeof(ValueConverterGroupValidTestdata))]
-        public void ShouldConvertBack(List<IValueConverter> converters, object value, object parameter, CultureInfo culture, object expectedResult)
+        public void ShouldConvertBack(List<IValueConverter>? converters, object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new ValueConverterGroup
@@ -47,7 +47,7 @@ namespace ValueConverters.Tests
             result.Should().Be(expectedResult);
         }
 
-        public class ValueConverterGroupValidTestdata : TheoryData<List<IValueConverter>, object, object, CultureInfo, object>
+        public class ValueConverterGroupValidTestdata : TheoryData<List<IValueConverter>?, object?, object?, CultureInfo?, object?>
         {
             public ValueConverterGroupValidTestdata()
             {

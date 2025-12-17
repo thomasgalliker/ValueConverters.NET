@@ -4,7 +4,7 @@ namespace ValueConverters
 {
     public class ItemTappedEventArgsConverter : ConverterBase
     {
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (!(value is ItemTappedEventArgs eventArgs))
             {

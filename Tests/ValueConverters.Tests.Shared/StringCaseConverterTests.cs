@@ -17,7 +17,7 @@ namespace ValueConverters.Tests
     {
         [Theory]
         [ClassData(typeof(StringCaseConverterValidTestdata))]
-        public void ShouldConvert(object value, object parameter, CultureInfo culture, object expectedResult)
+        public void ShouldConvert(object ?value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new StringCaseConverter();
@@ -29,7 +29,7 @@ namespace ValueConverters.Tests
             result.Should().Be(expectedResult);
         }
 
-        public class StringCaseConverterValidTestdata : TheoryData<object, object, CultureInfo, object>
+        public class StringCaseConverterValidTestdata : TheoryData<object?, object?, CultureInfo?, object?>
         {
             public StringCaseConverterValidTestdata()
             {
@@ -59,7 +59,7 @@ namespace ValueConverters.Tests
 
         [Theory]
         [ClassData(typeof(StringCaseConverterInvalidTestdata))]
-        public void ShouldThrowExceptionIfParameterIsInvalid(object value, object parameter, CultureInfo culture)
+        public void ShouldThrowExceptionIfParameterIsInvalid(object? value, object? parameter, CultureInfo? culture)
         {
             // Arrange
             IValueConverter converter = new StringCaseConverter();
@@ -71,7 +71,7 @@ namespace ValueConverters.Tests
             action.Should().Throw<ArgumentException>();
         }
 
-        public class StringCaseConverterInvalidTestdata : TheoryData<object, object, CultureInfo>
+        public class StringCaseConverterInvalidTestdata : TheoryData<object?, object?, CultureInfo?>
         {
             public StringCaseConverterInvalidTestdata()
             {

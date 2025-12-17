@@ -25,7 +25,7 @@ namespace ValueConverters
     public abstract class ReversibleValueToBoolConverterBase<T, TConverter> : ValueToBoolConverterBase<T, TConverter>
         where TConverter : new()
     {
-        public abstract T FalseValue { get; set; }
+        public abstract T? FalseValue { get; set; }
 
         public bool BaseOnFalseValue
         {
@@ -33,7 +33,7 @@ namespace ValueConverters
             set { this.SetValue(BaseOnFalseValueProperty, value); }
         }
 
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (!this.BaseOnFalseValue)
             {
@@ -44,7 +44,7 @@ namespace ValueConverters
             return !Equals(value, falseValue) ^ this.IsInverted;
         }
 
-        protected override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             return true.Equals(value) ^ this.IsInverted ? this.TrueValue : this.FalseValue;
         }

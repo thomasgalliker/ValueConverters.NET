@@ -5,7 +5,7 @@
     <UseWPF>true</UseWPF>
     <RootNamespace>ValueConverters.Tests</RootNamespace>
     <LangVersion>latest</LangVersion>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">

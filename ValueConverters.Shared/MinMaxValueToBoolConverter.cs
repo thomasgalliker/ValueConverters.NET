@@ -63,7 +63,7 @@ namespace ValueConverters
         }
 
         /// <inheritdoc/>
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (value is not IComparable comparable)
             {

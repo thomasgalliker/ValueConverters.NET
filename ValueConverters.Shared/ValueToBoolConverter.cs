@@ -19,18 +19,18 @@ namespace ValueConverters
 {
     public class ValueToBoolConverter<T> : ReversibleValueToBoolConverterBase<T, ValueToBoolConverter<T>>
     {
-        public override T TrueValue
+        public override T? TrueValue
         {
-            get => (T)this.GetValue(TrueValueProperty);
+            get => (T?)this.GetValue(TrueValueProperty);
             set => this.SetValue(TrueValueProperty, value);
         }
 
         public static readonly Property TrueValueProperty =
             PropertyHelper.Create<T, ValueToBoolConverter<T>>(nameof(TrueValue));
 
-        public override T FalseValue
+        public override T? FalseValue
         {
-            get => (T)this.GetValue(FalseValueProperty);
+            get => (T?)this.GetValue(FalseValueProperty);
             set => this.SetValue(FalseValueProperty, value);
         }
 

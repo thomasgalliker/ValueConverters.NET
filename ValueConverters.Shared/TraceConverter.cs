@@ -1,5 +1,5 @@
-using System;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace ValueConverters
 {
@@ -8,7 +8,7 @@ namespace ValueConverters
     /// </summary>
     public class TraceConverter : SingletonConverterBase<TraceConverter>
     {
-        protected override object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             Trace.WriteLine($"TraceConverter.Convert(" +
                             $"value={value ?? "null"}, " +
@@ -19,7 +19,7 @@ namespace ValueConverters
             return value;
         }
 
-        protected override object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        protected override object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             Trace.WriteLine($"TraceConverter.ConvertBack(" +
                             $"value={value ?? "null"}, " +
