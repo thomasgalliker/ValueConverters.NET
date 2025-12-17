@@ -37,9 +37,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\pause.png" />
-    <Resource Include="Resources\Images\play.png" />
-    <Resource Include="Resources\Images\stop.png" />
+    <None Remove="Resources\Images\*.png" />
+    <Resource Include="Resources\Images\*.png" />
   </ItemGroup>
 
   <ItemGroup>
