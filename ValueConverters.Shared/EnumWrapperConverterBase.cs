@@ -24,7 +24,7 @@ namespace ValueConverters
     {
         public abstract EnumWrapperConverterNameStyle NameStyle { get; set; }
 
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (value == null)
             {
@@ -46,18 +46,22 @@ namespace ValueConverters
                 if (typeInfo.IsGenericType)
                 {
                     var genericType = type.GetGenericArguments()[0];
-                    var enumWrapperArray = typeof(EnumWrapperConverterBase<TConverter>).GetMethod(nameof(this.CreateEnumWrapperArray))
+                    var enumWrapperArray = typeof(EnumWrapperConverterBase<TConverter>)?
+                        .GetMethod(nameof(this.CreateEnumWrapperArray))?
                         .MakeGenericMethod(new[] { genericType })
                         .Invoke(this, new[] { value, this.NameStyle });
+
                     return enumWrapperArray;
                 }
 
                 if (typeInfo.IsArray)
                 {
-                    var elementType = type.GetElementType();
-                    var enumWrapperArray = typeof(EnumWrapperConverterBase<TConverter>).GetMethod(nameof(this.CreateEnumWrapperArray))
+                    var elementType = type.GetElementType()!;
+                    var enumWrapperArray = typeof(EnumWrapperConverterBase<TConverter>)
+                        .GetMethod(nameof(this.CreateEnumWrapperArray))?
                         .MakeGenericMethod(new[] { elementType })
                         .Invoke(this, new[] { value, this.NameStyle });
+
                     return enumWrapperArray;
                 }
 
@@ -65,22 +69,23 @@ namespace ValueConverters
                     "EnumWrapperConverter can currently only convert IEnumerable<T> and arrays into EnumWrapper<T> objects.");
             }
 
-            object enumWrapper = null;
+            object? enumWrapper = null;
             try
             {
-                enumWrapper = typeof(EnumWrapperConverterBase<TConverter>).GetMethod(nameof(this.CreateMapper))
+                enumWrapper = typeof(EnumWrapperConverterBase<TConverter>)?
+                    .GetMethod(nameof(this.CreateMapper))?
                     .MakeGenericMethod(new[] { type })
                     .Invoke(this, new[] { value, this.NameStyle });
             }
             catch (TargetInvocationException ex)
             {
-                ExceptionDispatchInfo.Capture(ex.InnerException).Throw();
+                ExceptionDispatchInfo.Capture(ex.InnerException!).Throw();
             }
 
             return enumWrapper;
         }
 
-        protected override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (value == null)
             {
@@ -94,7 +99,7 @@ namespace ValueConverters
 
             if (IsNullable(targetType))
             {
-                targetType = Nullable.GetUnderlyingType(targetType);
+                targetType = Nullable.GetUnderlyingType(targetType)!;
             }
 
             var type = value.GetType();
@@ -108,16 +113,17 @@ namespace ValueConverters
             if (typeInfo.IsGenericType && type.GetGenericTypeDefinition() == typeof(EnumWrapper<>) && type.GetGenericArguments()[0] == targetType)
             {
                 // Unpack EnumWrapper<T> if targetType equals T
-                object enumValue = null;
+                object? enumValue = null;
                 try
                 {
-                    enumValue = typeof(EnumWrapperConverterBase<TConverter>).GetMethod(nameof(this.UnpackEnumWrapper))
+                    enumValue = typeof(EnumWrapperConverterBase<TConverter>)?
+                        .GetMethod(nameof(this.UnpackEnumWrapper))?
                         .MakeGenericMethod(new[] { targetType })
                         .Invoke(this, new[] { value });
                 }
                 catch (TargetInvocationException ex)
                 {
-                    ExceptionDispatchInfo.Capture(ex.InnerException).Throw();
+                    ExceptionDispatchInfo.Capture(ex.InnerException!).Throw();
                 }
 
                 return enumValue;
@@ -133,16 +139,17 @@ namespace ValueConverters
             // If value from source (typically a property in a viewmodel)
             // is already EnumWrapper<T>, no further conversion needs to be done.
 
-            object enumWrapper = null;
+            object? enumWrapper = null;
             try
             {
-                enumWrapper = typeof(EnumWrapperConverterBase<TConverter>).GetMethod(nameof(this.ConvertMapper))
+                enumWrapper = typeof(EnumWrapperConverterBase<TConverter>)?
+                    .GetMethod(nameof(this.ConvertMapper))?
                     .MakeGenericMethod(new[] { targetType })
                     .Invoke(this, new[] { value });
             }
             catch (TargetInvocationException ex)
             {
-                ExceptionDispatchInfo.Capture(ex.InnerException).Throw();
+                ExceptionDispatchInfo.Capture(ex.InnerException!).Throw();
             }
 
             return enumWrapper;

@@ -10,19 +10,19 @@ namespace ValueConverters
     {
         private static readonly ThicknessTypeConverter ThicknessTypeConverter = new ThicknessTypeConverter();
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             return Convert(value);
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             return Convert(value);
         }
 
-        private static object Convert(object value)
+        private static object? Convert(object? value)
         {
-            object convertedValue = null;
+            object? convertedValue = null;
 
             if (value is string stringValue)
             {

@@ -10,23 +10,23 @@ namespace ValueConverters.Annotations
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter | AttributeTargets.Method, AllowMultiple = false)]
     public class DisplayAttribute : Attribute
     {
-        const string PropertyNotSetMessage = "The {0} property has not been set.  Use the Get{0} method to get the value.";
+        private const string PropertyNotSetMessage = "The {0} property has not been set.  Use the Get{0} method to get the value.";
 
-        bool? autoGenerateField;
-        bool? autoGenerateFilter;
-        int? order;
+        private bool? autoGenerateField;
+        private bool? autoGenerateFilter;
+        private int? order;
 
-        public Type ResourceType { get; set; }
+        public Type? ResourceType { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public string GroupName { get; set; }
+        public string? GroupName { get; set; }
 
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
-        public string ShortName { get; set; }
+        public string? ShortName { get; set; }
 
-        public string Prompt { get; set; }
+        public string? Prompt { get; set; }
 
         public bool AutoGenerateField
         {
@@ -79,7 +79,7 @@ namespace ValueConverters.Annotations
             }
         }
 
-        private string GetLocalizedString(string propertyName, string key)
+        private string? GetLocalizedString(string propertyName, string? key)
         {
             // If we don't have a resource or a key, go ahead and fall back on the key
             if (this.ResourceType == null || key == null)
@@ -116,7 +116,7 @@ namespace ValueConverters.Annotations
                 throw new InvalidOperationException(message);
             }
 
-            return (string)property.GetValue(null, null);
+            return (string?)property!.GetValue(null, null);
         }
 
         public bool? GetAutoGenerateField()
@@ -134,28 +134,28 @@ namespace ValueConverters.Annotations
             return this.order;
         }
 
-        public string GetName()
+        public string? GetName()
         {
             return this.GetLocalizedString(nameof(this.Name), this.Name);
         }
 
-        public string GetShortName()
+        public string? GetShortName()
         {
             // Short name falls back on Name if the short name isn't set
             return this.GetLocalizedString(nameof(this.ShortName), this.ShortName) ?? this.GetName();
         }
 
-        public string GetDescription()
+        public string? GetDescription()
         {
             return this.GetLocalizedString(nameof(this.Description), this.Description);
         }
 
-        public string GetPrompt()
+        public string? GetPrompt()
         {
             return this.GetLocalizedString(nameof(this.Prompt), this.Prompt);
         }
 
-        public string GetGroupName()
+        public string? GetGroupName()
         {
             return this.GetLocalizedString(nameof(this.GroupName), this.GroupName);
         }

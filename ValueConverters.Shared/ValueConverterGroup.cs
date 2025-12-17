@@ -34,9 +34,9 @@ namespace ValueConverters
 #endif
     public class ValueConverterGroup : SingletonConverterBase<ValueConverterGroup>
     {
-        public List<IValueConverter> Converters { get; set; } = new List<IValueConverter>();
+        public List<IValueConverter>? Converters { get; set; } = new List<IValueConverter>();
 
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (this.Converters is IEnumerable<IValueConverter> converters)
             {
@@ -51,7 +51,7 @@ namespace ValueConverters
             return UnsetValue;
         }
 
-        protected override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (this.Converters is IEnumerable<IValueConverter> converters)
             {

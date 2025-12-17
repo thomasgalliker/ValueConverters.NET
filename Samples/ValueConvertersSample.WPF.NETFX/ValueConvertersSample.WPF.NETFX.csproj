@@ -42,6 +42,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <XliffResource Include="MultilingualResources\ValueConverterSample.WPF.de.xlf" />
     <XliffResource Include="MultilingualResources\ValueConverterSample.WPF.fr.xlf" />
     <XliffResource Include="MultilingualResources\ValueConverterSample.WPF.sv.xlf" />

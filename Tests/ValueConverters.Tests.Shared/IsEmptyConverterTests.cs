@@ -52,7 +52,7 @@ namespace ValueConverters.Tests
             // Arrange
             IValueConverter converter = new IsEmptyConverter { IsInverted = false };
 
-            const string Input = null;
+            const string? Input = null;
             const bool ExpectedValue = true;
 
             // Act

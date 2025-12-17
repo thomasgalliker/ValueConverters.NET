@@ -15,7 +15,7 @@ namespace ValueConverters.Tests
     {
         [Theory]
         [ClassData(typeof(AddConverterValidTestdata))]
-        public void ShouldAddValidInput(object value, object parameter, CultureInfo culture, object expectedResult)
+        public void ShouldAddValidInput(object ?value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new AddConverter();
@@ -27,7 +27,7 @@ namespace ValueConverters.Tests
             result.Should().Be(expectedResult);
         }
 
-        public class AddConverterValidTestdata : TheoryData<object, object, CultureInfo, object>
+        public class AddConverterValidTestdata : TheoryData<object?, object?, CultureInfo?, object?>
         {
             public AddConverterValidTestdata()
             {
@@ -47,7 +47,7 @@ namespace ValueConverters.Tests
 
         [Theory]
         [ClassData(typeof(AddConverterInvalidTestdata))]
-        public void ShouldNotAddInvalidInput(object value, object parameter, CultureInfo culture, object expectedResult)
+        public void ShouldNotAddInvalidInput(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new AddConverter();
@@ -59,7 +59,7 @@ namespace ValueConverters.Tests
             result.Should().Be(expectedResult);
         }
 
-        public class AddConverterInvalidTestdata : TheoryData<object, object, CultureInfo, object>
+        public class AddConverterInvalidTestdata : TheoryData<object?, object?, CultureInfo?, object?>
         {
             public AddConverterInvalidTestdata()
             {

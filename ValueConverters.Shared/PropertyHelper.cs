@@ -24,7 +24,7 @@ namespace ValueConverters
 {
     static class PropertyHelper
     {
-        public static Property Create<T, TParent>(string name, T defaultValue) =>
+        public static Property Create<T, TParent>(string name, T? defaultValue) =>
 #if XAMARIN || MAUI
             Property.Create(name, typeof(T), typeof(TParent), defaultValue);
 #else

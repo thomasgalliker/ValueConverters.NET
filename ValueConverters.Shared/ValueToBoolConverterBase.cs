@@ -25,7 +25,7 @@ namespace ValueConverters
     public abstract class ValueToBoolConverterBase<T, TConverter> : ConverterBase
         where TConverter : new()
     {
-        public abstract T TrueValue { get; set; }
+        public abstract T? TrueValue { get; set; }
 
         public bool IsInverted
         {
@@ -33,7 +33,7 @@ namespace ValueConverters
             set { this.SetValue(IsInvertedProperty, value); }
         }
 
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             var trueValue = this.TrueValue;
             return Equals(value, trueValue) ^ this.IsInverted;
