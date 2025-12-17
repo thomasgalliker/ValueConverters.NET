@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace ValueConverterSample.WPF.ViewModel
+namespace ValueConvertersSample.WPF.ViewModel
 {
     public class DelegateCommand : DelegateCommand<object>
     {

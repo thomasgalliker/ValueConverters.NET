@@ -1,26 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Images\pause.png" />
-    <None Remove="Resources\Images\play.png" />
-    <None Remove="Resources\Images\stop.png" />
+    <None Remove="Resources\Images\*.png" />
+    <Resource Include="Resources\Images\*.png" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\ValueConverters.WPF\ValueConverters.WPF.csproj" />
     <ProjectReference Include="..\ValueConvertersSample.Contracts\ValueConvertersSample.Contracts.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\Images\pause.png" />
-    <Resource Include="Resources\Images\play.png" />
-    <Resource Include="Resources\Images\stop.png" />
   </ItemGroup>
 
 </Project>

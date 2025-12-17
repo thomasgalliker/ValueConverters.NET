@@ -9,7 +9,7 @@ using System.Windows.Input;
 using ValueConverters;
 using ValueConvertersSample.Contracts.Model;
 
-namespace ValueConverterSample.WPF.ViewModel
+namespace ValueConvertersSample.WPF.ViewModel
 {
     public class MainViewModel : BindableBase
     {

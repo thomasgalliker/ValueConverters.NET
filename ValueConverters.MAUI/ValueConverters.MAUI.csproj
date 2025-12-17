@@ -1,68 +1,64 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
-	<PropertyGroup>
-		<TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst;net9.0;net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
-		<UseMaui>true</UseMaui>
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst;net9.0;net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
+    <OutputType>Library</OutputType>
+    <AssemblyName>ValueConverters</AssemblyName>
+    <RootNamespace>ValueConverters</RootNamespace>
+    <UseMaui>true</UseMaui>
     <MauiVersion Condition="$(TargetFramework.Contains('net8.0'))">8.0.3</MauiVersion>
     <MauiVersion Condition="$(TargetFramework.Contains('net9.0'))">9.0.0</MauiVersion>
     <SingleProject>true</SingleProject>
     <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
     <IsPackable>true</IsPackable>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
 
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
-		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
-	</PropertyGroup>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+    <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+  </PropertyGroup>
 
-	<PropertyGroup>
-		<AssemblyTitle>ValueConverters</AssemblyTitle>
-		<Description>IValueConverters for .NET MAUI</Description>
-		<VersionPrefix>1.0.0</VersionPrefix>
-		<Version>1.0.0</Version>
-		<Authors>Thomas Galliker</Authors>
-		<AssemblyName>ValueConverters</AssemblyName>
-		<PackageId>ValueConverters.MAUI</PackageId>
-		<PackageTags>IValueConverter;ValueConverter;ValueConverters;converter;UI;ToValueConverter;DisplayAttribute</PackageTags>
+  <!--NuGet package-->
+  <PropertyGroup>
+    <Product>ValueConverters.NET</Product>
+    <Description>A collection of commonly used IValueConverters for .NET MAUI applications</Description>
+    <Version>1.0.0</Version>
+    <Authors>Thomas Galliker</Authors>
+    <PackageId>ValueConverters.MAUI</PackageId>
+    <PackageTags>IValueConverter;ValueConverter;ValueConverters;value;converter;UI;MAUI;ToValueConverter</PackageTags>
     <PackageIcon>logo.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<PackageProjectUrl>https://github.com/thomasgalliker/ValueConverters.NET</PackageProjectUrl>
-		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>https://github.com/thomasgalliker/ValueConverters.NET</RepositoryUrl>
-		<SignAssembly>True</SignAssembly>
-		<LangVersion>latest</LangVersion>
-	</PropertyGroup>
-
-	<PropertyGroup>
-		<ApplicationIcon />
-		<OutputType>Library</OutputType>
-		<StartupObject />
-		<Company>superdev GmbH</Company>
-		<Product>ValueConverters.MAUI</Product>
-		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-		<RootNamespace>ValueConverters</RootNamespace>
-		<PackageReleaseNotes>See https://www.nuget.org/packages/ValueConverters#release-body-tab</PackageReleaseNotes>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/thomasgalliker/ValueConverters.NET</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/thomasgalliker/ValueConverters.NET</RepositoryUrl>
+    <Company>superdev GmbH</Company>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Copyright>Copyright $([System.DateTime]::Now.ToString(`yyyy`)) © Thomas Galliker</Copyright>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-	</PropertyGroup>
+    <PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/../ReleaseNotes.txt"))</PackageReleaseNotes>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedAllSources>true</EmbedAllSources>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+  </PropertyGroup>
 
-	<ItemGroup>
+  <ItemGroup>
     <None Include="..\README.md" Pack="True" PackagePath="\" />
     <None Include="..\LICENSE" Pack="True" PackagePath="\" />
     <None Include="..\Images\logo.png" Pack="True" PackagePath="\" />
-	</ItemGroup>
+  </ItemGroup>
 
-	<PropertyGroup>
-		<DefineConstants>$(DefineConstants);MAUI</DefineConstants>
-	</PropertyGroup>
+  <PropertyGroup>
+    <DefineConstants>$(DefineConstants);MAUI</DefineConstants>
+  </PropertyGroup>
 
-	<Import Project="..\ValueConverters.Shared\ValueConverters.Shared.projitems" Label="Shared" />
+  <ItemGroup>
+    <ProjectReference Include="..\ValueConverters.Annotations\ValueConverters.Annotations.csproj" />
+  </ItemGroup>
 
-	<ItemGroup>
-	  <ProjectReference Include="..\ValueConverters.Annotations\ValueConverters.Annotations.csproj" />
-	</ItemGroup>
+  <Import Project="..\ValueConverters.Shared\ValueConverters.Shared.projitems" Label="Shared" />
 
 </Project>

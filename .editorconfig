@@ -15,10 +15,10 @@ tab_width = 2
 indent_style = space
 indent_size = 4
 tab_width = 4
-end_of_line = crlf
+end_of_line = lf
 trim_trailing_whitespace = true
 insert_final_newline = false
-max_line_length = 140
+max_line_length = 200
 
 csharp_indent_block_contents = true
 csharp_indent_braces = false
@@ -112,6 +112,7 @@ dotnet_style_prefer_inferred_tuple_names = true:suggestion
 dotnet_style_prefer_inferred_anonymous_type_member_names = true:suggestion
 dotnet_style_prefer_compound_assignment = true:suggestion
 dotnet_style_prefer_simplified_interpolation = true:suggestion
+dotnet_style_prefer_collection_expression = false:silent
 dotnet_style_namespace_match_folder = true:suggestion
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
 csharp_style_unused_value_expression_statement_preference = discard_variable:none
@@ -173,3 +174,6 @@ dotnet_diagnostic.IDE0051.severity = warning
 
 # CS1591: Missing XML comment for publicly visible type or member
 dotnet_diagnostic.CS1591.severity = none
+
+# CA1416: Validate platform compatibility
+dotnet_diagnostic.CA1416.severity = suggestion
