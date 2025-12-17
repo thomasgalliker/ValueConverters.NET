@@ -22,6 +22,7 @@ trigger:
     - Docs/*
 
 variables:
+  solution: 'ValueConverters.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   majorVersion: 4
@@ -45,8 +46,27 @@ steps:
     targetType: 'inline'
     script: 'env | sort'
    
-- task: Assembly-Info-NetCore@3
-  displayName: 'Update Assembly Info'
+- task: Assembly-Info-NetFramework@2
+  displayName: 'Update Assembly Info (.NET Framework)'
+  inputs:
+    Path: '$(Build.SourcesDirectory)'
+    FileNames: '**\AssemblyInfo.cs'
+    InsertAttributes: true
+    FileEncoding: 'auto'
+    WriteBOM: false
+    Title: 'ValueConverters.NET'
+    Description: ''
+    Company: 'superdev GmbH'
+    Copyright: '(c) $(date:YYYY) superdev GmbH'
+    VersionNumber: '$(Build.BuildNumber)'
+    FileVersionNumber: '$(Build.BuildNumber)'
+    InformationalVersion: '$(Build.BuildNumber)'
+    LogLevel: 'verbose'
+    FailOnWarning: false
+    DisableTelemetry: true
+
+- task: Assembly-Info-NetCore@2
+  displayName: 'Update Assembly Info (.NET Core/Standard)'
   inputs:
     Path: '$(Build.SourcesDirectory)'
     FileNames: |
@@ -65,7 +85,7 @@ steps:
     LogLevel: 'verbose'
     FailOnWarning: false
     DisableTelemetry: true
-
+    
 - task: UseDotNet@2
   displayName: 'Use .NET 9.x'
   inputs:
@@ -91,21 +111,18 @@ steps:
   inputs:
     versionSpec: 6.x
 
-- task: DotNetCoreCLI@2
+- task: NuGetCommand@2
   displayName: 'NuGet restore'
   inputs:
-    command: restore
-    projects: |
-      ValueConverters.NET/**/*.csproj
-      **/*.Tests.csproj
+    restoreSolution: '$(solution)'
 
-- task: DotNetCoreCLI@2
+- task: VSBuild@1
   displayName: 'Build solution'
   inputs:
-    projects: |
-      ValueConverters.**/**/*.csproj
-      **/*.Tests.csproj
-    arguments: '--no-restore --configuration $(buildConfiguration)'
+    solution: '$(solution)'
+    msbuildArgs: ''
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
   displayName: 'Run UnitTests'
@@ -121,7 +138,7 @@ steps:
     targetdir: '$(Build.SourcesDirectory)/CodeCoverage'
     reporttypes: 'Cobertura'
     assemblyfilters: '-xunit*'
-      
+    
 - task: NuGetCommand@2
   displayName: 'Pack ValueConverters'
   inputs:
@@ -147,15 +164,14 @@ steps:
     versionEnvVar: semVersion
     nobuild: true
     packDirectory: $(Build.ArtifactStagingDirectory)\artifacts
-
+      
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
   inputs:
     SourceFolder: '$(system.defaultworkingdirectory)'
     Contents: |
-      **\bin\*.nupkg
-      **\bin\*.snupkg
-      **\ReleaseNotes.txt
+     **\bin\$(BuildConfiguration)\**
+     **\bin\*.nupkg
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
      
 - task: PublishCodeCoverageResults@2
