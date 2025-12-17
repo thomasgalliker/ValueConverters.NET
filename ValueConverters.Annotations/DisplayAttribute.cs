@@ -3,9 +3,9 @@ using System.Reflection;
 namespace ValueConverters.Annotations
 {
     /// <summary>
-    /// Source: Mono and .Net Reference Source
-    /// https://searchcode.com/codesearch/view/7229840/
-    /// http://referencesource.microsoft.com/#System.ComponentModel.DataAnnotations/DataAnnotations/DisplayAttribute.cs
+    /// DisplayAttribute is a general-purpose attribute to specify user-visible globalizable strings for types and members.
+    /// The string properties of this class can be used either as literals or as resource identifiers into a specified
+    /// <see cref="ResourceType"/>
     /// </summary>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter | AttributeTargets.Method, AllowMultiple = false)]
     public class DisplayAttribute : Attribute
