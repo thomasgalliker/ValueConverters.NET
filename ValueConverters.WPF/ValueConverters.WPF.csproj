@@ -19,7 +19,7 @@
     <Version>1.0.0</Version>
     <Authors>Thomas Galliker</Authors>
     <PackageId>ValueConverters</PackageId>
-    <PackageTags>IValueConverter;ValueConverter;ValueConverters;value;converter;UI;WPF;ToValueConverter</PackageTags>
+    <PackageTags>IValueConverter;ValueConverter;ValueConverters;value;converter;UI;WPF</PackageTags>
     <PackageIcon>logo.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
