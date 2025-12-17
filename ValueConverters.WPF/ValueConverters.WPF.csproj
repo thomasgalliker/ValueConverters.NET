@@ -2,12 +2,47 @@
 
   <PropertyGroup>
     <TargetFrameworks>net48;net8.0-windows;net9.0-windows</TargetFrameworks>
+    <OutputType>Library</OutputType>
     <UseWPF>true</UseWPF>
     <AssemblyName>ValueConverters</AssemblyName>
+    <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <!--NuGet package-->
+  <PropertyGroup>
+    <Product>ValueConverters.NET</Product>
+    <Description>A collection of commonly used IValueConverters for WPF applications</Description>
+    <Version>1.0.0</Version>
+    <Authors>Thomas Galliker</Authors>
+    <PackageId>ValueConverters</PackageId>
+    <PackageTags>IValueConverter;ValueConverter;ValueConverters;value;converter;UI;WPF;ToValueConverter</PackageTags>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/thomasgalliker/ValueConverters.NET</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/thomasgalliker/ValueConverters.NET</RepositoryUrl>
+    <Company>superdev GmbH</Company>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Copyright>Copyright $([System.DateTime]::Now.ToString(`yyyy`)) © Thomas Galliker</Copyright>
+    <PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/../ReleaseNotes.txt"))</PackageReleaseNotes>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedAllSources>true</EmbedAllSources>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="True" PackagePath="\" />
+    <None Include="..\LICENSE" Pack="True" PackagePath="\" />
+    <None Include="..\Images\logo.png" Pack="True" PackagePath="\" />
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">

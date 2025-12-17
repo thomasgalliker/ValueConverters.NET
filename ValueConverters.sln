@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		azure-pipelines.yml = azure-pipelines.yml
 		LICENSE = LICENSE
 		README.md = README.md
-		ValueConverters.nuspec = ValueConverters.nuspec
+		ReleaseNotes.txt = ReleaseNotes.txt
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValueConvertersSample.Contracts", "Samples\ValueConvertersSample.Contracts\ValueConvertersSample.Contracts.csproj", "{6FD6F3CD-8CD5-432E-9DE1-4AA4382E1279}"

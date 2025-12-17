@@ -1,53 +1,52 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<AssemblyTitle>ValueConverters.Annotations</AssemblyTitle>
-		<Description>DisplayAttribute used for ValueConverters.</Description>
-		<VersionPrefix>1.0.0</VersionPrefix>
-		<Version>1.0.0</Version>
-		<Authors>Thomas Galliker</Authors>
-		<TargetFrameworks>netstandard1.0;netstandard1.4;netstandard1.6;netstandard2.0;netstandard2.1;net48</TargetFrameworks>
-		<AssemblyName>ValueConverters.Annotations</AssemblyName>
-		<PackageId>ValueConverters.Annotations</PackageId>
-		<PackageTags>IValueConverter;ValueConverter;ValueConverters;converter;UI;ToValueConverter;DisplayAttribute</PackageTags>
-		<PackageIconUrl>https://raw.githubusercontent.com/thomasgalliker/ValueConverters.NET/develop/Images/logo.png</PackageIconUrl>
-		<PackageProjectUrl>https://github.com/thomasgalliker/ValueConverters.NET</PackageProjectUrl>
-		<PackageLicenseUrl>http://opensource.org/licenses/Apache-2.0</PackageLicenseUrl>
-		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>https://github.com/thomasgalliker/ValueConverters.NET</RepositoryUrl>
-		<SignAssembly>True</SignAssembly>
-		<LangVersion>latest</LangVersion>
+  <PropertyGroup>
+    <TargetFrameworks>net48;net8.0-windows;net9.0-windows;netstandard2.0;netstandard2.1</TargetFrameworks>
+    <OutputType>Library</OutputType>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>ValueConverters</AssemblyName>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
-	</PropertyGroup>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
 
-	<PropertyGroup>
-		<ApplicationIcon />
-		<OutputType>Library</OutputType>
-		<StartupObject />
-		<Company>superdev GmbH</Company>
-		<Product>ValueConverters.Annotations</Product>
-		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-		<RootNamespace>ValueConverters.Annotations</RootNamespace>
-		<PackageReleaseNotes>
-			1.0.0
-			- Initial release
-		</PackageReleaseNotes>
-		<Copyright>Copyright $([System.DateTime]::Now.ToString(`yyyy`)) © Thomas Galliker</Copyright>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-	</PropertyGroup>
+  <!--NuGet package-->
+  <PropertyGroup>
+    <Product>ValueConverters.NET</Product>
+    <Description>DisplayAttribute used for ValueConverters.</Description>
+    <Version>1.0.0</Version>
+    <Authors>Thomas Galliker</Authors>
+    <PackageId>ValueConverters</PackageId>
+    <PackageTags>IValueConverter;ValueConverter;ValueConverters;value;converter;UI;WPF;ToValueConverter</PackageTags>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/thomasgalliker/ValueConverters.NET</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/thomasgalliker/ValueConverters.NET</RepositoryUrl>
+    <Company>superdev GmbH</Company>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Copyright>Copyright $([System.DateTime]::Now.ToString(`yyyy`)) © Thomas Galliker</Copyright>
+    <PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/../ReleaseNotes.txt"))</PackageReleaseNotes>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedAllSources>true</EmbedAllSources>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+  </PropertyGroup>
 
-	<ItemGroup>
-		<None Include="..\README.md">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-	</ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md" Pack="True" PackagePath="\" />
+    <None Include="..\LICENSE" Pack="True" PackagePath="\" />
+    <None Include="..\Images\logo.png" Pack="True" PackagePath="\" />
+  </ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.0'">
-	</ItemGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
 
-	<PropertyGroup Condition=" '$(TargetFramework)' == 'net48' ">
-		<DefineConstants>$(DefineConstants);NETFX</DefineConstants>
-	</PropertyGroup>
+  <PropertyGroup Condition="$(TargetFramework.StartsWith('net4'))">
+    <DefineConstants>$(DefineConstants);NETFX</DefineConstants>
+  </PropertyGroup>
 
 </Project>
