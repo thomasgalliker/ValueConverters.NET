@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Reflection;
 
 using ValueConverters.Annotations;
+using ValueConverters.Annotations.ValueConverters.Annotations;
 
 #if XAMARIN || NETFX_CORE
 using ValueConverters.Extensions;
@@ -15,7 +16,7 @@ namespace ValueConverters
     public static class EnumWrapper
     {
         /// <summary>
-        ///     Creates a list of wrapped values of an enumeration.
+        /// Creates a list of wrapped values of an enumeration.
         /// </summary>
         /// <typeparam name="TEnumType">Type of the enumeration.</typeparam>
         /// <returns>The wrapped enumeration values.</returns>
@@ -26,7 +27,7 @@ namespace ValueConverters
         }
 
         /// <summary>
-        ///     Create the wrapped value of an enumeration value.
+        /// Create the wrapped value of an enumeration value.
         /// </summary>
         /// <typeparam name="TEnumType">Type of the enumeration.</typeparam>
         /// <param name="value">The value.</param>
@@ -38,7 +39,7 @@ namespace ValueConverters
         }
 
         /// <summary>
-        ///     Create the wrapped value of an enumeration value.
+        /// Create the wrapped value of an enumeration value.
         /// </summary>
         /// <typeparam name="TEnumType">Type of the enumeration.</typeparam>
         /// <param name="value">The value.</param>
@@ -60,87 +61,31 @@ namespace ValueConverters
             this.nameStyle = nameStyle;
         }
 
-        public TEnumType Value { get { return this.value; } }
+        public TEnumType Value => this.value;
 
         /// <summary>
         /// Use LocalizedValue to bind UI elements to.
         /// To enforce a refresh of LocalizedValue property (e.g. when you change the UI culture at runtime)
         /// just call the <code>Refresh</code> method.
         /// </summary>
-        public string? LocalizedValue { get { return this.ToString(); } }
+        public string? LocalizedValue => this.ToString();
 
         /// <summary>
-        ///     Implicit to string conversion.
+        /// Implicit to string conversion.
         /// </summary>
         /// <returns>Value converted to a localized string.</returns>
         public override string? ToString()
         {
-            // TODO: Move this code to where the value is set (e.g. ctor)
-            var enumType = typeof(TEnumType);
-            var fieldInfos = enumType.GetRuntimeFields();
-
-            IEnumerable<FieldInfo> info = fieldInfos.Where(x =>
-                                                    x.FieldType == enumType &&
-                                                    Equals(x.GetValue(this.Value?.ToString()), this.Value))
-                                                    .ToList();
-            if (info.Any())
+            if (this.value is Enum enumValue)
             {
-                return (string?)info.Select(fieldInfo =>
-                    {
-                        var attributes = fieldInfo.GetCustomAttributes(true).ToArray();
-                        foreach (var attribute in attributes)
-                        {
-                            if (attribute is DisplayAttribute displayAttribute)
-                            {
-                                if (this.nameStyle == EnumWrapperConverterNameStyle.LongName)
-                                {
-                                    return displayAttribute.GetName();
-                                }
-
-                                return displayAttribute.GetShortName();
-                            }
-
-                            // HACK: In case the ValueConverters.Maui (?) project uses a DisplayAttribute from ValueConverters project
-                            var type = attribute.GetType();
-                            if (type.Name == nameof(DisplayAttribute))
-                            {
-                                TypeInfo? displayAttributeType = null;
-                                try
-                                {
-                                    displayAttributeType = Assembly.Load(new AssemblyName("ValueConverters")).DefinedTypes.SingleOrDefault(t => t.Name == nameof(DisplayAttribute));
-                                }
-                                catch (Exception ex)
-                                {
-                                    Debug.WriteLine(ex);
-                                }
-
-                                if (displayAttributeType == null)
-                                {
-                                    continue;
-                                }
-
-                                if (this.nameStyle == EnumWrapperConverterNameStyle.LongName)
-                                {
-                                    var getNameMethodInfo = displayAttributeType.GetMethod(nameof(DisplayAttribute.GetName));
-                                    return getNameMethodInfo?.Invoke(attribute, new object[] { });
-                                }
-
-                                var getShortNameMethodInfo = displayAttributeType.GetMethod(nameof(DisplayAttribute.GetShortName));
-                                return getShortNameMethodInfo?.Invoke(attribute, new object[] { });
-
-                            }
-
-                        }
-
-                        return this.Value?.ToString();
-                    }).Single();
+                return EnumDisplayResolver.GetDisplayName(enumValue, this.nameStyle);
             }
 
-            return string.Empty;
+            return this.value?.ToString();
         }
 
         /// <summary>
-        ///     Checks if some objects are equal.
+        /// Checks if some objects are equal.
         /// </summary>
         /// <param name="obj">The object.</param>
         /// <returns>True or false.</returns>
@@ -165,7 +110,7 @@ namespace ValueConverters
         }
 
         /// <summary>
-        ///     Checks if some objects are equal.
+        /// Checks if some objects are equal.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>True or false.</returns>
@@ -183,7 +128,7 @@ namespace ValueConverters
         }
 
         /// <summary>
-        ///     Implicit back conversion to the enumeration.
+        /// Implicit back conversion to the enumeration.
         /// </summary>
         /// <param name="enumToConvert">The enumeration to convert.</param>
         /// <returns>The converted value.</returns>
@@ -193,17 +138,17 @@ namespace ValueConverters
         }
 
         /// <summary>
-        ///     Implicit back conversion to the enumeration.
+        /// Implicit back conversion to the enumeration.
         /// </summary>
         /// <param name="enumToConvert">The enumeration to convert.</param>
         /// <returns>The converted value.</returns>
         public static implicit operator int(EnumWrapper<TEnumType> enumToConvert)
         {
-            return System.Convert.ToInt32(enumToConvert.value);
+            return Convert.ToInt32(enumToConvert.value);
         }
 
         /// <summary>
-        ///     Equality comparator.
+        /// Equality comparator.
         /// </summary>
         /// <param name="left">The left operand.</param>
         /// <param name="right">The right operand.</param>
@@ -214,7 +159,7 @@ namespace ValueConverters
         }
 
         /// <summary>
-        ///     Not equal comparator.
+        /// Not equal comparator.
         /// </summary>
         /// <param name="left">The left operand.</param>
         /// <param name="right">The right operand.</param>
@@ -225,7 +170,7 @@ namespace ValueConverters
         }
 
         /// <summary>
-        ///     The hash code of the object.
+        /// The hash code of the object.
         /// </summary>
         /// <returns>The hash code.</returns>
         public override int GetHashCode()

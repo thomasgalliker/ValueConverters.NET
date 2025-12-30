@@ -54,7 +54,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)EnumWrapperCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EnumWrapperConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EnumWrapperConverterBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)EnumWrapperConverterNameStyle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IsEmptyConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringIsNotNullOrEmptyConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringToObjectConverter.cs" />
