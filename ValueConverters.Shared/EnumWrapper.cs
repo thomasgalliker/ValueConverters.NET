@@ -1,15 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Reflection;
-
-using ValueConverters.Annotations;
-using ValueConverters.Annotations.ValueConverters.Annotations;
-
-#if XAMARIN || NETFX_CORE
-using ValueConverters.Extensions;
-#endif
+﻿using ValueConverters.Annotations;
 
 namespace ValueConverters
 {
