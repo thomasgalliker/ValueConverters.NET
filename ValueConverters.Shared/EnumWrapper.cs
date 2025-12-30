@@ -67,7 +67,7 @@ namespace ValueConverters
         {
             if (this.value is Enum enumValue)
             {
-                return EnumDisplayResolver.GetDisplayName(enumValue, this.nameStyle);
+                return DisplayAttribute.GetDisplayName(enumValue, this.nameStyle);
             }
 
             return this.value?.ToString();
