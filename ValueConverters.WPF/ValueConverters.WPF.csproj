@@ -8,7 +8,7 @@
     <RootNamespace>ValueConverters</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
 

@@ -1,5 +1,6 @@
 4.1
 - Maintenance updates.
+- Add support for nullable reference types.
 
 4.0
 - Remove support for Xamarin.Forms and UWP.
@@ -11,28 +12,28 @@
 - Add support for .NET MAUI.
 
 2.3
-- Add MinMaxValueToBoolConverter, IsInRangeConverter
+- Add MinMaxValueToBoolConverter, IsInRangeConverter.
 
 2.2
-- Add PreferredCulture to each converter in order to determine the preferred cultureinfo
-- Maintenance updates
+- Add PreferredCulture to each converter in order to determine the preferred cultureinfo.
+- Maintenance updates.
 
 2.1
-- Fix null reference exception in UWP (language to cultureinfo conversion)
-- Add ValueConverterGroup for piped IValueConverter sequences
-- Add FirstOrDefaultConverter to extract first or default object from IEnumerable
-- Add ValueToEnumerableConverter to wrap value into IEnumerable
+- Fix null reference exception in UWP (language to cultureinfo conversion).
+- Add ValueConverterGroup for piped IValueConverter sequences.
+- Add FirstOrDefaultConverter to extract first or default object from IEnumerable.
+- Add ValueToEnumerableConverter to wrap value into IEnumerable.
 
 2.0
-- Add support for .NET Standard
-- Rename StringLengthToBoolConverter to StringIsNotNullOrEmptyConverter
-- Add GuidToStringConverter to convert Guid to string (and back)
-- Add StringCaseConverter for ToUpper and ToLower conversion of strings
+- Add support for .NET Standard.
+- Rename StringLengthToBoolConverter to StringIsNotNullOrEmptyConverter.
+- Add GuidToStringConverter to convert Guid to string (and back).
+- Add StringCaseConverter for ToUpper and ToLower conversion of strings.
 
 1.0
-- Add DoubleToBoolConverter, IntegerToBoolConverter, StringToBoolConverter
-- EnumWrapperConverter ConvertBack support for Nullable&#60;T&#62;
-- Add VersionToStringConverter with parameter 'fieldCount'
+- Add DoubleToBoolConverter, IntegerToBoolConverter, StringToBoolConverter.
+- EnumWrapperConverter ConvertBack support for Nullable<T>.
+- Add VersionToStringConverter with parameter 'fieldCount'.
 - Bug fix in EnumWrapper when resolving Display attribute
 - Add StringToObjectConverter to map from string keys to objects
 - Add NullToBoolConverter

@@ -67,13 +67,13 @@ namespace ValueConverters
         /// To enforce a refresh of LocalizedValue property (e.g. when you change the UI culture at runtime)
         /// just call the <code>Refresh</code> method.
         /// </summary>
-        public string LocalizedValue { get { return this.ToString(); } }
+        public string? LocalizedValue { get { return this.ToString(); } }
 
         /// <summary>
         ///     Implicit to string conversion.
         /// </summary>
         /// <returns>Value converted to a localized string.</returns>
-        public override string ToString()
+        public override string? ToString()
         {
             // TODO: Move this code to where the value is set (e.g. ctor)
             var enumType = typeof(TEnumType);
@@ -81,11 +81,11 @@ namespace ValueConverters
 
             IEnumerable<FieldInfo> info = fieldInfos.Where(x =>
                                                     x.FieldType == enumType &&
-                                                    x.GetValue(this.Value.ToString()).Equals(this.Value))
+                                                    Equals(x.GetValue(this.Value?.ToString()), this.Value))
                                                     .ToList();
             if (info.Any())
             {
-                return (string)info.Select(fieldInfo =>
+                return (string?)info.Select(fieldInfo =>
                     {
                         var attributes = fieldInfo.GetCustomAttributes(true).ToArray();
                         foreach (var attribute in attributes)
@@ -104,7 +104,7 @@ namespace ValueConverters
                             var type = attribute.GetType();
                             if (type.Name == nameof(DisplayAttribute))
                             {
-                                TypeInfo displayAttributeType = null;
+                                TypeInfo? displayAttributeType = null;
                                 try
                                 {
                                     displayAttributeType = Assembly.Load(new AssemblyName("ValueConverters")).DefinedTypes.SingleOrDefault(t => t.Name == nameof(DisplayAttribute));
@@ -122,17 +122,17 @@ namespace ValueConverters
                                 if (this.nameStyle == EnumWrapperConverterNameStyle.LongName)
                                 {
                                     var getNameMethodInfo = displayAttributeType.GetMethod(nameof(DisplayAttribute.GetName));
-                                    return getNameMethodInfo.Invoke(attribute, new object[] { });
+                                    return getNameMethodInfo?.Invoke(attribute, new object[] { });
                                 }
 
                                 var getShortNameMethodInfo = displayAttributeType.GetMethod(nameof(DisplayAttribute.GetShortName));
-                                return getShortNameMethodInfo.Invoke(attribute, new object[] { });
+                                return getShortNameMethodInfo?.Invoke(attribute, new object[] { });
 
                             }
 
                         }
 
-                        return this.Value.ToString();
+                        return this.Value?.ToString();
                     }).Single();
             }
 
@@ -144,7 +144,7 @@ namespace ValueConverters
         /// </summary>
         /// <param name="obj">The object.</param>
         /// <returns>True or false.</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (ReferenceEquals(null, obj))
             {
@@ -169,7 +169,7 @@ namespace ValueConverters
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>True or false.</returns>
-        public bool Equals(EnumWrapper<TEnumType> other)
+        public bool Equals(EnumWrapper<TEnumType>? other)
         {
             if (ReferenceEquals(null, other))
             {
@@ -208,7 +208,7 @@ namespace ValueConverters
         /// <param name="left">The left operand.</param>
         /// <param name="right">The right operand.</param>
         /// <returns>True or false.</returns>
-        public static bool operator ==(EnumWrapper<TEnumType> left, EnumWrapper<TEnumType> right)
+        public static bool operator ==(EnumWrapper<TEnumType>? left, EnumWrapper<TEnumType>? right)
         {
             return Equals(left, right);
         }
@@ -219,7 +219,7 @@ namespace ValueConverters
         /// <param name="left">The left operand.</param>
         /// <param name="right">The right operand.</param>
         /// <returns>True or false.</returns>
-        public static bool operator !=(EnumWrapper<TEnumType> left, EnumWrapper<TEnumType> right)
+        public static bool operator !=(EnumWrapper<TEnumType>? left, EnumWrapper<TEnumType>? right)
         {
             return !Equals(left, right);
         }
@@ -230,7 +230,7 @@ namespace ValueConverters
         /// <returns>The hash code.</returns>
         public override int GetHashCode()
         {
-            return this.Value.GetHashCode();
+            return this.Value?.GetHashCode() ?? 0;
         }
 
         public void Refresh()

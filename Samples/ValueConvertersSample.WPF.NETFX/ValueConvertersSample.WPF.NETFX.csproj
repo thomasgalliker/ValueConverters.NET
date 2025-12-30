@@ -9,7 +9,7 @@
     <Platforms>AnyCPU</Platforms>
     <WarningLevel>4</WarningLevel>
     <LangVersion>latest</LangVersion>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
@@ -39,6 +39,10 @@
   <ItemGroup>
     <None Remove="Resources\Images\*.png" />
     <Resource Include="Resources\Images\*.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
   </ItemGroup>
 
   <ItemGroup>

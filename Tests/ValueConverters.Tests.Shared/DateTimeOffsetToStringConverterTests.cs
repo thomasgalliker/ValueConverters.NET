@@ -29,7 +29,7 @@ namespace ValueConverters.Tests
 
         [Theory]
         [ClassData(typeof(DateTimeOffsetToStringConverterValidTestdata))]
-        public void ShouldConvert(object value, object parameter, CultureInfo culture, object expectedResult)
+        public void ShouldConvert(object ?value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter valueConverter = new DateTimeOffsetToStringConverter(this.timeZoneInfoMock.Object)
@@ -45,7 +45,7 @@ namespace ValueConverters.Tests
             result.Should().Be(expectedResult);
         }
 
-        public class DateTimeOffsetToStringConverterValidTestdata : TheoryData<object, object, CultureInfo, object>
+        public class DateTimeOffsetToStringConverterValidTestdata : TheoryData<object?, object?, CultureInfo?, object?>
         {
             public DateTimeOffsetToStringConverterValidTestdata()
             {

@@ -37,7 +37,7 @@ namespace ValueConverters.Tests
         [Fact]
         public void ShouldConvertNull()
         {
-            const object TrueValue = null;
+            const object? TrueValue = null;
             IValueConverter converter = new ValueToBoolConverter<object> { TrueValue = TrueValue };
 
             var result = converter.Convert(TrueValue, null, null, null);

@@ -44,7 +44,7 @@ namespace ValueConverters
         /// <param name="parameter">Additional parameter (optional).</param>
         /// <param name="culture">The preferred culture (see also <seealso cref="ConverterBase.PreferredCulture"/>)</param>
         /// <returns>The converted value.</returns>
-        protected abstract object Convert(object value, Type targetType, object parameter, CultureInfo culture);
+        protected abstract object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture);
 
         /// <summary>
         /// Converts back <paramref name="value"/> from binding target to binding source.
@@ -54,18 +54,18 @@ namespace ValueConverters
         /// <param name="parameter">Additional parameter (optional).</param>
         /// <param name="culture">The preferred culture (see also <seealso cref="ConverterBase.PreferredCulture"/>)</param>
         /// <returns>The converted value.</returns>
-        protected virtual object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        protected virtual object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             throw new NotSupportedException($"Converter '{this.GetType().Name}' does not support backward conversion.");
         }
 
 #if (NETFX || NETWPF || XAMARIN || MAUI)
-        object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        object? IValueConverter.Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             return this.Convert(value, targetType, parameter, this.SelectCulture(() => culture));
         }
 
-        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        object? IValueConverter.ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             return this.ConvertBack(value, targetType, parameter, this.SelectCulture(() => culture));
         }
@@ -115,9 +115,9 @@ namespace ValueConverters
 
 
 #if XAMARIN || MAUI
-        public static readonly object UnsetValue = null;
+        public static readonly object? UnsetValue = null;
 #else
-        public static readonly object UnsetValue = DependencyProperty.UnsetValue;
+        public static readonly object? UnsetValue = DependencyProperty.UnsetValue;
 #endif
 
     }

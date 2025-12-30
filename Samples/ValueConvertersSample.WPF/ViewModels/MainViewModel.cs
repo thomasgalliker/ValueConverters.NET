@@ -5,9 +5,8 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Windows.Input;
-
+using CommunityToolkit.Mvvm.Input;
 using ValueConverters;
-using ValueConverterSample.WPF.ViewModel;
 using ValueConvertersSample.Contracts.Model;
 
 namespace ValueConvertersSample.WPF.ViewModels
@@ -17,10 +16,10 @@ namespace ValueConvertersSample.WPF.ViewModels
         private bool isEditing;
         private bool isEnabled;
         private DateTime changeDate;
-        private EnumWrapper<RadioFrequency> radioFrequency;
+        private EnumWrapper<RadioFrequency>? radioFrequency;
         private PartyMode selectedPartyMode;
         private CultureInfo selectedLanguage;
-        private string userName;
+        private string? userName;
 
         public MainViewModel()
         {
@@ -35,33 +34,33 @@ namespace ValueConvertersSample.WPF.ViewModels
             this.PartyModes = new ObservableCollection<PartyMode>(Enum.GetValues(typeof(PartyMode)).OfType<PartyMode>());
             this.selectedPartyMode = this.PartyModes.FirstOrDefault();
 
-            this.EditCommand = new DelegateCommand(
+            this.EditCommand = new RelayCommand(
                 () =>
                 {
                     this.IsEditing = true;
                 });
 
-            this.CancelCommand = new DelegateCommand(
+            this.CancelCommand = new RelayCommand(
                 () =>
                 {
                     this.IsEditing = false;
                 });
 
-            this.NextPartyModeCommand = new DelegateCommand(
+            this.NextPartyModeCommand = new RelayCommand(
                () =>
                {
                    // Cycle through PartyMode enum:
                    this.SelectedPartyMode = (PartyMode)((int)(this.SelectedPartyMode + 1) % Enum.GetValues(this.SelectedPartyMode.GetType()).Length);
                });
 
-            this.ClearPartyModesCommand = new DelegateCommand(
+            this.ClearPartyModesCommand = new RelayCommand(
                 () =>
                 {
                     this.PartyModes.Clear();
                     this.RaisePropertyChanged(nameof(this.PartyModes));
                 });
 
-            this.FillPartyModesCommand = new DelegateCommand(
+            this.FillPartyModesCommand = new RelayCommand(
                 () =>
                 {
                     this.PartyModes = new ObservableCollection<PartyMode>(Enum.GetValues(typeof(PartyMode)).OfType<PartyMode>());
@@ -69,7 +68,7 @@ namespace ValueConvertersSample.WPF.ViewModels
                 });
         }
 
-        public string UserName
+        public string? UserName
         {
             get => this.userName;
             set => this.SetProperty(ref this.userName, value);
@@ -101,7 +100,7 @@ namespace ValueConvertersSample.WPF.ViewModels
         // Therefore, the view does not have to intercept the binding with the EnumWrapperConverter.
         public EnumWrapperCollection<RadioFrequency> RadioFrequencies { get; private set; }
 
-        public EnumWrapper<RadioFrequency> SelectedRadioFrequency
+        public EnumWrapper<RadioFrequency>? SelectedRadioFrequency
         {
             get => this.radioFrequency;
             set => this.SetProperty(ref this.radioFrequency, value);

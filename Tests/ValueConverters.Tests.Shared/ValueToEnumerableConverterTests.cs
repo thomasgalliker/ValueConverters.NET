@@ -15,7 +15,7 @@ namespace ValueConverters.Tests
     {
         [Theory]
         [ClassData(typeof(ValueToEnumerableConverterTestdata))]
-        public void ShouldConvert(object value, object parameter, CultureInfo culture, object expectedResult)
+        public void ShouldConvert(object ?value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new ValueToEnumerableConverter();
@@ -27,7 +27,7 @@ namespace ValueConverters.Tests
             result.Should().BeEquivalentTo(expectedResult);
         }
 
-        public class ValueToEnumerableConverterTestdata : TheoryData<object, object, CultureInfo, object>
+        public class ValueToEnumerableConverterTestdata : TheoryData<object?, object?, CultureInfo?, object?>
         {
             public ValueToEnumerableConverterTestdata()
             {

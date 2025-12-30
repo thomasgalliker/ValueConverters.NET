@@ -12,14 +12,14 @@ namespace ValueConverters
         /// <param name="parameter">Additional parameter for the converter to handle. This is not implemented.</param>
         /// <param name="culture">The culture to use in the converter. This is not implemented.</param>
         /// <returns>An object of type <see cref="ImageSource"/>.</returns>
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (value is byte[] imageBytes)
             {
                 return ImageSource.FromStream(() => new MemoryStream(imageBytes));
             }
 
-            return ConverterBase.UnsetValue;
+            return UnsetValue;
         }
     }
 }

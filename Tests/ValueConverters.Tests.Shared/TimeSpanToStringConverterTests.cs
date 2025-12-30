@@ -16,7 +16,7 @@ namespace ValueConverters.Tests
     {
         [Theory]
         [ClassData(typeof(TimeSpanToStringConverterValidTestdata))]
-        public void ShouldConvert(object value, object parameter, CultureInfo culture, object expectedResult)
+        public void ShouldConvert(object ?value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new TimeSpanToStringConverter
@@ -31,7 +31,7 @@ namespace ValueConverters.Tests
             result.Should().Be(expectedResult);
         }
 
-        public class TimeSpanToStringConverterValidTestdata : TheoryData<object, object, CultureInfo, object>
+        public class TimeSpanToStringConverterValidTestdata : TheoryData<object?, object?, CultureInfo?, object?>
         {
             public TimeSpanToStringConverterValidTestdata()
             {

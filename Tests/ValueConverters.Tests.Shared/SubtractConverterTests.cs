@@ -14,7 +14,7 @@ namespace ValueConverters.Tests
     {
         [Theory]
         [ClassData(typeof(SubtractConverterValidTestdata))]
-        public void ShouldSubtractValidInput(object value, object parameter, CultureInfo culture, object expectedResult)
+        public void ShouldSubtractValidInput(object ?value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new SubtractConverter();
@@ -26,7 +26,7 @@ namespace ValueConverters.Tests
             result.Should().Be(expectedResult);
         }
 
-        public class SubtractConverterValidTestdata : TheoryData<object, object, CultureInfo, object>
+        public class SubtractConverterValidTestdata : TheoryData<object?, object?, CultureInfo?, object?>
         {
             public SubtractConverterValidTestdata()
             {
@@ -46,7 +46,7 @@ namespace ValueConverters.Tests
 
         [Theory]
         [ClassData(typeof(SubtractConverterInvalidTestdata))]
-        public void ShouldNotSubtractInvalidInput(object value, object parameter, CultureInfo culture, object expectedResult)
+        public void ShouldNotSubtractInvalidInput(object ?value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new SubtractConverter();
@@ -58,7 +58,7 @@ namespace ValueConverters.Tests
             result.Should().Be(expectedResult);
         }
 
-        public class SubtractConverterInvalidTestdata : TheoryData<object, object, CultureInfo, object>
+        public class SubtractConverterInvalidTestdata : TheoryData<object?, object?, CultureInfo?, object?>
         {
             public SubtractConverterInvalidTestdata()
             {
