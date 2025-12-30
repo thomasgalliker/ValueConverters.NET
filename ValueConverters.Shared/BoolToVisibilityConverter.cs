@@ -1,10 +1,4 @@
-﻿#if (NETFX || NETWPF)
-using System.Windows;
-#elif (NETFX_CORE)
-using Windows.UI.Xaml;
-#endif
-
-#if NETFX || NETFX_CORE || NETWPF
+﻿#if NETFX || NETWPF
 namespace ValueConverters
 {
     public class BoolToVisibilityConverter : BoolToValueConverter<Visibility>

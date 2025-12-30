@@ -1,13 +1,4 @@
-﻿using System;
-using System.Globalization;
-
-#if NETFX || NET5_0_OR_GREATER
-using System.Windows;
-#elif (NETFX_CORE)
-using Windows.UI.Xaml;
-#endif
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// EnumToBoolConverter can be used to bind to RadioButtons.

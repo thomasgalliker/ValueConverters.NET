@@ -1,4 +1,7 @@
+using System.Collections.Concurrent;
+using System.Globalization;
 using System.Reflection;
+using System.Resources;
 
 namespace ValueConverters.Annotations
 {
@@ -8,9 +11,10 @@ namespace ValueConverters.Annotations
     /// <see cref="ResourceType"/>
     /// </summary>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter | AttributeTargets.Method, AllowMultiple = false)]
-    public class DisplayAttribute : Attribute
+    public sealed class DisplayAttribute : Attribute
     {
-        private const string PropertyNotSetMessage = "The {0} property has not been set.  Use the Get{0} method to get the value.";
+        private const string PropertyNotSetMessage =
+            "The {0} property has not been set. Use the Get{0} method to get the value.";
 
         private bool? autoGenerateField;
         private bool? autoGenerateFilter;
@@ -18,105 +22,32 @@ namespace ValueConverters.Annotations
 
         public Type? ResourceType { get; set; }
 
-        public string? Description { get; set; }
-
-        public string? GroupName { get; set; }
-
         public string? Name { get; set; }
 
         public string? ShortName { get; set; }
 
+        public string? Description { get; set; }
+
         public string? Prompt { get; set; }
+
+        public string? GroupName { get; set; }
 
         public bool AutoGenerateField
         {
-            get
-            {
-                if (!this.autoGenerateField.HasValue)
-                {
-                    throw new InvalidOperationException(string.Format(PropertyNotSetMessage, nameof(this.AutoGenerateField)));
-                }
-
-                return this.autoGenerateField.Value;
-            }
-            set
-            {
-                this.autoGenerateField = value;
-            }
+            get => this.autoGenerateField ?? throw new InvalidOperationException(string.Format(PropertyNotSetMessage, nameof(this.AutoGenerateField)));
+            set => this.autoGenerateField = value;
         }
 
         public bool AutoGenerateFilter
         {
-            get
-            {
-                if (this.autoGenerateFilter == null)
-                {
-                    throw new InvalidOperationException(string.Format(PropertyNotSetMessage, nameof(this.AutoGenerateFilter)));
-                }
-
-                return this.autoGenerateFilter.Value;
-            }
-            set
-            {
-                this.autoGenerateFilter = value;
-            }
+            get => this.autoGenerateFilter ?? throw new InvalidOperationException(string.Format(PropertyNotSetMessage, nameof(this.AutoGenerateFilter)));
+            set => this.autoGenerateFilter = value;
         }
 
         public int Order
         {
-            get
-            {
-                if (this.order == null)
-                {
-                    throw new InvalidOperationException(string.Format(PropertyNotSetMessage, nameof(this.Order)));
-                }
-
-                return this.order.Value;
-            }
-            set
-            {
-                this.order = value;
-            }
-        }
-
-        private string? GetLocalizedString(string propertyName, string? key)
-        {
-            // If we don't have a resource or a key, go ahead and fall back on the key
-            if (this.ResourceType == null || key == null)
-            {
-                return key;
-            }
-
-            var property = this.ResourceType.GetRuntimeProperty(key);
-            if (property == null)
-            {
-                // In case the .resx is generated with ResXFileCodeGenerator instead of PublicResXFileCodeGenerator.
-                property = this.ResourceType.GetTypeInfo().DeclaredProperties.FirstOrDefault(x => x.Name == key);
-            }
-
-            // Strings are only valid if they are public static strings
-            var isValid = false;
-            if (property != null && property.PropertyType == typeof(string))
-            {
-                var getter = property.GetMethod;
-
-                // Gotta have a public static getter on the property
-                if (getter != null && getter.IsStatic)
-                {
-                    isValid = true;
-                }
-            }
-
-            // If it's not valid, go ahead and throw an InvalidOperationException
-            if (!isValid)
-            {
-                var message =
-                    $"Cannot retrieve property '{propertyName}' because localization failed. " +
-                    $"Type '{this.ResourceType} is not public or does not contain a public static string property with the name '{key}'.";
-                throw new InvalidOperationException(message);
-            }
-
-            return (string?)property!.GetValue(null, null);
+            get => this.order ?? throw new InvalidOperationException(string.Format(PropertyNotSetMessage, nameof(this.Order)));
+            set => this.order = value;
         }
 
         public bool? GetAutoGenerateField()
@@ -129,35 +60,111 @@ namespace ValueConverters.Annotations
             return this.autoGenerateFilter;
         }
 
-        public int? GetOrder()
+        public int? GetOrder() => this.order;
+
+        public string? GetName(CultureInfo? culture = null)
         {
-            return this.order;
+            return this.GetLocalizedString(nameof(this.Name), this.Name, culture);
         }
 
-        public string? GetName()
+        public string? GetShortName(CultureInfo? culture = null)
         {
-            return this.GetLocalizedString(nameof(this.Name), this.Name);
+            return this.GetLocalizedString(nameof(this.ShortName), this.ShortName, culture) ?? this.GetName(culture);
         }
 
-        public string? GetShortName()
+        public string? GetDescription(CultureInfo? culture = null)
         {
-            // Short name falls back on Name if the short name isn't set
-            return this.GetLocalizedString(nameof(this.ShortName), this.ShortName) ?? this.GetName();
+            return this.GetLocalizedString(nameof(this.Description), this.Description, culture);
         }
 
-        public string? GetDescription()
+        public string? GetPrompt(CultureInfo? culture = null)
         {
-            return this.GetLocalizedString(nameof(this.Description), this.Description);
+            return this.GetLocalizedString(nameof(this.Prompt), this.Prompt, culture);
         }
 
-        public string? GetPrompt()
+        public string? GetGroupName(CultureInfo? culture = null)
         {
-            return this.GetLocalizedString(nameof(this.Prompt), this.Prompt);
+            return this.GetLocalizedString(nameof(this.GroupName), this.GroupName, culture);
         }
 
-        public string? GetGroupName()
+        private string? GetLocalizedString(string propertyName, string? key, CultureInfo? culture)
         {
-            return this.GetLocalizedString(nameof(this.GroupName), this.GroupName);
+            if (key == null || this.ResourceType == null)
+            {
+                return key;
+            }
+
+            culture ??= CultureInfo.CurrentUICulture;
+
+            var resourceManager = ResourceManagerCache.Get(this.ResourceType);
+
+            var value = resourceManager.GetString(key, culture);
+
+            if (value == null)
+            {
+                throw new InvalidOperationException(
+                    $"Cannot retrieve resource '{key}' for property '{propertyName}' " +
+                    $"from resource type '{this.ResourceType.FullName}'.");
+            }
+
+            return value;
+        }
+
+        private static class ResourceManagerCache
+        {
+            private static readonly ConcurrentDictionary<Type, ResourceManager> Cache = new();
+
+            public static ResourceManager Get(Type resourceType)
+            {
+                return Cache.GetOrAdd(resourceType, type =>
+                {
+                    var property = type.GetProperty("ResourceManager", BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
+
+                    if (property?.GetValue(null) is ResourceManager rm)
+                    {
+                        return rm;
+                    }
+
+                    throw new InvalidOperationException(
+                        $"Type '{type.FullName}' does not expose a static ResourceManager property.");
+                });
+            }
+        }
+
+        public static string GetDisplayName(Enum value, EnumWrapperConverterNameStyle nameStyle = EnumWrapperConverterNameStyle.LongName, CultureInfo? culture = null)
+        {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            var enumType = value.GetType();
+            var name = Enum.GetName(enumType, value);
+
+            if (name == null)
+            {
+                return value.ToString();
+            }
+
+            var field = enumType.GetField(name);
+            if (field == null)
+            {
+                return name;
+            }
+
+            var displayAttribute = field
+                .GetCustomAttributes(typeof(DisplayAttribute), false)
+                .Cast<DisplayAttribute>()
+                .FirstOrDefault();
+
+            if (displayAttribute == null)
+            {
+                return name;
+            }
+
+            return nameStyle == EnumWrapperConverterNameStyle.LongName
+                ? displayAttribute.GetName(culture) ?? name
+                : displayAttribute.GetShortName(culture) ?? name;
         }
     }
 }

@@ -1,20 +1,10 @@
-﻿using System.Globalization;
-using FluentAssertions;
-using Xunit;
-
-#if (XAMARIN)
-using Xamarin.Forms;
-#elif (NET || NETFRAMEWORK)
-using System.Windows.Data;
-#endif
-
-namespace ValueConverters.Tests
+﻿namespace ValueConverters.Tests
 {
     public class SubtractConverterTests
     {
         [Theory]
         [ClassData(typeof(SubtractConverterValidTestdata))]
-        public void ShouldSubtractValidInput(object ?value, object? parameter, CultureInfo? culture, object? expectedResult)
+        public void ShouldSubtractValidInput(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new SubtractConverter();
@@ -46,7 +36,7 @@ namespace ValueConverters.Tests
 
         [Theory]
         [ClassData(typeof(SubtractConverterInvalidTestdata))]
-        public void ShouldNotSubtractInvalidInput(object ?value, object? parameter, CultureInfo? culture, object? expectedResult)
+        public void ShouldNotSubtractInvalidInput(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new SubtractConverter();

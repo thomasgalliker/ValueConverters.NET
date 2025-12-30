@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     public class ItemTappedEventArgsConverter : ConverterBase
     {

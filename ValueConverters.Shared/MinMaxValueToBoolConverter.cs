@@ -1,17 +1,4 @@
-﻿using System;
-using System.Globalization;
-
-#if NETFX || NETWPF
-using System.Windows;
-
-#elif NETFX_CORE
-using Windows.UI.Xaml;
-
-#elif XAMARIN
-using Xamarin.Forms;
-#endif
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// Checks if the value is between MinValue and MaxValue,
@@ -22,14 +9,14 @@ namespace ValueConverters
     /// </summary>
     public class MinMaxValueToBoolConverter : SingletonConverterBase<MinMaxValueToBoolConverter>
     {
-#if XAMARIN || MAUI
-        public static readonly BindableProperty MaxValueProperty = 
+#if MAUI
+        public static readonly BindableProperty MaxValueProperty =
             BindableProperty.Create(
                 nameof(MaxValue),
                 typeof(object),
                 typeof(MinMaxValueToBoolConverter));
 
-        public static readonly BindableProperty MinValueProperty = 
+        public static readonly BindableProperty MinValueProperty =
             BindableProperty.Create(
                 nameof(MinValue),
                 typeof(object),
@@ -83,7 +70,7 @@ namespace ValueConverters
             var minValue = System.Convert.ChangeType(this.MinValue, comparable.GetType());
             var maxValue = System.Convert.ChangeType(this.MaxValue, comparable.GetType());
 
-            return (comparable.CompareTo(minValue) >= 0 && comparable.CompareTo(maxValue) <= 0);
+            return comparable.CompareTo(minValue) >= 0 && comparable.CompareTo(maxValue) <= 0;
         }
     }
 }

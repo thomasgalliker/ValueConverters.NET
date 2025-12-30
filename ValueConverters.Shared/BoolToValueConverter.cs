@@ -1,13 +1,6 @@
-﻿#if (NETFX || NETWPF)
+﻿#if NETFX || NETWPF
 using System.Windows;
 using System.Windows.Data;
-
-#elif NETFX_CORE
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Data;
-
-#elif XAMARIN
-using Xamarin.Forms;
 
 #elif MAUI
 using Microsoft.Maui;
@@ -17,7 +10,7 @@ namespace ValueConverters
 {
     public class BoolToValueConverter<T> : BoolToValueConverterBase<T, BoolToValueConverter<T>>
     {
-#if XAMARIN || MAUI
+#if MAUI
         public static readonly BindableProperty TrueValueProperty = BindableProperty.Create(
             "TrueValue",
             typeof(T),

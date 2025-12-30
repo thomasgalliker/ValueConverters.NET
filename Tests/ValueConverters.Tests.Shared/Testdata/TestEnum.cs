@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using ValueConverters.Tests.Testdata;
 
 namespace ValueConverters.Tests.Testdata
 {

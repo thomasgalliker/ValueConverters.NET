@@ -1,18 +1,4 @@
-﻿using System;
-using System.Globalization;
-
-using FluentAssertions;
-using Xunit;
-using Moq;
-using ValueConverters.Services;
-
-#if (XAMARIN)
-using Xamarin.Forms;
-#elif (NET || NETFRAMEWORK)
-using System.Windows.Data;
-#endif
-
-namespace ValueConverters.Tests
+﻿namespace ValueConverters.Tests
 {
     public class DateTimeOffsetToStringConverterTests
     {
@@ -29,7 +15,7 @@ namespace ValueConverters.Tests
 
         [Theory]
         [ClassData(typeof(DateTimeOffsetToStringConverterValidTestdata))]
-        public void ShouldConvert(object ?value, object? parameter, CultureInfo? culture, object? expectedResult)
+        public void ShouldConvert(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter valueConverter = new DateTimeOffsetToStringConverter(this.timeZoneInfoMock.Object)

@@ -1,17 +1,4 @@
-﻿using System;
-using System.Globalization;
-
-#if (NETFX || NETWPF)
-using System.Windows;
-using System.Windows.Markup;
-#elif (NETFX_CORE)
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Markup;
-#elif (XAMARIN)
-using Xamarin.Forms;
-#endif
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// StringToObjectConverter can be used to select different resources based on given string name.
@@ -33,11 +20,7 @@ namespace ValueConverters
     /// </example>
     /// Source: http://stackoverflow.com/questions/2787725/how-to-display-different-enum-icons-using-xaml-only
     /// </summary>
-#if (NETFX || XAMARIN || NETWPF)
     [ContentProperty(nameof(Items))]
-#elif (NETFX_CORE)
-    [ContentProperty(Name = nameof(Items))]
-#endif
     public class StringToObjectConverter : SingletonConverterBase<StringToObjectConverter>
     {
         public ResourceDictionary? Items { get; set; }
@@ -55,12 +38,12 @@ namespace ValueConverters
             return UnsetValue;
         }
 
-#if (NETFX || NETWPF)
+#if NETFX || NETWPF
         private static bool ContainsKey(ResourceDictionary dict, string key)
         {
             return dict.Contains(key);
         }
-#elif (NETFX_CORE || XAMARIN || MAUI)
+#elif MAUI
         private static bool ContainsKey(ResourceDictionary dict, string key)
         {
             return dict.ContainsKey(key);

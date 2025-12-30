@@ -1,20 +1,4 @@
-﻿using System;
-using System.Globalization;
-using ValueConverters.Extensions;
-using ValueConverters.Services;
-
-#if XAMARIN
-using Xamarin.Forms;
-#endif
-
-#if (NETFX || NETWPF)
-using System.Windows;
-
-#elif (NETFX_CORE)
-using Windows.UI.Xaml;
-#endif
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// Converts a <seealso cref="DateTimeOffset"/> value to string using formatting specified in <seealso cref="DefaultFormat"/>.
@@ -35,7 +19,7 @@ namespace ValueConverters
             this.timeZone = timeZone;
         }
 
-#if XAMARIN || MAUI
+#if MAUI
         public static readonly BindableProperty FormatProperty = BindableProperty.Create(
             nameof(Format),
             typeof(string),

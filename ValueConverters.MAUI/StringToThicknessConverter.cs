@@ -1,4 +1,3 @@
-using System.Globalization;
 using Microsoft.Maui.Converters;
 
 namespace ValueConverters

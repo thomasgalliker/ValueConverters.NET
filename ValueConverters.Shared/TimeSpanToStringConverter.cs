@@ -1,29 +1,11 @@
-﻿using System;
-using System.Globalization;
-
-#if (NETFX || NETWPF)
-using System.Windows;
-using System.Windows.Data;
-
-#elif NETFX_CORE
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Data;
-
-#elif XAMARIN
-using Xamarin.Forms;
-
-#elif MAUI
-using Microsoft.Maui;
-#endif
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     public class TimeSpanToStringConverter : SingletonConverterBase<TimeSpanToStringConverter>
     {
         protected const string DefaultFormat = @"g";
         protected const string DefaultMinValueString = "";
 
-#if XAMARIN || MAUI
+#if MAUI
         public static readonly BindableProperty FormatProperty = BindableProperty.Create(
             "Format",
             typeof(string),

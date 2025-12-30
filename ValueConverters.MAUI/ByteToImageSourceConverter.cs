@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// Converts a byte[] to an ImageSource.

@@ -1,17 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Reflection;
-#if (NETFX || NET5_0_OR_GREATER)
-using System.Windows;
-using System.Windows.Markup;
-#elif (NETFX_CORE)
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Markup;
-#elif (XAMARIN)
-using Xamarin.Forms;
-#endif
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// EnumToObjectConverter can be used to select different resources based on given enum name.

@@ -1,22 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
-
-#if (NETFX || NETWPF)
-using System.Windows;
-
-#elif (NETFX_CORE)
-using Windows.UI.Xaml;
-
-#endif
-#if XAMARIN || MAUI || (NETFX_CORE && !WINDOWS_UWP)
-using ValueConverters.Extensions;
-#endif
 
 namespace ValueConverters
 {
