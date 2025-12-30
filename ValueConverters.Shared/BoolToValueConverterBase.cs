@@ -1,13 +1,6 @@
-﻿using System;
-using System.Globalization;
-
-#if (NETFX || NETWPF)
+﻿#if NETFX || NETWPF
 using System.Windows;
 using System.Windows.Data;
-
-#elif (NETFX_CORE)
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Data;
 
 #elif MAUI
 using Microsoft.Maui;

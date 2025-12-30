@@ -1,29 +1,7 @@
-﻿using System;
-using System.Globalization;
-
-#if (NETFX || NETWPF)
-using System.Windows;
-using System.Windows.Data;
-using Property = System.Windows.DependencyProperty;
-
-#elif (NETFX_CORE)
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Data;
-using Property = Windows.UI.Xaml.DependencyProperty;
-
-#elif (XAMARIN)
-using Xamarin.Forms;
-using Property = Xamarin.Forms.BindableProperty;
-
-#elif (MAUI)
-using Microsoft.Maui;
-using Property = Microsoft.Maui.Controls.BindableProperty;
-#endif
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     public abstract class ConverterBase :
-#if XAMARIN || MAUI
+#if MAUI
         BindableObject,
 #else
         DependencyObject,
@@ -59,7 +37,6 @@ namespace ValueConverters
             throw new NotSupportedException($"Converter '{this.GetType().Name}' does not support backward conversion.");
         }
 
-#if (NETFX || NETWPF || XAMARIN || MAUI)
         object? IValueConverter.Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             return this.Convert(value, targetType, parameter, this.SelectCulture(() => culture));
@@ -69,37 +46,6 @@ namespace ValueConverters
         {
             return this.ConvertBack(value, targetType, parameter, this.SelectCulture(() => culture));
         }
-
-#elif (NETFX_CORE)
-        object IValueConverter.Convert(object value, Type targetType, object parameter, string language)
-        {
-            var cultureInfo = this.SelectCulture(() => TryConvertToCultureInfo(language));
-            return this.Convert(value, targetType, parameter, cultureInfo);
-        }
-
-        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, string language)
-        {
-            var cultureInfo = this.SelectCulture(() => TryConvertToCultureInfo(language));
-            return this.ConvertBack(value, targetType, parameter, cultureInfo);
-        }
-
-        private static CultureInfo TryConvertToCultureInfo(string language)
-        {
-            if (string.IsNullOrEmpty(language))
-            {
-                try
-                {
-                    return new CultureInfo(language);
-                }
-                catch
-                {
-                }
-            }
-
-            return CultureInfo.CurrentUICulture;
-        }
-
-#endif
         private CultureInfo SelectCulture(Func<CultureInfo> converterCulture)
         {
             switch (this.PreferredCulture)
@@ -113,8 +59,7 @@ namespace ValueConverters
             }
         }
 
-
-#if XAMARIN || MAUI
+#if MAUI
         public static readonly object? UnsetValue = null;
 #else
         public static readonly object? UnsetValue = DependencyProperty.UnsetValue;

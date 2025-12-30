@@ -1,7 +1,4 @@
-﻿using System;
-using System.Globalization;
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// Changes capitalization of a string.

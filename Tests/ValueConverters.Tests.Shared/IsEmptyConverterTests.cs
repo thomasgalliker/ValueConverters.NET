@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-using FluentAssertions;
-using Xunit;
-
-#if(XAMARIN)
-using Xamarin.Forms;
-#elif (NET || NETFRAMEWORK)
-using System.Windows.Data;
-#endif
-
-namespace ValueConverters.Tests
+﻿namespace ValueConverters.Tests
 {
     public class IsEmptyConverterTests
     {

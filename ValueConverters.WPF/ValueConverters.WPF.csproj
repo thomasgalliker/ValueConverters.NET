@@ -51,7 +51,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="$(TargetFramework.StartsWith('net4'))">
-    <DefineConstants>$(DefineConstants);NETFX;NETWPF</DefineConstants>
+    <DefineConstants>$(DefineConstants);NETFX</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>

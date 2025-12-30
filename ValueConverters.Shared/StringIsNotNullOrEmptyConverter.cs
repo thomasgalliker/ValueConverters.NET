@@ -1,22 +1,4 @@
-﻿using System;
-using System.Globalization;
-
-#if (NETFX || NETWPF)
-using System.Windows;
-using System.Windows.Data;
-
-#elif (NETFX_CORE)
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Data;
-
-#elif XAMARIN
-using Xamarin.Forms;
-
-#elif MAUI
-using Microsoft.Maui;
-#endif
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     [Obsolete("StringLengthToBoolConverter has been renamed to StringIsNotNullOrEmptyConverter. Please use StringIsNotNullOrEmptyConverter. StringLengthToBoolConverter will be removed in future releases.")]
     public class StringLengthToBoolConverter : StringIsNotNullOrEmptyConverter
@@ -33,7 +15,7 @@ namespace ValueConverters
 
     public class StringIsNullOrEmptyConverter : SingletonConverterBase<StringIsNotNullOrEmptyConverter>
     {
-#if XAMARIN || MAUI
+#if MAUI
         public static readonly BindableProperty IsInvertedProperty = BindableProperty.Create(
             nameof(IsInverted),
             typeof(bool),

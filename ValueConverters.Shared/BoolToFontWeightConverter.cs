@@ -1,11 +1,4 @@
-﻿
-#if (NETFX || NETWPF)
-using System.Windows;
-#elif (NETFX_CORE)
-using Windows.UI.Text;
-#endif
-
-#if NETFX || NETWPF || NETFX_CORE
+﻿#if NETFX || NETWPF
 namespace ValueConverters
 {
     public class BoolToFontWeightConverter : BoolToValueConverter<FontWeight>
