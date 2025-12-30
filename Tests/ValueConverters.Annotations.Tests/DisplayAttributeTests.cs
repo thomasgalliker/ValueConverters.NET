@@ -4,14 +4,14 @@ using ValueConvertersSample.Contracts.Model;
 
 namespace ValueConverters.Annotations.Tests
 {
-    public class EnumDisplayResolverTests
+    public class DisplayAttributeTests
     {
         [Theory]
         [ClassData(typeof(DisplayNameTestData))]
         public void ShouldReturnEnumDisplayText(PartyMode partyMode, CultureInfo? culture, EnumWrapperConverterNameStyle nameStyle, string? expectedResult)
         {
             // Act
-            var partyModeString = EnumDisplayResolver.GetDisplayName(partyMode, nameStyle, culture);
+            var partyModeString = DisplayAttribute.GetDisplayName(partyMode, nameStyle, culture);
 
             // Assert
             partyModeString.Should().Be(expectedResult);
