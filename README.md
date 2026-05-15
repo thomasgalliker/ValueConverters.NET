@@ -46,7 +46,7 @@ Apply the converter as a StaticResource:
 
 #### Using EnumWrapperConverter 
 
-EnumWrapperConverter is used to display localized enums. The concept is fairly simple: Enums are annotated with localized string resources and wrapped into EnumWrapper<TEnumType>. The view uses the EnumWrapperConverter to extract the localized
+EnumWrapperConverter is used to display localized enums. The concept is fairly simple: Enums are annotated with localized string resources and wrapped into EnumWrapper<TEnum>. The view uses the EnumWrapperConverter to extract the localized
 string resource from the resx file. Following step-by-step instructions show how to localize and bind a simple enum type in a WPF view: 
 
 1) Define new public enum type and annotate enum values with [Display] attributes: 

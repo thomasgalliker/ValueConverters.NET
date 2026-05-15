@@ -31,6 +31,8 @@ namespace ValueConverters
                 if (typeInfo.IsGenericType)
                 {
                     var genericType = type.GetGenericArguments()[0];
+                    EnsureEnumType(genericType);
+
                     var enumWrapperArray = typeof(EnumWrapperConverterBase<TConverter>)?
                         .GetMethod(nameof(this.CreateEnumWrapperArray))?
                         .MakeGenericMethod(new[] { genericType })
@@ -42,6 +44,8 @@ namespace ValueConverters
                 if (typeInfo.IsArray)
                 {
                     var elementType = type.GetElementType()!;
+                    EnsureEnumType(elementType);
+
                     var enumWrapperArray = typeof(EnumWrapperConverterBase<TConverter>)
                         .GetMethod(nameof(this.CreateEnumWrapperArray))?
                         .MakeGenericMethod(new[] { elementType })
@@ -57,6 +61,8 @@ namespace ValueConverters
             object? enumWrapper = null;
             try
             {
+                EnsureEnumType(type);
+
                 enumWrapper = typeof(EnumWrapperConverterBase<TConverter>)?
                     .GetMethod(nameof(this.CreateMapper))?
                     .MakeGenericMethod(new[] { type })
@@ -82,17 +88,25 @@ namespace ValueConverters
                 throw new ArgumentNullException(nameof(targetType), "Argument 'targetType' must not be null");
             }
 
-            if (IsNullable(targetType))
-            {
-                targetType = Nullable.GetUnderlyingType(targetType)!;
-            }
-
             var type = value.GetType();
             if (type == targetType)
             {
                 Debug.WriteLine("EnumWrapperConverter was used to convert between equal types. Consider removing it in this particular situation.");
                 return value;
             }
+
+            if (IsNullable(targetType))
+            {
+                targetType = Nullable.GetUnderlyingType(targetType)!;
+            }
+
+            if (type == targetType)
+            {
+                Debug.WriteLine("EnumWrapperConverter was used to convert between equal types. Consider removing it in this particular situation.");
+                return value;
+            }
+
+            EnsureEnumType(targetType);
 
             var typeInfo = type.GetTypeInfo();
             if (typeInfo.IsGenericType && type.GetGenericTypeDefinition() == typeof(EnumWrapper<>) && type.GetGenericArguments()[0] == targetType)
@@ -140,38 +154,51 @@ namespace ValueConverters
             return enumWrapper;
         }
 
-        public T ConvertMapper<T>(object value)
+        public TEnum ConvertMapper<TEnum>(object value)
+             where TEnum : struct, Enum
         {
-            return (EnumWrapper<T>)value;
+            return (EnumWrapper<TEnum>)value;
         }
 
-        public EnumWrapper<T> CreateMapper<T>(object value, EnumWrapperConverterNameStyle nameStyle = EnumWrapperConverterNameStyle.LongName)
+        public EnumWrapper<TEnum> CreateMapper<TEnum>(object value, EnumWrapperConverterNameStyle nameStyle = EnumWrapperConverterNameStyle.LongName)
+             where TEnum : struct, Enum
         {
-            return EnumWrapper.CreateWrapper((T)value, nameStyle);
+            return EnumWrapper.CreateWrapper((TEnum)value, nameStyle);
         }
 
-        public T UnpackEnumWrapper<T>(EnumWrapper<T> value)
+        public TEnum UnpackEnumWrapper<TEnum>(EnumWrapper<TEnum> value)
+            where TEnum : struct, Enum
         {
             return value.Value;
         }
 
-        public IEnumerable<EnumWrapper<T>> CreateEnumWrapperEnumerable<T>(object values, EnumWrapperConverterNameStyle nameStyle = EnumWrapperConverterNameStyle.LongName)
+        public IEnumerable<EnumWrapper<TEnum>> CreateEnumWrapperEnumerable<TEnum>(object values, EnumWrapperConverterNameStyle nameStyle = EnumWrapperConverterNameStyle.LongName)
+             where TEnum : struct, Enum
         {
             foreach (var value in (IEnumerable)values)
             {
-                yield return EnumWrapper.CreateWrapper((T)value, nameStyle);
+                yield return EnumWrapper.CreateWrapper((TEnum)value, nameStyle);
             }
         }
 
-        public EnumWrapper<T>[] CreateEnumWrapperArray<T>(object values, EnumWrapperConverterNameStyle nameStyle = EnumWrapperConverterNameStyle.LongName)
+        public EnumWrapper<TEnum>[] CreateEnumWrapperArray<TEnum>(object values, EnumWrapperConverterNameStyle nameStyle = EnumWrapperConverterNameStyle.LongName)
+             where TEnum : struct, Enum
         {
-            var enumerable = this.CreateEnumWrapperEnumerable<T>(values, nameStyle);
+            var enumerable = this.CreateEnumWrapperEnumerable<TEnum>(values, nameStyle);
             return enumerable.ToArray();
         }
 
         private static bool IsNullable(Type type)
         {
             return type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
+        }
+
+        private static void EnsureEnumType(Type type)
+        {
+            if (!type.GetTypeInfo().IsEnum)
+            {
+                throw new NotSupportedException("EnumWrapperConverter can only convert enum values and collections of enum values.");
+            }
         }
     }
 }

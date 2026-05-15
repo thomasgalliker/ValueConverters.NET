@@ -7,70 +7,74 @@ namespace ValueConverters
         /// <summary>
         /// Creates a list of wrapped values of an enumeration.
         /// </summary>
-        /// <typeparam name="TEnumType">Type of the enumeration.</typeparam>
+        /// <typeparam name="TEnum">Type of the enumeration.</typeparam>
         /// <returns>The wrapped enumeration values.</returns>
-        public static IEnumerable<EnumWrapper<TEnumType>> CreateWrappers<TEnumType>()
+        public static IEnumerable<EnumWrapper<TEnum>> CreateWrappers<TEnum>()
+             where TEnum : struct, Enum
         {
-            var allEnums = Enum.GetValues(typeof(TEnumType)).OfType<TEnumType>();
-            return allEnums.Select(x => new EnumWrapper<TEnumType>(x));
+            var allEnums = Enum.GetValues(typeof(TEnum)).OfType<TEnum>();
+            return allEnums.Select(x => new EnumWrapper<TEnum>(x));
         }
 
         /// <summary>
         /// Create the wrapped value of an enumeration value.
         /// </summary>
-        /// <typeparam name="TEnumType">Type of the enumeration.</typeparam>
+        /// <typeparam name="TEnum">Type of the enumeration.</typeparam>
         /// <param name="value">The value.</param>
         /// <param name="nameStyle">The name (short or long) to be considered from the attribute</param>
         /// <returns>The wrapped value.</returns>
-        public static EnumWrapper<TEnumType> CreateWrapper<TEnumType>(TEnumType value, EnumWrapperConverterNameStyle nameStyle = EnumWrapperConverterNameStyle.LongName)
+        public static EnumWrapper<TEnum> CreateWrapper<TEnum>(TEnum value, EnumWrapperConverterNameStyle nameStyle = EnumWrapperConverterNameStyle.LongName)
+            where TEnum : struct, Enum
         {
-            return new EnumWrapper<TEnumType>(value, nameStyle);
+            return new EnumWrapper<TEnum>(value, nameStyle);
         }
 
         /// <summary>
         /// Create the wrapped value of an enumeration value.
         /// </summary>
-        /// <typeparam name="TEnumType">Type of the enumeration.</typeparam>
+        /// <typeparam name="TEnum">Type of the enumeration.</typeparam>
         /// <param name="value">The value.</param>
         /// <returns>The wrapped value.</returns>
-        public static EnumWrapper<TEnumType> CreateWrapper<TEnumType>(int value)
+        public static EnumWrapper<TEnum> CreateWrapper<TEnum>(int value)
+             where TEnum : struct, Enum
         {
-            return new EnumWrapper<TEnumType>((TEnumType)(object)value);
+            return new EnumWrapper<TEnum>((TEnum)(object)value);
         }
     }
 
-    public class EnumWrapper<TEnumType> : BindableBase, IEquatable<EnumWrapper<TEnumType>>
+    public class EnumWrapper<TEnum> : BindableBase, IEquatable<EnumWrapper<TEnum>>
+        where TEnum : struct, Enum
     {
-        private readonly TEnumType value;
+        private readonly TEnum value;
         private readonly EnumWrapperConverterNameStyle nameStyle;
 
-        public EnumWrapper(TEnumType value, EnumWrapperConverterNameStyle nameStyle = EnumWrapperConverterNameStyle.LongName)
+        public EnumWrapper(TEnum value, EnumWrapperConverterNameStyle nameStyle = EnumWrapperConverterNameStyle.LongName)
         {
             this.value = value;
             this.nameStyle = nameStyle;
         }
 
-        public TEnumType Value => this.value;
+        public TEnum Value => this.value;
 
         /// <summary>
         /// Use LocalizedValue to bind UI elements to.
         /// To enforce a refresh of LocalizedValue property (e.g. when you change the UI culture at runtime)
         /// just call the <code>Refresh</code> method.
         /// </summary>
-        public string? LocalizedValue => this.ToString();
+        public string LocalizedValue => this.ToString();
 
         /// <summary>
         /// Implicit to string conversion.
         /// </summary>
         /// <returns>Value converted to a localized string.</returns>
-        public override string? ToString()
+        public override string ToString()
         {
             if (this.value is Enum enumValue)
             {
                 return DisplayAttribute.GetDisplayName(enumValue, this.nameStyle);
             }
 
-            return this.value?.ToString();
+            return $"{this.value}";
         }
 
         /// <summary>
@@ -89,7 +93,7 @@ namespace ValueConverters
                 return true;
             }
 
-            var enumWrapper = obj as EnumWrapper<TEnumType>;
+            var enumWrapper = obj as EnumWrapper<TEnum>;
             if (enumWrapper == null)
             {
                 return false;
@@ -103,7 +107,7 @@ namespace ValueConverters
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>True or false.</returns>
-        public bool Equals(EnumWrapper<TEnumType>? other)
+        public bool Equals(EnumWrapper<TEnum>? other)
         {
             if (ReferenceEquals(null, other))
             {
@@ -121,7 +125,7 @@ namespace ValueConverters
         /// </summary>
         /// <param name="enumToConvert">The enumeration to convert.</param>
         /// <returns>The converted value.</returns>
-        public static implicit operator TEnumType(EnumWrapper<TEnumType> enumToConvert)
+        public static implicit operator TEnum(EnumWrapper<TEnum> enumToConvert)
         {
             return enumToConvert.value;
         }
@@ -131,7 +135,7 @@ namespace ValueConverters
         /// </summary>
         /// <param name="enumToConvert">The enumeration to convert.</param>
         /// <returns>The converted value.</returns>
-        public static implicit operator int(EnumWrapper<TEnumType> enumToConvert)
+        public static implicit operator int(EnumWrapper<TEnum> enumToConvert)
         {
             return Convert.ToInt32(enumToConvert.value);
         }
@@ -142,7 +146,7 @@ namespace ValueConverters
         /// <param name="left">The left operand.</param>
         /// <param name="right">The right operand.</param>
         /// <returns>True or false.</returns>
-        public static bool operator ==(EnumWrapper<TEnumType>? left, EnumWrapper<TEnumType>? right)
+        public static bool operator ==(EnumWrapper<TEnum>? left, EnumWrapper<TEnum>? right)
         {
             return Equals(left, right);
         }
@@ -153,7 +157,7 @@ namespace ValueConverters
         /// <param name="left">The left operand.</param>
         /// <param name="right">The right operand.</param>
         /// <returns>True or false.</returns>
-        public static bool operator !=(EnumWrapper<TEnumType>? left, EnumWrapper<TEnumType>? right)
+        public static bool operator !=(EnumWrapper<TEnum>? left, EnumWrapper<TEnum>? right)
         {
             return !Equals(left, right);
         }
@@ -164,7 +168,7 @@ namespace ValueConverters
         /// <returns>The hash code.</returns>
         public override int GetHashCode()
         {
-            return this.Value?.GetHashCode() ?? 0;
+            return this.Value.GetHashCode();
         }
 
         public void Refresh()

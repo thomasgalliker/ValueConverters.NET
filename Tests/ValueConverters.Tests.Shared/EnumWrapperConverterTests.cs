@@ -170,7 +170,7 @@
         }
 
         [Fact]
-        public void ShouldThrowInvalidCastExceptionOnConvertBackIfTargetTypeDoesNotMatch()
+        public void ShouldThrowNotSupportedExceptionOnConvertBackIfTargetTypeIsNotEnum()
         {
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
@@ -181,7 +181,7 @@
             Action action = () => { converter.ConvertBack(inutValue, typeof(string), null, null); };
 
             // Assert
-            action.Should().Throw<InvalidCastException>();
+            action.Should().Throw<NotSupportedException>();
         }
     }
 }
