@@ -1,5 +1,5 @@
 ﻿using System.Globalization;
-using FluentAssertions;
+using AwesomeAssertions;
 using ValueConvertersSample.Contracts.Model;
 
 namespace ValueConverters.Annotations.Tests

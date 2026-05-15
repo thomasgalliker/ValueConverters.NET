@@ -1,7 +1,7 @@
 ﻿global using System.Globalization;
 global using System.Windows;
 global using System.Windows.Data;
-global using FluentAssertions;
+global using AwesomeAssertions;
 global using ValueConverters.Services;
 global using Xunit;
 global using Moq;
