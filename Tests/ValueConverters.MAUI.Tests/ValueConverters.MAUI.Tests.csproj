@@ -32,9 +32,9 @@
   <Import Project="..\ValueConverters.Tests.Shared\ValueConverters.Tests.Shared.projitems" Label="Shared"/>
 
   <ItemGroup>
-    <EmbeddedResource Update="TestData\AppResources.resx">
-      <LogicalName>ValueConverters.Tests.Testdata.AppResources.resources</LogicalName>
-    </EmbeddedResource>
+    <EmbeddedResource
+      Update="TestData\AppResources.resx" 
+      LogicalName="ValueConverters.Tests.Testdata.AppResources.resources" />
   </ItemGroup>
 
 </Project>

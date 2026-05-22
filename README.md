@@ -47,7 +47,13 @@ Apply the converter as a StaticResource:
 #### Using EnumWrapperConverter 
 
 EnumWrapperConverter is used to display localized enums. The concept is fairly simple: Enums are annotated with localized string resources and wrapped into EnumWrapper<TEnum>. The view uses the EnumWrapperConverter to extract the localized
-string resource from the resx file. Following step-by-step instructions show how to localize and bind a simple enum type in a WPF view: 
+string resource from the resx file. It can convert single enum values, arrays, and generic IEnumerable<TEnum> values to EnumWrapper<TEnum> instances. ConvertBack unwraps EnumWrapper<TEnum> values to enum values and supports nullable enum targets.
+
+This makes the converter useful for simple display bindings and two-way selection controls, for example a selected enum value together with an ItemsSource of enum values. A null source value is passed through as null, so clearable selections can remain clearable. When ConvertBack receives a null value for a nullable enum target, it returns null; for a non-nullable enum target, or for platform binding sentinel values such as UnsetValue or DoNothing, it returns DoNothing so the binding source is not overwritten with an invalid value.
+
+The converter only supports enum values and collections of enum values. Non-generic IEnumerable values are supported only when they are arrays; other non-generic collections are not supported. If an enum value uses a DisplayAttribute with a ResourceType, the referenced resource property must exist.
+
+Following step-by-step instructions show how to localize and bind a simple enum type in a WPF view: 
 
 1) Define new public enum type and annotate enum values with [Display] attributes: 
 
@@ -64,12 +70,12 @@ string resource from the resx file. Following step-by-step instructions show how
     } 
 ``` 
 
-3) Create StringResources.resx and define strings with appropriate keys (e.g. "PartyMode__Off"). Make sure PublicResXFileCodeGenerator is used to generate the .Designer.cs file. (If ResXFileCodeGenerator is used, the resource lookup operations may require more time to complete).
+2) Create StringResources.resx and define strings with appropriate keys (e.g. "PartyMode_Off"). Make sure PublicResXFileCodeGenerator is used to generate the .Designer.cs file. (If ResXFileCodeGenerator is used, the resource lookup operations may require more time to complete).
 
-4) Create StringResources.resx for other languages (e.g. StringResources.de.resx) and translate all strings accordingly. Use [Multilingual App Toolkit]( https://visualstudiogallery.msdn.microsoft.com/6dab9154-a7e1-46e4-bbfa-18b5e81df520) 
+3) Create StringResources.resx for other languages (e.g. StringResources.de.resx) and translate all strings accordingly. Use [Multilingual App Toolkit]( https://visualstudiogallery.msdn.microsoft.com/6dab9154-a7e1-46e4-bbfa-18b5e81df520) 
 for easy localization of the defined string resources. 
 
-5) Expose enum property in the ViewModel. 
+4) Expose enum property in the ViewModel. 
 
 ```cs 
 
@@ -83,13 +89,22 @@ for easy localization of the defined string resources.
 
 ``` 
 
-6) Bind to enum property in the View and define Converter={StaticResource EnumWrapperConverter}. 
+5) Bind to enum property in the View and define Converter={StaticResource EnumWrapperConverter}. 
 
 ```xml 
 
         <Label Content="{Binding PartyMode, Converter={StaticResource EnumWrapperConverter}}" /> 
 
 ``` 
+
+For a two-way selection binding, apply the converter to both the selected value and the enum value collection:
+
+```xml
+
+        <ComboBox ItemsSource="{Binding PartyModes, Converter={StaticResource EnumWrapperConverter}}"
+                  SelectedItem="{Binding PartyMode, Mode=TwoWay, Converter={StaticResource EnumWrapperConverter}}" />
+
+```
 
 That’s it. If you want to change the UI language at runtime, don’t forget to call OnPropertyChanged after changing CurrentUICulture. There is a WPF sample app available. 
 
@@ -113,4 +128,4 @@ Use **ValueConvertersConfig.DefaultPreferredCulture** to configure the default c
 [ https://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.data.ivalueconverter]( https://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.data.ivalueconverter)  
 
 ### License 
-ValueConverters.NET is Copyright &copy; 2021 [Thomas Galliker]( https://ch.linkedin.com/in/thomasgalliker). Free for non-commercial use. For commercial use please contact the author. 
+ValueConverters.NET is Copyright &copy; 2026 [Thomas Galliker]( https://ch.linkedin.com/in/thomasgalliker). Free for non-commercial use. For commercial use please contact the author. 

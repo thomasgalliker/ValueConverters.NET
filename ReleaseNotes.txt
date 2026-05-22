@@ -1,5 +1,6 @@
 4.2
 - Add support for .NET 10.
+- Maintenance and bug fixes.
 
 4.1
 - Maintenance updates.

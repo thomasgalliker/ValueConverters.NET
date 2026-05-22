@@ -13,7 +13,7 @@ namespace ValueConverters
         {
             if (value == null)
             {
-                return UnsetValue;
+                return null;
             }
 
             var type = value.GetType();
@@ -48,7 +48,7 @@ namespace ValueConverters
 
                     var enumWrapperArray = typeof(EnumWrapperConverterBase<TConverter>)
                         .GetMethod(nameof(this.CreateEnumWrapperArray))?
-                        .MakeGenericMethod(new[] { elementType })
+                        .MakeGenericMethod(elementType)
                         .Invoke(this, new[] { value, this.NameStyle });
 
                     return enumWrapperArray;
@@ -65,7 +65,7 @@ namespace ValueConverters
 
                 enumWrapper = typeof(EnumWrapperConverterBase<TConverter>)?
                     .GetMethod(nameof(this.CreateMapper))?
-                    .MakeGenericMethod(new[] { type })
+                    .MakeGenericMethod(type)
                     .Invoke(this, new[] { value, this.NameStyle });
             }
             catch (TargetInvocationException ex)
@@ -78,14 +78,20 @@ namespace ValueConverters
 
         protected override object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
-            if (value == null)
-            {
-                return UnsetValue;
-            }
-
             if (targetType == null)
             {
                 throw new ArgumentNullException(nameof(targetType), "Argument 'targetType' must not be null");
+            }
+
+            if (ReferenceEquals(value, UnsetValue) ||
+                ReferenceEquals(value, Binding.DoNothing))
+            {
+                return Binding.DoNothing;
+            }
+
+            if (value == null)
+            {
+                return IsNullable(targetType) ? null : Binding.DoNothing;
             }
 
             var type = value.GetType();
@@ -117,7 +123,7 @@ namespace ValueConverters
                 {
                     enumValue = typeof(EnumWrapperConverterBase<TConverter>)?
                         .GetMethod(nameof(this.UnpackEnumWrapper))?
-                        .MakeGenericMethod(new[] { targetType })
+                        .MakeGenericMethod(targetType)
                         .Invoke(this, new[] { value });
                 }
                 catch (TargetInvocationException ex)
@@ -127,7 +133,6 @@ namespace ValueConverters
 
                 return enumValue;
             }
-
 
             // TODO GATH: Check if this exception is required
             ////if (value is IEnumerable)

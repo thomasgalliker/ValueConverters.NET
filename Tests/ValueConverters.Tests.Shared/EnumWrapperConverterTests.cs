@@ -52,13 +52,26 @@
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
 
-            var inutValue = Enum.GetValues(typeof(TestEnum)).OfType<TestEnum>();
+            var inputValue = Enum.GetValues<TestEnum>();
 
             // Act
-            var convertedOutput = (IEnumerable<EnumWrapper<TestEnum>>)converter.Convert(inutValue, null, null, null);
+            var convertedOutput = (IEnumerable<EnumWrapper<TestEnum>>)converter.Convert(inputValue, null, null, null);
 
             // Assert
-            convertedOutput.Should().HaveCount(inutValue.Count());
+            convertedOutput.Should().HaveCount(inputValue.Count());
+        }
+
+        [Fact]
+        public void Convert_NullValue_ReturnsNull()
+        {
+            // Arrange
+            IValueConverter converter = new EnumWrapperConverter();
+
+            // Act
+            var convertedOutput = converter.Convert(null, typeof(EnumWrapper<TestEnum>), null, CultureInfo.CurrentUICulture);
+
+            // Assert
+            convertedOutput.Should().BeNull();
         }
 
         [Fact]
@@ -114,10 +127,10 @@
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
 
-            var inutValue = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+            var inputValue = EnumWrapper.CreateWrapper(TestEnum.Lorem);
 
             // Act
-            var convertedOutput = (TestEnum)converter.ConvertBack(inutValue, typeof(TestEnum), null, null);
+            var convertedOutput = (TestEnum)converter.ConvertBack(inputValue, typeof(TestEnum), null, null);
 
             // Assert
             convertedOutput.Should().Be(TestEnum.Lorem);
@@ -129,14 +142,66 @@
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
 
-            var inutValue = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+            var inputValue = EnumWrapper.CreateWrapper(TestEnum.Lorem);
 
             // Act
-            var convertedOutput = (TestEnum?)converter.ConvertBack(inutValue, typeof(TestEnum?), null, null);
+            var convertedOutput = (TestEnum?)converter.ConvertBack(inputValue, typeof(TestEnum?), null, null);
 
             // Assert
             convertedOutput.Should().NotBeNull();
             convertedOutput.Should().Be(TestEnum.Lorem);
+        }
+
+        [Fact]
+        public void ConvertBack_NullValueWithNullableEnumTarget_ReturnsNull()
+        {
+            // Arrange
+            IValueConverter converter = new EnumWrapperConverter();
+
+            // Act
+            var convertedOutput = converter.ConvertBack(null, typeof(TestEnum?), null, CultureInfo.CurrentUICulture);
+
+            // Assert
+            convertedOutput.Should().BeNull();
+        }
+
+        [Fact]
+        public void ConvertBack_NullValueWithEnumTarget_ReturnsBindingDoNothing()
+        {
+            // Arrange
+            IValueConverter converter = new EnumWrapperConverter();
+
+            // Act
+            var convertedOutput = converter.ConvertBack(null, typeof(TestEnum), null, CultureInfo.CurrentUICulture);
+
+            // Assert
+            convertedOutput.Should().BeSameAs(Binding.DoNothing);
+        }
+
+        [Fact]
+        public void ConvertBack_UnsetValue_ReturnsBindingDoNothing()
+        {
+            // Arrange
+            IValueConverter converter = new EnumWrapperConverter();
+
+            // Act
+            var convertedOutput = converter.ConvertBack(EnumWrapperConverter.UnsetValue, typeof(TestEnum), null, CultureInfo.CurrentUICulture);
+
+            // Assert
+            convertedOutput.Should().BeSameAs(Binding.DoNothing);
+        }
+
+        [Fact]
+        public void ConvertBack_BindingDoNothing_ReturnsBindingDoNothing()
+        {
+            // Arrange
+            IValueConverter converter = new EnumWrapperConverter();
+
+            // Act
+            var convertedOutput = converter.ConvertBack(Binding.DoNothing, typeof(TestEnum), null, CultureInfo.CurrentUICulture);
+
+            // Assert
+            convertedOutput.Should().BeSameAs(Binding.DoNothing);
         }
 
         [Fact]
@@ -145,13 +210,13 @@
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
 
-            var inutValue = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+            var inputValue = EnumWrapper.CreateWrapper(TestEnum.Lorem);
 
             // Act
-            var convertedOutput = (EnumWrapper<TestEnum>)converter.ConvertBack(inutValue, typeof(EnumWrapper<TestEnum>), null, null);
+            var convertedOutput = (EnumWrapper<TestEnum>)converter.ConvertBack(inputValue, typeof(EnumWrapper<TestEnum>), null, null);
 
             // Assert
-            convertedOutput.Should().Be(inutValue);
+            convertedOutput.Should().Be(inputValue);
         }
 
         [Fact]
@@ -160,10 +225,10 @@
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
 
-            var inutValue = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+            var inputValue = EnumWrapper.CreateWrapper(TestEnum.Lorem);
 
             // Act
-            Action action = () => { converter.ConvertBack(inutValue, null, null, null); };
+            Action action = () => { converter.ConvertBack(inputValue, null, null, null); };
 
             // Assert
             action.Should().Throw<ArgumentNullException>();
@@ -175,10 +240,10 @@
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
 
-            var inutValue = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+            var inputValue = EnumWrapper.CreateWrapper(TestEnum.Lorem);
 
             // Act
-            Action action = () => { converter.ConvertBack(inutValue, typeof(string), null, null); };
+            Action action = () => { converter.ConvertBack(inputValue, typeof(string), null, null); };
 
             // Assert
             action.Should().Throw<NotSupportedException>();
