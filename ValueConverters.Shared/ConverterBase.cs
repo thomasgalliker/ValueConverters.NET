@@ -60,9 +60,9 @@
         }
 
 #if MAUI
-        public static readonly object? UnsetValue = null;
+        public static readonly object UnsetValue = BindableProperty.UnsetValue;
 #else
-        public static readonly object? UnsetValue = DependencyProperty.UnsetValue;
+        public static readonly object UnsetValue = DependencyProperty.UnsetValue;
 #endif
 
     }
