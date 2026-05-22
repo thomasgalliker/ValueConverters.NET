@@ -8,29 +8,31 @@
     {
         protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
-            if (value != null && parameter is string parameterString)
+            if (value == null || parameter is not string parameterString)
             {
-                if (Enum.IsDefined(value.GetType(), value) == false)
-                {
-                    return UnsetValue;
-                }
-
-                var parameterValue = Enum.Parse(value.GetType(), parameterString);
-
-                return parameterValue.Equals(value);
+                return false;
             }
 
-            return UnsetValue;
+            var enumType = Nullable.GetUnderlyingType(value.GetType()) ?? value.GetType();
+
+            if (!enumType.IsEnum || !Enum.IsDefined(enumType, value))
+            {
+                return UnsetValue;
+            }
+
+            var parameterValue = Enum.Parse(enumType, parameterString);
+            return parameterValue.Equals(value);
         }
 
         protected override object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
-            if (parameter is string parameterString)
+            if (value is not true || parameter is not string parameterString)
             {
-                return Enum.Parse(targetType, parameterString);
+                return Binding.DoNothing;
             }
 
-            return UnsetValue;
+            var enumType = Nullable.GetUnderlyingType(targetType) ?? targetType;
+            return Enum.Parse(enumType, parameterString);
         }
     }
 }
