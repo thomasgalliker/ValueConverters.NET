@@ -10,6 +10,7 @@ using XmlnsPrefixAttribute = Microsoft.Maui.Controls.XmlnsPrefixAttribute;
 #endif
 
 [assembly: InternalsVisibleTo("ValueConverters.Netfx.Tests")]
+[assembly: InternalsVisibleTo("ValueConverters.MAUI.Tests")]
 [assembly: InternalsVisibleTo("ValueConverters.WPF.Tests")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 

@@ -25,14 +25,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)GuidToStringConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IsEmptyConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\xunit.assembly.config.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Testdata\TestClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Testdata\TestEnum.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TimeSpanToStringConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringCaseConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringIsNotNullOrEmptyConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringIsNullOrEmptyConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringToDecimalConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SubtractConverterTests.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Testdata\TestClass.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Testdata\TestEnum.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ValueConverterGroupTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ValueToBoolConverterTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ValueToEnumerableConverterTests.cs" />
