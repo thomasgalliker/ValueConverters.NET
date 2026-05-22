@@ -3,28 +3,28 @@
     public class EnumWrapperConverterTests
     {
         [Fact]
-        public void ShouldConvert()
+        public void Convert_EnumValue_ReturnsLocalizedEnumWrapper()
         {
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
-            const TestEnum InutValue = TestEnum.Lorem;
+            const TestEnum InputValue = TestEnum.Lorem;
 
             // Act
-            var convertedOutput = converter.Convert(InutValue, null, null, null);
+            var convertedOutput = converter.Convert(InputValue, null, null, null);
 
             // Assert
             convertedOutput.ToString().Should().Be(AppResources.LoremText);
         }
 
         [Fact]
-        public void ShouldThrowInvalidOperationExceptionIfAppResourceCannotBeFound()
+        public void Convert_MissingDisplayNameResource_ThrowsInvalidOperationException()
         {
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
-            const TestEnum InutValue = TestEnum.Ipsum;
+            const TestEnum InputValue = TestEnum.Ipsum;
 
             // Act
-            var convertedOutput = converter.Convert(InutValue, null, null, null);
+            var convertedOutput = converter.Convert(InputValue, null, null, null);
             Action action = () => convertedOutput.ToString();
 
             // Assert
@@ -32,22 +32,22 @@
         }
 
         [Fact]
-        public void ShouldConvertIfNoAnnotationAvailable()
+        public void Convert_EnumWithoutAnnotation_ReturnsEnumName()
         {
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
-            const TestEnum InutValue = TestEnum.Dolor;
-            string expectedOutput = InutValue.ToString();
+            const TestEnum InputValue = TestEnum.Dolor;
+            string expectedOutput = InputValue.ToString();
 
             // Act
-            var convertedOutput = converter.Convert(InutValue, null, null, null);
+            var convertedOutput = converter.Convert(InputValue, null, null, null);
 
             // Assert
             convertedOutput.ToString().Should().Be(expectedOutput);
         }
 
         [Fact]
-        public void ShouldConvertGenericEnumerable()
+        public void Convert_GenericEnumerable_ReturnsEnumWrapperEnumerable()
         {
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
@@ -62,30 +62,30 @@
         }
 
         [Fact]
-        public void ShouldConvertBackIfInputValueIsEnum()
+        public void ConvertBack_EnumValue_ReturnsEnumValue()
         {
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
 
-            const TestEnum InutValue = TestEnum.Lorem;
+            const TestEnum InputValue = TestEnum.Lorem;
 
             // Act
-            var convertedOutput = (TestEnum)converter.ConvertBack(InutValue, typeof(TestEnum), null, null);
+            var convertedOutput = (TestEnum)converter.ConvertBack(InputValue, typeof(TestEnum), null, null);
 
             // Assert
             convertedOutput.Should().Be(TestEnum.Lorem);
         }
 
         [Fact]
-        public void ShouldCreateMapper_LongName()
+        public void CreateMapper_LongName_ReturnsEnumWrapperWithLongName()
         {
             // Arrange
             var converter = new EnumWrapperConverter();
 
-            const TestEnum InutValue = TestEnum.Lorem;
+            const TestEnum InputValue = TestEnum.Lorem;
 
             // Act
-            var convertedOutput = converter.CreateMapper<TestEnum>(InutValue);
+            var convertedOutput = converter.CreateMapper<TestEnum>(InputValue);
 
             // Assert
             convertedOutput.Value.Should().Be(TestEnum.Lorem);
@@ -93,15 +93,15 @@
         }
 
         [Fact]
-        public void ShouldCreateMapper_ShortName()
+        public void CreateMapper_ShortName_ReturnsEnumWrapperWithShortName()
         {
             // Arrange
             var converter = new EnumWrapperConverter { NameStyle = EnumWrapperConverterNameStyle.LongName };
 
-            const TestEnum InutValue = TestEnum.Lorem;
+            const TestEnum InputValue = TestEnum.Lorem;
 
             // Act
-            var convertedOutput = converter.CreateMapper<TestEnum>(InutValue, EnumWrapperConverterNameStyle.ShortName);
+            var convertedOutput = converter.CreateMapper<TestEnum>(InputValue, EnumWrapperConverterNameStyle.ShortName);
 
             // Assert
             convertedOutput.Value.Should().Be(TestEnum.Lorem);
@@ -109,7 +109,7 @@
         }
 
         [Fact]
-        public void ShouldConvertBackIfInputValueIsEnumWrapper_TargetTypeIsEnum()
+        public void ConvertBack_EnumWrapperWithEnumTarget_ReturnsEnumValue()
         {
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
@@ -124,7 +124,7 @@
         }
 
         [Fact]
-        public void ShouldConvertBackIfInputValueIsEnumWrapper_TargetTypeIsNullableEnum()
+        public void ConvertBack_EnumWrapperWithNullableEnumTarget_ReturnsEnumValue()
         {
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
@@ -140,7 +140,7 @@
         }
 
         [Fact]
-        public void ShouldConvertBackIfInputValueIsEnumWrapper_TargetTypeIsEnumWrapper()
+        public void ConvertBack_EnumWrapperWithEnumWrapperTarget_ReturnsEnumWrapper()
         {
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
@@ -155,7 +155,7 @@
         }
 
         [Fact]
-        public void ShouldThrowArgumentNullExceptionOnConvertBackIfTargetTypeIsNull()
+        public void ConvertBack_NullTargetType_ThrowsArgumentNullException()
         {
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
@@ -170,7 +170,7 @@
         }
 
         [Fact]
-        public void ShouldThrowNotSupportedExceptionOnConvertBackIfTargetTypeIsNotEnum()
+        public void ConvertBack_NonEnumTargetType_ThrowsNotSupportedException()
         {
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();

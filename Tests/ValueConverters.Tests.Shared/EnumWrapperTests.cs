@@ -3,7 +3,7 @@
     public class EnumWrapperTests
     {
         [Fact]
-        public void ShouldReturnToString()
+        public void ToString_DisplayNameResourceExists_ReturnsLocalizedText()
         {
             // Arrange
             var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Lorem);
@@ -19,7 +19,7 @@
         }
 
         [Fact]
-        public void ShouldReturnLocalizedValue()
+        public void LocalizedValue_DisplayNameResourceExists_ReturnsLocalizedText()
         {
             // Arrange
             var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Lorem);
@@ -34,7 +34,7 @@
         }
 
         [Fact]
-        public void ShouldThrowInvalidOperationExpectionIfDisplayNameResourceCannotBeFound()
+        public void LocalizedValue_DisplayNameResourceMissing_ThrowsInvalidOperationException()
         {
             // Arrange
             var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Ipsum);
@@ -47,7 +47,7 @@
         }
 
         [Fact]
-        public void ShouldReturnEnumToStringIfNoDisplayAttributeIsSet()
+        public void LocalizedValue_NoDisplayAttribute_ReturnsEnumName()
         {
             // Arrange
             var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Dolor);
@@ -62,7 +62,7 @@
         }
 
         [Fact]
-        public void ShouldReturnEnumToStringIfInvalidDisplayAttributeIsSet()
+        public void LocalizedValue_ThirdPartyDisplayAttribute_ReturnsEnumName()
         {
             // Arrange
             var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Fourth);
@@ -77,7 +77,7 @@
         }
 
         [Fact]
-        public void ShouldCreateWrappers()
+        public void CreateWrappers_TestEnum_ReturnsAllEnumValues()
         {
             // Act
             var enumWrappers = EnumWrapper.CreateWrappers<TestEnum>().ToArray();
