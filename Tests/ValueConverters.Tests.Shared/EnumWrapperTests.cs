@@ -8,13 +8,11 @@
             // Arrange
             var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Lorem);
 
-            const string ExpectedLocalizationLorem = "Lorem text";
-
             // Act
             var localizedValue = enumWrapper.ToString();
 
             // Assert
-            localizedValue.Should().Be(ExpectedLocalizationLorem);
+            localizedValue.Should().Be("Lorem text");
             localizedValue.Should().Be(enumWrapper.LocalizedValue);
         }
 
@@ -24,13 +22,169 @@
             // Arrange
             var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Lorem);
 
-            const string ExpectedLocalizationLorem = "Lorem text";
+            // Act
+            var localizedValue = enumWrapper.LocalizedValue;
+
+            // Assert
+            localizedValue.Should().Be("Lorem text");
+        }
+
+        [Fact]
+        public void LocalizedValue_NonGenericReference_ReturnsLocalizedText()
+        {
+            // Arrange
+            EnumWrapper enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Lorem);
 
             // Act
             var localizedValue = enumWrapper.LocalizedValue;
 
             // Assert
-            localizedValue.Should().Be(ExpectedLocalizationLorem);
+            localizedValue.Should().Be("Lorem text");
+            localizedValue.Should().Be(enumWrapper.ToString());
+        }
+
+        [Fact]
+        public void Value_NonGenericReference_ReturnsEnumValue()
+        {
+            // Arrange
+            EnumWrapper enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+
+            // Act
+            var value = enumWrapper.Value;
+
+            // Assert
+            value.Should().Be(TestEnum.Lorem);
+        }
+
+        [Fact]
+        public void Value_GenericReference_ReturnsTypedEnumValue()
+        {
+            // Arrange
+            var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+
+            // Act
+            var value = enumWrapper.Value;
+
+            // Assert
+            value.Should().Be(TestEnum.Lorem);
+        }
+
+        [Fact]
+        public void ImplicitOperator_GenericReference_ReturnsEnumValue()
+        {
+            // Arrange
+            var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+
+            // Act
+            TestEnum value = enumWrapper;
+
+            // Assert
+            value.Should().Be(TestEnum.Lorem);
+        }
+
+        [Fact]
+        public void ImplicitIntOperator_GenericReference_ReturnsNumericEnumValue()
+        {
+            // Arrange
+            var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Dolor);
+
+            // Act
+            int value = enumWrapper;
+
+            // Assert
+            value.Should().Be((int)TestEnum.Dolor);
+        }
+
+        [Fact]
+        public void Refresh_NonGenericReference_RaisesValueAndLocalizedValuePropertyChanged()
+        {
+            // Arrange
+            EnumWrapper enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+            var changedProperties = new List<string?>();
+            enumWrapper.PropertyChanged += (_, args) => changedProperties.Add(args.PropertyName);
+
+            // Act
+            enumWrapper.Refresh();
+
+            // Assert
+            changedProperties.Should().Equal(nameof(EnumWrapper.Value), nameof(EnumWrapper.LocalizedValue));
+        }
+
+        [Fact]
+        public void Refresh_GenericReference_RaisesValueAndLocalizedValuePropertyChanged()
+        {
+            // Arrange
+            var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+            var changedProperties = new List<string?>();
+            enumWrapper.PropertyChanged += (_, args) => changedProperties.Add(args.PropertyName);
+
+            // Act
+            enumWrapper.Refresh();
+
+            // Assert
+            changedProperties.Should().Equal(nameof(EnumWrapper<TestEnum>.Value), nameof(EnumWrapper<TestEnum>.LocalizedValue));
+        }
+
+        [Fact]
+        public void Equals_NonGenericReferenceWithSameEnumValue_ReturnsTrue()
+        {
+            // Arrange
+            EnumWrapper left = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+            EnumWrapper right = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+
+            // Act
+            var equals = left.Equals(right);
+
+            // Assert
+            equals.Should().BeTrue();
+            left.GetHashCode().Should().Be(right.GetHashCode());
+        }
+
+        [Fact]
+        public void Equals_NonGenericReferenceWithDifferentEnumValue_ReturnsFalse()
+        {
+            // Arrange
+            EnumWrapper left = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+            EnumWrapper right = EnumWrapper.CreateWrapper(TestEnum.Dolor);
+
+            // Act
+            var equals = left.Equals(right);
+
+            // Assert
+            equals.Should().BeFalse();
+        }
+
+        [Fact]
+        public void Equals_GenericReferenceWithSameEnumValue_ReturnsTrue()
+        {
+            // Arrange
+            var left = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+            var right = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+
+            // Act
+            var equals = left.Equals(right);
+
+            // Assert
+            equals.Should().BeTrue();
+            (left == right).Should().BeTrue();
+            (left != right).Should().BeFalse();
+            left.GetHashCode().Should().Be(right.GetHashCode());
+        }
+
+        [Fact]
+        public void Equals_GenericReferenceWithDifferentEnumValue_ReturnsFalse()
+        {
+            // Arrange
+            var left = EnumWrapper.CreateWrapper(TestEnum.Lorem);
+            var right = EnumWrapper.CreateWrapper(TestEnum.Dolor);
+
+            // Act
+            var equals = left.Equals(right);
+
+            // Assert
+            equals.Should().BeFalse();
+            (left == right).Should().BeFalse();
+            (left != right).Should().BeTrue();
         }
 
         [Fact]
@@ -40,7 +194,7 @@
             var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Ipsum);
 
             // Act
-            Action action = () => { var x = enumWrapper.LocalizedValue; };
+            Action action = () => _ = enumWrapper.LocalizedValue;
 
             // Assert
             action.Should().Throw<InvalidOperationException>();
@@ -52,13 +206,11 @@
             // Arrange
             var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Dolor);
 
-            string expectedLocalizationDolor = TestEnum.Dolor.ToString();
-
             // Act
             var localizedValue = enumWrapper.LocalizedValue;
 
             // Assert
-            localizedValue.Should().Be(expectedLocalizationDolor);
+            localizedValue.Should().Be(nameof(TestEnum.Dolor));
         }
 
         [Fact]
@@ -67,13 +219,11 @@
             // Arrange
             var enumWrapper = EnumWrapper.CreateWrapper(TestEnum.Fourth);
 
-            string expectedLocalizationFourth = TestEnum.Fourth.ToString();
-
             // Act
             var localizedValue = enumWrapper.LocalizedValue;
 
             // Assert
-            localizedValue.Should().Be(expectedLocalizationFourth);
+            localizedValue.Should().Be(nameof(TestEnum.Fourth));
         }
 
         [Fact]

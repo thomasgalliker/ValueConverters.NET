@@ -28,6 +28,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DateTimeOffsetToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DateTimeToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\DateTimeExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\TypeExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IsInRangeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MinMaxValueToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\ITimeZoneInfo.cs" />

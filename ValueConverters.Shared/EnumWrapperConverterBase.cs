@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
+using ValueConverters.Extensions;
 
 namespace ValueConverters
 {
@@ -91,7 +92,7 @@ namespace ValueConverters
 
             if (value == null)
             {
-                return IsNullable(targetType) ? null : Binding.DoNothing;
+                return targetType.IsNullable() ? null : Binding.DoNothing;
             }
 
             var type = value.GetType();
@@ -101,7 +102,7 @@ namespace ValueConverters
                 return value;
             }
 
-            if (IsNullable(targetType))
+            if (targetType.IsNullable())
             {
                 targetType = Nullable.GetUnderlyingType(targetType)!;
             }
@@ -191,11 +192,6 @@ namespace ValueConverters
         {
             var enumerable = this.CreateEnumWrapperEnumerable<TEnum>(values, nameStyle);
             return enumerable.ToArray();
-        }
-
-        private static bool IsNullable(Type type)
-        {
-            return type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
         }
 
         private static void EnsureEnumType(Type type)
