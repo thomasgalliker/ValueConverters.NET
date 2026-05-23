@@ -6,3 +6,9 @@ global using ValueConverters.Services;
 global using Xunit;
 global using Moq;
 global using ValueConverters.Tests.Testdata;
+
+#if NETFRAMEWORK
+global using static ValueConverters.Tests.EnumCompat;
+#else
+global using static System.Enum;
+#endif

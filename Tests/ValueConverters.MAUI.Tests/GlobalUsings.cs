@@ -5,3 +5,4 @@ global using ValueConverters.Services;
 global using Xunit;
 global using Moq;
 global using ValueConverters.Tests.Testdata;
+global using static System.Enum;

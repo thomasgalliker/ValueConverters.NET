@@ -52,7 +52,7 @@
             // Arrange
             IValueConverter converter = new EnumWrapperConverter();
 
-            var inputValue = Enum.GetValues<TestEnum>();
+            var inputValue = GetValues<TestEnum>();
 
             // Act
             var convertedOutput = (IEnumerable<EnumWrapper<TestEnum>>)converter.Convert(inputValue, null, null, null);
