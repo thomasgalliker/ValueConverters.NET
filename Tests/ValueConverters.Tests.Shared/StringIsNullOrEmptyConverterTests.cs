@@ -30,6 +30,19 @@
         }
 
         [Fact]
+        public void InstanceShouldConvertEmptyStringToTrue()
+        {
+            // Arrange
+            IValueConverter converter = StringIsNullOrEmptyConverter.Instance;
+
+            // Act
+            var convertedOutput = converter.Convert(string.Empty, null, null, null);
+
+            // Assert
+            convertedOutput.Should().Be(true);
+        }
+
+        [Fact]
         public void ShouldThrowNotSupportedExceptionOnConvertBack()
         {
             // Arrange

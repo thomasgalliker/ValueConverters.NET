@@ -13,7 +13,7 @@
         }
     }
 
-    public class StringIsNullOrEmptyConverter : SingletonConverterBase<StringIsNotNullOrEmptyConverter>
+    public class StringIsNullOrEmptyConverter : SingletonConverterBase<StringIsNullOrEmptyConverter>
     {
 #if MAUI
         public static readonly BindableProperty IsInvertedProperty = BindableProperty.Create(
