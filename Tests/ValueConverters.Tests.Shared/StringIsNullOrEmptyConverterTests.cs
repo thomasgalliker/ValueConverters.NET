@@ -3,7 +3,7 @@
     public class StringIsNullOrEmptyConverterTests
     {
         [Fact]
-        public void ShouldConvertEmptyStringToFalse()
+        public void Convert_EmptyStringOrNull_ReturnsTrue()
         {
             // Arrange
             IValueConverter converter = new StringIsNullOrEmptyConverter();
@@ -14,7 +14,7 @@
         }
 
         [Fact]
-        public void ShouldConvertStringToFalse()
+        public void Convert_NonEmptyString_ReturnsFalse()
         {
             // Arrange
             IValueConverter converter = new StringIsNullOrEmptyConverter();
@@ -30,7 +30,7 @@
         }
 
         [Fact]
-        public void InstanceShouldConvertEmptyStringToTrue()
+        public void Convert_InstanceWithEmptyString_ReturnsTrue()
         {
             // Arrange
             IValueConverter converter = StringIsNullOrEmptyConverter.Instance;
@@ -43,7 +43,7 @@
         }
 
         [Fact]
-        public void ShouldThrowNotSupportedExceptionOnConvertBack()
+        public void ConvertBack_AnyValue_ThrowsNotSupportedException()
         {
             // Arrange
             IValueConverter converter = new StringIsNullOrEmptyConverter();

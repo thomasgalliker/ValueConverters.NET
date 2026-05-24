@@ -3,7 +3,7 @@
     public class BoolToObjectConverterTests
     {
         [Fact]
-        public void ShouldConvert_ReturnsTrue()
+        public void Convert_TrueValue_ReturnsTrueValue()
         {
             // Arrange
             const string Value1 = "value 1";
@@ -25,7 +25,7 @@
         }
 
         [Fact]
-        public void ShouldConvert_ReturnsFalse()
+        public void Convert_FalseValue_ReturnsFalseValue()
         {
             // Arrange
             const string Value1 = "value 1";
@@ -47,7 +47,7 @@
         }
 
         [Fact]
-        public void ShouldConvertBack_ReturnsTrue()
+        public void ConvertBack_TrueValue_ReturnsTrue()
         {
             // Arrange
             const string Value1 = "value 1";
@@ -67,7 +67,7 @@
         }
 
         [Fact]
-        public void ShouldConvertBack_ReturnsFalse()
+        public void ConvertBack_FalseValue_ReturnsFalse()
         {
             // Arrange
             const string Value1 = "value 1";

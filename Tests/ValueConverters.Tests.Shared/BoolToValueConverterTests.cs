@@ -3,7 +3,7 @@
     public class BoolToValueConverterTests
     {
         [Fact]
-        public void ShouldConvert()
+        public void Convert_TrueValue_ReturnsConfiguredValue()
         {
             // Arrange
             IValueConverter converter = new BoolToValueConverter<string> { TrueValue = "Yes", FalseValue = "No" };
@@ -19,7 +19,7 @@
         }
 
         [Fact]
-        public void ShouldConvertBack()
+        public void ConvertBack_ConfiguredValue_ReturnsTrue()
         {
             // Arrange
             IValueConverter converter = new BoolToValueConverter<string> { TrueValue = "Yes", FalseValue = "No" };

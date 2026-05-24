@@ -4,7 +4,7 @@
     {
         [Theory]
         [ClassData(typeof(StringCaseConverterValidTestdata))]
-        public void ShouldConvert(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
+        public void Convert_StringValue_ReturnsRequestedCasing(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new StringCaseConverter();
@@ -46,7 +46,7 @@
 
         [Theory]
         [ClassData(typeof(StringCaseConverterInvalidTestdata))]
-        public void ShouldThrowExceptionIfParameterIsInvalid(object? value, object? parameter, CultureInfo? culture)
+        public void Convert_InvalidParameter_ThrowsArgumentException(object? value, object? parameter, CultureInfo? culture)
         {
             // Arrange
             IValueConverter converter = new StringCaseConverter();
@@ -69,7 +69,7 @@
         }
 
         [Fact]
-        public void ShouldThrowNotSupportedExceptionOnConvertBack()
+        public void ConvertBack_AnyValue_ThrowsNotSupportedException()
         {
             // Arrange
             IValueConverter converter = new StringCaseConverter();

@@ -4,7 +4,7 @@
     {
         [Theory]
         [ClassData(typeof(AddConverterValidTestdata))]
-        public void ShouldAddValidInput(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
+        public void Convert_ValidInput_ReturnsSum(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new AddConverter();
@@ -36,7 +36,7 @@
 
         [Theory]
         [ClassData(typeof(AddConverterInvalidTestdata))]
-        public void ShouldNotAddInvalidInput(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
+        public void Convert_InvalidInput_ReturnsUnsetValue(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new AddConverter();

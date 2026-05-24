@@ -4,7 +4,7 @@
     {
         [Theory]
         [ClassData(typeof(TimeSpanToStringConverterValidTestdata))]
-        public void ShouldConvert(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
+        public void Convert_TimeSpanValue_ReturnsFormattedString(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new TimeSpanToStringConverter
@@ -22,7 +22,7 @@
         [Theory]
         [InlineData("")]
         [InlineData("not a time span")]
-        public void ShouldConvertBackInvalidStringToUnsetValue(string value)
+        public void ConvertBack_InvalidString_ReturnsUnsetValue(string value)
         {
             // Arrange
             IValueConverter converter = new TimeSpanToStringConverter();

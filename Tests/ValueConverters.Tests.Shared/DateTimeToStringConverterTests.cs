@@ -15,7 +15,7 @@
 
         [Theory]
         [ClassData(typeof(DateTimeConverterTestsValidTestdata))]
-        public void ShouldConvert(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
+        public void Convert_DateTimeValue_ReturnsFormattedString(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter valueConverter = new DateTimeToStringConverter(this.timeZoneInfoMock.Object)
@@ -43,7 +43,7 @@
         }
 
         [Fact]
-        public void ShouldConvertBack()
+        public void ConvertBack_DateTimeString_ReturnsUtcDateTime()
         {
             // Arrange
             IValueConverter valueConverter = new DateTimeToStringConverter();

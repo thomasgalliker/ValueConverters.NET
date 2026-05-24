@@ -15,7 +15,7 @@
 
         [Theory]
         [ClassData(typeof(DateTimeOffsetToStringConverterValidTestdata))]
-        public void ShouldConvert(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
+        public void Convert_DateTimeOffsetValue_ReturnsFormattedString(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter valueConverter = new DateTimeOffsetToStringConverter(this.timeZoneInfoMock.Object)
@@ -43,7 +43,7 @@
         }
 
         [Fact]
-        public void ShouldConvertBack()
+        public void ConvertBack_DateTimeString_ReturnsUtcDateTimeOffset()
         {
             // Arrange
             IValueConverter valueConverter = new DateTimeOffsetToStringConverter();

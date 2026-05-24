@@ -4,7 +4,7 @@
     {
         [Theory]
         [ClassData(typeof(MinMaxValueToBoolConverterValidTestdata))]
-        public void ShouldConvert(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
+        public void Convert_Value_ReturnsRangeMatch(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter valueConverter = new MinMaxValueToBoolConverter
@@ -34,7 +34,7 @@
         }
 
         [Fact]
-        public void ShouldThrowNotSupportedExceptionOnConvertBack()
+        public void ConvertBack_AnyValue_ThrowsNotSupportedException()
         {
             // Arrange
             IValueConverter valueConverter = new MinMaxValueToBoolConverter();

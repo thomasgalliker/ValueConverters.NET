@@ -3,7 +3,7 @@
     public class DebugConverterTests
     {
         [Fact]
-        public void ShouldConvert()
+        public void Convert_Value_ReturnsSameValue()
         {
             // Arrange
             IValueConverter converter = new DebugConverter();
@@ -18,7 +18,7 @@
         }
 
         [Fact]
-        public void ShouldConvertBack()
+        public void ConvertBack_Value_ReturnsSameValue()
         {
             // Arrange
             IValueConverter converter = new DebugConverter();

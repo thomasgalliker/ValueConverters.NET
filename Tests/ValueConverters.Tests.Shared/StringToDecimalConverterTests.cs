@@ -3,7 +3,7 @@
     public class StringToDecimalConverterTests
     {
         [Fact]
-        public void ShouldConvertEmptyStringToUnsetValue()
+        public void Convert_EmptyString_ReturnsUnsetValue()
         {
             // Arrange
             IValueConverter converter = new StringToDecimalConverter();
@@ -18,7 +18,7 @@
         }
 
         [Fact]
-        public void ShouldConvertInvalidStringToUnsetValue()
+        public void Convert_InvalidString_ReturnsUnsetValue()
         {
             // Arrange
             IValueConverter converter = new StringToDecimalConverter();
@@ -33,7 +33,7 @@
         }
 
         [Fact]
-        public void ShouldConvertDecimalZeroToZeroString()
+        public void Convert_DecimalZero_ReturnsZeroString()
         {
             // Arrange
             IValueConverter converter = new StringToDecimalConverter();
@@ -48,7 +48,7 @@
         }
 
         [Fact]
-        public void ShouldConvertStringToPositiveDecimal()
+        public void Convert_PositiveDecimalString_ReturnsPositiveDecimal()
         {
             // Arrange
             IValueConverter converter = new StringToDecimalConverter();
@@ -63,7 +63,7 @@
         }
 
         [Fact]
-        public void ShouldConvertStringToNegativeDecimal()
+        public void Convert_NegativeDecimalString_ReturnsNegativeDecimal()
         {
             // Arrange
             IValueConverter converter = new StringToDecimalConverter();
@@ -78,7 +78,7 @@
         }
 
         [Fact]
-        public void ShouldConvertDecimalToPositiveString()
+        public void Convert_PositiveDecimal_ReturnsPositiveString()
         {
             // Arrange
             IValueConverter converter = new StringToDecimalConverter();
@@ -93,7 +93,7 @@
         }
 
         [Fact]
-        public void ShouldConvertDecimalToNegativeString()
+        public void Convert_NegativeDecimal_ReturnsNegativeString()
         {
             // Arrange
             IValueConverter converter = new StringToDecimalConverter();

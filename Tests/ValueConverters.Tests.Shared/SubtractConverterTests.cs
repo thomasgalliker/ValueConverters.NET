@@ -4,7 +4,7 @@
     {
         [Theory]
         [ClassData(typeof(SubtractConverterValidTestdata))]
-        public void ShouldSubtractValidInput(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
+        public void Convert_ValidInput_ReturnsDifference(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new SubtractConverter();
@@ -36,7 +36,7 @@
 
         [Theory]
         [ClassData(typeof(SubtractConverterInvalidTestdata))]
-        public void ShouldNotSubtractInvalidInput(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
+        public void Convert_InvalidInput_ReturnsUnsetValue(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new SubtractConverter();

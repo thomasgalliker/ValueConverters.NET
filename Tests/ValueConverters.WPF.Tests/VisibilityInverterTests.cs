@@ -8,7 +8,7 @@ namespace ValueConverters.Tests
     public class VisibilityInverterTests
     {
         [Fact]
-        public void ShouldConvert()
+        public void Convert_VisibleValue_ReturnsCollapsed()
         {
             // Arrange
             IValueConverter converter = new VisibilityInverter();
@@ -23,7 +23,7 @@ namespace ValueConverters.Tests
         }
 
         [Fact]
-        public void ShouldConvertBack()
+        public void ConvertBack_CollapsedValue_ReturnsTrue()
         {
             // Arrange
             IValueConverter converter = new VisibilityInverter();

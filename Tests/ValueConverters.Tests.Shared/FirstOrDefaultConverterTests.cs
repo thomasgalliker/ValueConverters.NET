@@ -4,7 +4,7 @@
     {
         [Theory]
         [ClassData(typeof(FirstOrDefaultConverterTestdata))]
-        public void ShouldConvert(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
+        public void Convert_Value_ReturnsFirstItemOrUnsetValue(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new FirstOrDefaultConverter();
@@ -32,7 +32,7 @@
         }
 
         [Fact]
-        public void ShouldThrowNotSupportedExceptionOnConvertBack()
+        public void ConvertBack_AnyValue_ThrowsNotSupportedException()
         {
             // Arrange
             IValueConverter converter = new FirstOrDefaultConverter();

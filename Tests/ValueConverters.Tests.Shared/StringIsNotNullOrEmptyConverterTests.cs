@@ -3,7 +3,7 @@
     public class StringIsNotNullOrEmptyConverterTests
     {
         [Fact]
-        public void ShouldConvertEmptyStringToFalse()
+        public void Convert_EmptyString_ReturnsFalse()
         {
             // Arrange
             IValueConverter converter = new StringIsNotNullOrEmptyConverter();
@@ -19,7 +19,7 @@
         }
 
         [Fact]
-        public void ShouldConvertStringToTrue()
+        public void Convert_NonEmptyString_ReturnsTrue()
         {
             // Arrange
             IValueConverter converter = new StringIsNotNullOrEmptyConverter();
@@ -35,7 +35,7 @@
         }
 
         [Fact]
-        public void ShouldThrowNotSupportedExceptionOnConvertBack()
+        public void ConvertBack_AnyValue_ThrowsNotSupportedException()
         {
             // Arrange
             IValueConverter converter = new StringIsNotNullOrEmptyConverter();

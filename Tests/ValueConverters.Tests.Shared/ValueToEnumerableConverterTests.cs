@@ -4,7 +4,7 @@
     {
         [Theory]
         [ClassData(typeof(ValueToEnumerableConverterTestdata))]
-        public void ShouldConvert(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
+        public void Convert_Value_ReturnsEnumerableOrUnsetValue(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new ValueToEnumerableConverter();
@@ -29,7 +29,7 @@
         }
 
         [Fact]
-        public void ShouldThrowNotSupportedExceptionOnConvertBack()
+        public void ConvertBack_AnyValue_ThrowsNotSupportedException()
         {
             // Arrange
             IValueConverter converter = new ValueToEnumerableConverter();

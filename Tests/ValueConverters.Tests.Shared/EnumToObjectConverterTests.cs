@@ -3,7 +3,7 @@
     public class EnumToObjectConverterTests
     {
         [Fact]
-        public void ShouldConvert()
+        public void Convert_MatchingResourceKey_ReturnsResourceValue()
         {
             // Arrange
             string key1 = TestEnum.Lorem.ToString();
@@ -33,7 +33,7 @@
         }
 
         [Fact]
-        public void ShouldNotConvertIfValueCannotBeFoundInResourceDictionary()
+        public void Convert_MissingResourceKey_ReturnsUnsetValue()
         {
             // Arrange
             string key1 = TestEnum.Lorem.ToString();
@@ -60,7 +60,7 @@
         }
 
         [Fact]
-        public void ShouldNotConvertEmptyResourceDictionary()
+        public void Convert_EmptyResourceDictionary_ReturnsUnsetValue()
         {
             // Arrange
             IValueConverter enumToObjectConverter = new EnumToObjectConverter();
@@ -75,7 +75,7 @@
         }
 
         [Fact]
-        public void ShouldThrowNotSupportedExceptionOnConvertBack()
+        public void ConvertBack_AnyValue_ThrowsNotSupportedException()
         {
             // Arrange
             IValueConverter enumToObjectConverter = new EnumToObjectConverter();

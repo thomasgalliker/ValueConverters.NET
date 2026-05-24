@@ -3,7 +3,7 @@
     public class GuidToStringConverterTests
     {
         [Fact]
-        public void ShouldConvert()
+        public void Convert_GuidValue_ReturnsString()
         {
             // Arrange
             IValueConverter converter = new GuidToStringConverter { ToUpper = true };
@@ -18,7 +18,7 @@
         }
 
         [Fact]
-        public void ShouldConvertBack()
+        public void ConvertBack_GuidString_ReturnsGuid()
         {
             // Arrange
             IValueConverter converter = new GuidToStringConverter();

@@ -3,7 +3,7 @@
     public class VersionToStringConverterTests
     {
         [Fact]
-        public void ShouldConvert()
+        public void Convert_VersionValue_ReturnsString()
         {
             // Arrange
             IValueConverter converter = new VersionToStringConverter();
@@ -17,7 +17,7 @@
         }
 
         [Fact]
-        public void ShouldConvertWithFieldCount()
+        public void Convert_FieldCountParameter_ReturnsTruncatedString()
         {
             // Arrange
             IValueConverter converter = new VersionToStringConverter();

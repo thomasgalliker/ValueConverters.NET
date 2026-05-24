@@ -3,7 +3,7 @@
     public class IsEmptyConverterTests
     {
         [Fact]
-        public void ShouldConvertStringToIsEmptyBool()
+        public void Convert_NonEmptyString_ReturnsFalse()
         {
             // Arrange
             IValueConverter converter = new IsEmptyConverter { IsInverted = false };
@@ -19,7 +19,7 @@
         }
 
         [Fact]
-        public void ShouldConvertEmptyStringToIsEmptyBool()
+        public void Convert_EmptyString_ReturnsTrue()
         {
             // Arrange
             IValueConverter converter = new IsEmptyConverter { IsInverted = false };
@@ -35,7 +35,7 @@
         }
 
         [Fact]
-        public void ShouldConvertNullStringToIsEmptyBool()
+        public void Convert_NullString_ReturnsTrue()
         {
             // Arrange
             IValueConverter converter = new IsEmptyConverter { IsInverted = false };
@@ -51,7 +51,7 @@
         }
 
         [Fact]
-        public void ShouldConvertIEnumerableToIsEmptyBool()
+        public void Convert_NonEmptyEnumerable_ReturnsFalse()
         {
             // Arrange
             IValueConverter converter = new IsEmptyConverter { IsInverted = false };
@@ -67,7 +67,7 @@
         }
 
         [Fact]
-        public void ShouldConvertIEnumerableToIsEmptyBoolInverted()
+        public void Convert_NonEmptyEnumerableWithInversion_ReturnsTrue()
         {
             // Arrange
             IValueConverter converter = new IsEmptyConverter { IsInverted = true };
@@ -83,7 +83,7 @@
         }
 
         [Fact]
-        public void ShouldConvertBackIEnumerableToIsEmptyBool()
+        public void ConvertBack_AnyValue_ThrowsNotSupportedException()
         {
             // Arrange
             IValueConverter converter = new IsEmptyConverter();

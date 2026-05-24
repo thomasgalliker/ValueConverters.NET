@@ -4,7 +4,7 @@
     {
         [Theory]
         [ClassData(typeof(ValueConverterGroupValidTestdata))]
-        public void ShouldConvert(List<IValueConverter> converters, object value, object parameter, CultureInfo culture, object expectedResult)
+        public void Convert_ConverterSequence_ReturnsChainedResult(List<IValueConverter> converters, object value, object parameter, CultureInfo culture, object expectedResult)
         {
             // Arrange
             IValueConverter converter = new ValueConverterGroup
@@ -21,7 +21,7 @@
 
         [Theory]
         [ClassData(typeof(ValueConverterGroupValidTestdata))]
-        public void ShouldConvertBack(List<IValueConverter>? converters, object? value, object? parameter, CultureInfo? culture, object? expectedResult)
+        public void ConvertBack_ConverterSequence_ReturnsChainedResult(List<IValueConverter>? converters, object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new ValueConverterGroup

@@ -3,7 +3,7 @@
     public class ValueToBoolConverterTests
     {
         [Fact]
-        public void ShouldConvertTrue()
+        public void Convert_MatchingValue_ReturnsTrue()
         {
             const int TrueValue = 42;
             IValueConverter converter = new ValueToBoolConverter<int> { TrueValue = TrueValue };
@@ -14,7 +14,7 @@
         }
 
         [Fact]
-        public void ShouldConvertFalse()
+        public void Convert_DifferentValue_ReturnsFalse()
         {
             const int TrueValue = 42;
             IValueConverter converter = new ValueToBoolConverter<int> { TrueValue = TrueValue };
@@ -26,7 +26,7 @@
         }
 
         [Fact]
-        public void ShouldConvertNull()
+        public void Convert_NullTrueValue_ReturnsTrue()
         {
             const object? TrueValue = null;
             IValueConverter converter = new ValueToBoolConverter<object> { TrueValue = TrueValue };
@@ -37,7 +37,7 @@
         }
 
         [Fact]
-        public void ShouldConvertTrueBack()
+        public void ConvertBack_TrueValue_ReturnsConfiguredTrueValue()
         {
             const int TrueValue = 42;
             IValueConverter converter = new ValueToBoolConverter<int?> { TrueValue = TrueValue };
@@ -48,7 +48,7 @@
         }
 
         [Fact]
-        public void ShouldConvertFalseBack()
+        public void ConvertBack_FalseValue_ReturnsConfiguredFalseValue()
         {
             const int FalseValue = 42;
             IValueConverter converter = new ValueToBoolConverter<int?> { FalseValue = FalseValue };
@@ -59,7 +59,7 @@
         }
 
         [Fact]
-        public void ShouldConvertFalseBackToNull()
+        public void ConvertBack_FalseValueWithNullableTarget_ReturnsNull()
         {
             IValueConverter converter = new ValueToBoolConverter<int?>();
 
@@ -69,7 +69,7 @@
         }
 
         [Fact]
-        public void ShouldUseIsInvertedWhenConvertingBack()
+        public void ConvertBack_InvertedFalseValue_ReturnsConfiguredTrueValue()
         {
             const int FalseValue = -42;
             const int TrueValue = 42;
@@ -86,7 +86,7 @@
         }
 
         [Fact]
-        public void ShouldUseBaseWhenConverting()
+        public void Convert_BaseOnFalseValue_ReturnsTrue()
         {
             const int TrueValue = 42;
             const int FalseValue = 0;

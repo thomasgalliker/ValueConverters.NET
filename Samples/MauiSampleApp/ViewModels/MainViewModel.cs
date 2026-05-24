@@ -16,11 +16,15 @@ namespace MauiSampleApp.ViewModels
         private PartyMode selectedPartyMode;
         private CultureInfo selectedLanguage;
         private string? userName;
+        private double rangeValue;
+        private string thicknessText = "16,8";
 
         public MainViewModel()
         {
             this.selectedLanguage = Thread.CurrentThread.CurrentUICulture;
             this.ChangeDate = DateTime.Now;
+            this.rangeValue = 42;
+            this.userName = string.Empty;
 
             // Initialize RadioFrequency enums using EnumWrapper explicitly
             this.RadioFrequencies = new EnumWrapperCollection<RadioFrequency>();
@@ -71,6 +75,18 @@ namespace MauiSampleApp.ViewModels
         {
             get => this.userName;
             set => this.SetProperty(ref this.userName, value);
+        }
+
+        public double RangeValue
+        {
+            get => this.rangeValue;
+            set => this.SetProperty(ref this.rangeValue, value);
+        }
+
+        public string ThicknessText
+        {
+            get => this.thicknessText;
+            set => this.SetProperty(ref this.thicknessText, value);
         }
 
         public bool IsEditing

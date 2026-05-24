@@ -3,7 +3,7 @@
     public class BoolNegationConverterTests
     {
         [Fact]
-        public void ShouldConvert()
+        public void Convert_TrueValue_ReturnsFalse()
         {
             // Arrange
             IValueConverter converter = new BoolNegationConverter();
@@ -18,7 +18,7 @@
         }
 
         [Fact]
-        public void ShouldConvertBack()
+        public void ConvertBack_FalseValue_ReturnsTrue()
         {
             // Arrange
             IValueConverter converter = new BoolNegationConverter();

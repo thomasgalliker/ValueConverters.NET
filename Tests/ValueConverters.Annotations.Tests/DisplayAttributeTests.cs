@@ -8,7 +8,7 @@ namespace ValueConverters.Annotations.Tests
     {
         [Theory]
         [ClassData(typeof(DisplayNameTestData))]
-        public void ShouldReturnEnumDisplayText(PartyMode partyMode, CultureInfo? culture, EnumWrapperConverterNameStyle nameStyle, string? expectedResult)
+        public void GetDisplayName_PartyMode_ReturnsDisplayText(PartyMode partyMode, CultureInfo? culture, EnumWrapperConverterNameStyle nameStyle, string? expectedResult)
         {
             // Act
             var partyModeString = DisplayAttribute.GetDisplayName(partyMode, nameStyle, culture);
