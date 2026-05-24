@@ -73,11 +73,14 @@
 
                 if (value is string str)
                 {
-                    TimeSpan.TryParse(str, out var resultTimeSpan);
-                    return resultTimeSpan;
+                    if (TimeSpan.TryParse(str, out var resultTimeSpan))
+                    {
+                        return resultTimeSpan;
+                    }
                 }
             }
-            return null;
+
+            return UnsetValue;
         }
     }
 }

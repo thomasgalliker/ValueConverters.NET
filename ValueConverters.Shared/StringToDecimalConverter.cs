@@ -18,7 +18,7 @@
                     return result;
                 }
 
-                return result;
+                return UnsetValue;
             }
 
             return UnsetValue;

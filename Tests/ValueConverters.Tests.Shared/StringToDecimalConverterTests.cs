@@ -3,7 +3,7 @@
     public class StringToDecimalConverterTests
     {
         [Fact]
-        public void ShouldConvertEmptyStringToDecimalZero()
+        public void ShouldConvertEmptyStringToUnsetValue()
         {
             // Arrange
             IValueConverter converter = new StringToDecimalConverter();
@@ -14,7 +14,22 @@
             var convertedOutput = converter.Convert(input, null, null, null);
 
             // Assert
-            convertedOutput.Should().Be(0m);
+            convertedOutput.Should().BeSameAs(ConverterBase.UnsetValue);
+        }
+
+        [Fact]
+        public void ShouldConvertInvalidStringToUnsetValue()
+        {
+            // Arrange
+            IValueConverter converter = new StringToDecimalConverter();
+
+            object input = "not a decimal";
+
+            // Act
+            var convertedOutput = converter.Convert(input, null, null, null);
+
+            // Assert
+            convertedOutput.Should().BeSameAs(ConverterBase.UnsetValue);
         }
 
         [Fact]

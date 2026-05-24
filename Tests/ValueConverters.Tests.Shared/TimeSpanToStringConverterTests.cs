@@ -19,6 +19,21 @@
             result.Should().Be(expectedResult);
         }
 
+        [Theory]
+        [InlineData("")]
+        [InlineData("not a time span")]
+        public void ShouldConvertBackInvalidStringToUnsetValue(string value)
+        {
+            // Arrange
+            IValueConverter converter = new TimeSpanToStringConverter();
+
+            // Act
+            var result = converter.ConvertBack(value, null, null, CultureInfo.InvariantCulture);
+
+            // Assert
+            result.Should().BeSameAs(ConverterBase.UnsetValue);
+        }
+
         public class TimeSpanToStringConverterValidTestdata : TheoryData<object?, object?, CultureInfo?, object?>
         {
             public TimeSpanToStringConverterValidTestdata()
