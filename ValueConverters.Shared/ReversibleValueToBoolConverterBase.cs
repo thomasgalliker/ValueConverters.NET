@@ -5,10 +5,12 @@
     {
         public abstract T? FalseValue { get; set; }
 
+        public static readonly Property BaseOnFalseValueProperty = PropertyHelper.Create<bool, ReversibleValueToBoolConverterBase<T, TConverter>>(nameof(BaseOnFalseValue));
+
         public bool BaseOnFalseValue
         {
-            get { return (bool)this.GetValue(BaseOnFalseValueProperty); }
-            set { this.SetValue(BaseOnFalseValueProperty, value); }
+            get => (bool)this.GetValue(BaseOnFalseValueProperty);
+            set => this.SetValue(BaseOnFalseValueProperty, value);
         }
 
         protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
@@ -26,7 +28,5 @@
         {
             return true.Equals(value) ^ this.IsInverted ? this.TrueValue : this.FalseValue;
         }
-
-        public static readonly Property BaseOnFalseValueProperty = PropertyHelper.Create<bool, ValueToBoolConverterBase<T, TConverter>>(nameof(BaseOnFalseValueProperty));
     }
 }
