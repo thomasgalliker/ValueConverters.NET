@@ -1,175 +1,712 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
+
 <ContentPage
     x:Class="MauiSampleApp.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:c="http://schemas.superdev.ch/valueconverters/2016/xaml"
     xmlns:vm="clr-namespace:MauiSampleApp.ViewModels"
-    Title="ValueConverters Sample App for .NET MAUI"
-    x:DataType="vm:MainViewModel">
+    x:DataType="vm:MainViewModel"
+    BackgroundColor="{AppThemeBinding Light={StaticResource SamplePageBackgroundLightColor},
+                                      Dark={StaticResource SamplePageBackgroundDarkColor}}"
+    Title="ValueConverters Sample App for .NET MAUI">
     <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style
-                x:Key="TrueStyleTemplate"
-                TargetType="Button">
-                <Setter Property="BackgroundColor" Value="Green" />
-            </Style>
-            <Style
-                x:Key="FalseStyleTemplate"
-                TargetType="Button">
-                <Setter Property="BackgroundColor" Value="Red" />
-            </Style>
-
-            <c:BoolNegationConverter x:Key="BoolNegationConverter" />
-            <c:BoolToDoubleConverter
-                x:Key="BoolToDoubleConverter"
-                FalseValue="16"
-                TrueValue="1" />
-            <c:BoolToFontAttributesConverter x:Key="BoolToFontAttributesConverter" />
-            <c:BoolToColorConverter
-                x:Key="BoolToColorConverter"
-                FalseValue="Green"
-                TrueValue="Red" />
-            <c:BoolToStringConverter
-                x:Key="BoolToStringConverter"
-                FalseValue="No"
-                TrueValue="Yes" />
-            <c:BoolToStyleConverter
-                x:Key="BoolToStyleConverter"
-                FalseValue="{StaticResource FalseStyleTemplate}"
-                TrueValue="{StaticResource TrueStyleTemplate}" />
-            <c:BoolToThicknessConverter
-                x:Key="BoolToThicknessConverter"
-                FalseValue="4"
-                TrueValue="1" />
-            <c:DateTimeConverter
-                x:Key="DateTimeConverter"
-                Format="d"
-                MinValueString="---"
-                PreferredCulture="CurrentUICulture" />
-            <c:DebugConverter x:Key="DebugConverter" />
-            <c:EnumToBoolConverter x:Key="EnumToBoolConverter" />
-            <c:StringToObjectConverter x:Key="StringToObjectConverter" />
-            <c:EnumToObjectConverter x:Key="EnumToObjectConverter" />
-            <c:EnumWrapperConverter x:Key="EnumWrapperConverter" />
-            <c:IsEmptyConverter
-                x:Key="IsEmptyConverter"
-                IsInverted="True" />
-        </ResourceDictionary>
+        <ResourceDictionary />
     </ContentPage.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
 
-        <Label
-            Grid.Row="0"
-            Grid.Column="0"
-            Text="IsEnabled:" />
-        <Label
-            Grid.Row="0"
-            Grid.Column="1"
-            FontAttributes="{Binding IsEnabled, Converter={StaticResource BoolToFontAttributesConverter}}"
-            IsVisible="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}"
-            Text="{Binding IsEnabled, Converter={StaticResource BoolToStringConverter}}" />
-        <Switch
-            Grid.Row="0"
-            Grid.Column="1"
-            BackgroundColor="{Binding IsEnabled, Converter={StaticResource BoolToColorConverter}}"
-            IsToggled="{Binding IsEnabled}"
-            IsVisible="{Binding IsEditing}"
-            HorizontalOptions="Start"
-            VerticalOptions="Start" />
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="0">
 
-        <Label
-            Grid.Row="1"
-            Grid.Column="0"
-            Text="ChangeDate:" />
-        <Label
-            Grid.Row="1"
-            Grid.Column="1"
-            IsVisible="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}"
-            Text="{Binding ChangeDate, Converter={StaticResource DateTimeConverter}}" />
-        <DatePicker
-            Grid.Row="1"
-            Grid.Column="1"
-            Date="{Binding ChangeDate}"
-            IsVisible="{Binding IsEditing}"
-            HorizontalOptions="Start"
-            VerticalOptions="Start" />
-
-        <Label
-            Grid.Row="3"
-            Grid.Column="0"
-            Text="Party mode:" />
-        <StackLayout
-            Grid.Row="3"
-            Grid.Column="1"
-            Orientation="Horizontal">
-            <Button
-                Command="{Binding NextPartyModeCommand}"
-                IsEnabled="{Binding IsEditing}"
-                IsVisible="{Binding PartyModes, Converter={StaticResource IsEmptyConverter}}"
-                Text="Next" />
             <Label
-                IsVisible="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}"
-                Text="{Binding SelectedPartyMode, Converter={StaticResource EnumWrapperConverter}, StringFormat='{0}'}" />
-            <Picker
-                Title="PartyMode"
-                IsVisible="{Binding IsEditing}"
-                ItemDisplayBinding="{Binding LocalizedValue, Converter={StaticResource DebugConverter}}"
-                ItemsSource="{Binding PartyModesArray, Converter={StaticResource EnumWrapperConverter}}"
-                SelectedItem="{Binding SelectedPartyMode, Converter={StaticResource EnumWrapperConverter}}"
-                HorizontalOptions="Start"
-                VerticalOptions="Start" />
-        </StackLayout>
+                Margin="0,0,0,6"
+                FontAttributes="Bold"
+                FontSize="24"
+                Text="ValueConverters.NET MAUI samples"
+                TextColor="{AppThemeBinding Light={StaticResource SampleTitleLightColor},
+                                            Dark={StaticResource SampleTitleDarkColor}}" />
+            <Label
+                Margin="0,0,0,20"
+                Style="{StaticResource SampleDescriptionLabelStyle}"
+                Text="Each section title names the converter used by the sample below it." />
 
-        <Label
-            Grid.Row="4"
-            Grid.Column="0"
-            Text="Language:" />
-        <Label
-            Grid.Row="4"
-            Grid.Column="1"
-            IsVisible="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}"
-            Text="{Binding SelectedLanguage.DisplayName}" />
-        <Picker
-            Title="Language"
-            Grid.Row="4"
-            Grid.Column="1"
-            IsVisible="{Binding IsEditing}"
-            ItemDisplayBinding="{Binding DisplayName}"
-            ItemsSource="{Binding Languages}"
-            SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
-            HorizontalOptions="Start"
-            VerticalOptions="Start" />
+            <Label
+                Style="{StaticResource SampleGroupHeaderStyle}"
+                Text="Boolean And State" />
 
-        <Button
-            Grid.Row="5"
-            Grid.Column="1"
-            BorderWidth="2"
-            Command="{Binding EditCommand}"
-            CornerRadius="4"
-            IsEnabled="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}"
-            Style="{Binding IsEditing, Converter={StaticResource BoolToStyleConverter}}"
-            Text="Edit" />
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="BoolToStringConverter" />
+                    <Grid
+                        ColumnDefinitions="Auto,*"
+                        ColumnSpacing="16">
+                        <Switch IsToggled="{Binding IsEnabled}" />
+                        <Label
+                            Grid.Column="1"
+                            Style="{StaticResource SampleResultLabelStyle}"
+                            Text="{Binding IsEnabled, Converter={StaticResource BoolToStringConverter}, StringFormat='Is enabled: {0}'}" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
 
-        <Button
-            Grid.Row="5"
-            Grid.Column="2"
-            Command="{Binding CancelCommand}"
-            IsEnabled="{Binding IsEditing}"
-            Style="{Binding IsEditing, Converter={StaticResource BoolToStyleConverter}}"
-            Text="Cancel" />
-    </Grid>
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="BoolNegationConverter" />
+                    <Grid
+                        ColumnDefinitions="Auto,*"
+                        ColumnSpacing="16">
+                        <Switch IsToggled="{Binding IsEditing}" />
+                        <VerticalStackLayout
+                            Grid.Column="1"
+                            Spacing="4">
+                            <Label
+                                Style="{StaticResource SampleDescriptionLabelStyle}"
+                                Text="Toggle edit mode." />
+                            <Label
+                                IsVisible="{Binding IsEditing}"
+                                Style="{StaticResource SampleResultLabelStyle}"
+                                Text="Editing controls are visible" />
+                            <Label
+                                IsVisible="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}"
+                                Style="{StaticResource SampleResultLabelStyle}"
+                                Text="Read-only values are visible" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="BoolInverter" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding IsEnabled, Converter={StaticResource BoolInverter}, StringFormat='Inverted IsEnabled: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="InverseBoolConverter" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding IsEnabled, Converter={StaticResource InverseBoolConverter}, StringFormat='Inverse IsEnabled: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="InvertedBoolConverter" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding IsEnabled, Converter={StaticResource InvertedBoolConverter}, StringFormat='Inverted alias result: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="BoolToColorConverter" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding IsEnabled, Converter={StaticResource BoolToStringConverter}, StringFormat='Status color follows IsEnabled: {0}'}"
+                        TextColor="{Binding IsEnabled, Converter={StaticResource BoolToColorConverter}}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="BoolToFontAttributesConverter" />
+                    <Label
+                        FontAttributes="{Binding IsEnabled, Converter={StaticResource BoolToFontAttributesConverter}}"
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="This label becomes emphasized when IsEnabled is true." />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border
+                Padding="{Binding IsEnabled, Converter={StaticResource BoolToThicknessConverter}}"
+                Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="BoolToThicknessConverter" />
+                    <Label
+                        Style="{StaticResource SampleDescriptionLabelStyle}"
+                        Text="The section padding changes when IsEnabled changes." />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="BoolToDoubleConverter" />
+                    <Label
+                        Opacity="{Binding IsEnabled, Converter={StaticResource BoolToDoubleConverter}}"
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="The opacity of this result is converted from IsEnabled." />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="NullToBoolConverter" />
+                    <Button
+                        Command="{Binding ToggleOptionalValueCommand}"
+                        Text="Toggle optional value" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding OptionalValue, Converter={StaticResource NullToBoolConverter}, StringFormat='Optional value is null: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="BoolToStyleConverter" />
+                    <Button
+                        Command="{Binding EditCommand}"
+                        IsEnabled="{Binding IsEditing, Converter={StaticResource BoolNegationConverter}}"
+                        Style="{Binding IsEditing, Converter={StaticResource BoolToStyleConverter}}"
+                        Text="Edit" />
+                    <Button
+                        Command="{Binding CancelCommand}"
+                        IsEnabled="{Binding IsEditing}"
+                        Style="{Binding IsEditing, Converter={StaticResource BoolToStyleConverter}}"
+                        Text="Cancel" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="BoolToObjectConverter" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding IsEditing, Converter={StaticResource BoolToObjectConverter}, StringFormat='Current workflow: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label
+                Style="{StaticResource SampleGroupHeaderStyle}"
+                Text="Value Matching" />
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="IntegerToBoolConverter" />
+                    <Button
+                        Command="{Binding CycleSelectedCountCommand}"
+                        Text="Toggle count between 3 and 5" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding SelectedCount, Converter={StaticResource IntegerToBoolConverter}, StringFormat='SelectedCount equals 3: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="DoubleToBoolConverter" />
+                    <Button
+                        Command="{Binding ToggleSelectedRatioCommand}"
+                        Text="Toggle ratio between 0.75 and 0.5" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding SelectedRatio, Converter={StaticResource DoubleToBoolConverter}, StringFormat='SelectedRatio equals 0.75: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="StringToBoolConverter" />
+                    <Button
+                        Command="{Binding ToggleBooleanTextCommand}"
+                        Text="Toggle text between ready and waiting" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding BooleanText, Converter={StaticResource StringToBoolConverter}, StringFormat='BooleanText equals ready: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="ValueToBoolConverter" />
+                    <Button
+                        Command="{Binding ToggleApprovalStateCommand}"
+                        Text="Toggle approval state" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding ApprovalState, Converter={StaticResource ValueToBoolConverter}, StringFormat='ApprovalState equals approved: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label
+                Style="{StaticResource SampleGroupHeaderStyle}"
+                Text="MAUI UI Types" />
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="BoolToGridLengthConverter" />
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="{Binding IsEditing, Converter={StaticResource BoolToGridLengthConverter}}" />
+                        </Grid.ColumnDefinitions>
+                        <Border
+                            Padding="12"
+                            BackgroundColor="{StaticResource SecondaryColor}"
+                            StrokeThickness="0">
+                            <Label
+                                Text="Primary column"
+                                TextColor="{StaticResource SampleTextLightColor}" />
+                        </Border>
+                        <Border
+                            Grid.Column="1"
+                            Padding="12"
+                            BackgroundColor="{StaticResource SampleInfoLightColor}"
+                            StrokeThickness="0">
+                            <Label
+                                Text="Details column appears in edit mode"
+                                TextColor="{StaticResource SampleInfoColor}" />
+                        </Border>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="StringToThicknessConverter" />
+                    <Entry
+                        Placeholder="Example: 16,8"
+                        Text="{Binding ThicknessText}" />
+                    <Border
+                        Padding="{Binding ThicknessText, Converter={StaticResource StringToThicknessConverter}}"
+                        BackgroundColor="{StaticResource SampleSuccessLightColor}"
+                        Stroke="{StaticResource SampleSuccessDarkColor}">
+                        <Label
+                            Text="This box uses the converted padding."
+                            TextColor="{StaticResource SampleSuccessColor}" />
+                    </Border>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="BoolToKeyboardConverter" />
+                    <Label
+                        Style="{StaticResource SampleDescriptionLabelStyle}"
+                        Text="Toggle IsEnabled to switch the Entry keyboard between text and numeric input." />
+                    <Entry
+                        Keyboard="{Binding IsEnabled, Converter={StaticResource BoolToKeyboardConverter}}"
+                        Placeholder="Keyboard follows IsEnabled"
+                        Text="{Binding KeyboardText}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label
+                Style="{StaticResource SampleGroupHeaderStyle}"
+                Text="Text And Input" />
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="StringIsNullOrEmptyConverter" />
+                    <Entry
+                        Placeholder="Enter a user name"
+                        Text="{Binding UserName}" />
+                    <Label
+                        IsVisible="{Binding UserName, Converter={StaticResource StringIsNullOrEmptyConverter}}"
+                        Text="User name is required."
+                        TextColor="{StaticResource SampleDangerColor}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="StringIsNotNullOrEmptyConverter" />
+                    <Label
+                        IsVisible="{Binding UserName, Converter={StaticResource StringIsNotNullOrEmptyConverter}}"
+                        Text="{Binding UserName, StringFormat='Hello, {0}'}"
+                        TextColor="{StaticResource SampleSuccessColor}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="StringCaseConverter" />
+                    <Entry Text="{Binding CaseText}" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding CaseText, Converter={StaticResource StringCaseConverter}, ConverterParameter=T, StringFormat='Title case: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="StringToDecimalConverter" />
+                    <Entry
+                        Keyboard="Numeric"
+                        Text="{Binding DecimalText}" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding DecimalText, Converter={StaticResource StringToDecimalConverter}, StringFormat='Decimal value: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="StringToObjectConverter" />
+                    <Button
+                        Command="{Binding ToggleStatusKeyCommand}"
+                        Text="Toggle status key" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding StatusKey, StringFormat='Status key: {0}'}"
+                        TextColor="{Binding StatusKey, Converter={StaticResource StringToObjectConverter}}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label
+                Style="{StaticResource SampleGroupHeaderStyle}"
+                Text="Diagnostics And Composition" />
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="ValueConverterGroup" />
+                    <Label
+                        IsVisible="{Binding UserName, Converter={StaticResource RequiredUserNameConverter}}"
+                        Text="This validation label is controlled by a converter group."
+                        TextColor="{StaticResource SampleDangerColor}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="DebugConverter" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding SelectedPartyMode, Converter={StaticResource DebugConverter}, StringFormat='Debug output passes through: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="TraceConverter" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding ApprovalState, Converter={StaticResource TraceConverter}, StringFormat='Traced value: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label
+                Style="{StaticResource SampleGroupHeaderStyle}"
+                Text="Date Time And Formatting" />
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="DateTimeConverter" />
+                    <DatePicker Date="{Binding ChangeDate}" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding ChangeDate, Converter={StaticResource DateTimeConverter}}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="DateTimeToStringConverter" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding ChangeDate, Converter={StaticResource DateTimeToStringConverter}, StringFormat='Short date/time: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="DateTimeOffsetConverter" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding SampleDateTimeOffset, Converter={StaticResource DateTimeOffsetConverter}, StringFormat='Local offset date: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="DateTimeOffsetToStringConverter" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding SampleDateTimeOffset, Converter={StaticResource DateTimeOffsetToStringConverter}, StringFormat='UTC sortable date: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="TimeSpanToStringConverter" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding SampleDuration, Converter={StaticResource TimeSpanToStringConverter}, StringFormat='Duration: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="GuidToStringConverter" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding SampleGuid, Converter={StaticResource GuidToStringConverter}, StringFormat='Compact GUID: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="VersionToStringConverter" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding SampleVersion, Converter={StaticResource VersionToStringConverter}, ConverterParameter=3, StringFormat='Version with 3 fields: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label
+                Style="{StaticResource SampleGroupHeaderStyle}"
+                Text="Enums And Localization" />
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="EnumWrapperConverter" />
+                    <Picker
+                        ItemDisplayBinding="{Binding LocalizedValue, Converter={StaticResource DebugConverter}}"
+                        ItemsSource="{Binding PartyModesArray, Converter={StaticResource EnumWrapperConverter}}"
+                        SelectedItem="{Binding SelectedPartyMode, Converter={StaticResource EnumWrapperConverter}}"
+                        Title="Party mode" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding SelectedPartyMode, Converter={StaticResource EnumWrapperConverter}, StringFormat='Selected: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="EnumToBoolConverter" />
+                    <HorizontalStackLayout Spacing="18">
+                        <RadioButton
+                            Content="Off"
+                            GroupName="PartyMode"
+                            IsChecked="{Binding SelectedPartyMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=Off}" />
+                        <RadioButton
+                            Content="On"
+                            GroupName="PartyMode"
+                            IsChecked="{Binding SelectedPartyMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=On}" />
+                        <RadioButton
+                            Content="Maybe"
+                            GroupName="PartyMode"
+                            IsChecked="{Binding SelectedPartyMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=Maybe}" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="EnumToObjectConverter" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding SelectedPartyMode, Converter={StaticResource EnumToObjectConverter}, StringFormat='Mapped state: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="EnumWrapperConverter + DateTimeConverter" />
+                    <Picker
+                        ItemDisplayBinding="{Binding DisplayName}"
+                        ItemsSource="{Binding Languages}"
+                        SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
+                        Title="Language" />
+                    <Label
+                        Style="{StaticResource SampleDescriptionLabelStyle}"
+                        Text="Changing the language refreshes localized enum wrapper values." />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label
+                Style="{StaticResource SampleGroupHeaderStyle}"
+                Text="Collections" />
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="IsEmptyConverter" />
+                    <HorizontalStackLayout Spacing="10">
+                        <Button
+                            Command="{Binding ClearPartyModesCommand}"
+                            Text="Clear modes" />
+                        <Button
+                            Command="{Binding FillPartyModesCommand}"
+                            Text="Fill modes" />
+                    </HorizontalStackLayout>
+                    <Label
+                        IsVisible="{Binding PartyModes, Converter={StaticResource IsNotEmptyConverter}}"
+                        Text="Party modes are available."
+                        TextColor="{StaticResource SampleSuccessColor}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="FirstOrDefaultConverter" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding PartyModes, Converter={StaticResource FirstOrDefaultConverter}, StringFormat='First party mode: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="ValueToEnumerableConverter" />
+                    <HorizontalStackLayout
+                        BindableLayout.ItemsSource="{Binding SelectedPartyMode, Converter={StaticResource ValueToEnumerableConverter}}"
+                        Spacing="8">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    Padding="8,4"
+                                    BackgroundColor="{StaticResource SecondaryColor}"
+                                    StrokeThickness="0">
+                                    <Label Text="{Binding .}" />
+                                </Border>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <Label
+                Style="{StaticResource SampleGroupHeaderStyle}"
+                Text="Numbers And Ranges" />
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="MinMaxValueToBoolConverter" />
+                    <Slider
+                        Maximum="100"
+                        Minimum="0"
+                        Value="{Binding RangeValue}" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding RangeValue, Converter={StaticResource MinMaxValueToBoolConverter}, StringFormat='Value is between 20 and 80: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="IsInRangeConverter" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding RangeValue, Converter={StaticResource IsInRangeConverter}, StringFormat='Same range via alias converter: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="AddConverter" />
+                    <Slider
+                        Maximum="50"
+                        Minimum="0"
+                        Value="{Binding CalculationValue}" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding CalculationValue, Converter={StaticResource AddConverter}, ConverterParameter=10, StringFormat='Value plus 10: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource SampleSectionBorderStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Style="{StaticResource SampleConverterTitleStyle}"
+                        Text="SubtractConverter" />
+                    <Label
+                        Style="{StaticResource SampleResultLabelStyle}"
+                        Text="{Binding CalculationValue, Converter={StaticResource SubtractConverter}, ConverterParameter=10, StringFormat='Value minus 10: {0}'}" />
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

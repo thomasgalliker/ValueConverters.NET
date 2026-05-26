@@ -58,4 +58,10 @@
 	  <ProjectReference Include="..\ValueConvertersSample.Contracts\ValueConvertersSample.Contracts.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="Resources\Styles\Converters.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

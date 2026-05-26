@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:c="http://schemas.superdev.ch/valueconverters/2016/xaml">
+
+    <c:AddConverter x:Key="AddConverter" />
+    <c:BoolInverter x:Key="BoolInverter" />
+    <c:BoolNegationConverter x:Key="BoolNegationConverter" />
+    <c:BoolToColorConverter
+        x:Key="BoolToColorConverter"
+        FalseValue="{StaticResource SampleDangerColor}"
+        TrueValue="{StaticResource SampleSuccessColor}" />
+    <c:BoolToDoubleConverter
+        x:Key="BoolToDoubleConverter"
+        FalseValue="0.35"
+        TrueValue="1" />
+    <c:BoolToFontAttributesConverter x:Key="BoolToFontAttributesConverter" />
+    <c:BoolToGridLengthConverter
+        x:Key="BoolToGridLengthConverter"
+        FalseValue="0"
+        TrueValue="*" />
+    <c:BoolToKeyboardConverter
+        x:Key="BoolToKeyboardConverter"
+        FalseValue="Text"
+        TrueValue="Numeric" />
+    <c:BoolToObjectConverter
+        x:Key="BoolToObjectConverter"
+        FalseValue="Read-only workflow"
+        TrueValue="Editing workflow" />
+    <c:BoolToStringConverter
+        x:Key="BoolToStringConverter"
+        FalseValue="No"
+        TrueValue="Yes" />
+    <c:BoolToStyleConverter
+        x:Key="BoolToStyleConverter"
+        FalseValue="{StaticResource SampleSecondaryButtonStyle}"
+        TrueValue="{StaticResource SamplePrimaryButtonStyle}" />
+    <c:BoolToThicknessConverter
+        x:Key="BoolToThicknessConverter"
+        FalseValue="6"
+        TrueValue="18,10" />
+    <c:DateTimeConverter
+        x:Key="DateTimeConverter"
+        Format="D"
+        MinValueString="---"
+        PreferredCulture="CurrentUICulture" />
+    <c:DateTimeToStringConverter
+        x:Key="DateTimeToStringConverter"
+        Format="g"
+        MinValueString="---"
+        PreferredCulture="CurrentUICulture" />
+    <c:DateTimeOffsetConverter
+        x:Key="DateTimeOffsetConverter"
+        Format="f"
+        MinValueString="---" />
+    <c:DateTimeOffsetToStringConverter
+        x:Key="DateTimeOffsetToStringConverter"
+        Format="u"
+        MinValueString="---" />
+    <c:DebugConverter x:Key="DebugConverter" />
+    <c:DoubleToBoolConverter
+        x:Key="DoubleToBoolConverter"
+        TrueValue="0.75" />
+    <c:EnumToObjectConverter x:Key="EnumToObjectConverter">
+        <c:EnumToObjectConverter.Items>
+            <ResourceDictionary>
+                <x:String x:Key="Off">Stopped</x:String>
+                <x:String x:Key="On">Running</x:String>
+                <x:String x:Key="Maybe">Paused</x:String>
+            </ResourceDictionary>
+        </c:EnumToObjectConverter.Items>
+    </c:EnumToObjectConverter>
+    <c:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+    <c:EnumWrapperConverter x:Key="EnumWrapperConverter" />
+    <c:FirstOrDefaultConverter x:Key="FirstOrDefaultConverter" />
+    <c:GuidToStringConverter
+        x:Key="GuidToStringConverter"
+        Format="N"
+        ToUpper="True" />
+    <c:IntegerToBoolConverter
+        x:Key="IntegerToBoolConverter"
+        TrueValue="3" />
+    <c:InverseBoolConverter x:Key="InverseBoolConverter" />
+    <c:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+    <c:IsEmptyConverter
+        x:Key="IsNotEmptyConverter"
+        IsInverted="True" />
+    <c:IsInRangeConverter
+        x:Key="IsInRangeConverter"
+        MaxValue="80"
+        MinValue="20" />
+    <c:MinMaxValueToBoolConverter
+        x:Key="MinMaxValueToBoolConverter"
+        MaxValue="80"
+        MinValue="20" />
+    <c:NullToBoolConverter x:Key="NullToBoolConverter" />
+    <c:StringCaseConverter x:Key="StringCaseConverter" />
+    <c:StringIsNotNullOrEmptyConverter x:Key="StringIsNotNullOrEmptyConverter" />
+    <c:StringIsNullOrEmptyConverter x:Key="StringIsNullOrEmptyConverter" />
+    <c:StringToBoolConverter
+        x:Key="StringToBoolConverter"
+        TrueValue="ready" />
+    <c:StringToDecimalConverter x:Key="StringToDecimalConverter" />
+    <c:StringToObjectConverter x:Key="StringToObjectConverter">
+        <c:StringToObjectConverter.Items>
+            <ResourceDictionary>
+                <Color x:Key="SuccessStatusColor">#027A48</Color>
+                <Color x:Key="DangerStatusColor">#B42318</Color>
+            </ResourceDictionary>
+        </c:StringToObjectConverter.Items>
+    </c:StringToObjectConverter>
+    <c:StringToThicknessConverter x:Key="StringToThicknessConverter" />
+    <c:SubtractConverter x:Key="SubtractConverter" />
+    <c:TimeSpanToStringConverter
+        x:Key="TimeSpanToStringConverter"
+        Format="c"
+        MinValueString="---" />
+    <c:TraceConverter x:Key="TraceConverter" />
+    <c:ValueToBoolConverter
+        x:Key="ValueToBoolConverter"
+        TrueValue="approved" />
+    <c:ValueToEnumerableConverter x:Key="ValueToEnumerableConverter" />
+    <c:VersionToStringConverter x:Key="VersionToStringConverter" />
+    <c:ValueConverterGroup x:Key="RequiredUserNameConverter">
+        <c:StringIsNullOrEmptyConverter />
+    </c:ValueConverterGroup>
+</ResourceDictionary>
