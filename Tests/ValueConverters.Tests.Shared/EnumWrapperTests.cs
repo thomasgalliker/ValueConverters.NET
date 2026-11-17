@@ -1,10 +1,4 @@
-﻿using System;
-using System.Linq;
-using FluentAssertions;
-using ValueConverters.Tests.Testdata;
-using Xunit;
-
-namespace ValueConverters.Tests
+﻿namespace ValueConverters.Tests
 {
     public class EnumWrapperTests
     {

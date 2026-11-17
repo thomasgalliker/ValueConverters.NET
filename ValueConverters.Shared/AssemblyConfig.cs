@@ -1,5 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
-#if (NETWPF || NETFX)
+#if NETWPF || NETFX
 using System.Windows.Markup;
 
 #elif WINDOWS_UWP || UWP

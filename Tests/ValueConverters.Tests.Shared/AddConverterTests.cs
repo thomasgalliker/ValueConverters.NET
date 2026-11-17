@@ -1,21 +1,10 @@
-﻿using System.Globalization;
-using FluentAssertions;
-using Xunit;
-
-#if(XAMARIN)
-using Xamarin.Forms;
-#elif (NET || NETFRAMEWORK)
-using System.Windows.Data;
-#endif
-
-
-namespace ValueConverters.Tests
+﻿namespace ValueConverters.Tests
 {
     public class AddConverterTests
     {
         [Theory]
         [ClassData(typeof(AddConverterValidTestdata))]
-        public void ShouldAddValidInput(object value, object parameter, CultureInfo culture, object expectedResult)
+        public void ShouldAddValidInput(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new AddConverter();
@@ -27,7 +16,7 @@ namespace ValueConverters.Tests
             result.Should().Be(expectedResult);
         }
 
-        public class AddConverterValidTestdata : TheoryData<object, object, CultureInfo, object>
+        public class AddConverterValidTestdata : TheoryData<object?, object?, CultureInfo?, object?>
         {
             public AddConverterValidTestdata()
             {
@@ -47,7 +36,7 @@ namespace ValueConverters.Tests
 
         [Theory]
         [ClassData(typeof(AddConverterInvalidTestdata))]
-        public void ShouldNotAddInvalidInput(object value, object parameter, CultureInfo culture, object expectedResult)
+        public void ShouldNotAddInvalidInput(object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new AddConverter();
@@ -59,7 +48,7 @@ namespace ValueConverters.Tests
             result.Should().Be(expectedResult);
         }
 
-        public class AddConverterInvalidTestdata : TheoryData<object, object, CultureInfo, object>
+        public class AddConverterInvalidTestdata : TheoryData<object?, object?, CultureInfo?, object?>
         {
             public AddConverterInvalidTestdata()
             {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// Converts a <seealso cref="Guid"/> to <seealso cref="string"/>
@@ -18,7 +16,7 @@ namespace ValueConverters
         public string Format { get; set; } = "D";
 
         /// <inheritdoc/>
-        protected override object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (value is Guid guid)
             {
@@ -36,7 +34,7 @@ namespace ValueConverters
         }
 
         /// <inheritdoc/>
-        protected override object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        protected override object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (value is string guidString)
             {

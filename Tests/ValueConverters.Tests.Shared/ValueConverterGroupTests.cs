@@ -1,15 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using FluentAssertions;
-using Xunit;
-
-#if(XAMARIN)
-using Xamarin.Forms;
-#elif (NET || NETFRAMEWORK)
-using System.Windows.Data;
-#endif
-
-namespace ValueConverters.Tests
+﻿namespace ValueConverters.Tests
 {
     public class ValueConverterGroupTests
     {
@@ -32,7 +21,7 @@ namespace ValueConverters.Tests
 
         [Theory]
         [ClassData(typeof(ValueConverterGroupValidTestdata))]
-        public void ShouldConvertBack(List<IValueConverter> converters, object value, object parameter, CultureInfo culture, object expectedResult)
+        public void ShouldConvertBack(List<IValueConverter>? converters, object? value, object? parameter, CultureInfo? culture, object? expectedResult)
         {
             // Arrange
             IValueConverter converter = new ValueConverterGroup
@@ -47,7 +36,7 @@ namespace ValueConverters.Tests
             result.Should().Be(expectedResult);
         }
 
-        public class ValueConverterGroupValidTestdata : TheoryData<List<IValueConverter>, object, object, CultureInfo, object>
+        public class ValueConverterGroupValidTestdata : TheoryData<List<IValueConverter>?, object?, object?, CultureInfo?, object?>
         {
             public ValueConverterGroupValidTestdata()
             {

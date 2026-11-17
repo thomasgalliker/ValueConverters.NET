@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading;
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     public abstract class SingletonConverterBase<TConverter> : ConverterBase
         where TConverter : new()

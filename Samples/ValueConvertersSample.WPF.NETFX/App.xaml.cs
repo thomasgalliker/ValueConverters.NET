@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using ValueConverters;
 
-namespace ValueConverterSample.WPF
+namespace ValueConvertersSample.WPF
 {
     public partial class App : Application
     {

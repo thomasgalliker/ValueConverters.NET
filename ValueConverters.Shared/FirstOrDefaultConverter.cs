@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Globalization;
+﻿using System.Collections;
 
 namespace ValueConverters
 {
     public class FirstOrDefaultConverter : SingletonConverterBase<FirstOrDefaultConverter>
     {
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (value is IEnumerable enumerable)
             {

@@ -1,19 +1,4 @@
-﻿using System;
-using System.Globalization;
-using ValueConverters.Extensions;
-using ValueConverters.Services;
-
-#if (NETFX || NETWPF)
-using System.Windows;
-
-#elif (NETFX_CORE)
-using Windows.UI.Xaml;
-
-#elif XAMARIN
-using Xamarin.Forms;
-#endif
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// Converts a <seealso cref="DateTime"/> value to string using formatting specified in <seealso cref="DefaultFormat"/>.
@@ -34,7 +19,7 @@ namespace ValueConverters
             this.timeZone = timeZone;
         }
 
-#if XAMARIN || MAUI
+#if MAUI
         public static readonly BindableProperty FormatProperty = BindableProperty.Create(
             nameof(Format),
             typeof(string),
@@ -76,7 +61,7 @@ namespace ValueConverters
             set => this.SetValue(MinValueStringProperty, value);
         }
 
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (value is DateTime dateTime)
             {
@@ -92,7 +77,7 @@ namespace ValueConverters
             return UnsetValue;
         }
 
-        protected override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (value != null)
             {

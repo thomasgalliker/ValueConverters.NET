@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-using FluentAssertions;
-using Xunit;
-
-#if(XAMARIN)
-using Xamarin.Forms;
-#elif (NET || NETFRAMEWORK)
-using System.Windows.Data;
-#endif
-
-namespace ValueConverters.Tests
+﻿namespace ValueConverters.Tests
 {
     public class IsEmptyConverterTests
     {
@@ -52,7 +40,7 @@ namespace ValueConverters.Tests
             // Arrange
             IValueConverter converter = new IsEmptyConverter { IsInverted = false };
 
-            const string Input = null;
+            const string? Input = null;
             const bool ExpectedValue = true;
 
             // Act

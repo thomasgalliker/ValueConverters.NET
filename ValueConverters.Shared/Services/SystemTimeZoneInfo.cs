@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading;
-
-namespace ValueConverters.Services
+﻿namespace ValueConverters.Services
 {
     internal class SystemTimeZoneInfo : ITimeZoneInfo
     {

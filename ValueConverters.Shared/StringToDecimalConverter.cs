@@ -1,12 +1,9 @@
-﻿using System;
-using System.Globalization;
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     public class StringToDecimalConverter : SingletonConverterBase<StringToDecimalConverter>
     {
         private static readonly NumberStyles DefaultNumberStyles = NumberStyles.Any;
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             var dec = value as decimal?;
             if (dec != null)
@@ -14,11 +11,9 @@ namespace ValueConverters
                 return dec.Value.ToString("G", culture ?? CultureInfo.InvariantCulture);
             }
 
-            var str = value as string;
-            if (str != null)
+            if (value is string str)
             {
-                decimal result;
-                if (decimal.TryParse(str, DefaultNumberStyles, culture ?? CultureInfo.InvariantCulture, out result))
+                if (decimal.TryParse(str, DefaultNumberStyles, culture ?? CultureInfo.InvariantCulture, out var result))
                 {
                     return result;
                 }
@@ -29,7 +24,7 @@ namespace ValueConverters
             return UnsetValue;
         }
 
-        protected override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             return this.Convert(value, targetType, parameter, culture);
         }

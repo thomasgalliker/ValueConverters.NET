@@ -1,7 +1,4 @@
-﻿using System;
-using System.Globalization;
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// Converts given value into an IEnumerable containing the value as single object.
@@ -9,7 +6,7 @@ namespace ValueConverters
     /// </summary>
     public class ValueToEnumerableConverter : SingletonConverterBase<ValueToEnumerableConverter>
     {
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (value != null)
             {

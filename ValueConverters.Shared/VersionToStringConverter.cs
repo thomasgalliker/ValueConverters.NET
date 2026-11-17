@@ -1,7 +1,4 @@
-﻿using System;
-using System.Globalization;
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// Converts System.Version objects to string. Parameter can be used to limit the number of Version components to return.
@@ -12,7 +9,7 @@ namespace ValueConverters
     /// </summary>
     public class VersionToStringConverter : ConverterBase
     {
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             var version = value as Version;
             if (version != null)

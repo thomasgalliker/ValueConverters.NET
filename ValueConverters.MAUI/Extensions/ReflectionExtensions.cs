@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace ValueConverters.Extensions
 {
@@ -10,12 +9,12 @@ namespace ValueConverters.Extensions
             return type.GetTypeInfo().GenericTypeArguments;
         }
 
-        public static MethodInfo GetMethod(this Type type, string methodName)
+        public static MethodInfo? GetMethod(this Type type, string methodName)
         {
             return type.GetTypeInfo().GetMethod(methodName);
         }
 
-        public static MethodInfo GetMethod(this TypeInfo type, string methodName)
+        public static MethodInfo? GetMethod(this TypeInfo type, string methodName)
         {
             return type.GetDeclaredMethod(methodName);
         }

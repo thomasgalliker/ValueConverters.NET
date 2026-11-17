@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ValueConverters.Extensions
+﻿namespace ValueConverters.Extensions
 {
     internal static class DateTimeExtensions
     {

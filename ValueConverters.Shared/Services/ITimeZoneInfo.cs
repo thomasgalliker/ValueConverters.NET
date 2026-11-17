@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ValueConverters.Services
+﻿namespace ValueConverters.Services
 {
     internal interface ITimeZoneInfo
     {

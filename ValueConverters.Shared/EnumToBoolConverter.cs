@@ -1,13 +1,4 @@
-﻿using System;
-using System.Globalization;
-
-#if NETFX || NET5_0_OR_GREATER
-using System.Windows;
-#elif (NETFX_CORE)
-using Windows.UI.Xaml;
-#endif
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// EnumToBoolConverter can be used to bind to RadioButtons.
@@ -15,9 +6,9 @@ namespace ValueConverters
     // Source: http://stackoverflow.com/questions/397556/how-to-bind-radiobuttons-to-an-enum
     public class EnumToBoolConverter : SingletonConverterBase<EnumToBoolConverter>
     {
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
-            if (parameter is string parameterString)
+            if (value != null && parameter is string parameterString)
             {
                 if (Enum.IsDefined(value.GetType(), value) == false)
                 {
@@ -32,7 +23,7 @@ namespace ValueConverters
             return UnsetValue;
         }
 
-        protected override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (parameter is string parameterString)
             {

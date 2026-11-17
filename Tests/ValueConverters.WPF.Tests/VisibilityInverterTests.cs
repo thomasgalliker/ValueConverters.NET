@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿#if NETFX
+using System.Windows;
 using System.Windows.Data;
 using Xunit;
 
@@ -37,3 +38,4 @@ namespace ValueConverters.Tests
         }
     }
 }
+#endif

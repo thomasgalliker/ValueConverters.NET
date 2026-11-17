@@ -1,17 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Reflection;
-#if (NETFX || NET5_0_OR_GREATER)
-using System.Windows;
-using System.Windows.Markup;
-#elif (NETFX_CORE)
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Markup;
-#elif (XAMARIN)
-using Xamarin.Forms;
-#endif
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// EnumToObjectConverter can be used to select different resources based on given enum name.
@@ -21,6 +8,8 @@ namespace ValueConverters
     /// Each defined object must have an x:Key which maps to the particular enum name.
     /// 
     /// Check out following example:
+    /// <code>
+    /// <![CDATA[
     /// <example>
     ///    <ResourceDictionary>
     ///      <BitmapImage x:Key="Off" UriSource="/Resources/Images/stop.png" />
@@ -28,11 +17,13 @@ namespace ValueConverters
     ///      <BitmapImage x:Key="Maybe" UriSource="/Resources/Images/pause.png" />
     ///    </ResourceDictionary>
     /// </example>
+    /// ]]>
+    /// </code>
     /// Source: http://stackoverflow.com/questions/2787725/how-to-display-different-enum-icons-using-xaml-only
     /// </summary>
     public class EnumToObjectConverter : StringToObjectConverter
     {
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (value == null)
             {

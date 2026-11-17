@@ -1,13 +1,4 @@
-﻿using FluentAssertions;
-using Xunit;
-
-#if (XAMARIN)
-using Xamarin.Forms;
-#elif (NET || NETFRAMEWORK)
-using System.Windows.Data;
-#endif
-
-namespace ValueConverters.Tests
+﻿namespace ValueConverters.Tests
 {
     public class ValueToBoolConverterTests
     {
@@ -37,7 +28,7 @@ namespace ValueConverters.Tests
         [Fact]
         public void ShouldConvertNull()
         {
-            const object TrueValue = null;
+            const object? TrueValue = null;
             IValueConverter converter = new ValueToBoolConverter<object> { TrueValue = TrueValue };
 
             var result = converter.Convert(TrueValue, null, null, null);

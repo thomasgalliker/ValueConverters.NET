@@ -1,7 +1,4 @@
-﻿using System;
-using System.Globalization;
-
-namespace ValueConverters
+﻿namespace ValueConverters
 {
     /// <summary>
     /// Changes capitalization of a string.
@@ -18,7 +15,7 @@ namespace ValueConverters
     /// </example>
     public class StringCaseConverter : SingletonConverterBase<StringCaseConverter>
     {
-        protected override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (value is string stringValue)
             {
